@@ -1,0 +1,33 @@
+# Brewfile packages
+
+# Useful Applications
+cask 'adobe-acrobat-reader'
+cask 'alfred' # A powerful spotlight replacement
+cask 'firefox'
+cask 'brave-browser' # A privacy focused browser
+cask 'google-chrome'
+cask 'karabiner-elements' # I use this to disable the trackpad when I have an external mouse
+cask 'discord'
+cask 'element' # Open source, decentralized, E2E encrypted discord alternative
+cask 'keepassxc' # Password manager
+cask 'gpg-suite' # PGP tools
+cask 'keka' # Better archiver than default
+cask 'kekaexternalhelper'
+cask 'signal' # Open source E2E encrypted messenger. The BEST.
+cask 'slack' # Not everyone uses discord
+cask 'rectangle' # Move and resize windows at ease.
+cask 'steam' # What, YOU DON'T GAME?
+cask 'veracrypt' # File encryption
+cask 'iterm2' # Much better terminal replacement
+cask 'vlc' # Media player. Supports everything
+brew 'ffmpeg' # Record, convert, and stream audio and video 
+cask 'libreoffice' # Office suite
+cask 'audacity' # Audio editor
+cask 'sdformatter' # Format SD cards properly
+cask 'monero-wallet' # XMR crypto wallet
+cask 'obsidian' # Absurdly powerful knowledge archiver
+brew 'yt-dlp' # Youtube dowloader
+brew 'scdl' # Soundcloud dowloader
+cask 'yubico-authenticator' # For managing Yubikeys
+brew 'ykman' # For managing Yubikeys
+
