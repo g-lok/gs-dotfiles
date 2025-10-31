@@ -80,10 +80,10 @@ Don't forget to use a shebang that looks for the environment bash and not whatev
 
 ### Verbosity
 
-My original scripts set verbose output. I'm not sure I want or need that anymore.
+My original scripts set verbose output. I tested this and it is clear I definitely DO NOT want.  I'll set things to whatever Omakub sets it to:
 
 ```bash
-set -x
+set -e
 ```
 
 ### Ascii Art
@@ -101,6 +101,8 @@ ascii_art='  _______/\        ________          __    _____.__.__
 
 ```
 
+I can't figure out how to paste this in lazyvim without everything getting screwed up.  Even the original string I copied that looked fine in the script looks completely mangled when I echo it to the terminal.  I need to figure out how to copy/display that string correctly.
+
 The Omakub scripts has this in their boot.sh script, which is the first script that launches everything.  It also has a script devoted entirely to making the banner colored and pretty, but that script never appears to be called by anything else, so I don't know how it works. That's a problem for later, I'll just copy Omakub if need be.
 
 ### Get username and relevant info
@@ -115,10 +117,58 @@ export dotfiles_wd=$(sudo -u $dotfiles_usr pwd)
 
 ### Sanity check: Exit if not being run as sudo
 
-Can't be having that can we?
+Can't be having that now can we?
 
 ```bash
 if [ "$EUID" -ne 0 ]; then
   echo "The script needs to run as root" && exit 1
 fi
+```
+
+Actually, after testing, it turns out not only is this a security nightmare for running scripts, but Homebrew doesn't let you run it as sudo anyway, so we're tossing all the sudo code and assuming the user is running this normally. I hope this works.
+
+Also quits if not on Linux or Darwin. Yes I own a Windows machine, but it's for gaming and Beyond Laser software ONLY, I ain't about that life otherwise.
+
+### Launch Gum Scripts and Get User Choices
+
+So [here's](https://github.com/charmbracelet/gum?tab=readme-ov-file#commands) what Gum can do, in a nutshell. We need to figure out what options we're giving the user, the actions being taken, and how to make this look good along the way. We also need to figure out how to organize the scripts and how we're running/sourcing them.
+
+Speaking of running/sourcing scripts, I recently learned the hard way that actually running scripts from other scripts isn't the greatest idea, and if alacritty or zellij detect an exit code from something like a script it will close the panel the exit code came from. So instead of that, `source` your scripts from other scripts, and if you need to exit under some condition use `return` instead of exiting.
+
+Unfortunately trying this with things like gum spinner didn't work, it wants an executable, so I had to run the scripts directly in those cases.
+
+During testing I noticed that the colors of my style messages and whatnot, um, sucked.  Rather than set them each time they're called, you can set environment variables like `$BACKGROUND` and `$FOREGROUND` using a 3 digit hex color.
+
+```bash
+export FOREGROUND="#FF0"
+export BACKGROUND="#0BB"
+export BORDER_FOREGROUND="212"
+```
+
+To my surprise and delight, I discovered that lazyvim automatically displays the actual color the string is coding for.  Very handy!
+
+#### Generate Home Dir Folders?
+
+We can dip our toes with a script that will be the same between Linux and MacOS, should probably be run first, and takes in Gum input as a simple yes/no decision.
+
+So the way this works is I'm running `gum confirm` with a `gum spin` under the "positive" section of the confirmation command. `gum spin` itself is calling and executing the directory creation script.  Don't know why I'm doing this, creating directories takes less than a second so you won't see anything, but I already wrote the code so...
+
+```bash
+gum style \
+  --border-foreground 212 --border double \
+  --align center --width 50 --margin "1 2" --padding "2 4" \
+  "Gs-Dotfiles" "Let's get started!"
+
+gum spin --spinner moon --title "Going for a spin..." -- sleep 3
+
+## Create directories under home?
+
+gum style \
+  --border-foreground 212 --border double \
+  --align center --width 50 --margin "1 2" --padding "2 4" \
+  'Create additional directories under home?'
+
+gum confirm &&
+  gum spin --spinner dot --title "Creating folders" -- "$dotfiles_wd/install.d/00-directories.sh" ||
+  echo "Folder creation skipped"
 ```

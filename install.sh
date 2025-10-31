@@ -80,9 +80,14 @@ command -v brew && eval "$(brew shellenv)" >/dev/null
 ## Install gum
 brew install gum
 
+## Setup gum environment variables
+export FOREGROUND="#FF0"
+export BACKGROUND="#0BB"
+export BORDER_FOREGROUND="212"
+
 ## Let's get started
 gum style \
-  --foreground 212 --border-foreground 212 --border double \
+  --border double \
   --align center --width 50 --margin "1 2" --padding "2 4" \
   "Gs-Dotfiles" "Let's get started!"
 
@@ -91,9 +96,9 @@ gum spin --spinner moon --title "Going for a spin..." -- sleep 3
 ## Create directories under home?
 
 gum style \
-  --foreground 212 --border-foreground 212 --border double \
+  --border double \
   --align center --width 50 --margin "1 2" --padding "2 4" \
-  'Create additional directories under home?'
+  'Create additional useful directories under $HOME?'
 
 gum confirm &&
   gum spin --spinner dot --title "Creating folders" -- "$dotfiles_wd/install.d/00-directories.sh" ||
