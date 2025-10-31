@@ -8,14 +8,15 @@ set -e
 ## https://unix.stackexchange.com/questions/190571/sudo-in-non-interactive-script
 ## for idea on how to run sudo in script
 
-ascii_art='  _______/\        ________          __    _____.__.__                 
+cat <<"EOF"
+  _______/\        ________          __    _____.__.__                 
  /  _____)/ ______ \______ \   _____/  |__/ ____\__|  |   ____   ______
 /   \  ___ /  ___/  |    |  \ /  _ \   __\   __\|  |  | _/ __ \ /  ___/
 \    \_\  \\___ \   |    `   (  <_> )  |  |  |  |  |  |_\  ___/ \___ \ 
  \______  /____  > /_______  /\____/|__|  |__|  |__|____/\___  >____  >
-        \/     \/          \/                                \/     \/ '
-
-echo -e "$ascii_art"
+        \/     \/          \/                                \/     \/
+EOF
+# echo -e << "EOF" "$ascii_art" EOF
 echo -e "\nBegin installation (or abort with ctrl+c)..."
 
 ## Save dotfiles working directory as a variable.
@@ -74,11 +75,15 @@ fi
 
 ## Temporarily load Homebrew's config and PATH and whatnot
 
-command -v brew || export PATH="/opt/homebrew/bin:/home/linuxbrew/.linuxbrew/bin:/usr/local/bin" >/dev/null
-command -v brew && eval "$(brew shellenv)" >/dev/null
+command -v brew >/dev/null || export PATH="/opt/homebrew/bin:/home/linuxbrew/.linuxbrew/bin:/usr/local/bin" >/dev/null
+command -v brew >/dev/null && eval "$(brew shellenv)" >/dev/null
 
 ## Install gum
-brew install gum
+if [[ $(command -v gum) == "" ]]; then
+  brew install gum >/dev/null
+else
+  echo "Gum already installed"
+fi
 
 ## Setup gum environment variables
 export FOREGROUND="#FF0"
@@ -104,9 +109,10 @@ gum confirm &&
   gum spin --spinner dot --title "Creating folders" -- "$dotfiles_wd/install.d/00-directories.sh" ||
   echo "Folder creation skipped"
 
-## remove env variables
-unset dotfiles_usr
-unset dotfiles_usr_home
-unset dotfiles_wd
+## Get installation choices
+OPTIONAL_CATEGORIES=("Developer Tools" "DevOps tools" "Artist Tools")
+DEFAULT_OPTIONAL_CATEGORIES=()
+export APP_CATEGORIES=$(gum choose "${OPTIONAL_CATEGORIES[@]}" --no-limit --header "Select optional application categories to install.")
 
-## Set back to non-verbose output
+## remove env variables
+unset dotfiles_wd

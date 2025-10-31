@@ -6,8 +6,6 @@ brew 'gron' # Make JSON greppable
 cask 'insomnia' # API tools
 cask 'postman' # API tools
 cask 'visual-studio-code' # VSCode IDE
-cask 'alacritty' # My preferred terminal emulator
-brew 'zellij' # Modern Tmux style session manager for terminal
 brew 'docker'
 brew 'docker-compose'
 brew 'docker-completion'
