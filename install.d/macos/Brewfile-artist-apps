@@ -1,0 +1,6 @@
+# Brewfile for creative apps
+
+cask 'audacity' # Audio editor
+cask 'gimp'
+cask 'krita'
+
