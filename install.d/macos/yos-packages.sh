@@ -9,6 +9,28 @@ else
   CHIPSET="INTEL"
 fi
 
+## Function to install optional toolsets
+install_optional_tools() {
+  echo "install_optional_tools: $1"
+  case "$1" in
+  "Developer Tools")
+    echo "ding"
+    # brew bundle install --file "$SCRIPT_DIR/Brewfile-dev"
+    ;;
+  "DevOps Tools")
+    echo "bing"
+    # brew bundle install --file "$SCRIPT_DIR/Brewfile-devops"
+    ;;
+  "Artist Tools")
+    echo "zing"
+    # brew bundle install --file "$SCRIPT_DIR/Brewfile-artist-apps"
+    # install_furnace
+    ;;
+  *)
+    echo "$optional is not a valid toolset"
+    ;;
+  esac
+}
 ## Function to install Furnace
 install_furnace() {
   OWNER="tildearrow"
@@ -40,19 +62,13 @@ brew bundle install --file "$SCRIPT_DIR/Brewfile-terminal-apps"
 brew bundle install --file "$SCRIPT_DIR/Brewfile-desktop-apps"
 brew bundle install --file "$SCRIPT_DIR/Brewfile-nerdfonts"
 
-echo $APP_CATEGORIES
-for optional in "${APP_CATEGORIES[@]}"; do
-  echo "$optional"
-  if [ "$optional" = "Developer Tools" ]; then
-    brew bundle install --file "$SCRIPT_DIR/Brewfile-dev"
-  elif [ "$optional" = "DevOps Tools" ]; then
-    brew bundle install --file "$SCRIPT_DIR/Brewfile-devops"
-  elif [ "$optional" = "Artist Tools" ]; then
-    brew bundle install --file "$SCRIPT_DIR/Brewfile-artist-apps"
-    install_furnace
-  else
-    echo "Not a recognized app category."
-  fi
+echo "$APP_CATEGORIES"
+for optionals in "${APP_CATEGORIES[@]}"; do
+  echo "optionals: $optionals"
+  for option in "${optional[@]}"; do
+    echo "option: $option"
+  done
+  # install_optional_tools "$optional"
 done
 
 brew cleanup

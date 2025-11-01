@@ -105,21 +105,14 @@ gum style \
   --border double \
   --align center --width 50 --margin "1 2" --padding "2 4" --bold "Gs-Dotfiles" "Let's get started!"
 
-gum spin --spinner moon --title "Going for a spin..." -- sleep 3
+export PASSWORD=$(gum input --password --prompt "Please enter password: ")
+# gum spin --spinner moon --title "Going for a spin..." -- sleep 4
 
-## Create directories under home?
-
-gum style \
-  --border double \
-  --align center --width 50 --margin "1 2" --padding "2 4" \
-  'Create additional useful directories under $HOME?'
-
-gum confirm &&
-  gum spin --spinner moon --title "Creating folders" -- "$dotfiles_wd/install.d/00-directories.sh" ||
-  echo "Folder creation skipped"
+## Create directories under home
+gum spin --spinner moon --title "Creating folders" -- "$dotfiles_wd/install.d/00-directories.sh"
 
 ## Get installation choices
-OPTIONAL_CATEGORIES=("Developer Tools" "DevOps Tools" "Artist Tools")
+OPTIONAL_CATEGORIES=("Developer_Tools" "DevOps_Tools" "Artist_Tools")
 export APP_CATEGORIES=$(gum choose "${OPTIONAL_CATEGORIES[@]}" --no-limit --header "Select optional application categories to install.")
 
 ## Run installation scripts based on OS
@@ -129,13 +122,13 @@ gum style \
 
 case $SCRIPT_OS in
 "MacOS")
-  export PASSWORD=$(gum input --password --prompt "Please enter password: ")
-  gum spin --spinner moon --title "Installing Apps" -- "$dotfiles_wd/install.d/macos/yos-packages.sh"
-  # "$dotfiles_wd/install.d/macos/yos-packages.sh"
+  # gum spin --spinner moon --title "Installing Apps" -- "$dotfiles_wd/install.d/macos/yos-packages.sh"
+  source "$dotfiles_wd/install.d/macos/yos-packages.sh"
   # gum spin --spinner moon --title "Changing System Settings" -- "$dotfiles_wd/install.d/macos/yos-main-configs.sh"
   # gum spin --spinner moon --title "Change Dock Settings" -- "$dotfiles_wd/install.d/macos/yos-dock.sh"
   # gum spin --spinner moon --title "Changing peripheral settings" -- "$dotfiles_wd/install.d/macos/yos-peripherals.sh"
   # gum spin --spinner moon --title "Setup Screenshots." -- "$dotfiles_wd/install.d/macos/yos-screenshots.sh"
+  # gum spin --spinner moon --title "Install Oh-My-Zsh" -- "$dotfiles_wd/install.d/zsh.sh"
   ;;
 esac
 
@@ -144,3 +137,5 @@ gum style \
   --align center --width 50 --margin "1 2" --padding "2 4" --bold "Congratulations!" "Installation and Configuration Complete!"
 ## remove env variables
 unset dotfiles_wd
+unset PASSWORD
+unset APP_CATEGORIES
