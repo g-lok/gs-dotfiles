@@ -103,11 +103,25 @@ ascii_art='  _______/\        ________          __    _____.__.__
 
 I can't figure out how to paste this in lazyvim without everything getting screwed up.  Even the original string I copied that looked fine in the script looks completely mangled when I echo it to the terminal.  I need to figure out how to copy/display that string correctly.
 
+UPDATE! I fixed this using a `here document`:
+
+```bash
+cat <<"EOF"
+  _______/\        ________          __    _____.__.__                 
+ /  _____)/ ______ \______ \   _____/  |__/ ____\__|  |   ____   ______
+/   \  ___ /  ___/  |    |  \ /  _ \   __\   __\|  |  | _/ __ \ /  ___/
+\    \_\  \\___ \   |    `   (  <_> )  |  |  |  |  |  |_\  ___/ \___ \ 
+ \______  /____  > /_______  /\____/|__|  |__|  |__|____/\___  >____  >
+        \/     \/          \/                                \/     \/
+EOF
+
+```
+
 The Omakub scripts has this in their boot.sh script, which is the first script that launches everything.  It also has a script devoted entirely to making the banner colored and pretty, but that script never appears to be called by anything else, so I don't know how it works. That's a problem for later, I'll just copy Omakub if need be.
 
 ### Get username and relevant info
 
-I used to do this because I was having the user run this as sudo and I wanted to make sure the scripts were doing their thing for the user and not root, but I don't know if that is actually necessary. Better safe than sorry I suppose.
+I used to do this because I was having the user run this as sudo and I wanted to make sure the scripts were doing their thing for the user and not root, but I found out the hard way that this is a very bad way of doing things, and we aren't doing this anymore.
 
 ```bash
 export dotfiles_usr=$(env | grep SUDO_USER | cut -d= -f 2)
@@ -125,7 +139,7 @@ if [ "$EUID" -ne 0 ]; then
 fi
 ```
 
-Actually, after testing, it turns out not only is this a security nightmare for running scripts, but Homebrew doesn't let you run it as sudo anyway, so we're tossing all the sudo code and assuming the user is running this normally. I hope this works.
+Again, after testing, it turns out not only is this a security nightmare for running scripts, but Homebrew doesn't let you run it as sudo anyway, so we're tossing all the sudo code and assuming the user is running this normally. I hope this works.
 
 Also quits if not on Linux or Darwin. Yes I own a Windows machine, but it's for gaming and Beyond Laser software ONLY, I ain't about that life otherwise.
 
@@ -171,4 +185,53 @@ gum style \
 gum confirm &&
   gum spin --spinner dot --title "Creating folders" -- "$dotfiles_wd/install.d/00-directories.sh" ||
   echo "Folder creation skipped"
+```
+
+#### App installation Choices
+
+I don't really want to give the user choices of installing this app or that, I'd rather stick to larger collections they can choose to install or not, like developer tools or artist tools.
+
+```bash
+## Get installation choices
+OPTIONAL_CATEGORIES=("Developer Tools" "DevOps tools" "Artist Tools")
+export APP_CATEGORIES=$(gum choose "${OPTIONAL_CATEGORIES[@]}" --no-limit --header "Select optional application categories to install.")
+```
+
+I probably want to dial in questions about what mise programming languages or databases to install if the user selected Developer Tools, but I'll worry about that later. Right now they're getting all the languages *I* want and no dbs.
+
+We'll have to split up the script between Linux and Darwin again. This time I'm going to run a OS specific script that does all my installation duty stuff through `gum spin`, which has rapidly become my favorite thing in gum.
+
+In order to split my scripts up I'm going to modify that code block I already wrote up there, and set a variable that determines whether I'm on MacOS, Linux (GUI), or Linux (Headless).
+
+```bash
+case "$OS" in
+"Linux")
+  # Add Linux-specific commands here
+  if [ -n "$DISPLAY" ]; then
+    echo "Running on Linux (GUI)"
+    export SCRIPT_OS="linux_gui"
+  else
+    echo "Running on Linux Headless"
+    export SCRIPT_OS="linux_headless"
+  fi
+  ;;
+"Darwin")
+  echo "This script is running on macOS."
+  export SCRIPT_OS="MacOS"
+  ## Add macOS-specific commands here
+  ## Install XCode Tools (required for Homebrew)
+  if pkgutil --pkg-info=com.apple.pkg.CLTools_Executables >/dev/null 2>&1; then
+    echo "Command Line Tools are installed"
+  else
+    echo "Command Line Tools are not installed"
+    xcode-select --install >/dev/null
+  fi
+  ;;
+*)
+  echo "This script is running on an unknown operating system: $OS"
+  # Add commands for other systems or error handling
+  exit 0
+  ;;
+esac
+
 ```

@@ -19,6 +19,9 @@ EOF
 # echo -e << "EOF" "$ascii_art" EOF
 echo -e "\nBegin installation (or abort with ctrl+c)..."
 
+## Make sure sudo is already cached before using gum spinner or anything that will interfere with the scripts
+sudo --validate
+
 ## Save dotfiles working directory as a variable.
 ## TODO: Dunno if this is necesseary
 export dotfiles_wd=$(pwd)
@@ -35,11 +38,18 @@ OS=$(uname -s)
 
 case "$OS" in
 "Linux")
-  echo "This script is running on Linux."
   # Add Linux-specific commands here
+  if [ -n "$DISPLAY" ]; then
+    echo "Running on Linux (GUI)"
+    export SCRIPT_OS="linux_gui"
+  else
+    echo "Running on Linux Headless"
+    export SCRIPT_OS="linux_headless"
+  fi
   ;;
 "Darwin")
   echo "This script is running on macOS."
+  export SCRIPT_OS="MacOS"
   ## Add macOS-specific commands here
   ## Install XCode Tools (required for Homebrew)
   if pkgutil --pkg-info=com.apple.pkg.CLTools_Executables >/dev/null 2>&1; then
@@ -93,8 +103,7 @@ export BORDER_FOREGROUND="212"
 ## Let's get started
 gum style \
   --border double \
-  --align center --width 50 --margin "1 2" --padding "2 4" \
-  "Gs-Dotfiles" "Let's get started!"
+  --align center --width 50 --margin "1 2" --padding "2 4" --bold "Gs-Dotfiles" "Let's get started!"
 
 gum spin --spinner moon --title "Going for a spin..." -- sleep 3
 
@@ -106,13 +115,32 @@ gum style \
   'Create additional useful directories under $HOME?'
 
 gum confirm &&
-  gum spin --spinner dot --title "Creating folders" -- "$dotfiles_wd/install.d/00-directories.sh" ||
+  gum spin --spinner moon --title "Creating folders" -- "$dotfiles_wd/install.d/00-directories.sh" ||
   echo "Folder creation skipped"
 
 ## Get installation choices
-OPTIONAL_CATEGORIES=("Developer Tools" "DevOps tools" "Artist Tools")
-DEFAULT_OPTIONAL_CATEGORIES=()
+OPTIONAL_CATEGORIES=("Developer Tools" "DevOps Tools" "Artist Tools")
 export APP_CATEGORIES=$(gum choose "${OPTIONAL_CATEGORIES[@]}" --no-limit --header "Select optional application categories to install.")
 
+## Run installation scripts based on OS
+gum style \
+  --border double \
+  --align center --width 50 --margin "1 2" --padding "2 4" --bold "Running Installation and Configuration Scripts"
+
+case $SCRIPT_OS in
+"MacOS")
+  export PASSWORD=$(gum input --password --prompt "Please enter password: ")
+  gum spin --spinner moon --title "Installing Apps" -- "$dotfiles_wd/install.d/macos/yos-packages.sh"
+  # "$dotfiles_wd/install.d/macos/yos-packages.sh"
+  # gum spin --spinner moon --title "Changing System Settings" -- "$dotfiles_wd/install.d/macos/yos-main-configs.sh"
+  # gum spin --spinner moon --title "Change Dock Settings" -- "$dotfiles_wd/install.d/macos/yos-dock.sh"
+  # gum spin --spinner moon --title "Changing peripheral settings" -- "$dotfiles_wd/install.d/macos/yos-peripherals.sh"
+  # gum spin --spinner moon --title "Setup Screenshots." -- "$dotfiles_wd/install.d/macos/yos-screenshots.sh"
+  ;;
+esac
+
+gum style \
+  --border double \
+  --align center --width 50 --margin "1 2" --padding "2 4" --bold "Congratulations!" "Installation and Configuration Complete!"
 ## remove env variables
 unset dotfiles_wd
