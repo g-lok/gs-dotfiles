@@ -66,13 +66,10 @@ for file in $GS_DOTFILES_PATH/install.d/*.sh; do
   chmod +x "$file"
 done
 
-### Install Homebrew
-## Disable Homebrew confirmation prompts
-NONINTERACTIVE=1
-
+## Install Homebrew
 if [[ $(command -v brew) == "" ]]; then
   echo "Installing Homebrew..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" >/dev/null
+  NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" >/dev/null
 else
   echo "Homebrew is already installed. Updating..."
   brew update
