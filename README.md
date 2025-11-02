@@ -3,27 +3,8 @@ My installation and configuration scripts for MacOS and Linux.
 
 Heavily influenced by [Omakub](https://omakub.org/).
 
-```
-░░░░░░░░░░░░░░░░░░░▄▄▄████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-░░░░░░░░░░░░░░░░▄▄█████████████░░░░▄███░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-░░░░░░░░░░░░░░▄████████████████▄▄████▀░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-░░░░░░░░░░░░░░▀████████████████████▀░░░░░░░░░░░░░░░░██████╗░██╗░██████╗░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-░░░░░░░░░░░░░░░███████████████▀░█▀░░░░░░░░░░░░░░░░░░██╔════╝░╚█║██╔════╝░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-░░░░░░░░░░░░░░░▀█░░░░▀▀▀▀▀░░░░░░░▀▄░░░░░░░░░░░░░░░░░██║░░██╗░░╚╝╚█████╗░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-░░░░░░░░░░░░░░░░█░░░░░░░░▀▀▀▄░░░░▀█▄░░░░░░░░░░░░░░░░██║░░╚██╗░░░░╚═══██╗░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-░░░░░░░░░░░░░░░░█░░░░░▄▄▀██▀█░▄▀▀█▀█░░░░░░░░░░░░░░░░╚██████╔╝░░░██████╔╝░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-░░░░░░░░░░░░░░░▄█▄░░░░▀▄░░░▄▀░░▀▄▄▄▀░░░░░░░░░░░░░░░░░╚═════╝░░░░╚═════╝░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-░░░░░░░░░░░░░░█▄▄▄░░░░░░███▄▄▄▄░░░█▄░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-░░░░░░░░░░░░░░▀▄█▄░░░░░░▄▀░░░░▀▀▀▀░░▀▄░░░░██████╗░░█████╗░████████╗███████╗██╗██╗░░░░░███████╗░██████╗░░░░░░░░░░░░
-░░░░░░░░░░░░░░▄▄█░░░░░░█░░░░░░░░░░░░░░█░░░██╔══██╗██╔══██╗╚══██╔══╝██╔════╝██║██║░░░░░██╔════╝██╔════╝░░░░░░░░░░░░
-░░░░░░░░░░░░░████░░░░░█░░▄▀▄▀▄▀▄▀▄▀▄▀▄█░░░██║░░██║██║░░██║░░░██║░░░█████╗░░██║██║░░░░░█████╗░░╚█████╗░░░░░░░░░░░░░
-░░░░░░░░░▄▄█████░░░░░░▀▄▀░░░░░░▄█░░░░░░░░░██║░░██║██║░░██║░░░██║░░░██╔══╝░░██║██║░░░░░██╔══╝░░░╚═══██╗░░░░░░░░░░░░
-░░░░░░▄█████████▄░░░░░░░░░░░░▄█░░░░░░░░░░░██████╔╝╚█████╔╝░░░██║░░░██║░░░░░██║███████╗███████╗██████╔╝░░░░░░░░░░░░
-░░░▄▄███████████▀▀▄▄▄░░░░░▄███▄░░░░░░░░░░░╚═════╝░░╚════╝░░░░╚═╝░░░╚═╝░░░░░╚═╝╚══════╝╚══════╝╚═════╝░░░░░░░░░░░░░
-░▄██████████████░░░░▀▀▀▀▀▀▀░████▄░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-▄███████████████░░░░░░░░░░░░█████▄░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-█████████████████▄▄▄▄▄▄▄▄▄▄▄██████▄░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-```
+![Logo](logo.png)
+
 ## What this be
 This is a curated collection of app installation and configuration scripts for MacOS and Linux (coming soon). It is designed to provide a simple and aesthetic experience for users of all kinds, and to provide the best (opinionated) choices for any environment.  It is also designed to provide most of the [Omakub](https://omakub.org/) functionality, without the restrictions of requiring Ubuntu Gnome.  It also contains many of my own personal touches, from App choices, to MacOS configurations, and more.
 
@@ -41,23 +22,26 @@ This is a curated collection of app installation and configuration scripts for M
 1. Libreoffice - Free and open source office suite.
 1. Alacritty - A fantastic terminal emulator replacement for whatever came with your OS.
 1. Zellij - The session manager inside of Alacritty. Like tmux, but better.
-1. Lazyvim - A curated Neovim with all the best plugins and configurations. A powerful text editor and IDE.
+1. Lazyvim - A curated Neovim with all the best plugins and configurations. A powerful text editor and IDE.<br>
+  **Learn Lazyvim** with [this fantastic book](https://lazyvim-ambitious-devs.phillips.codes/).
 1. Visual Studio Code - the other most popular IDE out there. For us filthy casuals who haven't learned Neovim yet.
-1. Obsidian - An incredibly powerful knowledge database. Organize information, take notes, manage projects, you can do A LOT with this.
-1. Signal - the best messenger ever. Open source and end-to-end ecrypted.
+1. Obsidian - An incredibly powerful knowledge database. Organize information, take notes, manage projects, etc.  You can do A LOT with this.
+1. Signal - the best messenger ever. Open source and end-to-end encrypted.
 1. Discord - You know what this is.
+1. Element - an open source, privacy focused Discord alternative. E2E encrypted and runs on the distrubted Matrix network.
 1. Alfred - A spotlight replacement that is easily the most powerful launcher out there.  I recommend paying for a full PowerPack license to unlock the amazing tools and automation this thing has. I particularly cannot imagine life without its clipboard history manager.
 1. Rectangle - The best MacOS window manager. Comes with great default keymaps and a wide assortment of window tiling options.
-1. Element - an open source, privacy focused Discord alternative. E2E encrypted and runs on the distrubted Matrix network.
 1. Spotify - you know what this is too.
-1. Many of the hot new terminal apps.
+1. Many of the hot new terminal apps. btop, zoxide, lazygit, lazydocker, etc.
 1. Steam - it's for games.
 1. Furnace - a free and open source chiptune music tracker. Supports nearly every game system and chipset out there.
 1. Nerd fonts - Some of my favorites are included. These are for your terminal, IDE, and system fonts.  I configured everything to use `JetBrainsMono Nerd Font Mono` by default. Because it's the best one.
 
 And much, much more! To see everything this is installing, open the various `Brewfile-*` files under the `install.d/[your os]` folder.
 
-*NOT ENOUGH OF YOU ARE USING LAUNCHERS!*
+### You're using a launcher and Homebrew for apps now
+**NOT ENOUGH OF YOU ARE USING LAUNCHERS!**
+
 Set up Alfred (or Apple Spotlight if you wish), set the keyboard shortcut to "Command+Space", and use that to launch your apps and do searches and other things.  It is a very powerful tool that gets you away from you mouse/trackpad.
 
 Pay for the Alfred PowerPack, set up the Clipboard History (my shortcut is `ctrl+option+command+v`), and witness your life changing forever. For you coders out there, this thing allows you to create you own custome tools and workflows just by connecting shell scripts together. You can combine python, bash, lua, whatever, and make your own tools and automation by connecting them together.
@@ -80,7 +64,6 @@ Gosh, um:
 
 ## TODO
 1. Fix the `gum choose` bug preventing me from allowing selections in the app categories installation.
-1. Pin most important apps to dock.
 1. Add linux. Debian systems first, specifically Kubuntu and Kali (Gnome only), since that's what I'm rocking.
 1. Add theme and font selection.
 1. Fine tune programming language installation using `mise`.
