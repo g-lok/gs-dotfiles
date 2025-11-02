@@ -66,7 +66,10 @@ for file in $GS_DOTFILES_PATH/install.d/*.sh; do
   chmod +x "$file"
 done
 
-## Install Homebrew
+### Install Homebrew
+## Disable Homebrew confirmation prompts
+NONINTERACTIVE=1
+
 if [[ $(command -v brew) == "" ]]; then
   echo "Installing Homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" >/dev/null
@@ -77,7 +80,6 @@ else
 fi
 
 ## Temporarily load Homebrew's config and PATH and whatnot
-
 command -v brew >/dev/null || export PATH="/opt/homebrew/bin:/home/linuxbrew/.linuxbrew/bin:/usr/local/bin" >/dev/null
 command -v brew >/dev/null && eval "$(brew shellenv)" >/dev/null
 
