@@ -100,8 +100,8 @@ gum style \
 export NAME=$(gum input --prompt "Please enter full name: ")
 export EMAIL=$(gum input --prompt "Please enter email: ")
 export PASSWORD=$(gum input --password --prompt "Please enter password: ")
-
-# gum spin --spinner moon --title "Going for a spin..." -- sleep 4
+## STOP ASKING ME FOR SUDO!
+export SUDO_ASKPASS="$PASSWORD"
 
 ## Create directories under home
 echo "creating directories"

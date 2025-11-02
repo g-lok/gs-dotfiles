@@ -6,7 +6,6 @@ cask 'alfred' # A powerful spotlight replacement
 cask 'brave-browser' # A privacy focused browser
 cask 'discord'
 cask 'element' # Open source, decentralized, E2E encrypted discord alternative
-brew 'ffmpeg' # Record, convert, and stream audio and video 
 cask 'firefox'
 cask 'google-chrome'
 cask 'gpg-suite' # PGP tools
