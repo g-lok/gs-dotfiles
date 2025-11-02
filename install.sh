@@ -72,8 +72,8 @@ if [[ $(command -v brew) == "" ]]; then
   NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" >/dev/null
 else
   echo "Homebrew is already installed. Updating..."
-  brew update
-  brew upgrade
+  brew update >/dev/null
+  brew upgrade >/dev/null
 fi
 
 ## Temporarily load Homebrew's config and PATH and whatnot
@@ -97,13 +97,17 @@ gum style \
   --border double \
   --align center --width 50 --margin "1 2" --padding "2 4" --bold "Gs-Dotfiles" "Let's get started!"
 
-export NAME=$(gum input --prompt "Please enter full name: ")
-export EMAIL=$(gum input --prompt "Please enter email: ")
-export PASSWORD=$(gum input --password --prompt "Please enter password: ")
+NAME=$(gum input --prompt "Please enter full name: ")
+EMAIL=$(gum input --prompt "Please enter email: ")
+PASSWORD=$(gum input --password --prompt "Please enter password: ")
+export NAME
+export EMAIL
+export PASSWORD
+
 # gum spin --spinner moon --title "Going for a spin..." -- sleep 4
 
 ## Create directories under home
-gum spin --spinner moon --title "Creating folders" -- "$dotfiles_wd/install.d/directories.sh"
+gum spin --spinner moon --title "Creating folders" -- "$GS_DOTFILES_PATH/install.d/directories.sh"
 
 ## Get installation choices
 declare -a OPTIONAL_APPS
