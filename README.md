@@ -8,7 +8,7 @@ Heavily influenced by [Omakub](https://omakub.org/).
 ## What this be
 This is a curated collection of app installation and configuration scripts for MacOS and Linux (coming soon). It is designed to provide a simple and aesthetic experience for users of all kinds, and to provide the best (opinionated) choices for any environment.  It is also designed to provide most of the [Omakub](https://omakub.org/) functionality, without the restrictions of requiring Ubuntu Gnome.  It also contains many of my own personal touches, from App choices, to MacOS configurations, and more.
 
-## How to use
+## How it do
 1. Download this git repository (and unpack if zipped) to somewhere in your `$HOME` folder that you won't lose. This needs to hang around for the configuration files to work (I'm using GNU Stow for the dotfiles and it is creating symlinks from this repo).
 1. Open your terminal
 1. `cd` to the location of the repo (i.e. `cd ~/Downloads/gs-dotfiles`)
