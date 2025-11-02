@@ -19,11 +19,8 @@ folders=(
 )
 
 ## Function that creates folders
-create_folders() {
-  for dir in "${folders[@]}"; do
-    fullpath="$HOME/$dir"
-    mkdir -p "$fullpath"
-  done
-}
-create_folders
+for dir in "${folders[@]}"; do
+  fullpath="$HOME/$dir"
+  mkdir -p "$fullpath"
+done
 echo "Folders created."
