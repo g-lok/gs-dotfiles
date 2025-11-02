@@ -62,7 +62,7 @@ case "$OS" in
 esac
 
 ## Make all scripts executable
-for file in "$GS_DOTFILES_PATH/install.d/*.sh"; do
+for file in $GS_DOTFILES_PATH/install.d/*.sh; do
   chmod +x "$file"
 done
 
