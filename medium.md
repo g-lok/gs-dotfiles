@@ -345,3 +345,24 @@ The main difference is that the `zsh` config has a different filename on each sy
 ### Themes
 
 Omakub comes with several themes that are applied to numerous application configuration files, along with a desktop image to go along with it.  These are found in the `themes/` folder. I'm going to just copy this over and figure out how to apply different themes later. You're all getting `Tokyo Night` and my wallpaper for now.
+
+### Wrapping up
+
+There's still a major bug with application choices I need to fix, but I'm going to wrap this up for now and get to testing.  `README.md` has been completely re-written, with some choice Ascii art if I say so myself.
+
+Lots of little things were attended to, like pinning apps to the dock:
+
+```bash
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/YourAppHere.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+```
+
+### Testing
+
+How the heck do I test this on a new MacOs installation? I can't afford to buy another one.
+
+That's where `UTM` comes in. It's one of the virtual machine managers I included with the developer tools. It will use your current mac credentials to authorize new MacOs virtual machines. Very handy.
+
+## Where the heck do I find this?
+
+[Get it while it's hot!](https://github.com/g-lok/gs-dotfiles)
+Signing off for now...
