@@ -48,8 +48,10 @@ case "$OS" in
   if pkgutil --pkg-info=com.apple.pkg.CLTools_Executables >/dev/null 2>&1; then
     echo "Command Line Tools are installed"
   else
-    echo "Command Line Tools are not installed"
-    xcode-select --install >/dev/null
+    echo "Command Line Tools are not installed."
+    echo "You will be prompted to install Xcode command line tools."
+    echo "Please Install Xcode command line tools before resuming."
+    xcode-select --install
   fi
   ;;
 *)
@@ -60,7 +62,7 @@ case "$OS" in
 esac
 
 ## Make all scripts executable
-for file in "$dotfiles_wd"/install.d/*.sh; do
+for file in "$GS_DOTFILES_PATH/install.d/*.sh"; do
   chmod +x "$file"
 done
 
