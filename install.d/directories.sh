@@ -21,6 +21,6 @@ folders=(
 ## Function that creates folders
 for dir in "${folders[@]}"; do
   fullpath="$HOME/$dir"
-  mkdir -p "$fullpath"
+  sudo mkdir -p "$fullpath"
 done
 echo "Folders created."
