@@ -101,7 +101,7 @@ export NAME=$(gum input --prompt "Please enter full name: ")
 export EMAIL=$(gum input --prompt "Please enter email: ")
 export PASSWORD=$(gum input --password --prompt "Please enter password: ")
 ## STOP ASKING ME FOR SUDO!
-export SUDO_ASKPASS="$GS_DOTFILES_PATH/returnpass.sh"
+export SUDO_ASKPASS="$GS_DOTFILES_PATH/installd.d/returnpass.sh"
 export CI=true
 
 ## Create directories under home
