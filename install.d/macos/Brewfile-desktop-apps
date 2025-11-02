@@ -1,3 +1,4 @@
+### Brewfile for desktop applications
 
 cask 'adobe-acrobat-reader'
 cask 'alacritty' # My preferred terminal emulator
@@ -9,14 +10,12 @@ brew 'ffmpeg' # Record, convert, and stream audio and video
 cask 'firefox'
 cask 'google-chrome'
 cask 'gpg-suite' # PGP tools
-cask 'iterm2' # Much better terminal replacement
-cask 'karabiner-elements' # I use this to disable the trackpad when I have an external mouse
+cask 'karabiner-elements' # I use this to disable the trackpad/keyboard when I have an external plugged in
 cask 'keepassxc' # Password manager
 cask 'keka' # Better archiver than default
 cask 'kekaexternalhelper'
 cask 'libreoffice' # Office suite
 cask 'macfuse'
-cask 'monero-wallet' # XMR crypto wallet
 cask 'obsidian' # Absurdly powerful knowledge archiver
 cask 'rectangle' # Move and resize windows at ease.
 brew 'scdl' # Soundcloud dowloader

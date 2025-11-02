@@ -13,15 +13,15 @@ fi
 install_optional_tools() {
   echo "install_optional_tools: $1"
   case "$1" in
-  "Developer Tools")
+  "Developer_Tools")
     echo "ding"
     # brew bundle install --file "$SCRIPT_DIR/Brewfile-dev"
     ;;
-  "DevOps Tools")
+  "DevOps_Tools")
     echo "bing"
     # brew bundle install --file "$SCRIPT_DIR/Brewfile-devops"
     ;;
-  "Artist Tools")
+  "Artist_Tools")
     echo "zing"
     # brew bundle install --file "$SCRIPT_DIR/Brewfile-artist-apps"
     # install_furnace
@@ -62,13 +62,13 @@ brew bundle install --file "$SCRIPT_DIR/Brewfile-terminal-apps"
 brew bundle install --file "$SCRIPT_DIR/Brewfile-desktop-apps"
 brew bundle install --file "$SCRIPT_DIR/Brewfile-nerdfonts"
 
-echo "$APP_CATEGORIES"
-for optionals in "${APP_CATEGORIES[@]}"; do
-  echo "optionals: $optionals"
-  for option in "${optional[@]}"; do
-    echo "option: $option"
-  done
-  # install_optional_tools "$optional"
-done
+# echo "$APP_CATEGORIES"
+# for optionals in "${APP_CATEGORIES[@]}"; do
+#   echo "optionals: $optionals"
+#   for option in "${optionals[@]}"; do
+#     echo "option: $option"
+#   done
+#   # install_optional_tools "$optional"
+# done
 
 brew cleanup
