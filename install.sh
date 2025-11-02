@@ -154,3 +154,4 @@ unset APP_CATEGORIES
 unset EMAIL
 unset NAME
 unset GS_DOTFILES_PATH
+unset SCRIPT_OS

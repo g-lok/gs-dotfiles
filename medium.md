@@ -234,6 +234,7 @@ esac
 There's a ton I'm including here and too much to list in this article, but you can check out the Brewfiles in the git repo to see what comes included.  Here are the highlights:
 
 1. GNU terminal apps - MacOS comes with a bunch of terminal apps that aren't the versions used by the rest of the world.  We're not playing that game. Replace all of them with the GNU versions and we'll place the path to them at the top of `$PATH` to bury these charlatan versions.
+UPDATE: Homebrew warned me about sourcing the unprefixed versions of these GNU versions to my `$PATH`, and I will respect its warning. They're still getting installed though.
 1. Missing terminal apps - MacOS is missing a lot of things you would expect to be on here like `wget`, but alas, they are not.  They will be installed by yours truly.
 1. Updated terminal apps - MacOS ships with ancient versions of things we need, like Python, Bash, and Zsh.
 1. Speaking of Zsh, I also have a separate script to install Oh My Zsh along with several plugins for stuff like autocomplete, etc.
