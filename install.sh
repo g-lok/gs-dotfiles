@@ -125,16 +125,16 @@ gum style \
 
 case $SCRIPT_OS in
 "MacOS")
-  gum spin --spinner moon --title "Installing Apps" -- "$dotfiles_wd/install.d/macos/yos-packages.sh"
-  # source "$dotfiles_wd/install.d/macos/yos-packages.sh"
-  gum spin --spinner moon --title "Install Oh-My-Zsh" -- "$dotfiles_wd/install.d/zsh.sh"
-  gum spin --spinner moon --title "Install Lazyvim" -- "$dotfiles_wd/install.d/install-lazyvim.sh"
-  gum spin --spinner moon --title "Configure System Settings" -- "$dotfiles_wd/install.d/macos/yos-main-configs.sh"
-  gum spin --spinner moon --title "Configure Dock Settings" -- "$dotfiles_wd/install.d/macos/yos-dock.sh"
-  gum spin --spinner moon --title "Configure Peripheral Settings" -- "$dotfiles_wd/install.d/macos/yos-peripherals.sh"
-  gum spin --spinner moon --title "Setup Screenshots." -- "$dotfiles_wd/install.d/macos/yos-screenshots.sh"
-  gum spin --spinner moon --title "Stow Dotfiles." -- "$dotfiles_wd/install.d/dotfiles.sh"
-  gum spin --spinner moon --title "Configure Git." -- "$dotfiles_wd/install.d/git.sh"
+  gum spin --spinner moon --title "Installing Apps" -- "$GS_DOTFILES_PATH/install.d/macos/yos-packages.sh"
+  # source "$GS_DOTFILES_PATH/install.d/macos/yos-packages.sh"
+  gum spin --spinner moon --title "Install Oh-My-Zsh" -- "$GS_DOTFILES_PATH/install.d/zsh.sh"
+  gum spin --spinner moon --title "Install Lazyvim" -- "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh"
+  gum spin --spinner moon --title "Configure System Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh"
+  gum spin --spinner moon --title "Configure Dock Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
+  gum spin --spinner moon --title "Configure Peripheral Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh"
+  gum spin --spinner moon --title "Setup Screenshots." -- "$GS_DOTFILES_PATH/install.d/macos/yos-screenshots.sh"
+  gum spin --spinner moon --title "Stow Dotfiles." -- "$GS_DOTFILES_PATH/install.d/dotfiles.sh"
+  gum spin --spinner moon --title "Configure Git." -- "$GS_DOTFILES_PATH/install.d/git.sh"
   ;;
 *)
   echo "Unrecognized OS. Skipping installation and configuration."
