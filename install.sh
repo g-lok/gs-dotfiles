@@ -77,7 +77,7 @@ else
 fi
 
 ## Temporarily load Homebrew's config and PATH and whatnot
-command -v brew >/dev/null || export PATH="/opt/homebrew/bin:/home/linuxbrew/.linuxbrew/bin:/usr/local/bin" >/dev/null
+command -v brew >/dev/null || export PATH="/opt/homebrew/bin:/home/linuxbrew/.linuxbrew/bin:/usr/local/bin:$PATH" >/dev/null
 command -v brew >/dev/null && eval "$(brew shellenv)" >/dev/null
 
 ## Install gum
