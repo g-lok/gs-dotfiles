@@ -105,8 +105,9 @@ export PASSWORD=$(gum input --password --prompt "Please enter password: ")
 
 ## Create directories under home
 echo "creating directories"
-gum spin --spinner moon --title "Creating folders" -- "$GS_DOTFILES_PATH/install.d/directories.sh"
+source "$GS_DOTFILES_PATH/install.d/directories.sh"
 echo "directories created"
+
 ## Get installation choices
 # declare -a OPTIONAL_APPS
 # declare -a APP_CATEGORIES OPTIONAL_APPS=("Developer_Tools" "DevOps_Tools" "Artist_Tools")
