@@ -132,6 +132,10 @@ case $SCRIPT_OS in
   gum spin --spinner moon --title "Configure Peripheral Settings" -- "$dotfiles_wd/install.d/macos/yos-peripherals.sh"
   gum spin --spinner moon --title "Setup Screenshots." -- "$dotfiles_wd/install.d/macos/yos-screenshots.sh"
   gum spin --spinner moon --title "Stow Dotfiles." -- "$dotfiles_wd/install.d/dotfiles.sh"
+  gum spin --spinner moon --title "Configure Git." -- "$dotfiles_wd/install.d/git.sh"
+  ;;
+*)
+  echo "Unrecognized OS. Skipping installation and configuration."
   ;;
 esac
 
