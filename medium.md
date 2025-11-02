@@ -362,6 +362,41 @@ How the heck do I test this on a new MacOs installation? I can't afford to buy a
 
 That's where `UTM` comes in. It's one of the virtual machine managers I included with the developer tools. It will use your current mac credentials to authorize new MacOs virtual machines. Very handy.
 
+## Ascii Art
+
+What kind of project would this be without some ascii art?
+I went to this [ascii art](https://fsymbols.com/text-art/) website that generates ascii art text AND has stock art of cats and memes and stuff.  I took one of their stock art pieces along with generated text split in two (so it would fit). I used VSCode to superimpose the text on the stock art line by line, and extend the background using multiple cursors.
+
+Github cut the text off at the edge, so I figured I'd use a screenshot instead. And if I'm taking a screenshot, I might as well add some color. I used the [gradient string](https://github.com/bokub/gradient-string) node package for generating text with nice color gradients. Here's my code for that:
+
+```node
+import { retro, vice, atlas } from 'gradient-string';
+
+var ascii = `
+░░░░░░░░░░░░░▄▄▄████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░▄▄█████████████░░░░▄███░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░▄████████████████▄▄████▀░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░▀████████████████████▀░░░░░░░░░░░░░░░░██████╗░██╗░██████╗░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░███████████████▀░█▀░░░░░░░░░░░░░░░░░░██╔════╝░╚█║██╔════╝░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░▀█░░░░▀▀▀▀▀░░░░░░░▀▄░░░░░░░░░░░░░░░░░██║░░██╗░░╚╝╚█████╗░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░█░░░░░░░░▀▀▀▄░░░░▀█▄░░░░░░░░░░░░░░░░██║░░╚██╗░░░░╚═══██╗░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░░█░░░░░▄▄▀██▀█░▄▀▀█▀█░░░░░░░░░░░░░░░░╚██████╔╝░░░██████╔╝░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░░▄█▄░░░░▀▄░░░▄▀░░▀▄▄▄▀░░░░░░░░░░░░░░░░░╚═════╝░░░░╚═════╝░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░█▄▄▄░░░░░░███▄▄▄▄░░░█▄░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░░░░░░░░▀▄█▄░░░░░░▄▀░░░░▀▀▀▀░░▀▄░░░░██████╗░░█████╗░████████╗███████╗██╗██╗░░░░░███████╗░██████╗░░░
+░░░░░░░░▄▄█░░░░░░█░░░░░░░░░░░░░░█░░░██╔══██╗██╔══██╗╚══██╔══╝██╔════╝██║██║░░░░░██╔════╝██╔════╝░░░
+░░░░░░░████░░░░░█░░▄▀▄▀▄▀▄▀▄▀▄▀▄█░░░██║░░██║██║░░██║░░░██║░░░█████╗░░██║██║░░░░░█████╗░░╚█████╗░░░░
+░░░▄▄█████░░░░░░▀▄▀░░░░░░▄█░░░░░░░░░██║░░██║██║░░██║░░░██║░░░██╔══╝░░██║██║░░░░░██╔══╝░░░╚═══██╗░░░
+▄█████████▄░░░░░░░░░░░░▄█░░░░░░░░░░░██████╔╝╚█████╔╝░░░██║░░░██║░░░░░██║███████╗███████╗██████╔╝░░░
+██████████▀▀▄▄▄░░░░░▄███▄░░░░░░░░░░░╚═════╝░░╚════╝░░░░╚═╝░░░╚═╝░░░░░╚═╝╚══════╝╚══════╝╚═════╝░░░░
+██████████░░░░▀▀▀▀▀▀▀░████▄░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+███████████▄▄▄▄▄▄▄▄▄▄▄██████▄░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+██████████░░░░░░░░░░░░█████▄░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+`
+console.log(atlas(ascii));
+
+```
+
 ## Where the heck do I find this?
 
 [Get it while it's hot!](https://github.com/g-lok/gs-dotfiles)
