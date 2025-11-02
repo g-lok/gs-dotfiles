@@ -22,15 +22,8 @@ echo -e "\nBegin installation (or abort with ctrl+c)..."
 ## Make sure sudo is already cached before using gum spinner or anything that will interfere with the scripts
 sudo --validate
 
-## Save dotfiles working directory as a variable.
-## TODO: Dunno if this is necesseary
-export dotfiles_wd=$(pwd)
-
-## Exit if the script was not launched by root or through sudo
-## TODO: get rid of this crap
-# if [ "$EUID" -ne 0 ]; then
-#   echo "The script needs to run as root" && exit 1
-# fi
+## Export the current directory as env variable
+export GS_DOTFILES_PATH=$(dirname "$(readlink -f "$0")")
 
 ## MacOS or Linux?
 # Get the operating system name
@@ -67,11 +60,9 @@ case "$OS" in
 esac
 
 ## Make all scripts executable
-## Is this necessary? I'm just sourcing them.
-## TODO: get rid of this crap too
-# for file in "$dotfiles_wd"/install.d/*.sh; do
-#   chmod +x "$file"
-# done
+for file in "$dotfiles_wd"/install.d/*.sh; do
+  chmod +x "$file"
+done
 
 ## Install Homebrew
 if [[ $(command -v brew) == "" ]]; then
@@ -115,9 +106,8 @@ gum spin --spinner moon --title "Creating folders" -- "$dotfiles_wd/install.d/di
 
 ## Get installation choices
 declare -a OPTIONAL_APPS
-declare -a APP_CATEGORIES
-OPTIONAL_APPS=("Developer_Tools" "DevOps_Tools" "Artist_Tools")
-# export APP_CATEGORIES=$(gum choose "${OPTIONAL_CATEGORIES[@]}" --no-limit --header "Select optional application categories to install.")
+declare -a APP_CATEGORIES OPTIONAL_APPS=("Developer_Tools" "DevOps_Tools" "Artist_Tools")
+export APP_CATEGORIES=$(gum choose "${OPTIONAL_CATEGORIES[@]}" --no-limit --header "Select optional application categories to install.")
 APP_CATEGORIES=$(gum choose "${OPTIONAL_APPS[@]}" --no-limit --header "Select optional apps:")
 
 ## test code for damn array
@@ -133,21 +123,30 @@ gum style \
 case $SCRIPT_OS in
 "MacOS")
   echo "Placeholder for running installation scripts"
-  # gum spin --spinner moon --title "Installing Apps" -- "$dotfiles_wd/install.d/macos/yos-packages.sh"
-  # gum spin --spinner moon --title "Install Oh-My-Zsh" -- "$dotfiles_wd/install.d/zsh.sh"
-  # gum spin --spinner moon --title "Install Lazyvim" -- "$dotfiles_wd/install.d/install-lazyvim.sh"
+  gum spin --spinner moon --title "Installing Apps" -- "$dotfiles_wd/install.d/macos/yos-packages.sh"
   # source "$dotfiles_wd/install.d/macos/yos-packages.sh"
-  # gum spin --spinner moon --title "Changing System Settings" -- "$dotfiles_wd/install.d/macos/yos-main-configs.sh"
-  # gum spin --spinner moon --title "Change Dock Settings" -- "$dotfiles_wd/install.d/macos/yos-dock.sh"
-  # gum spin --spinner moon --title "Changing peripheral settings" -- "$dotfiles_wd/install.d/macos/yos-peripherals.sh"
-  # gum spin --spinner moon --title "Setup Screenshots." -- "$dotfiles_wd/install.d/macos/yos-screenshots.sh"
+  gum spin --spinner moon --title "Install Oh-My-Zsh" -- "$dotfiles_wd/install.d/zsh.sh"
+  gum spin --spinner moon --title "Install Lazyvim" -- "$dotfiles_wd/install.d/install-lazyvim.sh"
+  gum spin --spinner moon --title "Configure System Settings" -- "$dotfiles_wd/install.d/macos/yos-main-configs.sh"
+  gum spin --spinner moon --title "Configure Dock Settings" -- "$dotfiles_wd/install.d/macos/yos-dock.sh"
+  gum spin --spinner moon --title "Configure Peripheral Settings" -- "$dotfiles_wd/install.d/macos/yos-peripherals.sh"
+  gum spin --spinner moon --title "Setup Screenshots." -- "$dotfiles_wd/install.d/macos/yos-screenshots.sh"
+  gum spin --spinner moon --title "Stow Dotfiles." -- "$dotfiles_wd/install.d/dotfiles.sh"
   ;;
 esac
 
 gum style \
   --border double \
+  --align center --width 50 --margin "1 2" --padding "2 4" --bold "Set wallpaper to theme?"
+gum confirm && source "$GS_DOTFILES_PATH/install.d/wallpaper.sh" || echo "Wallpaper unchanged"
+
+gum style \
+  --border double \
   --align center --width 50 --margin "1 2" --padding "2 4" --bold "Congratulations!" "Installation and Configuration Complete!"
+
 ## remove env variables
-unset dotfiles_wd
 unset PASSWORD
 unset APP_CATEGORIES
+unset EMAIL
+unset NAME
+unset GS_DOTFILES_PATH

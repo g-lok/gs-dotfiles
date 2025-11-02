@@ -2,22 +2,20 @@
 
 ## Folders to Create in Home
 folders=(
-  /Downloads/Torrents/Incomplete
-  /Downloads/Torrents/Complete
+  /Downloads/Torrents/
   /Downloads/Chrome
   /Downloads/Firefox
   /Downloads/Brave
-  /Documents/Personal/Development
-  /Documents/Saved-Websites
+  /Documents/Personal/
   /Documents/Professional
+  /Documents/Saved-Websites
   /gitclones
   /bin
   /Google-Drive
   /Pictures/Screenshots
-  /Projects/Music/Projects/Music/Projects/Music
-  /Projects/Coding
+  /Pictures/Wallpapers
+  /Projects
   /Go/src
-  /.shellrc
 )
 
 ## Function that creates folders

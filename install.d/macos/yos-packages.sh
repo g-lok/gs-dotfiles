@@ -62,6 +62,7 @@ brew bundle install --file "$SCRIPT_DIR/Brewfile-terminal-apps"
 brew bundle install --file "$SCRIPT_DIR/Brewfile-desktop-apps"
 brew bundle install --file "$SCRIPT_DIR/Brewfile-nerdfonts"
 
+## TODO: This isn't working
 # echo "$APP_CATEGORIES"
 # for optionals in "${APP_CATEGORIES[@]}"; do
 #   echo "optionals: $optionals"
@@ -70,5 +71,10 @@ brew bundle install --file "$SCRIPT_DIR/Brewfile-nerdfonts"
 #   done
 #   # install_optional_tools "$optional"
 # done
+
+## TODO: So I'm just going to install all dev and arist tools for now
+brew bundle install --file "$SCRIPT_DIR/Brewfile-dev"
+brew bundle install --file "$SCRIPT_DIR/Brewfile-artist-apps"
+install_furnace
 
 brew cleanup

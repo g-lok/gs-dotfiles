@@ -335,6 +335,8 @@ if [ ! -n "$BASH_VERSION" ]; then
 fi
 ```
 
+The two main scripts I'm using for bash that I either don't want `zsh` loading, or may break something, are the Sexy Bash Prompt and Sensible Bash scripts I copied ages ago.  They still work so I'm keeping them.
+
 I noticed while compiling these together that most of the dotfiles are going to be the same between MacOS and Linux, so I'm going to move these out into a shared folder.
 
 The main difference is that the `zsh` config has a different filename on each system. MacOS uses `~/.zshrc` and Linux uses `.zprofile`. I'm not sure how to address this cleanly using `stow` but I'll figure it out later when I add all the linux stuff.
