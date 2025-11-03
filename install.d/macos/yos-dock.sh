@@ -23,6 +23,12 @@ sudo -u "$CURRENT_USER" defaults write com.apple.dock showhidden -bool true
 sudo -u "$CURRENT_USER" defaults write com.apple.dock showhidden -bool TRUE
 killall Dock
 
+### Replace dock items with selected app
+## Backup and remove all current dock items
+cp -a "~/Library/Preferences/com.apple.dock.plist" "~/Library/Preferences/com.apple.dock.plist.bkp"
+defaults delete com.apple.dock persistent-apps
+killall Dock
+
 ## Pin Recommended Apps
 defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Google Chrome.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
 defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Brave Browser.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"

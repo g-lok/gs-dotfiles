@@ -283,17 +283,37 @@ install_furnace() {
   curl -s "https://api.github.com/repos/$OWNER/$REPO/releases/latest" |
     jq -r ".assets[] | select(.name | contains(\"$ASSET_NAME\")) | .browser_download_url" |
     xargs -I {} curl -L -o "furnace_latest_mac_release.dmg" {}
-<ScrollWheelDown>
-  printf "$PASSWORD" | hdiutil attach -stdinpass "furnace_latest_mac_release.dmg"
-  printf "$PASSWORD" | sudo -S cp -R "/Volumes/Furnace/Furnace.app" "/Applications/"
+
+  printf "$HOMEBREW_PASSWORD" | hdiutil attach -stdinpass "furnace_latest_mac_release.dmg"
+  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/Furnace.app" "/Applications/"
   mkdir -p "$HOME/Documents/Furnace"
-  printf "$PASSWORD" | sudo -S cp "/Volumes/Furnace/manual.pdf" "$HOME/Documents/Furnace/"
-  printf "$PASSWORD" | sudo -S cp -R "/Volumes/Furnace/demos/" "$HOME/Documents/Furnace/"
-  printf "$PASSWORD" | sudo -S cp -R "/Volumes/Furnace/instruments/" "$HOME/Documents/Furnace/"
-  printf "$PASSWORD" | sudo -S cp -R "/Volumes/Furnace/wavetables/" "$HOME/Documents/Furnace/"
+  printf "$HOMEBREW_PASSWORD" | sudo -S cp "/Volumes/Furnace/manual.pdf" "$HOME/Documents/Furnace/"
+  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/demos/" "$HOME/Documents/Furnace/"
+  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/instruments/" "$HOME/Documents/Furnace/"
+  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/wavetables/" "$HOME/Documents/Furnace/"
   rm "furnace_latest_mac_release.dmg"
-}
+
 ```
+
+#### Homebrew Issues
+
+I ended up having a lot of issues with Homebrew not respecting the sudo earlier and constantly asking for the user's password when installing this or that cask. This is especially a problem when using `gum spin`, since gum spin won't let you know about any prompts and will just hang there.
+
+In order to get Homebrew to work without prompts, you have to do a few things:
+
+1. Get the user password and assign it to a variable that begins with "HOMEBREW_". This is because we're going to have to echo that variable from another script, and Homebrew unsets most env variables that don't have that prefix.
+1. Create a simple script that `echo`s the password env variable up there.
+1. `export` an env variable called `SUDO_ASKPASS`, which has to point to the script above that spits out the password. Homebrew will use this to pass the password to any sudo prompts that come up. Note that this isn't using `eval` to actually execute the script, it is just a string to the location, because `SUDO_ASKPASS` makes no sense.<br>
+
+```bash
+export SUDO_ASKPASS="$GS_DOTFILES_PATH/install.d/returnpass.sh"
+```
+
+1 `export CI=true` for good measure.
+
+Another problem I'm STILL having is that my `gum choose` code to select which App bundles to include isn't working. For some reason it doesn't parse the array properly and returns a long newline delimited string of your choices.  
+
+I'm disabling the choices code for now and just installing all the developer tools and artists tools, along with the base stuff. I'll update this post once I figure out what is going wrong.
 
 ### MacOS Configuration
 
@@ -305,8 +325,8 @@ I also included some of my own, such as
 
 1. Dramatically increasing the keyboard speed.
 1. Setting up a screenshots folder.
-1. Changing dock behavior.  I used to set this up to hide all apps unless they were opened, because I use a launcher to launch apps. However I'm considering using scripts to add specific apps similar to what is on Omakub's dock.
-1. I also set my desktop background, which has served me well for the last 10+ years, and I think is a much nicer and unobtrusive choice compared to Omakub. It's a Victorian style black and white wallpaper pattern that sits nicely in the background, and matches just about any app or theme.
+1. Changing dock behavior.  Hide it by default, increase speed, remove all the pinned items and replace them with my own.
+1. I also set my desktop background, which has served me well for the last 10+ years, and I think is a much nicer and unobtrusive choice compared to Omakub's Tokyo Night. It's a Victorian style black and white wallpaper pattern that sits nicely in the background, and matches just about any app or theme. Once I add themes I'll probably use Omakub's default wallpapers for each theme.
 
 ### The Dotfiles
 
@@ -350,10 +370,31 @@ Omakub comes with several themes that are applied to numerous application config
 
 There's still a major bug with application choices I need to fix, but I'm going to wrap this up for now and get to testing.  `README.md` has been completely re-written, with some choice Ascii art if I say so myself.
 
-Lots of little things were attended to, like pinning apps to the dock:
+Lots of little things were attended to, like clearing all the junk in the dock, and pinning our recommended apps.
 
 ```bash
-defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/YourAppHere.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+### Replace dock items with selected app
+## Backup and remove all current dock items
+cp -a "~/Library/Preferences/com.apple.dock.plist" "~/Library/Preferences/com.apple.dock.plist.bkp"
+defaults delete com.apple.dock persistent-apps
+killall Dock
+
+## Pin Recommended Apps
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Google Chrome.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Brave Browser.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Alacritty.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Signal.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Spotify.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/LibreOffice.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Visual Studio Code.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Obsidian.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Discord.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/KeePassXC.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+
+## Kill the dock, so that it will restart and all changes should be observed
+killall cfprefsd
+killall Dock
+
 ```
 
 ### Testing
@@ -365,7 +406,9 @@ That's where `UTM` comes in. It's one of the virtual machine managers I included
 ## Ascii Art
 
 What kind of project would this be without some ascii art?
-I went to this [ascii art](https://fsymbols.com/text-art/) website that generates ascii art text AND has stock art of cats and memes and stuff.  I took one of their stock art pieces along with generated text split in two (so it would fit). I used VSCode to superimpose the text on the stock art line by line, and extend the background using multiple cursors.
+I went to this [ascii art](https://fsymbols.com/text-art/) website that generates ascii art text AND has stock art of cats and memes and stuff.
+
+I took one of their stock art pieces, along with generated text split in two (so it would fit). I used VSCode to superimpose the text on the stock art line by line, and extend the background using multiple cursors. I still haven't figured out how to get any multiple cursor plugins to work in neovim. VSCode is just better at this kind of thing.
 
 Github cut the text off at the edge, so I figured I'd use a screenshot instead. And if I'm taking a screenshot, I might as well add some color. I used the [gradient string](https://github.com/bokub/gradient-string) node package for generating text with nice color gradients. Here's my code for that:
 

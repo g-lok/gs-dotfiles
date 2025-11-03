@@ -8,9 +8,9 @@ else
 fi
 
 ## Set custom folder
-export ZSH_CUSTOM="$HOME"/.oh-my-zsh/custom
+export ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
 
-### Install zsh plugins
+### Update/ Install zsh plugins
 git -C "$ZSH_CUSTOM/plugins/zsh-autosuggestions" pull  || git clone https://github.com/zsh-users/zsh-autosuggestions.git "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
 git -C "$ZSH_CUSTOM/plugins/fzf-tab" pull || git clone https://github.com/Aloxaf/fzf-tab "$ZSH_CUSTOM/plugins/fzf-tab"
 git -C "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" pull || git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"

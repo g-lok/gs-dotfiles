@@ -31,6 +31,7 @@ install_optional_tools() {
     ;;
   esac
 }
+
 ## Function to install Furnace
 install_furnace() {
   OWNER="tildearrow"
