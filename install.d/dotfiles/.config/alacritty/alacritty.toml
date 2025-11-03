@@ -1,9 +1,0 @@
-[terminal.shell]
-     program = "/opt/homebrew/bin/zellij"
-
-[font]
-normal = {family = "JetBrainsMono Nerd Font Mono", style = "Regular"}
-size = 15
-
-[window]
-option_as_alt = "Both"

@@ -42,11 +42,11 @@ And much, much more! To see everything this is installing, open the various `Bre
 ### You're using a launcher and Homebrew for apps now
 **NOT ENOUGH OF YOU ARE USING LAUNCHERS!**
 
-Set up Alfred (or Apple Spotlight if you wish), set the keyboard shortcut to "Command+Space", and use that to launch your apps and do searches and other things.  It is a very powerful tool that gets you away from you mouse/trackpad.
+Set up Alfred (or Apple Spotlight if you wish), set the keyboard shortcut to "Command+Space", and use that to launch your apps and do searches and other things.  It is a very powerful tool that gets you away from your mouse/trackpad. Use your keyboard, learn your keyboard shortcuts, and use your terminal, it will improve your life.
 
-Pay for the Alfred PowerPack, set up the Clipboard History (my shortcut is `ctrl+option+command+v`), and witness your life changing forever. For you coders out there, this thing allows you to create you own custome tools and workflows just by connecting shell scripts together. You can combine python, bash, lua, whatever, and make your own tools and automation by connecting them together.
+Pay for the Alfred PowerPack, set up the Clipboard History/Manager (my shortcut is `ctrl+option+command+v`), and wonder how you got this far in life without one. For you coders out there, this thing allows you to create you own custome tools and workflows just by connecting shell scripts together. You can combine python, bash, lua, whatever, and make your own launcher tools/automation by connecting them together.
 
-I should also mention this is using [Homebrew](https://brew.sh/) to install all of these apps. You're using Homebrew now for installing and updating apps, so learn to use it.
+Also, this is using [Homebrew](https://brew.sh/) to install all of these apps. You're using Homebrew for installing and updating apps now, so learn to use it.
 
 ## What is this configuring?
 Great question, I love your diligence and enthusiasm. The configuration scripts are any file with an `.sh` extension under the `install.d/` folder, and `install.d/[your os]`. Everything in the script will be commented to tell you what it is doing. Review these files before running the `install.sh` script.
