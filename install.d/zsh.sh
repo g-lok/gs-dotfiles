@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 ## Install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+ZSH= sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 ## Set custom folder
 ZSH_CUSTOM="$HOME"/.oh-my-zsh/custom
