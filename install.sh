@@ -99,7 +99,7 @@ gum style \
 
 export NAME=$(gum input --prompt "Please enter full name: ")
 export EMAIL=$(gum input --prompt "Please enter email: ")
-export PASSWORD=$(gum input --password --prompt "Please enter password: ")
+export HOMEBREW_PASSWORD=$(gum input --password --prompt "Please enter password: ")
 ## STOP ASKING ME FOR SUDO!
 export SUDO_ASKPASS="$GS_DOTFILES_PATH/install.d/returnpass.sh"
 export CI=true
@@ -153,7 +153,7 @@ gum style \
   --align center --width 50 --margin "1 2" --padding "2 4" --bold "Congratulations!" "Installation and Configuration Complete!"
 
 ## remove env variables
-unset PASSWORD
+unset HOMEBREW_PASSWORD
 unset APP_CATEGORIES
 unset EMAIL
 unset NAME

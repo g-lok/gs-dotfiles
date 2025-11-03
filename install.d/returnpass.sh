@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-echo "$PASSWORD"
+echo "$HOMEBREW_PASSWORD"
