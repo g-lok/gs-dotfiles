@@ -17,14 +17,13 @@ cask 'libreoffice' # Office suite
 cask 'macfuse'
 cask 'obsidian' # Absurdly powerful knowledge archiver
 cask 'rectangle' # Move and resize windows at ease.
-brew 'scdl' # Soundcloud dowloader
 cask 'sdformatter' # Format SD cards properly
 cask 'signal' # Open source E2E encrypted messenger. The BEST.
 cask 'slack' # Not everyone uses discord
+cask 'spotify' # You know what this is
 cask 'steam' # What, YOU DON'T GAME?
 cask 'veracrypt' # File encryption
 cask 'vlc' # Media player. Supports everything
 brew 'ykman' # For managing Yubikeys
-brew 'yt-dlp' # Youtube dowloader
 cask 'yubico-authenticator' # For managing Yubikeys
 brew 'zellij' # Modern Tmux style session manager for terminal
