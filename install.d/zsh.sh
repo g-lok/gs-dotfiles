@@ -1,10 +1,14 @@
 #!/usr/bin/env zsh
 
 ## Install oh-my-zsh
-ZSH= sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+if [ -d "$HOME/.oh-my-zsh" ]; then
+  ZSH= sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+else
+  echo "Oh-My-Zsh already installed."
+fi
 
 ## Set custom folder
-ZSH_CUSTOM="$HOME"/.oh-my-zsh/custom
+export ZSH_CUSTOM="$HOME"/.oh-my-zsh/custom
 
 ### Install zsh plugins
 git clone https://github.com/zsh-users/zsh-autosuggestions.git "$ZSH_CUSTOM"/plugins/zsh-autosuggestions
