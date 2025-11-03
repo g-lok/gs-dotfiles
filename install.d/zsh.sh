@@ -2,9 +2,9 @@
 
 ## Install oh-my-zsh
 if [ -d "$HOME/.oh-my-zsh" ]; then
-  ZSH= sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-else
   echo "Oh-My-Zsh already installed."
+else
+  ZSH= sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
 ## Set custom folder
