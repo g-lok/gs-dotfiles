@@ -56,6 +56,7 @@ Also, this is using [Homebrew](https://brew.sh/) to install all of these apps. Y
 I get it, you are a squishy little baby and the command line scares you.  But the way forward to becoming NOT a squishy baby and a motorcyle riding killer assassin is to use the command line (Alacrtitty).  Pick up [this book](https://a.co/d/bwIR32o) to learn everything you need to know.  Just know that you aren't using `bash`, you are using `zsh`.
 
 You'll also need to update and upgrade your apps using Homebrew:
+             li
 
 ```bash
 brew update
@@ -95,9 +96,7 @@ Gosh, um:
 1. Add support for selecting and installing databases via docker.
 1. Expand devops tooling bigtime. Review recommended lists on youtube.
 1. Add more artist/creative apps.
-1. Add Arch support. I respect Arch, and they deserve the G's Dotfile/Omakub experience too. Never used it, probably going to be a huge pain, but we're going to deal with it and make it work.
 1. Fine tune what apps I'm installing and plugins/configs I'm adding.  I'm brand new to neovim and not sure about some of my choices regarding [Mini.nvim](https://github.com/nvim-mini/mini.nvim)
-1. Consider switching to `Nix` package manager. I hear great things, but I also hear nightmare things.  Homebrew has been good to me so I'm sticking with it for now. It might be worse on linux.
 
 ## License
 
