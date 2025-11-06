@@ -47,7 +47,16 @@ And much, much more! To see everything this is installing, open the various `Bre
 
 **NOT ENOUGH OF YOU ARE USING LAUNCHERS!**
 
-Set up Alfred (or Apple Spotlight if you wish), set the keyboard shortcut to `Command+Space`, and use that to launch your apps and do searches and other things.  It is a very powerful tool that gets you away from your mouse/trackpad. Use your keyboard, learn your keyboard shortcuts, use your terminal (see below), it will improve your life.
+Set up Alfred (or Apple Spotlight if you wish), set the keyboard shortcut to `Command+Space`, and use that to launch your apps and do searches and other things.  It is a very powerful tool that gets you away from your mouse/trackpad. Use your keyboard, learn your keyboard shortcuts, use your terminal (see below), it will improve your life dramatically.
+
+You'll also need to update and upgrade your apps using Homebrew:
+
+```bash
+brew update
+brew upgrade
+```
+
+Figure out how toinstall your favorite apps by Google-ing "homebrew [my-app]"
 
 Pay for the Alfred PowerPack, set up the Clipboard History/Manager (my shortcut is `ctrl+option+command+v`), and wonder how you got this far in life without one. For you coders out there, this thing allows you to create you own custome tools and workflows just by connecting shell scripts together. You can combine python, bash, lua, whatever, and make your own launcher tools/automation by connecting them together.
 
