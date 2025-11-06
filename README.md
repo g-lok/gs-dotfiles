@@ -49,8 +49,6 @@ And much, much more! To see everything this is installing, open the various `Bre
 
 Set up Alfred (or Apple Spotlight if you wish), set the keyboard shortcut to `Command+Space`, and use that to launch your apps and do searches and other things.  It is a very powerful tool that gets you away from your mouse/trackpad. Use your keyboard, learn your keyboard shortcuts, use your terminal (see below), it will improve your life dramatically.
 
-by connecting them together.
-
 Also, this is using [Homebrew](https://brew.sh/) to install all of these apps. You're using Homebrew for installing and updating apps now, so learn to use it. You do this in the terminal. See below.
 
 ### NOT ENOUGH OF YOU ARE USING THE TERMINAL
