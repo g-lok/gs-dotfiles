@@ -1,71 +1,27 @@
 # G's Dotfiles
 
+![Logo](logo.png)
+
 ## Dotfiles and Installation scripts across MacOS and Linux Envs
 
 ### Inspired by Omakub
 
-Well I had a new programming project to tackle (more on that later), but it required an x86 system to compile, which meant my older inteli x86 MBP, which meant I had to get it up to date with my new development environment.  This was a good a reason as any to update my dotfiles and installation scripts.
+Well I had a new programming project to tackle (more on that later), but it required an x86 system to compile, which meant my older Intel x86 MBP, which meant I had to get it up to date with my new development environment.  This was a good a reason as any to update my dotfiles and installation scripts.
 
-I'm going to be reverse engineering Omakub for inspiration, along with several other sources and my own little magic, to make this more customizable and applicable across multiple OSes (starting with Kubuntu and Kali linux, and aiming for Arch down the road).
+I'm going to be reverse engineering Omakub for inspiration, along with several other sources and my own little magic, to make this more useful for users of different kinds, and provide as much of the Omakub experience as I can across multiple OSes (Omakub is only designed to work on Ubuntu Gnome).
 
 ## Breaking down Omakub
 
 [Omakub](https://github.com/basecamp/omakub)
-is an Omakse-inspired development environment tailored specifically for Gnome.  It is "chef's choice" so-to-speak, in that it is extremely opinionated, highly curated, and beautiful.  We're going to do something similar, but more customizable so my non-dev friends can still use this. I also have a lot of different systems for different use cases, so I want this to be able to install and configure different packages depending on what I need.
+is an Omakse-inspired development environment tailored specifically for Ubuntu Gnome.  It is "chef's choice" so-to-speak, in that it is extremely opinionated, highly curated, and designed to be a beautiful experience.  We're going to do something similar, but more customizable so my non-dev friends can still use this. I also have a lot of different systems for different use cases, so I want this to be able to install and configure different packages depending on what I need.
 
-Omakub's development environment centers itself around gnome's desktop and tooling, including desktop tools and applications for windows management and the app dock and things like that. It comes with a bevy of fantastic desktop apps like Spotify, Signal, and Obsidian, etc, but the stars of the show are Alacritty and Zellij for its terminal emulator and tumx-style multiplexer (think modern sessions and panels and tabs, etc.), along with lazyvim as its IDE.  Lazyvim is a pre-configured Neovim with the Lazy package manager, and a its own preconfigured plugins and what-have-you. It also has VSCode if that's more your thing.
+Omakub's development environment centers itself around gnome's desktop and tooling, including desktop tools and applications for windows management and the app dock and things like that. It comes with a bevy of fantastic desktop apps like Spotify, Signal, and Obsidian, etc, but the stars of the show are [Alacritty](https://alacritty.org/) and [Zellij](https://zellij.dev/) for its terminal emulator and tumx-style multiplexer (think modern sessions, panels and tabs, etc.), along with [Lazyvim](https://www.lazyvim.org/) as its IDE.  Lazyvim is a pre-configured [Neovim](https://neovim.io/) with the Lazy.nvim package manager, and a its own preconfigured plugins and what-have-you. It is also a highly curated experience that rules. Omakub also includes Visual Studio Code, if that's more your thing.
 
 I've always wanted to learn neovim/lazyvim so I'm using this as an excuse to start my journey. I'm using this book: [Lazyvim for Ambitious Developers](https://lazyvim-ambitious-devs.phillips.codes/) to learn lazyvim and googling whatever comes up along the way. I'm VERY excited about this.
 
-Omakub splits its installation scripts into terminal apps and desktop apps, with subdivisions in each category. We'll do the same.  It tends to install things via apt, or directly using curl/wget, which we will NOT be doing.
+Omakub splits its installation scripts into terminal apps and desktop apps, with subdivisions in each category. We'll do the same.  It tends to install things via apt, or directly using curl/wget, which we will be doing our damnedest to avoid.  Unfortunately, there are some I want in here that are not on any package manangers (some aren't even on Github), so we'll bite the bullet on those and try to keep that party guestlist to a minimum.
 
 It is also "direct" in how it manages the config files, typically just copying things around via `cd`.  Again, we are not doing that.  In order to keep this simple but also maintain our dev environment across all devices, we will be using GNU Stow, which basically takes the folders and files in your dotfiles git project, and reproduces the folder structure and files on your system by creating symlinks to the git directory.  This makes syncing things in the future really, really easy, and prevents drift between all your devices.
-
-### Gum and our package manager - HomeBrew
-
-If you look at the Omakub installation scripts, it's using [Gum](https://github.com/charmbracelet/gum) to make things pretty and take in user input.
-
-That's what we're going to use. Omakub uses shell scripts to directly install this but I'd rather use a package manager.  In this case gum supports [Homebrew](https://brew.sh/), which we can use for both linux and MacOS. I already use Homebrew for MacOS so it's easier to adapt my existing Brewfiles. Also I had a lot of problems using apt as my package manager in kali and kubuntu when hacked Omakub to get it working on them, so hopefully I'll fare better with Homebrew.
-
-Yes I'm aware that Nix exists and maybe (probably) is superior, but Homebrew has served me well and I already have the Brewfiles.
-
-The fact Omakub uses Gum is a funny coincidence, since my buddy showed me the [Charm Bracelet Site](https://charm.land/) a few months ago, and my response was "God I wish I had something like this for shell scripts and Python. Too bad it's only for Go..." and now we're here. I should look more carefully at these things.
-
-```bash
-## Install Homebrew
-if [[ $(command -v brew) == "" ]]; then
-  echo "Installing Homebrew..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" >/dev/null
-else
-  echo "Homebrew is already installed. Updating..."
-  brew update
-  brew upgrade
-fi
-
-## Temporarily load Homebrew's config and PATH and whatnot
-
-command -v brew >/dev/null || export PATH="/opt/homebrew/bin:/home/linuxbrew/.linuxbrew/bin:/usr/local/bin" >/dev/null
-command -v brew >/dev/null && eval "$(brew shellenv)" >/dev/null
-
-## Install gum
-if [[ $(command -v gum) == "" ]]; then
-  brew install gum >/dev/null
-else
-  echo "Gum already installed"
-fi
-```
-
-### Script organization
-
-We're going to start with a main installation script in the home folder that will gather system and user information, install base dependencies like Homebrew and Gum, and launch installation and configuration scripts depending on the system and user choices.
-
-Because of the way `gum spin` works I can't source scripts nicely or have too many layers running, since it can't take user input and won't display errors. I also didn't like how complicated Omakub's script organization was, so I will try to keep things more centralized and simple.
-
-I would like to keep as many scripts as universal as possible between all the systems to avoid drift and duplication, but that may be a pipe dream. I'll attempt it anyway.
-
-#### Omakub script organization
-
-Installation scripts are under the `install` folder. Configs are in the `configs` folder. All the gum installation scripts are under the `bin` folder.
 
 ## My Game Plan
 
@@ -87,13 +43,19 @@ Before I dive in, let's get a basic game plan for the MacOS portion so I'm not c
 1. Is there a way to automatically add virtual desktops to MacOS and configure their keyboard shortcuts? Or am I just a dreaming fool?
 1. Does lazy automatically install stuff from your config files or do I have to git clone stuff? I may have to do that for all the [mini.nvim](https://github.com/nvim-mini/mini.nvim) suite of plugins. No it grabs them for you, I'm thinking of [Oh-My-Zsh](https://github.com/andyfleming/oh-my-zsh). You do have to git clone some stuff for that. Thankfully I already have a script handy for that.
 
+## Script organization
+
+We're going to start with a main installation script in the home folder that will gather system and user information, install base dependencies like Homebrew and Gum, and launch installation and configuration scripts depending on the system and user choices.
+
+I would like to keep as many scripts as universal as possible between all the systems to avoid drift and duplication, but that may be a pipe dream. I'll attempt it anyway.
+
 ## Getting to it
 
 Let's do this.
 
 ### Shebangs
 
-Don't forget to use a shebang that looks for the environment bash and not whatever hard linked one you may be using.
+Don't forget to use a shebang that looks for the current environment bash and not whatever hard linked system one you may be using.
 
 ```bash
 #!/usr/bin/env bash
@@ -139,6 +101,95 @@ EOF
 ```
 
 The Omakub scripts has this in their boot.sh script, which is the first script that launches everything.  It also has a script devoted entirely to making the banner colored and pretty, but that script never appears to be called by anything else, so I don't know how it works or why it's there. That's a problem for later, I'll just copy Omakub if need be.
+
+## Gum and our package manager - HomeBrew
+
+If you look at the Omakub installation scripts, it's using [Gum](https://github.com/charmbracelet/gum) to make things pretty and take in user input.
+
+That's what we're going to use. Omakub uses shell scripts to directly install this but I'd rather use a package manager.  In this case gum supports [Homebrew](https://brew.sh/), which we can use for both Linux and MacOS. I already use Homebrew for MacOS so it's easier to adapt my existing Brewfiles. Also, I had a lot of problems using apt as my package manager in Kali and Kubuntu when I hacked Omakub to get it working on them, so hopefully I'll fare better with Homebrew.
+
+Yes I'm aware that Nix exists and maybe (probably) is superior, but Homebrew has served me well and I already have the Brewfiles.
+
+The fact Omakub uses Gum is a funny coincidence, since my buddy showed me the [Charm Bracelet Site](https://charm.land/) a few months ago, and my response was "God I wish I had something like this for shell scripts and Python. Too bad it's only for Go..." and now we're here. I should look more carefully at these things.
+
+
+### Install Homebrew and Gum
+
+I had to do several things to install Homebrew and Gum.  First was I had to get a sudo user session cached so I could avoid as many prompts as possible.
+
+```bash
+sudo --validate
+```
+
+Next is to figure out what OS I'm on, export it as an environment variable, and install any requirements I may need for Homebrew.  On MacOS Homebrew requires the Xcode Select  COmmand Line Applications installed, so we'll take care of that here:
+```bash
+case "$OS" in
+"Linux")
+  # Add Linux-specific commands here
+  if [ -n "$DISPLAY" ]; then
+    echo "Running on Linux (GUI)"
+    export SCRIPT_OS="linux_gui"
+  else
+    echo "Running on Linux Headless"
+    export SCRIPT_OS="linux_headless"
+  fi
+  ;;
+"Darwin")
+  echo "This script is running on macOS."
+  export SCRIPT_OS="MacOS"
+  ## Add macOS-specific commands here
+  ## Install XCode Tools (required for Homebrew)
+  if pkgutil --pkg-info=com.apple.pkg.CLTools_Executables >/dev/null 2>&1; then
+    echo "Command Line Tools are installed"
+  else
+    echo "Command Line Tools are not installed."
+    echo "You will be prompted to install Xcode command line tools."
+    echo "Please Install Xcode command line tools before resuming."
+    xcode-select --install
+  fi
+  ;;
+*)
+  echo "This script is running on an unknown operating system: $OS"
+  # Add commands for other systems or error handling
+  exit 0
+  ;;
+esac
+```
+
+## Install Homebrew and Gum
+I need to install Homebrew non-interactively, because I want to keep this tidy and throw noisy apps behind `gum spin`, which won't notify users that something is prompting them for their input.  Huge pain if I say so myself, most of my time has be spent trying to figure out how make all the surprise `sudo` requests, prompts, and errors hidden by `gum spin` go away.
+
+You run Homebrew non-interactively by setting the `NONINTERACTIVE=1` env variable when you run the script.
+
+I also need to temporarily load Homebrew into the `$PATH` so I can actually access `gum` and `stow`.  However, where that is depends on what kind of system you're running, so I had to load them all and hope that everything would be covered.
+
+
+```bash
+## Install Homebrew
+if [[ $(command -v brew) == "" ]]; then
+  echo "Installing Homebrew..."
+  NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" >/dev/null
+else
+  echo "Homebrew is already installed. Updating..."
+  brew update >/dev/null
+  brew upgrade >/dev/null
+fi
+
+## Temporarily load Homebrew's config and PATH and whatnot
+command -v brew >/dev/null || export PATH="/opt/homebrew/bin:/home/linuxbrew/.linuxbrew/bin:/usr/local/bin:$PATH" >/dev/null
+command -v brew >/dev/null && eval "$(brew shellenv)" >/dev/null
+
+## Install gum
+if [[ $(command -v gum) == "" ]]; then
+  brew install gum >/dev/null
+else
+  echo "Gum already installed"
+fi
+```
+
+### Omakub script organization
+
+Installation scripts are under the `install` folder. Configs are in the `configs` folder. All the gum installation scripts are under the `bin` folder.
 
 ### sudo --validate
 
@@ -194,46 +245,11 @@ I probably want to dial in questions about what mise programming languages or da
 
 We'll have to split up the script between Linux and Darwin again. This time I'm going to run a OS specific script that does all my installation duty stuff through `gum spin`.
 
-In order to split my scripts up I'm going to modify that code block I already wrote up there, and set a variable that determines whether I'm on MacOS, Linux (GUI), or Linux (Headless).
-
-```bash
-case "$OS" in
-"Linux")
-  # Add Linux-specific commands here
-  if [ -n "$DISPLAY" ]; then
-    echo "Running on Linux (GUI)"
-    export SCRIPT_OS="linux_gui"
-  else
-    echo "Running on Linux Headless"
-    export SCRIPT_OS="linux_headless"
-  fi
-  ;;
-"Darwin")
-  echo "This script is running on macOS."
-  export SCRIPT_OS="MacOS"
-  ## Add macOS-specific commands here
-  ## Install XCode Tools (required for Homebrew)
-  if pkgutil --pkg-info=com.apple.pkg.CLTools_Executables >/dev/null 2>&1; then
-    echo "Command Line Tools are installed"
-  else
-    echo "Command Line Tools are not installed"
-    xcode-select --install >/dev/null
-  fi
-  ;;
-*)
-  echo "This script is running on an unknown operating system: $OS"
-  # Add commands for other systems or error handling
-  exit 0
-  ;;
-esac
-
-```
-
 #### MacOS apps
 
 There's a ton I'm including here and too much to list in this article, but you can check out the Brewfiles in the git repo to see what comes included.  Here are the highlights:
 
-1. GNU terminal apps - MacOS comes with a bunch of terminal apps that aren't the versions used by the rest of the world.  We're not playing that game. Replace all of them with the GNU versions and we'll place the path to them at the top of `$PATH` to bury these charlatan versions.
+1. GNU terminal apps - MacOS comes with a bunch of terminal apps that aren't the versions used by the rest of the world.  We're not playing that game. Replace all of them with the GNU versions and we'll place the path to them at the top of `$PATH` to bury these charlatan versions.<br>
 UPDATE: Homebrew warned me about sourcing the unprefixed versions of these GNU versions to my `$PATH`, and I will respect its warning. They're still getting installed though.
 1. Missing terminal apps - MacOS is missing a lot of things you would expect to be on here like `wget`, but alas, they are not.  They will be installed by yours truly.
 1. Updated terminal apps - MacOS ships with ancient versions of things we need, like Python, Bash, and Zsh.
@@ -244,10 +260,10 @@ UPDATE: Homebrew warned me about sourcing the unprefixed versions of these GNU v
 1. Programming languages - Python, Go, Node, Rust, etc. I'm not sure if I should be installing these via Homebrew if I'm using mise for them later but I'll find out soon enough.
 1. Neovim/Lazyvim, the bestest text editor and IDE.
 1. Visual Studio Code - Also a very good IDE
-1. Alacritty w/ Zellij - Omakub (and my) terminal emulator and modern tmux-style sessioin manager/workspace of choice.
+1. Alacritty w/ Zellij - Omakub (and my) terminal emulator and modern tmux-style session manager/workspace of choice.
 1. Some of my favorite [Nerdfonts](https://www.nerdfonts.com/). Typically monospace, clean but distinct looking, and with all the nerd ligatures you need for LazyVim and Alacritty.
 1. Obsidian - An absurdly powerful knowledge database. For organizing information, notes, projects, all kinds of stuff. I've been meaning to get into this too but it is a DEEP rabbit hole.
-1. The Browsers - Brave, Firefox, Chrome, Tor.
+1. The Browsers - Brave, Firefox, Chrome.
 1. The password manager - Omakub uses 1Password.  I prefer KeepassXC, because it's free and open source.
 1. The messaging apps - Signal, Discord, Element (like discord but for the distributed Matrix network and pre-baked with stronger E2E encryption than even Signal).
 1. Rectangle - pretty sweet windows manager with good default keyboard shortcuts and lots of options for window placement.
@@ -295,20 +311,20 @@ install_furnace() {
 
 ```
 
+BUG: This is still asking for sudo, which it shouldn't be doing. WHY DOES NOTHING IN MAC RESPECT THE SUDO SESSION I ALREADY ESTABLISHED?!?!
+
 #### Homebrew Issues
 
 I ended up having a lot of issues with Homebrew not respecting the sudo earlier and constantly asking for the user's password when installing this or that cask. This is especially a problem when using `gum spin`, since gum spin won't let you know about any prompts and will just hang there.
 
 In order to get Homebrew to work without prompts, you have to do a few things:
 
-1. Get the user password and assign it to a variable that begins with "HOMEBREW_". This is because we're going to have to echo that variable from another script, and Homebrew unsets most env variables that don't have that prefix.
+1. Get the user password and assign it to a variable that begins with "HOMEBREW_". This is because we're going to have to echo that variable from another script, and Homebrew unsets most env variables that don't have that prefix, so your script will echo nothing.
 1. Create a simple script that `echo`s the password env variable up there.
-1. `export` an env variable called `SUDO_ASKPASS`, which has to point to the script above that spits out the password. Homebrew will use this to pass the password to any sudo prompts that come up. Note that this isn't using `eval` to actually execute the script, it is just a string to the location, because `SUDO_ASKPASS` makes no sense.<br>
-
+1. `export` an env variable called `SUDO_ASKPASS`, which has to point to the script above that spits out the password. Homebrew will use this to pass the password to any sudo prompts that come up. Note that this isn't using `eval` to actually execute the script, it is just a string to the scipt file location, because `SUDO_ASKPASS` makes no sense.<br>
 ```bash
 export SUDO_ASKPASS="$GS_DOTFILES_PATH/install.d/returnpass.sh"
 ```
-
 1 `export CI=true` for good measure.
 
 Another problem I'm STILL having is that my `gum choose` code to select which App bundles to include isn't working. For some reason it doesn't parse the array properly and returns a long newline delimited string of your choices.  
@@ -321,18 +337,20 @@ One of the main reasons I originally created this repo was because the default M
 
 I stole most of my configs from [La Clementine](https://medium.com/@laclementine/dotfile-for-mac-efe082ad0d6a). I went through them and commented out some things I didn't want, but most of them are there. Note that these were made for Sequoia. They still work, but there's probably some newer Tahoe stuff I need to add.
 
+Unfortunately, a ton of these config one liners raises a security popup in MacOS.  I can't make them go away with `sudo` because these are the MacOS system security UI prompt.  I'll try to figure it out but if I can't, I'll just instruct people to setup their fingerprint reader so at least they won't have to type their password over and over.
+
 I also included some of my own, such as
 
 1. Dramatically increasing the keyboard speed.
 1. Setting up a screenshots folder.
-1. Changing dock behavior.  Hide it by default, increase speed, remove all the pinned items and replace them with my own.
+1. Changing dock behavior.  Hide it by default, increase speed, backup and remove all the pinned items and replace them with my own.
 1. I also set my desktop background, which has served me well for the last 10+ years, and I think is a much nicer and unobtrusive choice compared to Omakub's Tokyo Night. It's a Victorian style black and white wallpaper pattern that sits nicely in the background, and matches just about any app or theme. Once I add themes I'll probably use Omakub's default wallpapers for each theme.
 
 ### The Dotfiles
 
 Ok, we're at the final stretch. Everything should be installed and MacOS is configured. Now we need to configure our apps. Most of these apps use dotfiles, which are basically just text configuration files in TOML or similar formats.  There's also the zsh and bash configuration scripts we'll need for setting up `$PATH`, aliases, prompt, etc.
 
-These all go into a folder that needs to represent the destination they're going to be symlinked to by GNU Stow.  This will be the user's `$HOME` folder.
+These all go into folders that need to represent the destination they're going to be symlinked to by GNU Stow.  This will be the user's `$HOME` folder.
 
 I also create a `.shellrc` folder that contains scripts with double digit numerical prefixes, which will be sourced by whatever shell the user is using.  This allows us to source shell scripts in a particular order. The code that calls these scripts looks like:
 
@@ -356,7 +374,7 @@ if [ ! -n "$BASH_VERSION" ]; then
 fi
 ```
 
-The two main scripts I'm using for bash that I either don't want `zsh` loading, or may break something, are the Sexy Bash Prompt and Sensible Bash scripts I copied ages ago.  They still work so I'm keeping them.
+The two main scripts I'm using for bash that I either don't want `zsh` loading, or may break something, are the Sexy Bash Prompt and Sensible Bash scripts I copied ages ago.  They still work so I'm keeping them, but not for zsh.
 
 I noticed while compiling these together that most of the dotfiles are going to be the same between MacOS and Linux, so I'm going to move these out into a shared folder.
 
@@ -399,16 +417,16 @@ killall Dock
 
 ### Testing
 
-How the heck do I test this on a new MacOs installation? I can't afford to buy another one.
+How the heck do I test this on a new MacOS installation? I can't afford to buy another laptop and I'm not resetting my current ones.
 
-That's where `UTM` comes in. It's one of the virtual machine managers I included with the developer tools. It will use your current mac credentials to authorize new MacOs virtual machines. Very handy.
+That's where `UTM` comes in. It's one of the virtual machine managers I included with the developer tools. It can use your current mac credentials taken from your recovery partition to authorize new MacOS virtual machines. Very handy.
 
 ## Ascii Art
 
 What kind of project would this be without some ascii art?
 I went to this [ascii art](https://fsymbols.com/text-art/) website that generates ascii art text AND has stock art of cats and memes and stuff.
 
-I took one of their stock art pieces, along with generated text split in two (so it would fit). I used VSCode to superimpose the text on the stock art line by line, and extend the background using multiple cursors. I still haven't figured out how to get any multiple cursor plugins to work in neovim. VSCode is just better at this kind of thing.
+I took one of their stock art memes along with generated text split in two (so it would fit). I used VSCode to superimpose the text on the stock art line by line, and extend the background using multiple cursors. I still haven't figured out how to get any multiple cursor plugins to work in lazyvim. VSCode is just better at this kind of thing.
 
 Github cut the text off at the edge, so I figured I'd use a screenshot instead. And if I'm taking a screenshot, I might as well add some color. I used the [gradient string](https://github.com/bokub/gradient-string) node package for generating text with nice color gradients. Here's my code for that:
 
@@ -439,6 +457,8 @@ var ascii = `
 console.log(atlas(ascii));
 
 ```
+
+Very cool, I need to use this more often!
 
 ## Where the heck do I find this?
 

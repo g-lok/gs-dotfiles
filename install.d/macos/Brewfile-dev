@@ -1,17 +1,19 @@
 # Brewfile packages
 
 # Developer apps
+
 brew 'asciinema' # easily record terminal sessions to animated gifs
+brew 'docker-completion'
+brew 'docker-compose'
+brew 'docker'
+cask 'flutter'
 brew 'gron' # Make JSON greppable
 cask 'insomnia' # API tools
-cask 'postman' # API tools
-cask 'visual-studio-code' # VSCode IDE
-brew 'docker'
-brew 'docker-compose'
-brew 'docker-completion'
 brew 'kubernetes-cli'
 brew 'minikube'
+cask 'postman' # API tools
+brew 'ttyd'
+cask 'utm' # 
+brew 'vhs' # Terminal video recorder
 cask 'virtualbox'
-cask 'utm'
-cask 'flutter'
-
+cask 'visual-studio-code' # VSCode IDE
