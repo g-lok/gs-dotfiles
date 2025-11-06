@@ -64,7 +64,7 @@ brew update
 brew upgrade
 ```
 
-Figure out how to install your favorite apps by Google-ing "homebrew [my-app]".
+Figure out how to install your favorite apps by Google-ing "homebrew myapp".
 
 ## What is this configuring?
 
