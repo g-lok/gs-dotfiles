@@ -49,13 +49,6 @@ And much, much more! To see everything this is installing, open the various `Bre
 
 Set up Alfred (or Apple Spotlight if you wish), set the keyboard shortcut to `Command+Space`, and use that to launch your apps and do searches and other things.  It is a very powerful tool that gets you away from your mouse/trackpad. Use your keyboard, learn your keyboard shortcuts, use your terminal (see below), it will improve your life dramatically.
 
-You'll also need to update and upgrade your apps using Homebrew:
-
-```bash
-brew update
-brew upgrade
-```
-
 Figure out how toinstall your favorite apps by Google-ing "homebrew [my-app]"
 
 Pay for the Alfred PowerPack, set up the Clipboard History/Manager (my shortcut is `ctrl+option+command+v`), and wonder how you got this far in life without one. For you coders out there, this thing allows you to create you own custome tools and workflows just by connecting shell scripts together. You can combine python, bash, lua, whatever, and make your own launcher tools/automation by connecting them together.
@@ -65,6 +58,13 @@ Also, this is using [Homebrew](https://brew.sh/) to install all of these apps. Y
 ### NOT ENOUGH OF YOU ARE USING THE TERMINAL
 
 I get it, you are a squishy little baby and the command line scares you.  But the way forward to becoming NOT a squishy baby and a motorcyle riding killer assassin is to use the command line (Alaritty).  Pick up [this book](https://a.co/d/bwIR32o) to learn everything you need to know.  Just know that you aren't using `bash`, you are using `zsh`.
+
+You'll also need to update and upgrade your apps using Homebrew:
+
+```bash
+brew update
+brew upgrade
+```
 
 ## What is this configuring?
 
