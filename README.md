@@ -31,8 +31,9 @@ This is a curated collection of app installation and configuration scripts for M
 1. Obsidian - An incredibly powerful knowledge database. Organize information, take notes, manage projects, etc.  You can do A LOT with this, this is a very deep rabbit hole.
 1. Signal - the best messenger ever. Open source and end-to-end encrypted.
 1. Discord - You know what this is.
-1. Element - an open source, privacy focused Discord alternative. E2E encrypted and runs on the distrubted Matrix network.  Comes pre-baked with better E2E encryption than even Signal.
-1. Alfred - A spotlight replacement that is easily the most powerful launcher out there.  I recommend paying for a full PowerPack license to unlock the amazing tools and automation this thing has. I particularly cannot imagine life without its clipboard history manager.
+1. Element - an open source, privacy focused Discotd alternative. E2E encrypted and runs on the distrubted Matrix network.  Comes pre-baked with better E2E encryption than even Signal.
+1. Alfred - A spotlight replacement that is easily the most powerful launcher out there.  I recommend paying for a full PowerPack license to unlock the amazing tools and automation this thing has.<br>
+In particular, I cannot imagine life without its clipboard history manager.
 1. Rectangle - The best MacOS window manager. Comes with great default keymaps and a wide assortment of window tiling options.
 1. Spotify - you know what this is too.
 1. Many of the hot new terminal apps. btop, zoxide, lazygit, lazydocker, etc.
