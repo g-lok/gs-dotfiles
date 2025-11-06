@@ -72,8 +72,11 @@ Great question, I love your diligence and enthusiasm. The configuration scripts 
 
 If you see something you don't want, DON'T DELETE IT! Insert a `#` in front of the line(s) you don't want to be run, and it will disable them. This allows you to control what the script is doing, but also keep the lines there just in case you change your mind later.
 
-This is also using `stow` to symlink configuration dotfiles to your system. These files are located under `install.d/dotfiles`. Note that most of them are hidden, so you will need to use `ls -al` to see them in the terminal. In finder, use `Command + Shift + Period` to see them.
-Don't mess around with these unless you know what you're doing, but feel free to take a look at what's there.
+#### GNU Stow
+
+This is using GNU Stow to create sylinks to config dotfiles here in the repository.  However you probably already have a few of these on your system.
+
+That is why `stow` is `adopt`-ing these files. Look it up.  Anyway your config files are in this repo now, now the question is, which of these do you want to keep? Because if you want MY configs, you need to blow these out by `git rebasing`. The script will tell you when it's time to do this.
 
 ## What else is this doing?
 
