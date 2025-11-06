@@ -1,6 +1,6 @@
 # G's-Dotfiles
 
-My installation and configuration scripts for MacOS and Linux.
+G's installation and configuration scripts for MacOS and Linux.
 
 ![Logo](logo.png)
 
