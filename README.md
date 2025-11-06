@@ -76,7 +76,9 @@ If you see something you don't want, DON'T DELETE IT! Insert a `#` in front of t
 
 This is using GNU Stow to create sylinks to config dotfiles here in the repository.  However you probably already have a few of these on your system.
 
-That is why `stow` is `adopt`-ing these files. Look it up.  Anyway your config files are in this repo now, now the question is, which of these do you want to keep? Because if you want MY configs, you need to blow these out by `git rebasing`. The script will tell you when it's time to do this.
+That is why `stow` is `adopt`-ing any of these files you have first. Look it up.  Then it `stow restow`s to cleanly install the dotfiles.
+
+Anyway your config files are in this repo now, now the question is, which of these do you want to keep? Because if you want MY configs, you need to blow these out by `git rebasing`. The script will tell you when it's time to do this.
 
 ## What else is this doing?
 
