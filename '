@@ -24,14 +24,14 @@ This is a curated collection of app installation and configuration scripts for M
 1. Libreoffice - Free and open source office suite.
 1. Alacritty - A fantastic terminal emulator replacement for whatever came with your OS.<br>
 [Learn to use the terminal](https://a.co/d/bwIR32o)
-1. Zellij - The session manager inside of Alacritty. Like tmux, but better. Think sessions, panes, tabs, etc.
+1. Zellij - The session manager inside of Alacritty. Like tmux, but better.
 1. Lazyvim - A curated Neovim with all the best plugins and configurations. A powerful text editor and IDE.<br>
   **Learn Lazyvim** with [this fantastic book](https://lazyvim-ambitious-devs.phillips.codes/).
-1. Visual Studio Code - the other most popular IDE out there. For us filthy casuals who haven't learned Neovim yet. The main reasons to use this other than the plugins and language servers and built in terminal are the MULTIPLE CURSORS.
-1. Obsidian - An incredibly powerful knowledge database. Organize information, take notes, manage projects, etc.  You can do A LOT with this, this is a very deep rabbit hole.
+1. Visual Studio Code - the other most popular IDE out there. For us filthy casuals who haven't learned Neovim yet.
+1. Obsidian - An incredibly powerful knowledge database. Organize information, take notes, manage projects, etc.  You can do A LOT with this.
 1. Signal - the best messenger ever. Open source and end-to-end encrypted.
 1. Discord - You know what this is.
-1. Element - an open source, privacy focused Discord alternative. E2E encrypted and runs on the distrubted Matrix network.  Comes pre-baked with better E2E encryption than even Signal.
+1. Element - an open source, privacy focused Discord alternative. E2E encrypted and runs on the distrubted Matrix network.
 1. Alfred - A spotlight replacement that is easily the most powerful launcher out there.  I recommend paying for a full PowerPack license to unlock the amazing tools and automation this thing has. I particularly cannot imagine life without its clipboard history manager.
 1. Rectangle - The best MacOS window manager. Comes with great default keymaps and a wide assortment of window tiling options.
 1. Spotify - you know what this is too.
@@ -60,10 +60,6 @@ If you see something you don't want, DON'T DELETE IT! Insert a `#` in front of t
 
 This is also using `stow` to symlink configuration dotfiles to your system. These files are located under `install.d/dotfiles`. Note that most of them are hidden, so you will need to use `ls -al` to see them in the terminal. In finder, use `Command + Shift + Period` to see them.
 Don't mess around with these unless you know what you're doing, but feel free to take a look at what's there.
-
-### NOT ENOUGH OF YOU ARE USING THE TERMINAL
-
-I get it, you are a squishy little baby and the command line scares you.  But the way forward to becoming NOT a squishy baby and a motorcyle riding killer assassin is to use the command line (Alaritty).  Pick up [this book](https://a.co/d/bwIR32o) to learn everything you need to know.  Just know that you aren't using `bash`, you are using `zsh`.
 
 ## What else is this doing?
 
