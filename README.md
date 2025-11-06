@@ -20,7 +20,7 @@ This is a curated collection of app installation and configuration scripts for M
 
 ## Application highlights
 
-1. Brave - the best privacy-oriented browser of late. Also includes Chrome and Firefox.  Yes Brave soupports Tor links, which is why I didn't include the Tor browser
+1. Brave - the best privacy-oriented browser of late. Also includes Chrome and Firefox.  Yes Brave soupports Tor links, which is why I didn't include the Tor browser.
 1. Libreoffice - Free and open source office suite.
 1. Alacritty - A fantastic terminal emulator replacement for whatever came with your OS.<br>
 [Learn to use the terminal](https://a.co/d/bwIR32o)
