@@ -52,6 +52,10 @@ Pay for the Alfred PowerPack, set up the Clipboard History/Manager (my shortcut 
 
 Also, this is using [Homebrew](https://brew.sh/) to install all of these apps. You're using Homebrew for installing and updating apps now, so learn to use it.
 
+### NOT ENOUGH OF YOU ARE USING THE TERMINAL
+
+I get it, you are a squishy little baby and the command line scares you.  But the way forward to becoming NOT a squishy baby and a motorcyle riding killer assassin is to use the command line (Alaritty).  Pick up [this book](https://a.co/d/bwIR32o) to learn everything you need to know.  Just know that you aren't using `bash`, you are using `zsh`.
+
 ## What is this configuring?
 
 Great question, I love your diligence and enthusiasm. The configuration scripts are any file with an `.sh` extension under the `install.d/` folder, and `install.d/[your os]`. Everything in the script will be commented to tell you what it is doing. Review these files before running the `install.sh` script.
@@ -60,10 +64,6 @@ If you see something you don't want, DON'T DELETE IT! Insert a `#` in front of t
 
 This is also using `stow` to symlink configuration dotfiles to your system. These files are located under `install.d/dotfiles`. Note that most of them are hidden, so you will need to use `ls -al` to see them in the terminal. In finder, use `Command + Shift + Period` to see them.
 Don't mess around with these unless you know what you're doing, but feel free to take a look at what's there.
-
-### NOT ENOUGH OF YOU ARE USING THE TERMINAL
-
-I get it, you are a squishy little baby and the command line scares you.  But the way forward to becoming NOT a squishy baby and a motorcyle riding killer assassin is to use the command line (Alaritty).  Pick up [this book](https://a.co/d/bwIR32o) to learn everything you need to know.  Just know that you aren't using `bash`, you are using `zsh`.
 
 ## What else is this doing?
 
