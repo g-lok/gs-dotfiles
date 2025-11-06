@@ -55,7 +55,7 @@ Also, this is using [Homebrew](https://brew.sh/) to install all of these apps. Y
 
 ### NOT ENOUGH OF YOU ARE USING THE TERMINAL
 
-I get it, you are a squishy little baby and the command line scares you.  But the way forward to becoming NOT a squishy baby and a motorcyle riding killer assassin is to use the command line (Alaritty).  Pick up [this book](https://a.co/d/bwIR32o) to learn everything you need to know.  Just know that you aren't using `bash`, you are using `zsh`.
+I get it, you are a squishy little baby and the command line scares you.  But the way forward to becoming NOT a squishy baby and a motorcyle riding killer assassin is to use the command line (Alacrtitty).  Pick up [this book](https://a.co/d/bwIR32o) to learn everything you need to know.  Just know that you aren't using `bash`, you are using `zsh`.
 
 You'll also need to update and upgrade your apps using Homebrew:
 
