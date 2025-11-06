@@ -24,7 +24,7 @@ This is a curated collection of app installation and configuration scripts for M
 1. Libreoffice - Free and open source office suite.
 1. Alacritty - A fantastic terminal emulator replacement for whatever came with your OS.<br>
 [Learn to use the terminal](https://a.co/d/bwIR32o)
-1. Zellij - The session manager inside of Alacritty. Like tmux, but better. Think sessions, panes, tabs, etc.
+1. Zellij - The session manager inside of Alacritty. Like tmux, but better. Sessions, panes, tabs, etc.
 1. Lazyvim - A curated Neovim with all the best plugins and configurations. A powerful text editor and IDE.<br>
   **Learn Lazyvim** with [this fantastic book](https://lazyvim-ambitious-devs.phillips.codes/).
 1. Visual Studio Code - the other most popular IDE out there. For us filthy casuals who haven't learned Neovim yet. The main reasons to use this other than the plugins and language servers and built in terminal are the MULTIPLE CURSORS.
