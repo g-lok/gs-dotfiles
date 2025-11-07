@@ -55,9 +55,11 @@ Set up Alfred (or Apple Spotlight if you wish), set the keyboard shortcut to `Co
 
 ### NOT ENOUGH OF YOU ARE USING THE TERMINAL
 
-I get it, you are a squishy little baby and the command line scares you.  But the way forward to becoming NOT a squishy baby and a motorcyle riding killer assassin is to use the command line (Alacrtitty).  Pick up [this book](https://a.co/d/bwIR32o) to learn everything you need to know.  Just know that you aren't using `bash`, you are using `zsh`.
+I get it, you are a squishy little baby and the command line scares you.  But the way forward to becoming NOT a squishy baby and a motorcyle riding killer assassin is to use the command line (Alacrtitty).
 
-The terminal is the most power tool in your OS's arsenal. Yours is `Alacritty`, using the `zsh` shell, with the `Zellij` sesssion manager inside it.
+Pick up [this book](https://a.co/d/bwIR32o) to learn everything you need to know.  Just know that you aren't using `bash`, you are using `zsh`.
+
+The terminal is the most powererful tool in your OS's arsenal. Yours is `Alacritty`, using the `zsh` shell, with the `Zellij` sesssion manager inside it.
 
 #### Homebrew
 
