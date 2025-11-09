@@ -22,9 +22,9 @@ export STOW_CONFIGS=(
 
 for config in "${STOW_CONFIGS[@]}"; do
   ## stow adopt it first before anything to keep the user's existing configs safe
-  stow adopt --target="$HOME" --adopt "$config"
+  stow --target="$HOME" --adopt "$config"
   ## stow restow to make it clean
-  stow restow --target="$HOME" --restow "$config"
+  stow --target="$HOME" --restow "$config"
 done
 
 # stow --target="$HOME" --restow $DOTFILES_SCRIPT_PATH/dotfiles/*
