@@ -16,8 +16,8 @@ export STOW_CONFIGS=(
   ["VSCode"]=".config/Code"
   ["zellij"]=".config/zellij"
   ["shellrc"]=".shellrc"
-  ["bash"]="$HOME"
-  ["zsh"]="$HOME"
+  ["bash"]="bash"
+  ["zsh"]="zsh"
 )
 
 for config in "${STOW_CONFIGS[@]}"; do
