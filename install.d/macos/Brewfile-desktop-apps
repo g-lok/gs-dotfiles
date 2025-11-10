@@ -3,7 +3,7 @@
 cask 'adobe-acrobat-reader'
 cask 'alacritty' # My preferred terminal emulator
 cask 'alfred' # A powerful spotlight replacement
-cask  'brave-browser' # A privacy focused browser. You can use this for Tor btw.
+cask 'brave-browser' # A privacy focused browser. You can use this for Tor btw.
 cask 'discord'
 cask 'element' # Open source, decentralized, E2E encrypted discord alternative
 cask 'firefox'
