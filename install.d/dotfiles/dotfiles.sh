@@ -8,7 +8,7 @@ cd "$(dirname "$0")" || exit 0
 export DOTFILES_SCRIPT_PATH=$(dirname "$(readlink -f "$0")")
 
 ## GNU STow to set up configs
-declare -a STOW_CONFIGS
+declare -A STOW_CONFIGS
 export STOW_CONFIGS=(
   ["alacritty"]=".config/alacritty"
   ["btop"]=".config/btop"
