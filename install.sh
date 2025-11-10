@@ -128,6 +128,9 @@ echo "directories created"
 echo "$FOREGROUND"
 echo "$BACKGROUND"
 echo "$BORDER_FOREGROUND"
+export GUM_STYLE_FOREGROUND="$FOREGROUND"
+export GUM_STYLE_BACKGROUND="$BACKGROUND"
+export GUM_STYLE_BORDER_FOREGROUND="$BORDER_FOREGROUND"
 
 gum style \
   --foreground="$FOREGROUND" --background="$BACKGROUND" \
