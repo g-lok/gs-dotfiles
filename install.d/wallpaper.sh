@@ -4,7 +4,9 @@ cp "$GS_DOTFILES_PATH/themes/victorian-wallpaper.jpg" ~/Pictures/Wallpapers/
 
 case "$SCRIPT_OS" in
 "MacOS")
-  osascript -e 'tell application "Finder" to set desktop picture to POSIX file '"$HOME/Pictures/Wallpapers/victorian-wallpaper.jpg"
+  command='tell application "Finder" to set desktop picture to POSIX file '
+  command_w_file="$command$HOME/Pictures/Wallpapers/victorian-wallpaper.jpg"
+  osascript -e $command_w_file
   ;;
 "linux_gui")
   gsettings set org.gnome.desktop.background picture-uri "file://$HOME/Pictures/wallpaper.jpg"
