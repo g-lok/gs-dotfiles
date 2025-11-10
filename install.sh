@@ -97,9 +97,12 @@ gum style \
   --border double \
   --align center --width 50 --margin "1 2" --padding "2 4" --bold "Gs-Dotfiles" "Let's get started!"
 
-export NAME=$(gum input --prompt "Please enter full name: ")
-export EMAIL=$(gum input --prompt "Please enter email: ")
-export HOMEBREW_PASSWORD=$(gum input --password --prompt "Please enter password: ")
+NAME=$(gum input --prompt "Please enter full name: ")
+EMAIL=$(gum input --prompt "Please enter email: ")
+HOMEBREW_PASSWORD=$(gum input --password --prompt "Please enter password: ")
+export NAME
+export EMAIL
+export HOMEBREW_PASSWORD
 ## STOP ASKING ME FOR SUDO!
 export SUDO_ASKPASS="$GS_DOTFILES_PATH/install.d/returnpass.sh"
 export CI=true
@@ -128,16 +131,17 @@ gum style \
 case $SCRIPT_OS in
 "MacOS")
   # gum spin --spinner moon --title "Installing Apps" -- "$GS_DOTFILES_PATH/install.d/macos/yos-packages.sh"
-  source "$GS_DOTFILES_PATH/install.d/macos/yos-packages.sh"
-  gum spin --spinner moon --title "Install Oh-My-Zsh" -- "$GS_DOTFILES_PATH/install.d/zsh.sh"
+  # source "$GS_DOTFILES_PATH/install.d/macos/yos-packages.sh"
+  # gum spin --spinner moon --title "Install Oh-My-Zsh" -- "$GS_DOTFILES_PATH/install.d/zsh.sh"
   # source "$GS_DOTFILES_PATH/install.d/zsh.sh"
-  gum spin --spinner moon --title "Install Lazyvim" -- "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh"
-  gum spin --spinner moon --title "Configure System Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh"
-  gum spin --spinner moon --title "Configure Dock Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
-  gum spin --spinner moon --title "Configure Peripheral Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh"
-  gum spin --spinner moon --title "Setup Screenshots." -- "$GS_DOTFILES_PATH/install.d/macos/yos-screenshots.sh"
-  gum spin --spinner moon --title "Stow Dotfiles." -- "$GS_DOTFILES_PATH/install.d/dotfiles.sh"
-  gum spin --spinner moon --title "Configure Git." -- "$GS_DOTFILES_PATH/install.d/git.sh"
+  # gum spin --spinner moon --title "Install Lazyvim" -- "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh"
+  # gum spin --spinner moon --title "Configure System Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh"
+  # gum spin --spinner moon --title "Configure Dock Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
+  # gum spin --spinner moon --title "Configure Peripheral Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh"
+  # gum spin --spinner moon --title "Setup Screenshots." -- "$GS_DOTFILES_PATH/install.d/macos/yos-screenshots.sh"
+  # gum spin --spinner moon --title "Stow Dotfiles." -- "$GS_DOTFILES_PATH/install.d/dotfiles.sh"
+  "$GS_DOTFILES_PATH/install.d/dotfiles.sh"
+  # gum spin --spinner moon --title "Configure Git." -- "$GS_DOTFILES_PATH/install.d/git.sh"
   ;;
 *)
   echo "Unrecognized OS. Skipping installation and configuration."
