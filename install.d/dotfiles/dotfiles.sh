@@ -8,20 +8,9 @@ cd "$(dirname "$0")" || exit 0
 export DOTFILES_SCRIPT_PATH=$(dirname "$(readlink -f "$0")")
 
 ## GNU STow to set up configs
-declare -A STOW_CONFIGS
-export STOW_CONFIGS=(
-  ["alacritty"]=".config/alacritty"
-  ["btop"]=".config/btop"
-  ["neovim"]=".config/nvim"
-  ["VSCode"]=".config/Code"
-  ["zellij"]=".config/zellij"
-  ["shellrc"]=".shellrc"
-  ["bash"]="bash"
-  ["zsh"]="zsh"
-)
+export STOW_CONFIGS=dirs=(*/)
 echo $STOW_CONFIGS
-for config in "${!STOW_CONFIGS[@]}"; do
-  echo $config
+for config in "${STOW_CONFIGS[@]}"; do
   ## stow adopt it first before anything to keep the user's existing configs safe
   stow --target="$HOME" --adopt "$config"
   ## stow restow to make it clean
