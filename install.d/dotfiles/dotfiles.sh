@@ -12,7 +12,7 @@ declare -A STOW_CONFIGS
 export STOW_CONFIGS=(
   ["alacritty"]=".config/alacritty"
   ["btop"]=".config/btop"
-  ["nvim "]=".config/nvim"
+  ["neovim"]=".config/nvim"
   ["VSCode"]=".config/Code"
   ["zellij"]=".config/zellij"
   ["shellrc"]=".shellrc"
