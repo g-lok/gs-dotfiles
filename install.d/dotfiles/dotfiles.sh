@@ -19,7 +19,7 @@ export STOW_CONFIGS=(
   ["bash"]="bash"
   ["zsh"]="zsh"
 )
-
+echo $STOW_CONFIGS
 for config in "${STOW_CONFIGS[@]}"; do
   echo $config
   ## stow adopt it first before anything to keep the user's existing configs safe
