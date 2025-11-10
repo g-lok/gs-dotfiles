@@ -20,6 +20,7 @@ cask 'rectangle' # Move and resize windows at ease.
 cask 'sdformatter' # Format SD cards properly
 cask 'signal' # Open source E2E encrypted messenger. The BEST.
 cask 'slack' # Not everyone uses discord
+cask 'spotify'
 cask 'steam' # What, YOU DON'T GAME?
 cask 'veracrypt' # File encryption
 cask 'vlc' # Media player. Supports everything
