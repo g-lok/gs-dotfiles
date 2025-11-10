@@ -125,9 +125,6 @@ echo "directories created"
 
 ## Run installation scripts based on OS
 ## Setup gum environment variables
-export FOREGROUND="#FF0"
-export BACKGROUND="#0BB"
-export BORDER_FOREGROUND="212"
 echo "$FOREGROUND"
 echo "$BACKGROUND"
 echo "$BORDER_FOREGROUND"
