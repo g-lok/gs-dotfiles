@@ -153,7 +153,7 @@ case $SCRIPT_OS in
   # gum spin --spinner moon --title "Stow Dotfiles." -- "$GS_DOTFILES_PATH/install.d/dotfiles.sh"
   "$GS_DOTFILES_PATH/install.d/dotfiles/dotfiles.sh"
   # "$GS_DOTFILES_PATH/install.d/dotfiles/dotfiles.sh"
-  # gum spin --spinner moon --title "Configure Git." -- "$GS_DOTFILES_PATH/install.d/git.sh"
+  gum spin --spinner moon --title "Configure Git." -- "$GS_DOTFILES_PATH/install.d/git.sh"
   ;;
 *)
   echo "Unrecognized OS. Skipping installation and configuration."
