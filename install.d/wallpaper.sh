@@ -6,6 +6,7 @@ case "$SCRIPT_OS" in
 "MacOS")
   command='tell application "Finder" to set desktop picture to POSIX file '
   command_w_file="$command$HOME/Pictures/Wallpapers/victorian-wallpaper.jpg"
+  echo "$command_w_file"
   osascript -e $command_w_file
   ;;
 "linux_gui")
