@@ -151,7 +151,7 @@ case $SCRIPT_OS in
   # gum spin --spinner moon --title "Configure Peripheral Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh"
   # gum spin --spinner moon --title "Setup Screenshots." -- "$GS_DOTFILES_PATH/install.d/macos/yos-screenshots.sh"
   # gum spin --spinner moon --title "Stow Dotfiles." -- "$GS_DOTFILES_PATH/install.d/dotfiles.sh"
-  "$GS_DOTFILES_PATH/install.d/dotfiles.sh"
+  "$GS_DOTFILES_PATH/install.d/dotfiles/dotfiles.sh"
   # "$GS_DOTFILES_PATH/install.d/dotfiles/dotfiles.sh"
   # gum spin --spinner moon --title "Configure Git." -- "$GS_DOTFILES_PATH/install.d/git.sh"
   ;;
