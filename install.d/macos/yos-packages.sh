@@ -48,14 +48,16 @@ install_furnace() {
     xargs -I {} curl -L -o "furnace_latest_mac_release.dmg" {}
 
   printf "$HOMEBREW_PASSWORD" | hdiutil attach -stdinpass "furnace_latest_mac_release.dmg"
-  # printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/Furnace.app" "/Applications/"
-  # mkdir -p "$HOME/Documents/Furnace"
-  # printf "$HOMEBREW_PASSWORD" | sudo -S cp "/Volumes/Furnace/manual.pdf" "$HOME/Documents/Furnace/"
-  # printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/demos/" "$HOME/Documents/Furnace/"
-  # printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/instruments/" "$HOME/Documents/Furnace/"
-  # printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/wavetables/" "$HOME/Documents/Furnace/"
-  # rm "furnace_latest_mac_release.dmg"
+  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/Furnace.app" "/Applications/"
+  mkdir -p "$HOME/Documents/Furnace"
+  printf "$HOMEBREW_PASSWORD" | sudo -S cp "/Volumes/Furnace/manual.pdf" "$HOME/Documents/Furnace/"
+  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/demos/" "$HOME/Documents/Furnace/"
+  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/instruments/" "$HOME/Documents/Furnace/"
+  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/wavetables/" "$HOME/Documents/Furnace/"
+  rm "furnace_latest_mac_release.dmg"
 }
+
+install_alacritty
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE}")" && pwd)"
 

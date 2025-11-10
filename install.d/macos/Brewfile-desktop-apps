@@ -1,7 +1,7 @@
 ### Brewfile for desktop applications
 
 cask 'adobe-acrobat-reader'
-cask 'alacritty' # My preferred terminal emulator
+# cask 'alacritty' # My preferred terminal emulator
 cask 'alfred' # A powerful spotlight replacement
 cask 'brave-browser' # A privacy focused browser. You can use this for Tor btw.
 cask 'discord'
