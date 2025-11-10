@@ -124,6 +124,11 @@ echo "directories created"
 # done
 
 ## Run installation scripts based on OS
+## Setup gum environment variables
+export FOREGROUND="#FF0"
+export BACKGROUND="#0BB"
+export BORDER_FOREGROUND="212"
+
 gum style \
   --border double \
   --align center --width 50 --margin "1 2" --padding "2 4" --bold "Running Installation and Configuration Scripts"
