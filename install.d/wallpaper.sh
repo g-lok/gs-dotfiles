@@ -10,7 +10,7 @@ case "$SCRIPT_OS" in
   echo "$command_w_file"
   echo "$filepath"
   # osascript -e "$command_w_file"
-  osascript -e 'tell application "Finder" to set desktop picture to POSIX file '"$filepath"
+  osascript -e 'tell application "Finder" to set desktop picture to POSIX file "'"$filepath"'"'
   ;;
 "linux_gui")
   gsettings set org.gnome.desktop.background picture-uri "file://$HOME/Pictures/wallpaper.jpg"
