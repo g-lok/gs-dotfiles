@@ -146,7 +146,7 @@ case $SCRIPT_OS in
   # source "$GS_DOTFILES_PATH/install.d/zsh.sh"
   # gum spin --spinner moon --title "Install Lazyvim" -- "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh"
   # gum spin --spinner moon --title "Configure System Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh"
-  "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh"
+  # "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh"
   # gum spin --spinner moon --title "Configure Dock Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
   # gum spin --spinner moon --title "Configure Peripheral Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh"
   # gum spin --spinner moon --title "Setup Screenshots." -- "$GS_DOTFILES_PATH/install.d/macos/yos-screenshots.sh"
