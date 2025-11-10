@@ -57,7 +57,14 @@ install_furnace() {
   rm "furnace_latest_mac_release.dmg"
 }
 
-install_alacritty
+install_alacritty() {
+  alarcirtty_url="https://github.com/alacritty/alacritty/releases/download/v0.16.1/Alacritty-v0.16.1.dmg"
+  curl -o alaritty.dmg "$alarcirtty_url"
+  printf "$HOMEBREW_PASSWORD" | hdiutil attach -stdinpass "alacritty.dmg"
+  rm "alacritty.dmg"
+
+  o
+}
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE}")" && pwd)"
 
