@@ -62,9 +62,9 @@ install_alacritty() {
   alacritty_local="alacritty.dmg"
   curl -o "$alacritty_local" "$alacritty_url"
   echo "alacritty downloaded"
-  printf "$HOMEBREW_PASSWORD" | hdiutil attach -stdinpass "$alacritty_local"
-  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Alacritty/Alacritty.app" "/Applications/"
-  rm "alacritty.dmg"
+  # printf "$HOMEBREW_PASSWORD" | hdiutil attach -stdinpass "$alacritty_local"
+  # printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Alacritty/Alacritty.app" "/Applications/"
+  # rm "alacritty.dmg"
 }
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE}")" && pwd)"
@@ -73,8 +73,8 @@ brew bundle install --file "$SCRIPT_DIR/Brewfile-terminal-apps"
 brew bundle install --file "$SCRIPT_DIR/Brewfile-desktop-apps"
 brew bundle install --file "$SCRIPT_DIR/Brewfile-nerdfonts"
 install_furnace
-# install_alacritty
-brew install --cask alacritty
+install_alacritty
+# brew install --cask alacritty
 
 ## TODO: This isn't working
 # echo "$APP_CATEGORIES"
