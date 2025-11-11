@@ -4,20 +4,24 @@
 ## Backup current neovim configs
 # required
 if [ -d ~/.config/nvim ]; then
-  mv -f ~/.config/nvim{,.bak}
+  cp -r ~/.config/nvim{,.bak}
+  rm -rf ~/.config/nvim/
 fi
 
 # optional but recommended
 if [ -d ~/.local/share/nvim ]; then
-  mv -f ~/.local/share/nvim{,.bak}
+  cp -r ~/.local/share/nvim{,.bak}
+  rm -rf ~/.local/share/nvim
 fi
 
 if [ -d ~/local/state/nvim ]; then
-  mv -f ~/.local/state/nvim{,.bak}
+  cp -r ~/.local/state/nvim{,.bak}
+  rm -rf ~/.local/state/nvim
 fi
 
 if [ -d ~/.cache/nvim ]; then
-  mv -f ~/.cache/nvim{,.bak}
+  cp -r ~/.cache/nvim{,.bak}
+  rm -rf ~/cache/nvim
 fi
 
 ## Install and remove .git folder
