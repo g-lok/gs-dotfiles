@@ -61,10 +61,10 @@ install_alacritty() {
   OWNER="alacritty"
   REPO="alacritty"
   ASSET_NAME="mac"
+  alacritty_local="alacritty_latest_mac_release.dmg"
   curl -s "https://api.github.com/repos/$OWNER/$REPO/releases/latest" |
     jq -r ".assets[] | select(.name | contains(\"$ASSET_NAME\")) | .browser_download_url" |
-    xargs -I {} curl -L -o "alacritty_latest_mac_release.dmg" {}
-  alacritty_local="alacritty_latest_mac_release.dmg"
+    xargs -I {} curl -L -o "$alacritty_local" {}
   echo "alacritty downloaded: $alacritty_local"
   printf "$HOMEBREW_PASSWORD" | hdiutil attach -stdinpass "$alacritty_local"
   printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Alacritty/Alacritty.app" "/Applications/"
