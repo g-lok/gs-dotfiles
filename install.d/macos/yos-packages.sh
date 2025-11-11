@@ -65,10 +65,9 @@ install_alacritty() {
   curl -s "https://api.github.com/repos/$OWNER/$REPO/releases/latest" |
     jq -r ".assets[] | select(.name | contains(\"$ASSET_NAME\")) | .browser_download_url" |
     xargs -I {} curl -L -o "$alacritty_local" {}
-  # echo "alacritty downloaded: $alacritty_local"
   printf "$HOMEBREW_PASSWORD" | hdiutil attach -stdinpass "$alacritty_local"
   printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Alacritty/Alacritty.app" "/Applications/"
-  # rm "alacritty.dmg"
+  rm "$alacritty_local"
 }
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE}")" && pwd)"

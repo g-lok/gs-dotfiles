@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 if [ -n "$BASH_VERSION" ]; then
-  echo "Running under Bash"
+  # echo "Running under Bash"
   myshell="bash"
 elif [ -n "$ZSH_VERSION" ]; then
-  echo "Running under Zsh"
+  # echo "Running under Zsh"
   myshell="zsh"
 fi
 
