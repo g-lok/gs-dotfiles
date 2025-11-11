@@ -63,8 +63,6 @@ install_alacritty() {
   printf "$HOMEBREW_PASSWORD" | hdiutil attach -stdinpass "alacritty.dmg"
   printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Alacritty/Alacritty.app" "/Applications/"
   rm "alacritty.dmg"
-
-  o
 }
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE}")" && pwd)"
