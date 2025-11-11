@@ -88,6 +88,5 @@ install_alacritty
 ## TODO: So I'm just going to install all dev and arist tools for now
 brew bundle install --file "$SCRIPT_DIR/Brewfile-dev"
 brew bundle install --file "$SCRIPT_DIR/Brewfile-artist-apps"
-install_furnace
 
 brew cleanup
