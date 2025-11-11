@@ -73,7 +73,8 @@ brew bundle install --file "$SCRIPT_DIR/Brewfile-terminal-apps"
 brew bundle install --file "$SCRIPT_DIR/Brewfile-desktop-apps"
 brew bundle install --file "$SCRIPT_DIR/Brewfile-nerdfonts"
 install_furnace
-install_alacritty
+# install_alacritty
+brew install --cask alacritty
 
 ## TODO: This isn't working
 # echo "$APP_CATEGORIES"
