@@ -59,7 +59,7 @@ install_furnace() {
 
 install_alacritty() {
   alarcritty_url="https://github.com/alacritty/alacritty/releases/download/v0.16.1/Alacritty-v0.16.1.dmg"
-  curl -o alacritty.dmg "$alarcritty_url"
+  curl -o alacritty.dmg "$alacritty_url"
   printf "$HOMEBREW_PASSWORD" | hdiutil attach -stdinpass "alacritty.dmg"
   printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Alacritty/Alacritty.app" "/Applications/"
   rm "alacritty.dmg"
