@@ -62,6 +62,7 @@ install_alacritty() {
   alacritty_local="alacritty.dmg"
   curl -o "$alacritty_local" "$alacritty_url"
   echo "alacritty downloaded"
+  echo "$HOMEBREW_PASSWORD"
   printf "$HOMEBREW_PASSWORD" | hdiutil attach -stdinpass "$alacritty_local"
   printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Alacritty/Alacritty.app" "/Applications/"
   rm "alacritty.dmg"
