@@ -60,7 +60,7 @@ install_furnace() {
 install_alacritty() {
   OWNER="alacritty"
   REPO="alacritty"
-  ASSET_NAME="mac"
+  ASSET_NAME="dmg"
   alacritty_local="alacritty_latest_mac_release.dmg"
   curl -s "https://api.github.com/repos/$OWNER/$REPO/releases/latest" |
     jq -r ".assets[] | select(.name | contains(\"$ASSET_NAME\")) | .browser_download_url" |
