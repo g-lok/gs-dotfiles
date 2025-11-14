@@ -5,8 +5,6 @@ set -e
 ## Personal set-up scripts for Ubuntu Linux and OSX
 ## Heavily inspired (*ahem* copied) by Juxtaposed, Omakub, too many to remember
 
-## https://unix.stackexchange.com/questions/190571/sudo-in-non-interactive-script
-## for idea on how to run sudo in script
 ## Print Ascii logo with color.
 ascii_art='
   _______/\        ________          __    _____.__.__                 
@@ -15,6 +13,8 @@ ascii_art='
 \    \_\  \\___ \   |    `   (  <_> )  |  |  |  |  |  |_\  ___/ \___ \ 
  \______  /____  > /_______  /\____/|__|  |__|  |__|____/\___  >____  >
         \/     \/          \/                                \/     \/
+
+
 '
 
 ## Define the color gradient (shades of cyan and blue)
