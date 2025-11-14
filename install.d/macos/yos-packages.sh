@@ -9,29 +9,6 @@ else
   CHIPSET="INTEL"
 fi
 
-## Function to install optional toolsets
-install_optional_tools() {
-  echo "install_optional_tools: $1"
-  case "$1" in
-  "Developer_Tools")
-    echo "ding"
-    # brew bundle install --file "$SCRIPT_DIR/Brewfile-dev"
-    ;;
-  "DevOps_Tools")
-    echo "bing"
-    # brew bundle install --file "$SCRIPT_DIR/Brewfile-devops"
-    ;;
-  "Artist_Tools")
-    echo "zing"
-    # brew bundle install --file "$SCRIPT_DIR/Brewfile-artist-apps"
-    # install_furnace
-    ;;
-  *)
-    echo "$optional is not a valid toolset"
-    ;;
-  esac
-}
-
 ## Function to install Furnace
 install_furnace() {
   OWNER="tildearrow"
@@ -57,17 +34,27 @@ install_furnace() {
   rm "furnace_latest_mac_release.dmg"
 }
 
-install_alacritty() {
-  OWNER="alacritty"
-  REPO="alacritty"
-  ASSET_NAME="dmg"
-  alacritty_local="alacritty_latest_mac_release.dmg"
-  curl -s "https://api.github.com/repos/$OWNER/$REPO/releases/latest" |
-    jq -r ".assets[] | select(.name | contains(\"$ASSET_NAME\")) | .browser_download_url" |
-    xargs -I {} curl -L -o "$alacritty_local" {}
-  printf "$HOMEBREW_PASSWORD" | hdiutil attach -stdinpass "$alacritty_local"
-  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Alacritty/Alacritty.app" "/Applications/"
-  rm "$alacritty_local"
+## Function to install optional toolsets
+install_optional_tools() {
+  echo "install_optional_tools: $1"
+  case "$1" in
+  "Developer_Tools")
+    echo "ding"
+    brew bundle install --file "$SCRIPT_DIR/Brewfile-dev"
+    ;;
+  "DevOps_Tools")
+    echo "bing"
+    brew bundle install --file "$SCRIPT_DIR/Brewfile-devops"
+    ;;
+  "Artist_Tools")
+    echo "zing"
+    brew bundle install --file "$SCRIPT_DIR/Brewfile-artist-apps"
+    install_furnace
+    ;;
+  *)
+    echo "$optional is not a valid toolset"
+    ;;
+  esac
 }
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE}")" && pwd)"
@@ -75,22 +62,19 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE}")" && pwd)"
 brew bundle install --file "$SCRIPT_DIR/Brewfile-terminal-apps"
 brew bundle install --file "$SCRIPT_DIR/Brewfile-desktop-apps"
 brew bundle install --file "$SCRIPT_DIR/Brewfile-nerdfonts"
-install_furnace
-install_alacritty
-# brew install --cask alacritty
 
 ## TODO: This isn't working
-# echo "$APP_CATEGORIES"
-# for optionals in "${APP_CATEGORIES[@]}"; do
-#   echo "optionals: $optionals"
-#   for option in "${optionals[@]}"; do
-#     echo "option: $option"
-#   done
-#   # install_optional_tools "$optional"
-# done
+echo "$APP_CATEGORIES"
+for optionals in "${APP_CATEGORIES[@]}"; do
+  echo "optionals: $optionals"
+  for option in "${optionals[@]}"; do
+    echo "option: $option"
+  done
+  install_optional_tools "$optional"
+done
 
 ## TODO: So I'm just going to install all dev and arist tools for now
-brew bundle install --file "$SCRIPT_DIR/Brewfile-dev"
-brew bundle install --file "$SCRIPT_DIR/Brewfile-artist-apps"
+# brew bundle install --file "$SCRIPT_DIR/Brewfile-dev"
+# brew bundle install --file "$SCRIPT_DIR/Brewfile-artist-apps"
 
 brew cleanup

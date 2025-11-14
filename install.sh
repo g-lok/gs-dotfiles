@@ -113,15 +113,15 @@ source "$GS_DOTFILES_PATH/install.d/directories.sh"
 echo "directories created"
 
 ## Get installation choices
-# declare -a OPTIONAL_APPS
-# declare -a APP_CATEGORIES OPTIONAL_APPS=("Developer_Tools" "DevOps_Tools" "Artist_Tools")
-# export APP_CATEGORIES=$(gum choose "${OPTIONAL_CATEGORIES[@]}" --no-limit --header "Select optional application categories to install.")
-# APP_CATEGORIES=$(gum choose "${OPTIONAL_APPS[@]}" --no-limit --header "Select optional apps:")
+declare -a OPTIONAL_APPS
+declare -a APP_CATEGORIES
+OPTIONAL_APPS=("Developer_Tools" "DevOps_Tools" "Artist_Tools")
+export APP_CATEGORIES=$(gum choose "${OPTIONAL_APPS[@]}" --no-limit --header "Select optional application categories to install.")
 #
-# ## test code for damn array
-# for option in "${APP_CATEGORIES[@]}"; do
-#   echo "option: $option"
-# done
+## test code for damn array
+for option in "${APP_CATEGORIES[@]}"; do
+  echo "option: $option"
+done
 
 ## Run installation scripts based on OS
 ## Setup gum environment variables
@@ -141,13 +141,13 @@ gum style \
 case $SCRIPT_OS in
 "MacOS")
   # gum spin --spinner moon --title "Installing Apps" -- "$GS_DOTFILES_PATH/install.d/macos/yos-packages.sh"
-  # "$GS_DOTFILES_PATH/install.d/macos/yos-packages.sh"
+  "$GS_DOTFILES_PATH/install.d/macos/yos-packages.sh"
   # gum spin --spinner moon --title "Install Oh-My-Zsh" -- "$GS_DOTFILES_PATH/install.d/zsh.sh"
   # "$GS_DOTFILES_PATH/install.d/zsh.sh"
   # gum spin --spinner moon --title "Install Lazyvim" -- "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh"
   # "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh"
   # gum spin --spinner moon --title "Configure System Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh"
-  "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh"
+  # "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh"
   # gum spin --spinner moon --title "Configure Dock Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
   # "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
   # gum spin --spinner moon --title "Configure Peripheral Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh"

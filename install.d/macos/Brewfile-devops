@@ -1,4 +1,7 @@
 # Brewfile for devops apps
 
+brew 'jj'
+brew 'kubernetes-cli'
+brew 'minikube'
 brew 'tailscale'
 

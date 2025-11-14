@@ -13,7 +13,9 @@ brew 'kubernetes-cli'
 brew 'minikube'
 cask 'postman' # API tools
 brew 'ttyd'
-cask 'utm' # 
+cask 'utm' # Run MacOS Virtual machines
+cask 'windsurf'
+cask 'zed'
 brew 'vhs' # Terminal video recorder
 cask 'virtualbox'
 cask 'visual-studio-code' # VSCode IDE
