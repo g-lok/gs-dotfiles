@@ -39,15 +39,12 @@ install_optional_tools() {
   echo "install_optional_tools: $1"
   case "$1" in
   "Developer_Tools")
-    echo "ding"
     brew bundle install --file "$SCRIPT_DIR/Brewfile-dev"
     ;;
   "DevOps_Tools")
-    echo "bing"
     brew bundle install --file "$SCRIPT_DIR/Brewfile-devops"
     ;;
   "Artist_Tools")
-    echo "zing"
     brew bundle install --file "$SCRIPT_DIR/Brewfile-artist-apps"
     install_furnace
     ;;
@@ -63,18 +60,9 @@ brew bundle install --file "$SCRIPT_DIR/Brewfile-terminal-apps"
 brew bundle install --file "$SCRIPT_DIR/Brewfile-desktop-apps"
 brew bundle install --file "$SCRIPT_DIR/Brewfile-nerdfonts"
 
-echo "$HOMEBREW_APP_CHOICES"
-## TODO: This isn't working
+## Install optional packages
 for optionals in "${HOMEBREW_APP_CHOICES[@]}"; do
-  # echo "optionals: $optionals"
-  # for option in "${optionals[@]}"; do
-  #   echo "option: $option"
-  # done
   install_optional_tools "$optionals"
 done
-
-## TODO: So I'm just going to install all dev and arist tools for now
-# brew bundle install --file "$SCRIPT_DIR/Brewfile-dev"
-# brew bundle install --file "$SCRIPT_DIR/Brewfile-artist-apps"
 
 brew cleanup
