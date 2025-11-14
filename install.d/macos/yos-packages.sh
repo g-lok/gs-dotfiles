@@ -63,8 +63,8 @@ brew bundle install --file "$SCRIPT_DIR/Brewfile-terminal-apps"
 brew bundle install --file "$SCRIPT_DIR/Brewfile-desktop-apps"
 brew bundle install --file "$SCRIPT_DIR/Brewfile-nerdfonts"
 
-## TODO: This isn't working
 echo "$HOMEBREW_APP_CHOICES"
+## TODO: This isn't working
 for optionals in "${HOMEBREW_APP_CHOICES[@]}"; do
   # echo "optionals: $optionals"
   # for option in "${optionals[@]}"; do
