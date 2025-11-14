@@ -117,9 +117,11 @@ declare -a OPTIONAL_APPS
 declare -a APP_CATEGORIES
 OPTIONAL_APPS=("Developer_Tools" "DevOps_Tools" "Artist_Tools")
 export APP_CATEGORIES=$(gum choose "${OPTIONAL_APPS[@]}" --no-limit --header "Select optional application categories to install.")
-#
+
+readarray -t APP_CHOICES <<<"$APP_CATEGORIES"
+export APP_CHOICES
 ## test code for damn array
-for option in "${APP_CATEGORIES[@]}"; do
+for option in "${APP_CHOICES[@]}"; do
   echo "option: $option"
 done
 
