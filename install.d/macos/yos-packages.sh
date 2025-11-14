@@ -70,7 +70,7 @@ for optionals in "${APP_CHOICES[@]}"; do
   for option in "${optionals[@]}"; do
     echo "option: $option"
   done
-  install_optional_tools "$optional"
+  install_optional_tools "$optionals"
 done
 
 ## TODO: So I'm just going to install all dev and arist tools for now
