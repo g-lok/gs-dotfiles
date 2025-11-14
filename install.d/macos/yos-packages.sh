@@ -66,10 +66,10 @@ brew bundle install --file "$SCRIPT_DIR/Brewfile-nerdfonts"
 ## TODO: This isn't working
 echo "$HOMEBREW_APP_CHOICES"
 for optionals in "${HOMEBREW_APP_CHOICES[@]}"; do
-  echo "optionals: $optionals"
-  for option in "${optionals[@]}"; do
-    echo "option: $option"
-  done
+  # echo "optionals: $optionals"
+  # for option in "${optionals[@]}"; do
+  #   echo "option: $option"
+  # done
   install_optional_tools "$optionals"
 done
 
