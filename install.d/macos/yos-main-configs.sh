@@ -140,12 +140,12 @@ sudo -A -u "$CURRENT_USER" defaults write com.apple.screencapture disable-shadow
 
 # Enable automatic updates
 # TODO: These don't work even with sudo now.
-# sudo -A -u "$CURRENT_USER" defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticallyInstallMacOSUpdates -bool true
-# sudo -A -u "$CURRENT_USER" defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticCheckEnabled -bool true
-# sudo -A -u "$CURRENT_USER" defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticDownload -bool true
-# sudo -A -u "$CURRENT_USER" defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist CriticalUpdateInstall -bool true
-# sudo -A -u "$CURRENT_USER" defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist ConfigDataInstall -bool true
-# sudo -A -u "$CURRENT_USER" defaults write /Library/Preferences/com.apple.commerce.plist AutoUpdate -bool true
+sudo -A defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticallyInstallMacOSUpdates -bool true
+sudo -A defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticCheckEnabled -bool true
+sudo -A defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticDownload -bool true
+sudo -A defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist CriticalUpdateInstall -bool true
+sudo -A defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist ConfigDataInstall -bool true
+sudo -A defaults write /Library/Preferences/com.apple.commerce.plist AutoUpdate -bool true
 
 # Change Terminal settings
 sudo -A -u "$CURRENT_USER" defaults write com.apple.Terminal "Default Window Settings" -string "Pro"
@@ -165,7 +165,6 @@ sudo -A -u "$CURRENT_USER" /usr/libexec/PlistBuddy -c "Set :'Window Settings':'P
 # killall locationd
 # launchctl kickstart -k system/com.apple.locationd
 
-# TODO: This doesn't work either
 # Configure automatic timezone
 sudo -A defaults write /Library/Preferences/com.apple.timezone.auto Active -bool YES
 sudo -A defaults write /private/var/db/timed/Library/Preferences/com.apple.timed.plist TMAutomaticTimeOnlyEnabled -bool YES
