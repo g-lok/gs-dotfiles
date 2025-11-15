@@ -133,14 +133,8 @@ source "$GS_DOTFILES_PATH/install.d/directories.sh"
 ## so I have to set this to force colors.
 ## TODO: Colors are back but they're the wrong colors, and nothing I do is changing them.
 
-# unset FOREGROUND
-# unset BACKGROUND
-# unset BORDER_FOREGROUND
-# export FOREGROUND="#FF0"
-# export BACKGROUND="#821"
-# export BORDER_FOREGROUND="212"
 export CLICOLOR_FORCE=1
-# export TERM="xterm-256color"
+export TERM="xterm-256color"
 
 ## Get installation choices
 declare -a OPTIONAL_APPS
