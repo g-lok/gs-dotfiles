@@ -156,41 +156,42 @@ gum style \
 case $SCRIPT_OS in
 "MacOS")
   gum spin --spinner moon --title "Installing HomeBrew Apps..." -- sleep 2
-  # source "$GS_DOTFILES_PATH/install.d/macos/yos-packages.sh" gum spin --spinner moon --title "Install Oh-My-Zsh" -- "$GS_DOTFILES_PATH/install.d/zsh.sh"
+  source "$GS_DOTFILES_PATH/install.d/macos/yos-packages.sh"
   gum spin --spinner moon --title "Installing Oh-My-Zsh..." -- sleep 2
-  # source "$GS_DOTFILES_PATH/install.d/zsh.sh" >/dev/null
+  source "$GS_DOTFILES_PATH/install.d/zsh.sh" >/dev/null
   # gum spin --spinner moon --title "Install Lazyvim" -- "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh"
   gum spin --spinner moon --title "Installing LazyVim..." -- sleep 2
-  # source "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh" >/dev/null
+  source "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh" >/dev/null
   # gum spin --spinner moon --title "Configure System Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh"
   gum spin --spinner moon --title "Configuring main MacOS settings..." -- sleep 2
-  # source "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh" >/dev/null
+  source "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh" >/dev/null
   # gum spin --spinner moon --title "Configure Dock Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
   gum spin --spinner moon --title "Configuring MacOS Dock settings..." -- sleep 2
-  # source "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh" >/dev/null
+  source "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh" >/dev/null
   # gum spin --spinner moon --title "Configure Peripheral Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh"
   gum spin --spinner moon --title "Configuring peripherals..." -- sleep 2
-  # source "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh" >/dev/null
+  source "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh" >/dev/null
   gum spin --spinner moon --title "Configuring screenshots..." -- sleep 2
-  # source "$GS_DOTFILES_PATH/install.d/macos/yos-screenshots.sh" >/dev/null
+  source "$GS_DOTFILES_PATH/install.d/macos/yos-screenshots.sh" >/dev/null
   # gum spin --spinner moon --title "Stow Dotfiles." -- "$GS_DOTFILES_PATH/install.d/dotfiles/dotfiles.sh"
   gum spin --spinner moon --title "Configuring dotfiles..." -- sleep 2
-  # "$GS_DOTFILES_PATH/install.d/dotfiles/dotfiles.sh" >/dev/null
+  "$GS_DOTFILES_PATH/install.d/dotfiles/dotfiles.sh" >/dev/null
   # gum spin --spinner moon --title "Configure Git." -- "$GS_DOTFILES_PATH/install.d/git.sh"
   gum spin --spinner moon --title "Configuring git..." -- sleep 2
-  # source "$GS_DOTFILES_PATH/install.d/git.sh" >/dev/null
+  source "$GS_DOTFILES_PATH/install.d/git.sh" >/dev/null
   ;;
 *)
   echo "Unrecognized OS. Skipping installation and configuration."
   ;;
 esac
 
-## Setup gum environment variables
+## Setup dotfiles
 gum style \
   --border double \
   --align center --width 50 --margin "1 2" --padding "2 4" --bold "GNU Stow Adopted existing configs to this repo." "Do you want to use G's Dotfile Configs?"
-# gum confirm && git restore . || echo "No git actions taken. Using adopted configs."
+gum confirm && git restore . || echo "No git actions taken. Using adopted configs."
 
+## Setup Wallpaper
 gum style \
   --border double \
   --align center --width 50 --margin "1 2" --padding "2 4" --bold "Set wallpaper to theme?"
