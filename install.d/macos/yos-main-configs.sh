@@ -174,8 +174,8 @@ sudo -A /usr/sbin/systemsetup -getnetworktimeserver
 # /usr/sbin/systemsetup -settimezone America/New_York
 
 # Safari : show bookmarks bar and status bar
-launchctl asuser "$USER_ID" sudo -A -u "$CURRENT_USER" defaults write com.apple.Safari ShowFavoritesBar-v2 -bool true
-launchctl asuser "$USER_ID" sudo -A -u "$CURRENT_USER" defaults write com.apple.Safari ShowOverlayStatusBar -bool true
+launchctl asuser "$USER_ID" sudo -A defaults write com.apple.Safari ShowFavoritesBar-v2 -bool true
+launchctl asuser "$USER_ID" sudo -A defaults write com.apple.Safari ShowOverlayStatusBar -bool true
 
 # Google Chrome : Force relaunch (in milliseconds) when there is a pending update + Home button
 launchctl asuser "$USER_ID" sudo -A -u "$CURRENT_USER" defaults write com.google.Chrome RelaunchNotificationPeriod -int 21600000
