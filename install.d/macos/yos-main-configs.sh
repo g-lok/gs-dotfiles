@@ -138,7 +138,6 @@ sudo -A -u "$CURRENT_USER" defaults write com.apple.ImageCapture disableHotPlug 
 # Disable shadows on screenshots
 sudo -A -u "$CURRENT_USER" defaults write com.apple.screencapture disable-shadow -bool true
 
-return
 # Enable automatic updates
 defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticallyInstallMacOSUpdates -bool true
 defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticCheckEnabled -bool true
@@ -153,6 +152,7 @@ sudo -A -u "$CURRENT_USER" defaults write com.apple.Terminal "Startup Window Set
 sudo -A -u "$CURRENT_USER" /usr/libexec/PlistBuddy -c "Add :'Window Settings':'Pro':'CursorBlink' bool true" /Users/"$CURRENT_USER"/Library/Preferences/com.apple.Terminal.plist
 sudo -A -u "$CURRENT_USER" /usr/libexec/PlistBuddy -c "Set :'Window Settings':'Pro':'CursorBlink' 'true'" /Users/"$CURRENT_USER"/Library/Preferences/com.apple.Terminal.plist
 
+return
 # Startup Chime / StartupMute=%01 to mute
 nvram StartupMute=%00
 
