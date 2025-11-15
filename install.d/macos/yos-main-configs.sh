@@ -196,14 +196,14 @@ sudo -A -u "$CURRENT_USER" defaults write com.apple.ActivityMonitor DiskGraphTyp
 sudo -A -u "$CURRENT_USER" defaults write com.apple.ActivityMonitor NetworkGraphType -int 1
 
 # Uncheck 'Reopen Windows When Logging Back'
-sudo -A defaults write com.apple.loginwindow TALLogoutSavesState -bool false
+sudo -A -u "$CURRENT_USER" defaults write com.apple.loginwindow TALLogoutSavesState -bool false
 
 # Enable Firewall
 # /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
 # /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on
 
 # Disable Bonjour Advertising Service. Doesn't affect AirDrop. Final Cut Studio and AirPort Base Station management may not operate properly.
-sudo -A -u "$CURRENT_USER" defaults write /Library/Preferences/com.apple.mDNSResponder.plist NoMulticastAdvertisements -bool true
+sudo -A defaults write /Library/Preferences/com.apple.mDNSResponder.plist NoMulticastAdvertisements -bool true
 #
 # Disable Power Nap & Wake for Network Access
 sudo -A pmset -a powernap 0
