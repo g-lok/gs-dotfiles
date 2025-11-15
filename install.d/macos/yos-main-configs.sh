@@ -191,7 +191,6 @@ for interface in $(networksetup -listnetworkserviceorder | grep Hardware | awk '
   networksetup -removepreferredwirelessnetwork "$interface" "NAME_OF_SSID"
 done
 
-return
 # Activity Monitor : Show Data in graph instead of IO and packets
 sudo -A -u "$CURRENT_USER" defaults write com.apple.ActivityMonitor DiskGraphType -int 1
 sudo -A -u "$CURRENT_USER" defaults write com.apple.ActivityMonitor NetworkGraphType -int 1
@@ -199,6 +198,7 @@ sudo -A -u "$CURRENT_USER" defaults write com.apple.ActivityMonitor NetworkGraph
 # Uncheck 'Reopen Windows When Logging Back'
 sudo -A -u "$CURRENT_USER" defaults write com.apple.loginwindow TALLogoutSavesState -bool false
 
+return
 # Enable Firewall
 # /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
 # /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on
