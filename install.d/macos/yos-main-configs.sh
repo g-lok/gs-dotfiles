@@ -31,7 +31,6 @@ sudo -A -u "$CURRENT_USER" defaults write com.apple.menuextra.clock Date -int 0
 sudo -A -u "$CURRENT_USER" defaults write com.apple.menuextra.clock ShowDayOfWeek -int 1
 sudo -A -u "$CURRENT_USER" defaults write com.apple.menuextra.clock ShowSeconds -int 1
 
-return
 # Show bluetooth icon
 sudo -A -u "$CURRENT_USER" defaults -currentHost write com.apple.controlcenter Bluetooth -int 18
 
@@ -42,6 +41,7 @@ sudo -A -u "$CURRENT_USER" defaults -currentHost write com.apple.controlcenter S
 sudo -A -u "$CURRENT_USER" defaults write com.apple.Siri StatusMenuVisible -bool false
 sudo -A -u "$CURRENT_USER" defaults write com.apple.assistant.support "Assistant Enabled" -bool false
 
+return
 # Add VPN icon
 # sudo -A -u "$CURRENT_USER" open "/System/Library/CoreServices/Menu Extras/vpn.menu"
 
