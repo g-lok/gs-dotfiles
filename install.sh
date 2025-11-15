@@ -161,7 +161,7 @@ case $SCRIPT_OS in
   source "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
   # gum spin --spinner moon --title "Configure Peripheral Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh"
   source "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh"
-  # "$GS_DOTFILES_PATH/install.d/macos/yos-screenshots.sh"
+  source "$GS_DOTFILES_PATH/install.d/macos/yos-screenshots.sh"
   # gum spin --spinner moon --title "Stow Dotfiles." -- "$GS_DOTFILES_PATH/install.d/dotfiles/dotfiles.sh"
   # "$GS_DOTFILES_PATH/install.d/dotfiles/dotfiles.sh"
   # "$GS_DOTFILES_PATH/install.d/dotfiles/dotfiles.sh"
