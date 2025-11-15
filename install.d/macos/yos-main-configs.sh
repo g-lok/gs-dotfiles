@@ -282,18 +282,18 @@ sudo -A security authorizationdb write system.preferences.dateandtime.changetime
 sudo -A security authorizationdb write system.preferences.dateandtime.changetimezone authenticate-session-owner-or-admin
 sudo -A security authorizationdb write system.preferences.dateandtime authenticate-session-owner-or-admin
 
-return
 # Unlock Energy Saver preference pane
-security authorizationdb write system.preferences.energysaver allow
-security authorizationdb write system.settings.energysaver allow
+sudo -A security authorizationdb write system.preferences.energysaver allow
+sudo -A security authorizationdb write system.settings.energysaver allow
 
 # Unlock Network preference pane
-security authorizationdb write system.preferences.network allow
-security authorizationdb write system.settings.network allow
-security authorizationdb write system.services.systemconfiguration.network allow
-security authorizationdb write com.apple.wifi allow
-/usr/libexec/airportd prefs RequireAdminIBSS=No RequireAdminNetworkChange=No RequireAdminPowerToggle=No
+sudo -A security authorizationdb write system.preferences.network allow
+sudo -A security authorizationdb write system.settings.network allow
+sudo -A security authorizationdb write system.services.systemconfiguration.network allow
+sudo -A security authorizationdb write com.apple.wifi allow
+sudo -A /usr/libexec/airportd prefs RequireAdminIBSS=No RequireAdminNetworkChange=No RequireAdminPowerToggle=No
 
+return
 # Unlock Time Machine preference pane
 security authorizationdb write system.preferences.timemachine allow
 security authorizationdb write system.settings.timemachine allow
