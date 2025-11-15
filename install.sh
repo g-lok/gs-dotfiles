@@ -140,11 +140,15 @@ export APP_CATEGORIES=$(gum choose "${OPTIONAL_APPS[@]}" --no-limit --header "Se
 ## but a newline delimited string.
 readarray -t HOMEBREW_APP_CHOICES <<<"$APP_CATEGORIES"
 export HOMEBREW_APP_CHOICES
+
+## I lose colors here for some reason,
+## so I have to set this to force ANSI colors.
 export CLICOLOR_FORCE=1
+
 ## Run installation scripts based on OS
 gum style \
-  --foreground="#FF0" --background="#0BB" \
-  --border-foreground="212" \
+  --foreground="$FOREGROUND" --background="$BACKGROUND" \
+  --border-foreground="$BORDER_FOREGROUND" \
   --border double \
   --align center --width 50 --margin "1 2" --padding "2 4" --bold "Running Installation and Configuration Scripts"
 
