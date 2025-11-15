@@ -293,17 +293,17 @@ sudo -A security authorizationdb write system.services.systemconfiguration.netwo
 sudo -A security authorizationdb write com.apple.wifi allow
 sudo -A /usr/libexec/airportd prefs RequireAdminIBSS=No RequireAdminNetworkChange=No RequireAdminPowerToggle=No
 
-return
 # Unlock Time Machine preference pane
-security authorizationdb write system.preferences.timemachine allow
-security authorizationdb write system.settings.timemachine allow
+# security authorizationdb write system.preferences.timemachine allow
+# security authorizationdb write system.settings.timemachine allow
 
 # Unlock Print & Scan Preference pane
-security authorizationdb write system.preferences.printing allow
-security authorizationdb write system.settings.printing allow
-dseditgroup -o edit -n /Local/Default -a everyone -t group lpadmin
-dseditgroup -o edit -n /Local/Default -a everyone -t group _lpadmin
+sudo -A security authorizationdb write system.preferences.printing allow
+sudo -A security authorizationdb write system.settings.printing allow
+sudo -A dseditgroup -o edit -n /Local/Default -a everyone -t group lpadmin
+sudo -A dseditgroup -o edit -n /Local/Default -a everyone -t group _lpadmin
 
+return
 # Reset the authorizationdbdb to system default
 # /usr/bin/security authorizationdb reset
 
