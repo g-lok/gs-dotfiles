@@ -131,11 +131,11 @@ source "$GS_DOTFILES_PATH/install.d/directories.sh"
 
 ## I lose colors here for some reason,
 ## so I have to set this to force ANSI colors.
-export CLICOLOR_FORCE=1
 
 export FOREGROUND="#FF0"
 export BACKGROUND="#088"
 export BORDER_FOREGROUND="212"
+export CLICOLOR_FORCE=1
 
 ## Get installation choices
 declare -a OPTIONAL_APPS
