@@ -106,8 +106,8 @@ else
 fi
 
 ## Setup gum environment variables
-export FOREGROUND="#FF0"
-export BACKGROUND="#0BB"
+export FOREGROUND="96"
+export BACKGROUND="45"
 export BORDER_FOREGROUND="212"
 
 ## Let's get started
@@ -133,14 +133,14 @@ source "$GS_DOTFILES_PATH/install.d/directories.sh"
 ## so I have to set this to force colors.
 ## TODO: Colors are back but they're the wrong colors, and nothing I do is changing them.
 
-unset FOREGROUND
-unset BACKGROUND
-unset BORDER_FOREGROUND
-export FOREGROUND="#FF0"
-export BACKGROUND="55"
-export BORDER_FOREGROUND="212"
+# unset FOREGROUND
+# unset BACKGROUND
+# unset BORDER_FOREGROUND
+# export FOREGROUND="#FF0"
+# export BACKGROUND="#821"
+# export BORDER_FOREGROUND="212"
 export CLICOLOR_FORCE=1
-export TERM="xterm-256color"
+# export TERM="xterm-256color"
 
 ## Get installation choices
 declare -a OPTIONAL_APPS
@@ -156,37 +156,35 @@ export HOMEBREW_APP_CHOICES
 
 ## Run installation scripts based on OS
 gum style \
-  --foreground="$FOREGROUND" --background="$BACKGROUND" \
-  --border-foreground="$BORDER_FOREGROUND" \
   --border double \
   --align center --width 50 --margin "1 2" --padding "2 4" --bold "Running Installation and Configuration Scripts"
 
 case $SCRIPT_OS in
 "MacOS")
   gum spin --spinner moon --title "Installing HomeBrew Apps..." -- sleep 2
-  source "$GS_DOTFILES_PATH/install.d/macos/yos-packages.sh" gum spin --spinner moon --title "Install Oh-My-Zsh" -- "$GS_DOTFILES_PATH/install.d/zsh.sh"
+  # source "$GS_DOTFILES_PATH/install.d/macos/yos-packages.sh" gum spin --spinner moon --title "Install Oh-My-Zsh" -- "$GS_DOTFILES_PATH/install.d/zsh.sh"
   gum spin --spinner moon --title "Installing Oh-My-Zsh..." -- sleep 2
-  source "$GS_DOTFILES_PATH/install.d/zsh.sh" >/dev/null
+  # source "$GS_DOTFILES_PATH/install.d/zsh.sh" >/dev/null
   # gum spin --spinner moon --title "Install Lazyvim" -- "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh"
   gum spin --spinner moon --title "Installing LazyVim..." -- sleep 2
-  source "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh" >/dev/null
+  # source "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh" >/dev/null
   # gum spin --spinner moon --title "Configure System Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh"
   gum spin --spinner moon --title "Configuring main MacOS settings..." -- sleep 2
-  source "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh" >/dev/null
+  # source "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh" >/dev/null
   # gum spin --spinner moon --title "Configure Dock Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
   gum spin --spinner moon --title "Configuring MacOS Dock settings..." -- sleep 2
-  source "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh" >/dev/null
+  # source "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh" >/dev/null
   # gum spin --spinner moon --title "Configure Peripheral Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh"
   gum spin --spinner moon --title "Configuring peripherals..." -- sleep 2
-  source "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh" >/dev/null
+  # source "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh" >/dev/null
   gum spin --spinner moon --title "Configuring screenshots..." -- sleep 2
-  source "$GS_DOTFILES_PATH/install.d/macos/yos-screenshots.sh" >/dev/null
+  # source "$GS_DOTFILES_PATH/install.d/macos/yos-screenshots.sh" >/dev/null
   # gum spin --spinner moon --title "Stow Dotfiles." -- "$GS_DOTFILES_PATH/install.d/dotfiles/dotfiles.sh"
   gum spin --spinner moon --title "Configuring dotfiles..." -- sleep 2
-  "$GS_DOTFILES_PATH/install.d/dotfiles/dotfiles.sh" >/dev/null
+  # "$GS_DOTFILES_PATH/install.d/dotfiles/dotfiles.sh" >/dev/null
   # gum spin --spinner moon --title "Configure Git." -- "$GS_DOTFILES_PATH/install.d/git.sh"
   gum spin --spinner moon --title "Configuring git..." -- sleep 2
-  source "$GS_DOTFILES_PATH/install.d/git.sh" >/dev/null
+  # source "$GS_DOTFILES_PATH/install.d/git.sh" >/dev/null
   ;;
 *)
   echo "Unrecognized OS. Skipping installation and configuration."
@@ -197,7 +195,7 @@ esac
 gum style \
   --border double \
   --align center --width 50 --margin "1 2" --padding "2 4" --bold "GNU Stow Adopted existing configs to this repo." "Do you want to use G's Dotfile Configs?"
-gum confirm && git restore . || echo "No git actions taken. Using adopted configs."
+# gum confirm && git restore . || echo "No git actions taken. Using adopted configs."
 
 gum style \
   --border double \
