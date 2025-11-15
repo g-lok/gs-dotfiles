@@ -23,4 +23,3 @@ for dir in "${folders[@]}"; do
   fullpath="$HOME/$dir"
   mkdir -p "$fullpath"
 done
-echo "Folders created."
