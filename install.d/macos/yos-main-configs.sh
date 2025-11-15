@@ -38,6 +38,8 @@ sudo -A -u "$CURRENT_USER" defaults -currentHost write com.apple.controlcenter S
 sudo -A -u "$CURRENT_USER" defaults write com.apple.Siri StatusMenuVisible -bool false
 sudo -A -u "$CURRENT_USER" defaults write com.apple.assistant.support "Assistant Enabled" -bool false
 
+## Disable widgets
+sudo -A -u "$CURRENT_USER" defaults write com.apple.WindowManager StandardHideWidgets -bool true
 # Add VPN icon
 # sudo -A -u "$CURRENT_USER" open "/System/Library/CoreServices/Menu Extras/vpn.menu"
 

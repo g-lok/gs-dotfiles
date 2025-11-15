@@ -107,7 +107,7 @@ fi
 
 ## Setup gum environment variables
 export FOREGROUND="96"
-export BACKGROUND="45"
+export BACKGROUND="44"
 export BORDER_FOREGROUND="212"
 
 ## Let's get started
