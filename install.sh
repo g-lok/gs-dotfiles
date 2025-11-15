@@ -133,7 +133,7 @@ source "$GS_DOTFILES_PATH/install.d/directories.sh"
 declare -a OPTIONAL_APPS
 declare -a APP_CATEGORIES
 OPTIONAL_APPS=("Developer_Tools" "DevOps_Tools" "Artist_Tools")
-export APP_CATEGORIES=$(gum choose "${OPTIONAL_APPS[@]}" --no-limit --header "Select optional application categories to install.")
+# export APP_CATEGORIES=$(gum choose "${OPTIONAL_APPS[@]}" --no-limit --header "Select optional application categories to install.")
 
 ## I shouldn't have to do this,
 ## but gum choose up there isn't creating an array,
