@@ -136,6 +136,7 @@ export FOREGROUND="#FF0"
 export BACKGROUND="#088"
 export BORDER_FOREGROUND="212"
 export CLICOLOR_FORCE=1
+export TERM="xterm-256color"
 
 ## Get installation choices
 declare -a OPTIONAL_APPS
