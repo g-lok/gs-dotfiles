@@ -130,10 +130,11 @@ gum spin --spinner moon --title "Creating directories..." -- sleep 2
 source "$GS_DOTFILES_PATH/install.d/directories.sh"
 
 ## I lose colors here for some reason,
-## so I have to set this to force ANSI colors.
+## so I have to set this to force colors.
+## TODO: Colors are back but they're the wrong colors, and nothing I do is changing them.
 
 export FOREGROUND="#FF0"
-export BACKGROUND="#088"
+export BACKGROUND="#B33"
 export BORDER_FOREGROUND="212"
 export CLICOLOR_FORCE=1
 export TERM="xterm-256color"
