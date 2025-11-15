@@ -139,7 +139,6 @@ sudo -A -u "$CURRENT_USER" defaults write com.apple.ImageCapture disableHotPlug 
 sudo -A -u "$CURRENT_USER" defaults write com.apple.screencapture disable-shadow -bool true
 
 # Enable automatic updates
-# TODO: These don't work even with sudo now.
 sudo -A defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticallyInstallMacOSUpdates -bool true
 sudo -A defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticCheckEnabled -bool true
 sudo -A defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticDownload -bool true
@@ -155,7 +154,7 @@ sudo -A -u "$CURRENT_USER" /usr/libexec/PlistBuddy -c "Set :'Window Settings':'P
 
 # TODO: SIP prevents this. Must disable SIP in recovery mode temporarily.
 # Startup Chime / StartupMute=%01 to mute
-# sudo -A -u "$CURRENT_USER" nvram StartupMute=%00
+sudo -A nvram StartupMute=%00
 
 # Disable auto startup when opening the lid. AutoBoot=%03 to turn it back on
 # nvram AutoBoot=%00
