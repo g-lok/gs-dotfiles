@@ -216,15 +216,14 @@ sudo -A -u "$CURRENT_USER" defaults write com.apple.touchbar.agent PresentationM
 # sed -i '.bak' '2s/^/auth       sufficient     pam_tid.so\'$'\n/g' /private/etc/pam.d/sudo -A
 
 # Touch ID for sudo -A commands in Terminal · Sonoma + Sequoia
-CHECK_3RD_ROW=$(cat /private/etc/pam.d/sudo_local | sed -n 3p)
-if [ "$CHECK_3RD_ROW" = "auth       sufficient     pam_tid.so" ]; then
-  echo "Sudo Touch ID is already configured."
-else
-  cp /private/etc/pam.d/sudo_local.template /private/etc/pam.d/sudo_local
-  sed -i '.bak' '3s/#//' "/private/etc/pam.d/sudo_local"
-  echo "Sudo Touch ID is now configured."
-fi
-return
+# CHECK_3RD_ROW=$(cat /private/etc/pam.d/sudo_local | sed -n 3p)
+# if [ "$CHECK_3RD_ROW" = "auth       sufficient     pam_tid.so" ]; then
+#   echo "Sudo Touch ID is already configured."
+# else
+#   cp /private/etc/pam.d/sudo_local.template /private/etc/pam.d/sudo_local
+#   sed -i '.bak' '3s/#//' "/private/etc/pam.d/sudo_local"
+#   echo "Sudo Touch ID is now configured."
+# fi
 # Remove login items
 # sudo -A -u "$CURRENT_USER" /usr/bin/osascript -e 'tell application "System Events" to delete login item "Skype for Business"'
 
@@ -235,12 +234,13 @@ return
 sudo -A -u "$CURRENT_USER" defaults write com.apple.WindowManager EnableTiledWindowMargins -bool false
 
 # Stop macOS 15 Sequoia monthly screen recording prompts for Chrome, Slack, Zoom, Teams and TeamViewer
-defaults write "/Users/$CURRENT_USER/Library/Group Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist" "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" -date "3024-09-22 12:12:12 +0000"
-defaults write "/Users/$CURRENT_USER/Library/Group Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist" "/Applications/Slack.app/Contents/MacOS/Slack" -date "3024-09-22 12:12:12 +0000"
-defaults write "/Users/$CURRENT_USER/Library/Group Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist" "/Applications/zoom.us.app/Contents/MacOS/zoom.us" -date "3024-09-22 12:12:12 +0000"
-defaults write "/Users/$CURRENT_USER/Library/Group Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist" "/Applications/Microsoft Teams.app/Contents/MacOS/MSTeams" -date "3024-09-22 12:12:12 +0000"
-defaults write "/Users/$CURRENT_USER/Library/Group Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist" "/Applications/TeamViewer.app/Contents/MacOS/TeamViewer" -date "3024-09-22 12:12:12 +0000"
+sudo -A -u "$CURRENT_USER" defaults write "/Users/$CURRENT_USER/Library/Group Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist" "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" -date "3024-09-22 12:12:12 +0000"
+sudo -A -u "$CURRENT_USER" defaults write "/Users/$CURRENT_USER/Library/Group Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist" "/Applications/Slack.app/Contents/MacOS/Slack" -date "3024-09-22 12:12:12 +0000"
+sudo -A -u "$CURRENT_USER" defaults write "/Users/$CURRENT_USER/Library/Group Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist" "/Applications/zoom.us.app/Contents/MacOS/zoom.us" -date "3024-09-22 12:12:12 +0000"
+sudo -A -u "$CURRENT_USER" defaults write "/Users/$CURRENT_USER/Library/Group Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist" "/Applications/Microsoft Teams.app/Contents/MacOS/MSTeams" -date "3024-09-22 12:12:12 +0000"
+sudo -A -u "$CURRENT_USER" defaults write "/Users/$CURRENT_USER/Library/Group Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist" "/Applications/TeamViewer.app/Contents/MacOS/TeamViewer" -date "3024-09-22 12:12:12 +0000"
 
+return
 ################
 # LOGIN SCREEN #
 ################
