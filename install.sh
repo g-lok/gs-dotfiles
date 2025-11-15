@@ -151,7 +151,7 @@ gum style \
 
 case $SCRIPT_OS in
 "MacOS")
-  source "$GS_DOTFILES_PATH/install.d/macos/yos-packages.sh"
+  # source "$GS_DOTFILES_PATH/install.d/macos/yos-packages.sh"
   # gum spin --spinner moon --title "Install Oh-My-Zsh" -- "$GS_DOTFILES_PATH/install.d/zsh.sh"
   # "$GS_DOTFILES_PATH/install.d/zsh.sh"
   # gum spin --spinner moon --title "Install Lazyvim" -- "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh"

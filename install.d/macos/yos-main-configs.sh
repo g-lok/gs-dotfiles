@@ -21,6 +21,7 @@ USER_ID=$(id -u "$CURRENT_USER")
 
 # Show battery percentage
 sudo -A -u "$CURRENT_USER" defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true
+echo !!
 return
 # Show date and seconds
 sudo -A -u "$CURRENT_USER" defaults write com.apple.menuextra.clock IsAnalog -int 0
