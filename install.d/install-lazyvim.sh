@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 ### Install lazyvim
 
+## Bail if lazyvim is already installed
+if [ -f ~/.config/nvim/lua/config/lazy.lua ]; then
+  return
+fi
+
 ## Backup current neovim configs
 # required
 if [ -d ~/.config/nvim ]; then
