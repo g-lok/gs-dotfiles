@@ -152,12 +152,11 @@ sudo -A -u "$CURRENT_USER" defaults write com.apple.Terminal "Startup Window Set
 sudo -A -u "$CURRENT_USER" /usr/libexec/PlistBuddy -c "Add :'Window Settings':'Pro':'CursorBlink' bool true" /Users/"$CURRENT_USER"/Library/Preferences/com.apple.Terminal.plist
 sudo -A -u "$CURRENT_USER" /usr/libexec/PlistBuddy -c "Set :'Window Settings':'Pro':'CursorBlink' 'true'" /Users/"$CURRENT_USER"/Library/Preferences/com.apple.Terminal.plist
 
-# TODO: SIP prevents this. Must disable SIP in recovery mode temporarily.
 # Startup Chime / StartupMute=%01 to mute
 sudo -A nvram StartupMute=%00
 
 # Disable auto startup when opening the lid. AutoBoot=%03 to turn it back on
-# nvram AutoBoot=%00
+sudo -A nvram AutoBoot=%00
 
 # Enable location services
 # defaults write /var/db/locationd/Library/Preferences/ByHost/com.apple.locationd LocationServicesEnabled -int 1
