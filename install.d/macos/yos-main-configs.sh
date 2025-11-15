@@ -196,7 +196,7 @@ sudo -A -u "$CURRENT_USER" defaults write com.apple.ActivityMonitor DiskGraphTyp
 sudo -A -u "$CURRENT_USER" defaults write com.apple.ActivityMonitor NetworkGraphType -int 1
 
 # Uncheck 'Reopen Windows When Logging Back'
-sudo -A -u "$CURRENT_USER" defaults write com.apple.loginwindow TALLogoutSavesState -bool false
+sudo -A defaults write com.apple.loginwindow TALLogoutSavesState -bool false
 
 # Enable Firewall
 # /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
