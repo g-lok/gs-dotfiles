@@ -209,7 +209,6 @@ sudo -A -u "$CURRENT_USER" defaults write /Library/Preferences/com.apple.mDNSRes
 sudo -A pmset -a powernap 0
 sudo -A pmset -a womp 0
 
-return
 # Touch Bar shows Expanded Control Strip
 sudo -A -u "$CURRENT_USER" defaults write com.apple.touchbar.agent PresentationModeGlobal -string "fullControlStrip"
 
@@ -226,6 +225,7 @@ else
   echo "sudo -A Touch ID is now configured."
 fi
 
+return
 # Remove login items
 # sudo -A -u "$CURRENT_USER" /usr/bin/osascript -e 'tell application "System Events" to delete login item "Skype for Business"'
 
