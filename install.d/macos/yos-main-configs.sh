@@ -88,17 +88,17 @@ launchctl asuser "$USER_ID" sudo -A -u "$CURRENT_USER" defaults write com.apple.
 # sudo -A -u "$CURRENT_USER" osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/Users/Shared/wallpaper.png"'
 
 # Display all files and folders sizes
-# sudo -A -u "$CURRENT_USER" /usr/libexec/PlistBuddy -c "Set :'FK_StandardViewSettings':'ExtendedListViewSettingsV2':'calculateAllSizes' 'true'" /Users/$CURRENT_USER/Library/Preferences/com.apple.finder.plist
-# sudo -A -u "$CURRENT_USER" /usr/libexec/PlistBuddy -c "Set :'FK_StandardViewSettings':'ListViewSettings':'calculateAllSizes' 'true'" /Users/$CURRENT_USER/Library/Preferences/com.apple.finder.plist
-# sudo -A -u "$CURRENT_USER" /usr/libexec/PlistBuddy -c "Set :'StandardViewSettings':'ExtendedListViewSettingsV2':'calculateAllSizes' 'true'" /Users/$CURRENT_USER/Library/Preferences/com.apple.finder.plist
-# sudo -A -u "$CURRENT_USER" /usr/libexec/PlistBuddy -c "Set :'StandardViewSettings':'ListViewSettings':'calculateAllSizes' 'true'" /Users/$CURRENT_USER/Library/Preferences/com.apple.finder.plist
+sudo -A -u "$CURRENT_USER" /usr/libexec/PlistBuddy -c "Set :'FK_StandardViewSettings':'ExtendedListViewSettingsV2':'calculateAllSizes' 'true'" /Users/$CURRENT_USER/Library/Preferences/com.apple.finder.plist
+sudo -A -u "$CURRENT_USER" /usr/libexec/PlistBuddy -c "Set :'FK_StandardViewSettings':'ListViewSettings':'calculateAllSizes' 'true'" /Users/$CURRENT_USER/Library/Preferences/com.apple.finder.plist
+sudo -A -u "$CURRENT_USER" /usr/libexec/PlistBuddy -c "Set :'StandardViewSettings':'ExtendedListViewSettingsV2':'calculateAllSizes' 'true'" /Users/$CURRENT_USER/Library/Preferences/com.apple.finder.plist
+sudo -A -u "$CURRENT_USER" /usr/libexec/PlistBuddy -c "Set :'StandardViewSettings':'ListViewSettings':'calculateAllSizes' 'true'" /Users/$CURRENT_USER/Library/Preferences/com.apple.finder.plist
 
 # Use current directory as default search scope in Finder
 sudo -A -u "$CURRENT_USER" defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
 # Show hard drives and network drives on the Desktop
-# sudo -A -u "$CURRENT_USER" defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
-# sudo -A -u "$CURRENT_USER" defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
+sudo -A -u "$CURRENT_USER" defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
+sudo -A -u "$CURRENT_USER" defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
 
 ###################
 # SYSTEM SETTINGS #
@@ -173,7 +173,6 @@ sudo -A /usr/sbin/systemsetup -setusingnetworktime on
 sudo -A /usr/sbin/systemsetup -gettimezone
 sudo -A /usr/sbin/systemsetup -getnetworktimeserver
 
-return
 # Set timezone manually · Use /usr/sbin/systemsetup -listtimezones
 # /usr/sbin/systemsetup -settimezone America/New_York
 
@@ -186,6 +185,7 @@ launchctl asuser "$USER_ID" sudo -A -u "$CURRENT_USER" defaults write com.google
 launchctl asuser "$USER_ID" sudo -A -u "$CURRENT_USER" defaults write com.google.Chrome RelaunchNotification -int 2
 launchctl asuser "$USER_ID" sudo -A -u "$CURRENT_USER" defaults write com.google.Chrome ShowHomeButton -bool true
 
+return
 # Remove Wi-Fi SSID from known networks. Ex: forget the Wi-Fi dedicated to Mac enrollments
 for interface in $(networksetup -listnetworkserviceorder | grep Hardware | awk '/Wi-Fi/ { print $NF }' | awk -F ")" '{ print $1 }'); do
   echo "Disconnecting $interface from non-internal device network"
