@@ -141,14 +141,10 @@ export APP_CATEGORIES=$(gum choose "${OPTIONAL_APPS[@]}" --no-limit --header "Se
 readarray -t HOMEBREW_APP_CHOICES <<<"$APP_CATEGORIES"
 export HOMEBREW_APP_CHOICES
 
-export FOREGROUND="#FF0"
-export BACKGROUND="#0BB"
-export BORDER_FOREGROUND="212"
-
 ## Run installation scripts based on OS
 gum style \
-  --foreground="$FOREGROUND" --background="$BACKGROUND" \
-  --border-foreground="$BORDER_FOREGROUND" \
+  --foreground="#FF0" --background="#0BB" \
+  --border-foreground="212" \
   --border double \
   --align center --width 50 --margin "1 2" --padding "2 4" --bold "Running Installation and Configuration Scripts"
 
