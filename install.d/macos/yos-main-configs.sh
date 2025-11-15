@@ -216,15 +216,14 @@ sudo -A -u "$CURRENT_USER" defaults write com.apple.touchbar.agent PresentationM
 # sed -i '.bak' '2s/^/auth       sufficient     pam_tid.so\'$'\n/g' /private/etc/pam.d/sudo -A
 
 # Touch ID for sudo -A commands in Terminal · Sonoma + Sequoia
-CHECK_3RD_ROW=$(cat /private/etc/pam.d/sudo -A_local | sed -n 3p)
+CHECK_3RD_ROW=$(cat /private/etc/pam.d/sudo_local | sed -n 3p)
 if [ "$CHECK_3RD_ROW" = "auth       sufficient     pam_tid.so" ]; then
-  echo "sudo -A Touch ID is already configured."
+  echo "Sudo Touch ID is already configured."
 else
-  cp /private/etc/pam.d/sudo -A_local.template /private/etc/pam.d/sudo -A_local
-  sed -i '.bak' '3s/#//' "/private/etc/pam.d/sudo -A_local"
-  echo "sudo -A Touch ID is now configured."
+  cp /private/etc/pam.d/sudo_local.template /private/etc/pam.d/sudo_local
+  sed -i '.bak' '3s/#//' "/private/etc/pam.d/sudo_local"
+  echo "Sudo Touch ID is now configured."
 fi
-
 return
 # Remove login items
 # sudo -A -u "$CURRENT_USER" /usr/bin/osascript -e 'tell application "System Events" to delete login item "Skype for Business"'
