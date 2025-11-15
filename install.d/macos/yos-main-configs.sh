@@ -153,22 +153,23 @@ sudo -A -u "$CURRENT_USER" defaults write com.apple.Terminal "Startup Window Set
 sudo -A -u "$CURRENT_USER" /usr/libexec/PlistBuddy -c "Add :'Window Settings':'Pro':'CursorBlink' bool true" /Users/"$CURRENT_USER"/Library/Preferences/com.apple.Terminal.plist
 sudo -A -u "$CURRENT_USER" /usr/libexec/PlistBuddy -c "Set :'Window Settings':'Pro':'CursorBlink' 'true'" /Users/"$CURRENT_USER"/Library/Preferences/com.apple.Terminal.plist
 
+# TODO: SIP prevents this. Must disable SIP in recovery mode temporarily.
 # Startup Chime / StartupMute=%01 to mute
-sudo -A -u "$CURRENT_USER" nvram StartupMute=%00
+# sudo -A -u "$CURRENT_USER" nvram StartupMute=%00
 
-return
 # Disable auto startup when opening the lid. AutoBoot=%03 to turn it back on
 # nvram AutoBoot=%00
 
 # Enable location services
-defaults write /var/db/locationd/Library/Preferences/ByHost/com.apple.locationd LocationServicesEnabled -int 1
-killall locationd
-launchctl kickstart -k system/com.apple.locationd
+# defaults write /var/db/locationd/Library/Preferences/ByHost/com.apple.locationd LocationServicesEnabled -int 1
+# killall locationd
+# launchctl kickstart -k system/com.apple.locationd
 
 # Configure automatic timezone
-defaults write /Library/Preferences/com.apple.timezone.auto Active -bool YES
-defaults write /private/var/db/timed/Library/Preferences/com.apple.timed.plist TMAutomaticTimeOnlyEnabled -bool YES
-defaults write /private/var/db/timed/Library/Preferences/com.apple.timed.plist TMAutomaticTimeZoneEnabled -bool YES
+sudo -A -u "$CURRENT_USER" defaults write /Library/Preferences/com.apple.timezone.auto Active -bool YES
+sudo -A -u "$CURRENT_USER" defaults write /private/var/db/timed/Library/Preferences/com.apple.timed.plist TMAutomaticTimeOnlyEnabled -bool YES
+sudo -A -u "$CURRENT_USER" defaults write /private/var/db/timed/Library/Preferences/com.apple.timed.plist TMAutomaticTimeZoneEnabled -bool YES
+return
 
 # Set time, date, timezone automatically using current location
 /usr/sbin/systemsetup -setusingnetworktime on
