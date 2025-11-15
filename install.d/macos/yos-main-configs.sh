@@ -11,6 +11,9 @@
 #
 ###
 
+## debugging
+set -x
+
 # Get current Username and User ID
 CURRENT_USER=$(stat -f %Su /dev/console)
 USER_ID=$(id -u "$CURRENT_USER")
@@ -21,7 +24,6 @@ USER_ID=$(id -u "$CURRENT_USER")
 
 # Show battery percentage
 sudo -A -u "$CURRENT_USER" defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true
-echo !!
 return
 # Show date and seconds
 sudo -A -u "$CURRENT_USER" defaults write com.apple.menuextra.clock IsAnalog -int 0
