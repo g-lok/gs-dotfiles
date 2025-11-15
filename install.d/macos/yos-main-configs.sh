@@ -41,7 +41,6 @@ sudo -A -u "$CURRENT_USER" defaults -currentHost write com.apple.controlcenter S
 sudo -A -u "$CURRENT_USER" defaults write com.apple.Siri StatusMenuVisible -bool false
 sudo -A -u "$CURRENT_USER" defaults write com.apple.assistant.support "Assistant Enabled" -bool false
 
-return
 # Add VPN icon
 # sudo -A -u "$CURRENT_USER" open "/System/Library/CoreServices/Menu Extras/vpn.menu"
 
@@ -101,6 +100,7 @@ sudo -A -u "$CURRENT_USER" defaults write com.apple.finder FXDefaultSearchScope 
 # sudo -A -u "$CURRENT_USER" defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
 # sudo -A -u "$CURRENT_USER" defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
 
+return
 ###################
 # SYSTEM SETTINGS #
 ###################
