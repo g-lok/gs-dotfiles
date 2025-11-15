@@ -133,8 +133,11 @@ source "$GS_DOTFILES_PATH/install.d/directories.sh"
 ## so I have to set this to force colors.
 ## TODO: Colors are back but they're the wrong colors, and nothing I do is changing them.
 
+unset FOREGROUND
+unset BACKGROUND
+unset BORDER_FOREGROUND
 export FOREGROUND="#FF0"
-export BACKGROUND="#B33"
+export BACKGROUND="55"
 export BORDER_FOREGROUND="212"
 export CLICOLOR_FORCE=1
 export TERM="xterm-256color"
@@ -191,9 +194,6 @@ case $SCRIPT_OS in
 esac
 
 ## Setup gum environment variables
-export FOREGROUND="#FF0"
-export BACKGROUND="#0BB"
-export BORDER_FOREGROUND="212"
 gum style \
   --border double \
   --align center --width 50 --margin "1 2" --padding "2 4" --bold "GNU Stow Adopted existing configs to this repo." "Do you want to use G's Dotfile Configs?"
