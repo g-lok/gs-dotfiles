@@ -154,7 +154,7 @@ sudo -A -u "$CURRENT_USER" /usr/libexec/PlistBuddy -c "Add :'Window Settings':'P
 sudo -A -u "$CURRENT_USER" /usr/libexec/PlistBuddy -c "Set :'Window Settings':'Pro':'CursorBlink' 'true'" /Users/"$CURRENT_USER"/Library/Preferences/com.apple.Terminal.plist
 
 # Startup Chime / StartupMute=%01 to mute
-nvram StartupMute=%00
+sudo -A -u "$CURRENT_USER" nvram StartupMute=%00
 
 return
 # Disable auto startup when opening the lid. AutoBoot=%03 to turn it back on
