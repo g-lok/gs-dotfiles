@@ -134,7 +134,7 @@ source "$GS_DOTFILES_PATH/install.d/directories.sh"
 export CLICOLOR_FORCE=1
 
 export FOREGROUND="#FF0"
-export BACKGROUND="#0AA"
+export BACKGROUND="#088"
 export BORDER_FOREGROUND="212"
 
 ## Get installation choices
