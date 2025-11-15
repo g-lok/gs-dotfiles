@@ -133,6 +133,10 @@ source "$GS_DOTFILES_PATH/install.d/directories.sh"
 ## so I have to set this to force ANSI colors.
 export CLICOLOR_FORCE=1
 
+export FOREGROUND="#FF0"
+export BACKGROUND="#0AA"
+export BORDER_FOREGROUND="212"
+
 ## Get installation choices
 declare -a OPTIONAL_APPS
 declare -a APP_CATEGORIES
