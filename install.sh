@@ -129,6 +129,10 @@ export CI=true
 gum spin --spinner moon --title "Creating directories..." -- sleep 2
 source "$GS_DOTFILES_PATH/install.d/directories.sh"
 
+## I lose colors here for some reason,
+## so I have to set this to force ANSI colors.
+export CLICOLOR_FORCE=1
+
 ## Get installation choices
 declare -a OPTIONAL_APPS
 declare -a APP_CATEGORIES
@@ -140,10 +144,6 @@ export APP_CATEGORIES=$(gum choose "${OPTIONAL_APPS[@]}" --no-limit --header "Se
 ## but a newline delimited string.
 readarray -t HOMEBREW_APP_CHOICES <<<"$APP_CATEGORIES"
 export HOMEBREW_APP_CHOICES
-
-## I lose colors here for some reason,
-## so I have to set this to force ANSI colors.
-export CLICOLOR_FORCE=1
 
 ## Run installation scripts based on OS
 gum style \
