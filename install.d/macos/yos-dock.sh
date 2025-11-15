@@ -8,7 +8,8 @@ sudo -A -u "$CURRENT_USER" defaults write com.apple.dock autohide-time-modifier 
 
 sudo -A -u "$CURRENT_USER" defaults write com.apple.dock largesize -float 150.000000
 
-## Only show runnings apps in dock. Disable this, we're pinning apps.
+## Only show runnings apps in dock.
+## Disabled to pin ours, but uncomment if you want this
 # sudo -A -u "$CURRENT_USER" defaults write com.apple.dock static-only -bool TRUE
 
 ## Automatically hide and show the Dock
