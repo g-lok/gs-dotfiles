@@ -127,7 +127,7 @@ export CI=true
 
 ## Create directories under home
 gum spin --spinner moon --title "Creating directories..." -- sleep 2
-# source "$GS_DOTFILES_PATH/install.d/directories.sh"
+source "$GS_DOTFILES_PATH/install.d/directories.sh"
 
 ## Get installation choices
 declare -a OPTIONAL_APPS
@@ -140,6 +140,10 @@ export APP_CATEGORIES=$(gum choose "${OPTIONAL_APPS[@]}" --no-limit --header "Se
 ## but a newline delimited string.
 readarray -t HOMEBREW_APP_CHOICES <<<"$APP_CATEGORIES"
 export HOMEBREW_APP_CHOICES
+
+export FOREGROUND="#FF0"
+export BACKGROUND="#0BB"
+export BORDER_FOREGROUND="212"
 
 ## Run installation scripts based on OS
 gum style \
