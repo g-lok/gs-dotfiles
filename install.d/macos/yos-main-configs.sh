@@ -303,7 +303,6 @@ sudo -A security authorizationdb write system.settings.printing allow
 sudo -A dseditgroup -o edit -n /Local/Default -a everyone -t group lpadmin
 sudo -A dseditgroup -o edit -n /Local/Default -a everyone -t group _lpadmin
 
-return
 # Reset the authorizationdbdb to system default
 # /usr/bin/security authorizationdb reset
 
@@ -321,4 +320,4 @@ killall TextInputMenuAgent
 killall WindowManager
 killall replayd
 
-exit 0
+return
