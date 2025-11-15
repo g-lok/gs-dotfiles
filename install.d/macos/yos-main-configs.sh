@@ -204,10 +204,10 @@ sudo -A -u "$CURRENT_USER" defaults write com.apple.loginwindow TALLogoutSavesSt
 
 # Disable Bonjour Advertising Service. Doesn't affect AirDrop. Final Cut Studio and AirPort Base Station management may not operate properly.
 sudo -A -u "$CURRENT_USER" defaults write /Library/Preferences/com.apple.mDNSResponder.plist NoMulticastAdvertisements -bool true
-source
+#
 # Disable Power Nap & Wake for Network Access
-pmset -a powernap 0
-pmset -a womp 0
+sudo -A pmset -a powernap 0
+sudo -A pmset -a womp 0
 
 return
 # Touch Bar shows Expanded Control Strip
