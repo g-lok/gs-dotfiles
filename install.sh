@@ -151,20 +151,29 @@ gum style \
 
 case $SCRIPT_OS in
 "MacOS")
-  # source "$GS_DOTFILES_PATH/install.d/macos/yos-packages.sh" gum spin --spinner moon --title "Install Oh-My-Zsh" -- "$GS_DOTFILES_PATH/install.d/zsh.sh"
-  # "$GS_DOTFILES_PATH/install.d/zsh.sh"
+  gum spin --spinner moon --title "Installing HomeBrew Apps..." -- sleep 2
+  source "$GS_DOTFILES_PATH/install.d/macos/yos-packages.sh" gum spin --spinner moon --title "Install Oh-My-Zsh" -- "$GS_DOTFILES_PATH/install.d/zsh.sh"
+  gum spin --spinner moon --title "Installing Oh-My-Zsh..." -- sleep 2
+  source "$GS_DOTFILES_PATH/install.d/zsh.sh"
   # gum spin --spinner moon --title "Install Lazyvim" -- "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh"
-  # "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh"
+  gum spin --spinner moon --title "Installing LazyVim..." -- sleep 2
+  source "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh"
   # gum spin --spinner moon --title "Configure System Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh"
+  gum spin --spinner moon --title "Configuring main MacOS settings..." -- sleep 2
   source "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh"
   # gum spin --spinner moon --title "Configure Dock Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
+  gum spin --spinner moon --title "Configuring MacOS Dock settings..." -- sleep 2
   source "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
   # gum spin --spinner moon --title "Configure Peripheral Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh"
+  gum spin --spinner moon --title "Configuring peripherals..." -- sleep 2
   source "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh"
+  gum spin --spinner moon --title "Configuring screenshots..." -- sleep 2
   source "$GS_DOTFILES_PATH/install.d/macos/yos-screenshots.sh"
   # gum spin --spinner moon --title "Stow Dotfiles." -- "$GS_DOTFILES_PATH/install.d/dotfiles/dotfiles.sh"
+  gum spin --spinner moon --title "Configuring dotfiles..." -- sleep 2
   source "$GS_DOTFILES_PATH/install.d/dotfiles/dotfiles.sh"
   # gum spin --spinner moon --title "Configure Git." -- "$GS_DOTFILES_PATH/install.d/git.sh"
+  gum spin --spinner moon --title "Configuring git..." -- sleep 2
   source "$GS_DOTFILES_PATH/install.d/git.sh"
   ;;
 *)

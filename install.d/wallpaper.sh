@@ -5,8 +5,6 @@ cp "$GS_DOTFILES_PATH/themes/victorian-wallpaper.jpg" ~/Pictures/Wallpapers/
 case "$SCRIPT_OS" in
 "MacOS")
   filepath="$HOME/Pictures/Wallpapers/victorian-wallpaper.jpg"
-  echo "$filepath"
-  # osascript -e "$command_w_file"
   osascript -e 'tell application "Finder" to set desktop picture to POSIX file "'"$filepath"'"'
   ;;
 "linux_gui")
