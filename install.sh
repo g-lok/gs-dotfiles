@@ -136,22 +136,13 @@ declare -a APP_CATEGORIES
 OPTIONAL_APPS=("Developer_Tools" "DevOps_Tools" "Artist_Tools")
 export APP_CATEGORIES=$(gum choose "${OPTIONAL_APPS[@]}" --no-limit --header "Select optional application categories to install.")
 
+## I shouldn't have to do this,
+## but gum choose up there isn't creating an array,
+## but a newline delimited string.
 readarray -t HOMEBREW_APP_CHOICES <<<"$APP_CATEGORIES"
 export HOMEBREW_APP_CHOICES
-## test code for damn array
-for option in "${HOMEBREW_APP_CHOICES[@]}"; do
-  echo "option: $option"
-done
 
 ## Run installation scripts based on OS
-## Setup gum environment variables
-echo "$FOREGROUND"
-echo "$BACKGROUND"
-echo "$BORDER_FOREGROUND"
-# export GUM_STYLE_FOREGROUND="$FOREGROUND"
-# export GUM_STYLE_BACKGROUND="$BACKGROUND"
-# export GUM_STYLE_BORDER_FOREGROUND="$BORDER_FOREGROUND"
-
 gum style \
   --foreground="$FOREGROUND" --background="$BACKGROUND" \
   --border-foreground="$BORDER_FOREGROUND" \
@@ -160,14 +151,13 @@ gum style \
 
 case $SCRIPT_OS in
 "MacOS")
-  # gum spin --spinner moon --title "Installing Apps" -- "$GS_DOTFILES_PATH/install.d/macos/yos-packages.sh"
   source "$GS_DOTFILES_PATH/install.d/macos/yos-packages.sh"
   # gum spin --spinner moon --title "Install Oh-My-Zsh" -- "$GS_DOTFILES_PATH/install.d/zsh.sh"
   # "$GS_DOTFILES_PATH/install.d/zsh.sh"
   # gum spin --spinner moon --title "Install Lazyvim" -- "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh"
   # "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh"
   # gum spin --spinner moon --title "Configure System Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh"
-  # "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh"
+  source "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh"
   # gum spin --spinner moon --title "Configure Dock Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
   # "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
   # gum spin --spinner moon --title "Configure Peripheral Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh"

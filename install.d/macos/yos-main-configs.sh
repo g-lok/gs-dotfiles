@@ -21,7 +21,7 @@ USER_ID=$(id -u "$CURRENT_USER")
 
 # Show battery percentage
 sudo -A -u "$CURRENT_USER" defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true
-
+return
 # Show date and seconds
 sudo -A -u "$CURRENT_USER" defaults write com.apple.menuextra.clock IsAnalog -int 0
 sudo -A -u "$CURRENT_USER" defaults write com.apple.menuextra.clock Show24Hour -int 1
@@ -202,7 +202,7 @@ sudo -A -u "$CURRENT_USER" defaults write com.apple.loginwindow TALLogoutSavesSt
 
 # Disable Bonjour Advertising Service. Doesn't affect AirDrop. Final Cut Studio and AirPort Base Station management may not operate properly.
 defaults write /Library/Preferences/com.apple.mDNSResponder.plist NoMulticastAdvertisements -bool true
-
+source
 # Disable Power Nap & Wake for Network Access
 pmset -a powernap 0
 pmset -a womp 0
