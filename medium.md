@@ -61,12 +61,6 @@ Don't forget to use a shebang that looks for the current environment bash and no
 #!/usr/bin/env bash
 ```
 
-### Verbosity
-
-My original scripts set verbose output. I tested this and it is clear I definitely DO NOT want verbose output.  I'll set things to whatever Omakub sets it to:
-
-```bash
-set -e
 ```
 
 ### Ascii Art
@@ -84,22 +78,6 @@ ascii_art='  _______/\        ________          __    _____.__.__
 
 ```
 
-I can't figure out how to paste this in lazyvim without everything getting screwed up.  Even the original string I copied that looked fine in the script looks completely mangled when I echo it to the terminal.  I need to figure out how to copy/display that string correctly.
-
-UPDATE! I fixed this using a `here document`:
-
-```bash
-cat <<"EOF"
-  _______/\        ________          __    _____.__.__                 
- /  _____)/ ______ \______ \   _____/  |__/ ____\__|  |   ____   ______
-/   \  ___ /  ___/  |    |  \ /  _ \   __\   __\|  |  | _/ __ \ /  ___/
-\    \_\  \\___ \   |    `   (  <_> )  |  |  |  |  |  |_\  ___/ \___ \ 
- \______  /____  > /_______  /\____/|__|  |__|  |__|____/\___  >____  >
-        \/     \/          \/                                \/     \/
-EOF
-
-```
-
 The Omakub scripts has this in their boot.sh script, which is the first script that launches everything.  It also has a script devoted entirely to making the banner colored and pretty, but that script never appears to be called by anything else, so I don't know how it works or why it's there. That's a problem for later, I'll just copy Omakub if need be.
 
 ## Gum and our package manager - HomeBrew
@@ -112,7 +90,6 @@ Yes I'm aware that Nix exists and maybe (probably) is superior, but Homebrew has
 
 The fact Omakub uses Gum is a funny coincidence, since my buddy showed me the [Charm Bracelet Site](https://charm.land/) a few months ago, and my response was "God I wish I had something like this for shell scripts and Python. Too bad it's only for Go..." and now we're here. I should look more carefully at these things.
 
-
 ### Install Homebrew and Gum
 
 I had to do several things to install Homebrew and Gum.  First was I had to get a sudo user session cached so I could avoid as many prompts as possible.
@@ -122,6 +99,7 @@ sudo --validate
 ```
 
 Next is to figure out what OS I'm on, export it as an environment variable, and install any requirements I may need for Homebrew.  On MacOS Homebrew requires the Xcode Select  COmmand Line Applications installed, so we'll take care of that here:
+
 ```bash
 case "$OS" in
 "Linux")
@@ -157,12 +135,12 @@ esac
 ```
 
 ## Install Homebrew and Gum
+
 I need to install Homebrew non-interactively, because I want to keep this tidy and throw noisy apps behind `gum spin`, which won't notify users that something is prompting them for their input.  Huge pain if I say so myself, most of my time has be spent trying to figure out how make all the surprise `sudo` requests, prompts, and errors hidden by `gum spin` go away.
 
 You run Homebrew non-interactively by setting the `NONINTERACTIVE=1` env variable when you run the script.
 
 I also need to temporarily load Homebrew into the `$PATH` so I can actually access `gum` and `stow`.  However, where that is depends on what kind of system you're running, so I had to load them all and hope that everything would be covered.
-
 
 ```bash
 ## Install Homebrew
@@ -241,6 +219,24 @@ OPTIONAL_CATEGORIES=("Developer Tools" "DevOps tools" "Artist Tools")
 export APP_CATEGORIES=$(gum choose "${OPTIONAL_CATEGORIES[@]}" --no-limit --header "Select optional application categories to install.")
 ```
 
+This actually didn't work. For some reason `gum choose` wasn't returning an array, but a single newline delimited string.  I went nuts trying to figure out what I was doing wrong, and eventually decided to give up and just convert the string back to an array. Here is the updated code:
+
+```bash
+## Get installation choices
+declare -a OPTIONAL_APPS
+declare -a APP_CATEGORIES
+OPTIONAL_APPS=("Developer_Tools" "DevOps_Tools" "Artist_Tools")
+export APP_CATEGORIES=$(gum choose "${OPTIONAL_APPS[@]}" --no-limit --header "Select optional application categories to install.")
+
+## I shouldn't have to do this,
+## but gum choose up there isn't creating an array,
+## but a newline delimited string.
+readarray -t HOMEBREW_APP_CHOICES <<<"$APP_CATEGORIES"
+export HOMEBREW_APP_CHOICES
+
+
+```
+
 I probably want to dial in questions about what mise programming languages or databases to install if the user selected Developer Tools, but I'll worry about that later. Right now they're getting all the languages *I* want, and no dbs for now.
 
 We'll have to split up the script between Linux and Darwin again. This time I'm going to run a OS specific script that does all my installation duty stuff through `gum spin`.
@@ -308,10 +304,7 @@ install_furnace() {
   printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/instruments/" "$HOME/Documents/Furnace/"
   printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/wavetables/" "$HOME/Documents/Furnace/"
   rm "furnace_latest_mac_release.dmg"
-
 ```
-
-BUG: This is still asking for sudo, which it shouldn't be doing. WHY DOES NOTHING IN MAC RESPECT THE SUDO SESSION I ALREADY ESTABLISHED?!?!
 
 #### Homebrew Issues
 
@@ -322,9 +315,11 @@ In order to get Homebrew to work without prompts, you have to do a few things:
 1. Get the user password and assign it to a variable that begins with "HOMEBREW_". This is because we're going to have to echo that variable from another script, and Homebrew unsets most env variables that don't have that prefix, so your script will echo nothing.
 1. Create a simple script that `echo`s the password env variable up there.
 1. `export` an env variable called `SUDO_ASKPASS`, which has to point to the script above that spits out the password. Homebrew will use this to pass the password to any sudo prompts that come up. Note that this isn't using `eval` to actually execute the script, it is just a string to the scipt file location, because `SUDO_ASKPASS` makes no sense.<br>
+
 ```bash
 export SUDO_ASKPASS="$GS_DOTFILES_PATH/install.d/returnpass.sh"
 ```
+
 1 `export CI=true` for good measure.
 
 Another problem I'm STILL having is that my `gum choose` code to select which App bundles to include isn't working. For some reason it doesn't parse the array properly and returns a long newline delimited string of your choices.  
@@ -337,14 +332,16 @@ One of the main reasons I originally created this repo was because the default M
 
 I stole most of my configs from [La Clementine](https://medium.com/@laclementine/dotfile-for-mac-efe082ad0d6a). I went through them and commented out some things I didn't want, but most of them are there. Note that these were made for Sequoia. They still work, but there's probably some newer Tahoe stuff I need to add.
 
-Unfortunately, a ton of these config one liners raises a security popup in MacOS.  I can't make them go away with `sudo` because these are the MacOS system security UI prompt.  I'll try to figure it out but if I can't, I'll just instruct people to setup their fingerprint reader so at least they won't have to type their password over and over.
-
 I also included some of my own, such as
 
 1. Dramatically increasing the keyboard speed.
 1. Setting up a screenshots folder.
 1. Changing dock behavior.  Hide it by default, increase speed, backup and remove all the pinned items and replace them with my own.
-1. I also set my desktop background, which has served me well for the last 10+ years, and I think is a much nicer and unobtrusive choice compared to Omakub's Tokyo Night. It's a Victorian style black and white wallpaper pattern that sits nicely in the background, and matches just about any app or theme. Once I add themes I'll probably use Omakub's default wallpapers for each theme.
+1. I also set my desktop background, which has served me well for the last 10+ years. It's a Victorian style black and white wallpaper pattern that sits nicely in the background, and matches just about any app or theme. Once I add themes I'll probably use Omakub's default wallpapers for each theme.
+
+### Problems with sudo and env variables
+
+I had a lot of problems with scripts not respecting sudo or giving me privilege errors for this or that, and losing environment variables everywhere.  I realized this was happening because I was just executing scripts directly, when I should have been using `source`. This also meant I couldn't use `gum spin`, since it wants something to run, and `source` isn't technically a command I guess. Bummer. Maybe there's a way to do this, let me know.  I really want to use `gum spin`.
 
 ### The Dotfiles
 

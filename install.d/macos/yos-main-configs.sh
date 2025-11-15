@@ -185,13 +185,13 @@ launchctl asuser "$USER_ID" sudo -A -u "$CURRENT_USER" defaults write com.google
 launchctl asuser "$USER_ID" sudo -A -u "$CURRENT_USER" defaults write com.google.Chrome RelaunchNotification -int 2
 launchctl asuser "$USER_ID" sudo -A -u "$CURRENT_USER" defaults write com.google.Chrome ShowHomeButton -bool true
 
-return
 # Remove Wi-Fi SSID from known networks. Ex: forget the Wi-Fi dedicated to Mac enrollments
 for interface in $(networksetup -listnetworkserviceorder | grep Hardware | awk '/Wi-Fi/ { print $NF }' | awk -F ")" '{ print $1 }'); do
   echo "Disconnecting $interface from non-internal device network"
   networksetup -removepreferredwirelessnetwork "$interface" "NAME_OF_SSID"
 done
 
+return
 # Activity Monitor : Show Data in graph instead of IO and packets
 sudo -A -u "$CURRENT_USER" defaults write com.apple.ActivityMonitor DiskGraphType -int 1
 sudo -A -u "$CURRENT_USER" defaults write com.apple.ActivityMonitor NetworkGraphType -int 1
