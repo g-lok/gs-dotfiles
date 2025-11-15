@@ -11,9 +11,6 @@
 #
 ###
 
-## debugging
-set -x
-
 # Get current Username and User ID
 CURRENT_USER=$(stat -f %Su /dev/console)
 USER_ID=$(id -u "$CURRENT_USER")
