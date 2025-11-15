@@ -167,9 +167,9 @@ sudo -A -u "$CURRENT_USER" /usr/libexec/PlistBuddy -c "Set :'Window Settings':'P
 
 # TODO: This doesn't work either
 # Configure automatic timezone
-# sudo -A -u "$CURRENT_USER" defaults write /Library/Preferences/com.apple.timezone.auto Active -bool YES
-# sudo -A -u "$CURRENT_USER" defaults write /private/var/db/timed/Library/Preferences/com.apple.timed.plist TMAutomaticTimeOnlyEnabled -bool YES
-# sudo -A -u "$CURRENT_USER" defaults write /private/var/db/timed/Library/Preferences/com.apple.timed.plist TMAutomaticTimeZoneEnabled -bool YES
+sudo -A defaults write /Library/Preferences/com.apple.timezone.auto Active -bool YES
+sudo -A defaults write /private/var/db/timed/Library/Preferences/com.apple.timed.plist TMAutomaticTimeOnlyEnabled -bool YES
+sudo -A defaults write /private/var/db/timed/Library/Preferences/com.apple.timed.plist TMAutomaticTimeZoneEnabled -bool YES
 
 # Set time, date, timezone automatically using current location
 sudo -A /usr/sbin/systemsetup -setusingnetworktime on
