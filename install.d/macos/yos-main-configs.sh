@@ -100,7 +100,6 @@ sudo -A -u "$CURRENT_USER" defaults write com.apple.finder FXDefaultSearchScope 
 # sudo -A -u "$CURRENT_USER" defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
 # sudo -A -u "$CURRENT_USER" defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
 
-return
 ###################
 # SYSTEM SETTINGS #
 ###################
@@ -139,6 +138,7 @@ sudo -A -u "$CURRENT_USER" defaults write com.apple.ImageCapture disableHotPlug 
 # Disable shadows on screenshots
 sudo -A -u "$CURRENT_USER" defaults write com.apple.screencapture disable-shadow -bool true
 
+return
 # Enable automatic updates
 defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticallyInstallMacOSUpdates -bool true
 defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticCheckEnabled -bool true
