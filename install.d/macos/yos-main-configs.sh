@@ -240,7 +240,6 @@ sudo -A -u "$CURRENT_USER" defaults write "/Users/$CURRENT_USER/Library/Group Co
 sudo -A -u "$CURRENT_USER" defaults write "/Users/$CURRENT_USER/Library/Group Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist" "/Applications/Microsoft Teams.app/Contents/MacOS/MSTeams" -date "3024-09-22 12:12:12 +0000"
 sudo -A -u "$CURRENT_USER" defaults write "/Users/$CURRENT_USER/Library/Group Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist" "/Applications/TeamViewer.app/Contents/MacOS/TeamViewer" -date "3024-09-22 12:12:12 +0000"
 
-return
 ################
 # LOGIN SCREEN #
 ################
@@ -264,25 +263,26 @@ return
 # dscl . create /Users/"$CURRENT_USER" Picture "/Users/Shared/user.png"
 
 # Disable password hints
-defaults write com.apple.loginwindow RetriesUntilHint -int 0
+# defaults write com.apple.loginwindow RetriesUntilHint -int 0
 
 ##############################
 # UNLOCKS FOR NON-ADMIN USER #
 ##############################
 
 # Unlock System Preferences for non admins
-security authorizationdb write system.preferences allow
-security authorizationdb write system.settings allow
+# security authorizationdb write system.preferences allow
+# security authorizationdb write system.settings allow
 
 # Unlock Date and Time
-security authorizationdb write system.settings.datetime allow
-security authorizationdb write system.settings.dateandtime.changetimezone allow
-security authorizationdb write system.preferences.datetime allow
-security authorizationdb write system.preferences.dateandtime allow
-security authorizationdb write system.preferences.dateandtime.changetimezone allow
-security authorizationdb write system.preferences.dateandtime.changetimezone authenticate-session-owner-or-admin
-security authorizationdb write system.preferences.dateandtime authenticate-session-owner-or-admin
+sudo -A security authorizationdb write system.settings.datetime allow
+sudo -A security authorizationdb write system.settings.dateandtime.changetimezone allow
+sudo -A security authorizationdb write system.preferences.datetime allow
+sudo -A security authorizationdb write system.preferences.dateandtime allow
+sudo -A security authorizationdb write system.preferences.dateandtime.changetimezone allow
+sudo -A security authorizationdb write system.preferences.dateandtime.changetimezone authenticate-session-owner-or-admin
+sudo -A security authorizationdb write system.preferences.dateandtime authenticate-session-owner-or-admin
 
+return
 # Unlock Energy Saver preference pane
 security authorizationdb write system.preferences.energysaver allow
 security authorizationdb write system.settings.energysaver allow
