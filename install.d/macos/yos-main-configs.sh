@@ -165,17 +165,18 @@ sudo -A -u "$CURRENT_USER" /usr/libexec/PlistBuddy -c "Set :'Window Settings':'P
 # killall locationd
 # launchctl kickstart -k system/com.apple.locationd
 
+# TODO: This doesn't work either
 # Configure automatic timezone
-sudo -A -u "$CURRENT_USER" defaults write /Library/Preferences/com.apple.timezone.auto Active -bool YES
-sudo -A -u "$CURRENT_USER" defaults write /private/var/db/timed/Library/Preferences/com.apple.timed.plist TMAutomaticTimeOnlyEnabled -bool YES
-sudo -A -u "$CURRENT_USER" defaults write /private/var/db/timed/Library/Preferences/com.apple.timed.plist TMAutomaticTimeZoneEnabled -bool YES
-return
+# sudo -A -u "$CURRENT_USER" defaults write /Library/Preferences/com.apple.timezone.auto Active -bool YES
+# sudo -A -u "$CURRENT_USER" defaults write /private/var/db/timed/Library/Preferences/com.apple.timed.plist TMAutomaticTimeOnlyEnabled -bool YES
+# sudo -A -u "$CURRENT_USER" defaults write /private/var/db/timed/Library/Preferences/com.apple.timed.plist TMAutomaticTimeZoneEnabled -bool YES
 
 # Set time, date, timezone automatically using current location
 /usr/sbin/systemsetup -setusingnetworktime on
 /usr/sbin/systemsetup -gettimezone
 /usr/sbin/systemsetup -getnetworktimeserver
 
+return
 # Set timezone manually · Use /usr/sbin/systemsetup -listtimezones
 # /usr/sbin/systemsetup -settimezone America/New_York
 
