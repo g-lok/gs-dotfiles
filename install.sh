@@ -127,7 +127,7 @@ export CI=true
 
 ## Create directories under home
 gum spin --spinner moon --title "Creating directories..." -- sleep 2
-source "$GS_DOTFILES_PATH/install.d/directories.sh"
+# source "$GS_DOTFILES_PATH/install.d/directories.sh"
 
 ## Get installation choices
 declare -a OPTIONAL_APPS
