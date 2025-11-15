@@ -139,12 +139,12 @@ sudo -A -u "$CURRENT_USER" defaults write com.apple.ImageCapture disableHotPlug 
 sudo -A -u "$CURRENT_USER" defaults write com.apple.screencapture disable-shadow -bool true
 
 # Enable automatic updates
-defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticallyInstallMacOSUpdates -bool true
-defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticCheckEnabled -bool true
-defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticDownload -bool true
-defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist CriticalUpdateInstall -bool true
-defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist ConfigDataInstall -bool true
-defaults write /Library/Preferences/com.apple.commerce.plist AutoUpdate -bool true
+sudo -A -u "$CURRENT_USER" defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticallyInstallMacOSUpdates -bool true
+sudo -A -u "$CURRENT_USER" defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticCheckEnabled -bool true
+sudo -A -u "$CURRENT_USER" defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticDownload -bool true
+sudo -A -u "$CURRENT_USER" defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist CriticalUpdateInstall -bool true
+sudo -A -u "$CURRENT_USER" defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist ConfigDataInstall -bool true
+sudo -A -u "$CURRENT_USER" defaults write /Library/Preferences/com.apple.commerce.plist AutoUpdate -bool true
 
 # Change Terminal settings
 sudo -A -u "$CURRENT_USER" defaults write com.apple.Terminal "Default Window Settings" -string "Pro"
