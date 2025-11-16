@@ -21,7 +21,7 @@ alias lsa='ls -a'
 alias lt='eza --tree --level=2 --long --icons --git'
 alias lta='lt -a'
 alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
-alias fd='fdfind'
+# alias fd='fdfind'
 alias cd='z'
 
 # Directories
