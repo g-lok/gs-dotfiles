@@ -2,6 +2,8 @@
 # Ignore if we're not on OSX
 [[ "$OSTYPE" =~ darwin* ]] || exit 0
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE}")" && pwd)"
+
 ## Determine if we're on Intel or Arm64
 if [[ "$(uname -m)" == "arm64" ]]; then
   CHIPSET="ARM64"
@@ -53,8 +55,6 @@ install_optional_tools() {
     ;;
   esac
 }
-
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE}")" && pwd)"
 
 brew bundle install --file "$SCRIPT_DIR/Brewfile-terminal-apps"
 brew bundle install --file "$SCRIPT_DIR/Brewfile-desktop-apps"
