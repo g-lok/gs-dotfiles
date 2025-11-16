@@ -30,9 +30,9 @@ install_furnace() {
   printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/Furnace.app" "/Applications/"
   mkdir -p "$HOME/Documents/Furnace"
   printf "$HOMEBREW_PASSWORD" | sudo -S cp "/Volumes/Furnace/manual.pdf" "$HOME/Documents/Furnace/"
-  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/demos/" "$HOME/Documents/Furnace/"
-  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/instruments/" "$HOME/Documents/Furnace/"
-  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/wavetables/" "$HOME/Documents/Furnace/"
+  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/demos" "$HOME/Documents/Furnace/"
+  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/instruments" "$HOME/Documents/Furnace/"
+  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/wavetables" "$HOME/Documents/Furnace/"
   rm "$SCRIPT_DIR/furnace_latest_mac_release.dmg"
 }
 
@@ -61,7 +61,7 @@ brew bundle install --file "$SCRIPT_DIR/Brewfile-desktop-apps"
 brew bundle install --file "$SCRIPT_DIR/Brewfile-nerdfonts"
 
 ## Install optional packages
-if [[ ${HOMEBREW_APP_CHOICES[@]} -gt 0 ]]; then
+if ((${#HOMEBREW_APP_CHOICES[@]} != 0)); then
   for optionals in "${HOMEBREW_APP_CHOICES[@]}"; do
     install_optional_tools "$optionals"
   done
