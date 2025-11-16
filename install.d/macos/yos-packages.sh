@@ -26,14 +26,14 @@ install_furnace() {
     jq -r ".assets[] | select(.name | contains(\"$ASSET_NAME\")) | .browser_download_url" |
     xargs -I {} curl -L -o "$SCRIPT_DIR/furnace_latest_mac_release.dmg" {}
 
-  printf "$HOMEBREW_PASSWORD" | hdiutil attach -stdinpass "$SCRIPT_DIR/furnace_latest_mac_release.dmg"
-  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/Furnace.app" "/Applications/"
-  mkdir -p "$HOME/Documents/Furnace"
-  printf "$HOMEBREW_PASSWORD" | sudo -S cp "/Volumes/Furnace/manual.pdf" "$HOME/Documents/Furnace/"
-  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/demos/" "$HOME/Documents/Furnace/"
-  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/instruments/" "$HOME/Documents/Furnace/"
-  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/wavetables/" "$HOME/Documents/Furnace/"
-  rm "$SCRIPT_DIR/furnace_latest_mac_release.dmg"
+  # printf "$HOMEBREW_PASSWORD" | hdiutil attach -stdinpass "$SCRIPT_DIR/furnace_latest_mac_release.dmg"
+  # printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/Furnace.app" "/Applications/"
+  # mkdir -p "$HOME/Documents/Furnace"
+  # printf "$HOMEBREW_PASSWORD" | sudo -S cp "/Volumes/Furnace/manual.pdf" "$HOME/Documents/Furnace/"
+  # printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/demos/" "$HOME/Documents/Furnace/"
+  # printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/instruments/" "$HOME/Documents/Furnace/"
+  # printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/wavetables/" "$HOME/Documents/Furnace/"
+  # rm "$SCRIPT_DIR/furnace_latest_mac_release.dmg"
 }
 
 ## Function to install optional toolsets
@@ -61,8 +61,10 @@ brew bundle install --file "$SCRIPT_DIR/Brewfile-desktop-apps"
 brew bundle install --file "$SCRIPT_DIR/Brewfile-nerdfonts"
 
 ## Install optional packages
-for optionals in "${HOMEBREW_APP_CHOICES[@]}"; do
-  install_optional_tools "$optionals"
-done
+if [[ ${HOMEBREW_APP_CHOICES[@]} -gt 0 ]]; then
+  for optionals in "${HOMEBREW_APP_CHOICES[@]}"; do
+    install_optional_tools "$optionals"
+  done
+fi
 
 brew cleanup

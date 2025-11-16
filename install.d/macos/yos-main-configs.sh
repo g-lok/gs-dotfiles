@@ -233,11 +233,11 @@ sudo -A -u "$CURRENT_USER" defaults write com.apple.touchbar.agent PresentationM
 sudo -A -u "$CURRENT_USER" defaults write com.apple.WindowManager EnableTiledWindowMargins -bool false
 
 # Stop macOS 15 Sequoia monthly screen recording prompts for Chrome, Slack, Zoom, Teams and TeamViewer
-sudo -A -u "$CURRENT_USER" defaults write "/Users/$CURRENT_USER/Library/Group Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist" "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" -date "3024-09-22 12:12:12 +0000"
-sudo -A -u "$CURRENT_USER" defaults write "/Users/$CURRENT_USER/Library/Group Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist" "/Applications/Slack.app/Contents/MacOS/Slack" -date "3024-09-22 12:12:12 +0000"
-sudo -A -u "$CURRENT_USER" defaults write "/Users/$CURRENT_USER/Library/Group Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist" "/Applications/zoom.us.app/Contents/MacOS/zoom.us" -date "3024-09-22 12:12:12 +0000"
-sudo -A -u "$CURRENT_USER" defaults write "/Users/$CURRENT_USER/Library/Group Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist" "/Applications/Microsoft Teams.app/Contents/MacOS/MSTeams" -date "3024-09-22 12:12:12 +0000"
-sudo -A -u "$CURRENT_USER" defaults write "/Users/$CURRENT_USER/Library/Group Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist" "/Applications/TeamViewer.app/Contents/MacOS/TeamViewer" -date "3024-09-22 12:12:12 +0000"
+# sudo -A -u "$CURRENT_USER" defaults write "/Users/$CURRENT_USER/Library/Group Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist" "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" -date "3024-09-22 12:12:12 +0000"
+# sudo -A -u "$CURRENT_USER" defaults write "/Users/$CURRENT_USER/Library/Group Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist" "/Applications/Slack.app/Contents/MacOS/Slack" -date "3024-09-22 12:12:12 +0000"
+# sudo -A -u "$CURRENT_USER" defaults write "/Users/$CURRENT_USER/Library/Group Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist" "/Applications/zoom.us.app/Contents/MacOS/zoom.us" -date "3024-09-22 12:12:12 +0000"
+# sudo -A -u "$CURRENT_USER" defaults write "/Users/$CURRENT_USER/Library/Group Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist" "/Applications/Microsoft Teams.app/Contents/MacOS/MSTeams" -date "3024-09-22 12:12:12 +0000"
+# sudo -A -u "$CURRENT_USER" defaults write "/Users/$CURRENT_USER/Library/Group Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist" "/Applications/TeamViewer.app/Contents/MacOS/TeamViewer" -date "3024-09-22 12:12:12 +0000"
 
 ################
 # LOGIN SCREEN #
