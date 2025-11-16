@@ -18,7 +18,7 @@ install_furnace() {
   if [[ $CHIPSET == "ARM64" ]]; then
     ASSET_NAME="mac-arm64"
   else
-    ASSET_NAME="mac-intel"
+    ASSET_NAME="mac-Intel"
   fi
 
   ## Fetch the latest release and extract the browser_download_url for the macOS asset
@@ -26,14 +26,14 @@ install_furnace() {
     jq -r ".assets[] | select(.name | contains(\"$ASSET_NAME\")) | .browser_download_url" |
     xargs -I {} curl -L -o "$SCRIPT_DIR/furnace_latest_mac_release.dmg" {}
 
-  # printf "$HOMEBREW_PASSWORD" | hdiutil attach -stdinpass "$SCRIPT_DIR/furnace_latest_mac_release.dmg"
-  # printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/Furnace.app" "/Applications/"
-  # mkdir -p "$HOME/Documents/Furnace"
-  # printf "$HOMEBREW_PASSWORD" | sudo -S cp "/Volumes/Furnace/manual.pdf" "$HOME/Documents/Furnace/"
-  # printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/demos/" "$HOME/Documents/Furnace/"
-  # printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/instruments/" "$HOME/Documents/Furnace/"
-  # printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/wavetables/" "$HOME/Documents/Furnace/"
-  # rm "$SCRIPT_DIR/furnace_latest_mac_release.dmg"
+  printf "$HOMEBREW_PASSWORD" | hdiutil attach -stdinpass "$SCRIPT_DIR/furnace_latest_mac_release.dmg"
+  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/Furnace.app" "/Applications/"
+  mkdir -p "$HOME/Documents/Furnace"
+  printf "$HOMEBREW_PASSWORD" | sudo -S cp "/Volumes/Furnace/manual.pdf" "$HOME/Documents/Furnace/"
+  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/demos/" "$HOME/Documents/Furnace/"
+  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/instruments/" "$HOME/Documents/Furnace/"
+  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/wavetables/" "$HOME/Documents/Furnace/"
+  rm "$SCRIPT_DIR/furnace_latest_mac_release.dmg"
 }
 
 ## Function to install optional toolsets
