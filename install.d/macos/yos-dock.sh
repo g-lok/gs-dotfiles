@@ -26,7 +26,7 @@ sudo -A -u "$CURRENT_USER" defaults write com.apple.dock showhidden -bool TRUE
 
 ### Replace dock items with selected app
 ## Backup and remove all current dock items
-sudo -A -u "$CURRENT_USER" cp -a "~/Library/Preferences/com.apple.dock.plist" "~/Library/Preferences/com.apple.dock.plist.bkp"
+# sudo -A -u "$CURRENT_USER" cp -a "~/Library/Preferences/com.apple.dock.plist" "~/Library/Preferences/com.apple.dock.plist.bkp"
 sudo -A -u "$CURRENT_USER" defaults delete com.apple.dock persistent-apps
 
 ## Pin Recommended Apps

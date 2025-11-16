@@ -46,7 +46,6 @@ export GS_DOTFILES_PATH=$(dirname "$(readlink -f "$0")")
 ## MacOS or Linux?
 # Get the operating system name
 OS=$(uname -s)
-
 case "$OS" in
 "Linux")
   # Add Linux-specific commands here
@@ -188,7 +187,7 @@ esac
 ## Setup dotfiles
 gum style \
   --border double \
-  --align center --width 50 --margin "1 2" --padding "2 4" --bold "GNU Stow Adopted existing configs to this repo." "Do you want to use G's Dotfile Configs?"
+  --align center --width 50 --margin "1 2" --padding "2 4" --bold "GNU Stow Adopted existing configs to this repo." "Do you want to use G's Dotfile Configs instead?"
 gum confirm && git restore . || echo "No git actions taken. Using adopted configs."
 
 ## Setup Wallpaper
