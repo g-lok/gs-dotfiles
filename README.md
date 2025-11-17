@@ -17,7 +17,12 @@ It is also designed to provide most of the [Omakub](https://omakub.org/) functio
 ## How it do
 
 1. Open your terminal
-1. Run the following scipt: (coming soon)
+1. Run the following script:<br>
+
+```bash
+./install.sh
+```
+
 1. Follow the prompts.
 1. You're done!
 1. Restart your machine just to be safe.
@@ -47,19 +52,13 @@ In particular, I cannot imagine life without its clipboard history manager.
 
 And much, much more! To see everything this is installing, open the various `Brewfile-*` files under the `install.d/[your os]` folder.
 
-### You're using a launcher and Homebrew for apps now
+### MacOS: Use Alfred instead of spotlight and pay for the PowerPack
 
-**NOT ENOUGH OF YOU ARE USING LAUNCHERS!**
+Clear your Spotlight keyboard shortcut, and set the Alfred keyboard shortcut to `Command+Space`.
 
-Set up Alfred (or Apple Spotlight if you wish), set the keyboard shortcut to `Command+Space`, and use that to launch your apps and do searches and other things.  It is a very powerful tool that gets you away from your mouse/trackpad. Use your keyboard, learn your keyboard shortcuts, use your terminal (see below), it will improve your life dramatically.
+Buy the PowerPack. It is a very powerful launcher that goes far beyond launching apps and doing basic searches.  It has powerful automation and custom tooling and workflows for power users.
 
-### NOT ENOUGH OF YOU ARE USING THE TERMINAL
-
-I get it, you are a squishy little baby and the command line scares you.  But the way forward to becoming NOT a squishy baby and a motorcyle riding killer assassin is to use the command line (Alacrtitty).
-
-Pick up [this book](https://a.co/d/bwIR32o) to learn everything you need to know.  Just know that you aren't using `bash`, you are using `zsh`.
-
-The terminal is the most powererful tool in your OS's arsenal. Yours is `Alacritty`, using the `zsh` shell, with the `Zellij` sesssion manager inside it.
+It also has a clipboard history manager, which is a major life improvement if you've never used one before. If you have the Powerpack, go to Settings -> Features -> Clipboard History, set a good keyboard shortcut, and give it a spin.
 
 #### Homebrew
 
@@ -84,7 +83,9 @@ This is using GNU Stow to create sylinks to config dotfiles here in the reposito
 
 That is why `stow` is `adopt`-ing any of these files you have first. Look it up.  Then it will `stow restow` to cleanly install the dotfiles.
 
-Anyway your config files are in this repo now, now the question is, which of these do you want to keep? Because if you want MY configs, you need to blow these out by `git rebasing`. The script will tell you when it's time to do this.
+Anyway your config files are in this repo now, now the question is, which of these do you want to keep? Because if you want MY configs, you need to blow these out by `git rebasing`. The script will prompt you when it's time to do this. If you don't have your own dotfiles or know what a dotfile is, just choose `yes` when it asks you.
+
+This is creating symbolic links from the system locations to this repository, so make sure you cloned it somewhere you won't lose it.
 
 ## What else is this doing?
 
@@ -93,18 +94,24 @@ Gosh, um:
 1. Creating a list of handy folders under you `$HOME` directory. The list is found in the `install.d/directories.sh` script.
 1. Changes your desktop wallpaper (optional) - I'm sure you like yours, but I think mine is better. In the future I'm going to include different wallpapers for different theme choices, but that is not ready yet. Right now you get my wallpaper and `Tokyo Night`, and you're going to LIKE IT.
 1. Installs zsh and Oh-My-Zsh with plugins to make your shell experience real nice.
+1. Uses `mise` to install and manage programming languages.
+1. Gives me a lot of agitation to maintain. I hate complicated Bash scripting, it gives me serious heartburn. I did this all for you, so you can thank me with beer and Prilosec.
 
 ## TODO
 
-1. Fix the `gum choose` bug preventing me from allowing selections in the app categories installation.
 1. Add linux. Debian systems first, specifically Kubuntu and Kali (Gnome only), since that's what I'm rocking.
+1. I just found out Homebrew for linux doesn't support casks (GUI applications) so I'm probably going to use Nix or something with cross-compatibility for that.
 1. Add theme and font selection.
-1. Fine tune programming language installation using `mise`.
 1. Add support for selecting and installing databases via docker.
 1. Expand devops tooling bigtime. Review recommended lists on youtube.
-1. Add more artist/creative apps.
+1. Add more artist/creative apps. Bug Ardour to clean up their complicated installation nonsense so I can put them on Homebrew.
+1. I already spoke to TildeArrow (Furnace creator) about getting Furnace on Homebrew for them, so I will work on that.  However it seems like I won't be able to use Homebrew casks to also copy over all the stuff they stuff in the package, so I may just leave the code as-is.
 1. Fine tune what apps I'm installing and plugins/configs I'm adding.  I'm brand new to neovim and not sure about some of my choices regarding [Mini.nvim](https://github.com/nvim-mini/mini.nvim)
 
 ## License
 
 G's Dotfiles is released under the [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) license.
+
+## Contributing
+
+I would much prefer if this were a community effort to figure out what YOU want on your systems, and I could really use you `bash` wizards out there to help maintain this because this was NOT fun to write (Bash is trash for scripting and you all know it). You know the drill: file an issue for bugs or Feature Requests if there isn't already one there, be respectful, and fork it/open a PR if you have something to fix or add.  Just know that I have a lot on my plate and I don't have a lot of time to keep my eye on this, but I'll do my best. Thank you.
