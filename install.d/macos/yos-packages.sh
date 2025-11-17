@@ -42,7 +42,7 @@ install_optional_tools() {
   case "$1" in
   "Developer_Tools")
     brew bundle install --file "$SCRIPT_DIR/Brewfile-dev"
-    source "../select-mise-languages.sh"
+    "$SCRIPT_DIR/../select-mise-languages.sh"
     ;;
   "DevOps_Tools")
     brew bundle install --file "$SCRIPT_DIR/Brewfile-devops"

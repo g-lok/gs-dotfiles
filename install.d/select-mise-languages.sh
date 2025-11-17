@@ -2,7 +2,7 @@
 
 ## Select and install mise programming languages
 
-MISE_OPTIONS=("Ruby on Rails" "Node.js" "Go" "Python" "Elixir" "Rust" "Java")
+MISE_OPTIONS=("Ruby on Rails" "Node.js" "Go" "Python" "Elixir" "Rust" "Java" "Flutter")
 languages=$(gum choose "${MISE_OPTIONS[@]}" --no-limit --height 10 --header "Select programming languages")
 
 if [[ -n "$languages" ]]; then
@@ -32,6 +32,10 @@ if [[ -n "$languages" ]]; then
       ;;
     Java)
       mise use --global java@latest
+      ;;
+    Flutter)
+      mise plugin install flutter https://github.com/nyuyuyu/asdf-flutter.git
+      mise install flutter@latest
       ;;
     esac
   done

@@ -11,6 +11,7 @@ brew 'gron' # Make JSON greppable
 cask 'insomnia' # API tools
 brew 'kubernetes-cli'
 brew 'minikube'
+brew 'mise'
 cask 'postman' # API tools
 brew 'ttyd'
 cask 'utm' # Run MacOS Virtual machines
