@@ -9,14 +9,15 @@ brew 'docker'
 cask 'flutter'
 brew 'gron' # Make JSON greppable
 cask 'insomnia' # API tools
+brew 'jj' # Git-compatible version control system. Better than git
 brew 'kubernetes-cli'
 brew 'minikube'
 brew 'mise'
 cask 'postman' # API tools
 brew 'ttyd'
 cask 'utm' # Run MacOS Virtual machines
-cask 'windsurf'
-cask 'zed'
 brew 'vhs' # Terminal video recorder
 cask 'virtualbox'
 cask 'visual-studio-code' # VSCode IDE
+cask 'windsurf'
+cask 'zed'
