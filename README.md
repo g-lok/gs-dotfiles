@@ -93,20 +93,21 @@ Gosh, um:
 
 1. Creating a list of handy folders under you `$HOME` directory. The list is found in the `install.d/directories.sh` script.
 1. Changes your desktop wallpaper (optional) - I'm sure you like yours, but I think mine is better. In the future I'm going to include different wallpapers for different theme choices, but that is not ready yet. Right now you get my wallpaper and `Tokyo Night`, and you're going to LIKE IT.
-1. Installs zsh and Oh-My-Zsh with plugins to make your shell experience real nice.
+1. Installs Oh-My-Zsh with plugins to make your shell experience real nice.
 1. Uses `mise` to install and manage programming languages.
-1. Gives me a lot of agitation to maintain. I hate complicated Bash scripting, it gives me serious heartburn. I did this all for you, so you can thank me with beer and Prilosec.
+1. Gives me a lot of agitation to maintain. I hate complicated Bash scripting, it is seriously heartburn inducing. I did this all for you, so you can thank me with beer and Prilosec.
 
 ## TODO
 
-1. Add linux. Debian systems first, specifically Kubuntu and Kali (Gnome only), since that's what I'm rocking.
+1. Add Linux. Debian systems first, specifically Kubuntu and Kali (Gnome only), since that's what I'm rocking.
 1. I just found out Homebrew for linux doesn't support casks (GUI applications) so I'm probably going to use Nix or something with cross-compatibility for that.
 1. Add theme and font selection.
+1. Add a nice after-first-run script for making changes without all the first run nonsense.
 1. Add support for selecting and installing databases via docker.
 1. Expand devops tooling bigtime. Review recommended lists on youtube.
-1. Add more artist/creative apps. Bug Ardour to clean up their complicated installation nonsense so I can put them on Homebrew.
-1. I already spoke to TildeArrow (Furnace creator) about getting Furnace on Homebrew for them, so I will work on that.  However it seems like I won't be able to use Homebrew casks to also copy over all the stuff they stuff in the package, so I may just leave the code as-is.
-1. Fine tune what apps I'm installing and plugins/configs I'm adding.  I'm brand new to neovim and not sure about some of my choices regarding [Mini.nvim](https://github.com/nvim-mini/mini.nvim)
+1. Add more artist/creative apps. Bug Ardour to clean up their complicated installation nonsense so they can be put on Homebrew.
+1. I already spoke to TildeArrow (Furnace creator) about getting Furnace on Homebrew for them, so I will work on that.  However it seems like I won't be able to use Homebrew casks to also copy over all the stuff they stuff in the package, like manuals and instruments and demo songs and what-have-you, so I may just leave the code as-is.
+1. Fine tune what apps I'm installing and plugins/configs I'm adding.  I'm brand new to Neovim and not sure about some of my choices regarding [Mini.nvim](https://github.com/nvim-mini/mini.nvim)
 
 ## License
 
