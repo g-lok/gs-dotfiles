@@ -99,8 +99,9 @@ Gosh, um:
 
 ## TODO
 
+1. Fix the colors.  No joke, I spent at least a week day and night trying to make this keep consistent colors that actually match the hex/bash codes I'm feeding it. Help would be appreciated here.
 1. Add Linux. Debian systems first, specifically Kubuntu and Kali (Gnome only), since that's what I'm rocking.
-1. I just found out Homebrew for linux doesn't support casks (GUI applications) so I'm probably going to use Nix or something with cross-compatibility for that.
+1. I just found out Homebrew for Linux doesn't support casks (GUI applications) so I'm probably going to use Nix or something with cross-compatibility for that.
 1. Add theme and font selection.
 1. Add a nice after-first-run script for making changes without all the first run nonsense.
 1. Add support for selecting and installing databases via docker.
