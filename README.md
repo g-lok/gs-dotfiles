@@ -16,39 +16,45 @@ It is also designed to provide most of the [Omakub](https://omakub.org/) functio
 
 ## How it do
 
+1. (MacOS)
+    1. Open Terminal. Type "git".
+    1. Install the Xcode utilities if Mac just prompted you. If it didn't, you already have it.
 1. Open your terminal
-1. Run the following script:<br>
+1. Run the following commands: <br>
 
 ```bash
+mkdir $HOME/gitclones && cd $HOME/gitclones
+git clone https://github.com/g-lok/gs-dotfiles.git
+cd gs-dotfiles
 ./install.sh
 ```
 
 1. Follow the prompts.
 1. You're done!
-1. Restart your machine just to be safe.
+1. Restart your machine.
 
 ## Application highlights
 
-1. Brave - the best privacy-oriented browser of late. Also includes Chrome and Firefox.  Yes Brave Tor links, which is why I didn't include the Tor browser.
-1. Libreoffice - Free and open source office suite.
-1. Alacritty - A fantastic terminal emulator replacement for whatever came with your OS.<br>
+1. [Brave](https://brave.com/)- the best privacy-oriented browser of late. Also includes Chrome and Firefox.  Yes Brave supports Tor links, which is why I didn't include the Tor browser.
+1. [Libreoffice](https://www.libreoffice.org/)- Free and open source office suite.
+1. [Alacritty](https://alacritty.org/)- A fantastic terminal emulator replacement for whatever came with your OS.<br>
 [Learn to use the terminal](https://a.co/d/bwIR32o)
-1. Zellij - The session manager inside of Alacritty. Like tmux, but better. Sessions, panes, tabs, etc.
-1. Lazyvim - A curated Neovim with all the best plugins and configurations. A powerful text editor and IDE.<br>
+1. [Zellij](https://alacritty.org/)- The session manager inside of Alacritty. Like tmux, but better. Sessions, panes, tabs, etc.
+1. [Lazyvim](https://www.lazyvim.org/)- A curated Neovim with all the best plugins and configurations. A powerful text editor and IDE.<br>
   **Learn Lazyvim** with [this fantastic book](https://lazyvim-ambitious-devs.phillips.codes/).
-1. Visual Studio Code - the other most popular IDE out there. For us filthy casuals who haven't learned Neovim yet. The main reasons to use this other than the plugins and language servers and built in terminal are the MULTIPLE CURSORS.
-1. Obsidian - An incredibly powerful knowledge database. Organize information, take notes, manage projects, etc.  You can do A LOT with this, this is a very deep rabbit hole.
-1. Signal - the best messenger ever. Open source and end-to-end encrypted.
-1. Discord - You know what this is.
-1. Element - an open source, privacy focused Discord alternative. E2E encrypted and runs on the distrubted Matrix network.  Comes pre-baked with better E2E encryption than even Signal.
-1. Alfred - A spotlight replacement that is easily the most powerful launcher out there.  I recommend paying for a full PowerPack license to unlock the amazing tools and automation this thing has.<br>
+1. [Visual Studio Code](https://code.visualstudio.com/)- the other most popular IDE out there. For us filthy casuals who haven't learned Neovim yet. The main reasons to use this other than the plugins and language servers and built in terminal are the MULTIPLE CURSORS.
+1. [Obsidian](https://obsidian.md/) - An incredibly powerful knowledge database. Organize information, take notes, manage projects, etc.  You can do A LOT with this, this is a very deep rabbit hole.
+1. [Signal](https://signal.org/) - the best messenger ever. Open source and end-to-end encrypted.
+1. [Discord](https://discord.com/) - You know what this is.
+1. [Element](https://element.io/en/app) - an open source, privacy focused Discord alternative. E2E encrypted and runs on the distrubted Matrix network.  Comes pre-baked with better E2E encryption than even Signal.
+1. [Alfred](https://www.alfredapp.com/) - A spotlight replacement that is easily the most powerful launcher out there.  I recommend paying for a full PowerPack license to unlock the amazing tools and automation this thing has.<br>
 In particular, I cannot imagine life without its clipboard history manager.
-1. Rectangle - The best MacOS window manager. Comes with great default keymaps and a wide assortment of window tiling options.
-1. Spotify - you know what this is too.
+1. [Rectangle](https://rectangleapp.com/) - The best MacOS window manager. Comes with great default keymaps and a wide assortment of window tiling options.
+1. [Spotify](https://open.spotify.com/) - you know what this is too.
 1. Many of the hot new terminal apps. btop, zoxide, lazygit, lazydocker, etc.
-1. Steam - it's for games.
-1. Furnace - a free and open source chiptune music tracker. Supports nearly every game system and chipset out there.
-1. Nerd fonts - Some of my favorites are included. These are for your terminal, IDE, and system fonts.  I configured everything to use `JetBrainsMono Nerd Font Mono` by default. Because it's the best one.
+1. [Steam](https://store.steampowered.com/) - it's for games.
+1. [Furnace](https://tildearrow.org/furnace/) - a free and open source chiptune music tracker. Supports nearly every game system and chipset out there.
+1. [Nerd fonts](https://www.nerdfonts.com/) - Some of my favorites are included. These are for your terminal, IDE, and system fonts.  I configured everything to use `JetBrainsMono Nerd Font Mono` by default. Because it's the best one.
 
 And much, much more! To see everything this is installing, open the various `Brewfile-*` files under the `install.d/[your os]` folder.
 
@@ -60,7 +66,7 @@ Buy the PowerPack. It is a very powerful launcher that goes far beyond launching
 
 It also has a clipboard history manager, which is a major life improvement if you've never used one before. If you have the Powerpack, go to Settings -> Features -> Clipboard History, set a good keyboard shortcut, and give it a spin.
 
-#### Homebrew
+#### Homebrew (MacOS)
 
 This is using [Homebrew](https://brew.sh/) to install all of these apps. You're using Homebrew for installing and updating apps now, so learn to use it. You do this in the terminal. See below.
 
@@ -99,7 +105,7 @@ Gosh, um:
 
 ## TODO
 
-1. Fix the colors.  No joke, I spent at least a week day and night trying to make this keep consistent colors that actually match the hex/bash codes I'm feeding it. Help would be appreciated here.
+1. Fix the colors.  No joke, I spent at least a week, day and night, trying to make this keep consistent colors that actually match the hex/bash codes I'm feeding it. Help would be appreciated here.
 1. Add Linux. Debian systems first, specifically Kubuntu and Kali (Gnome only), since that's what I'm rocking.
 1. I just found out Homebrew for Linux doesn't support casks (GUI applications) so I'm probably going to use Nix or something with cross-compatibility for that.
 1. Add theme and font selection.
@@ -107,7 +113,8 @@ Gosh, um:
 1. Add support for selecting and installing databases via docker.
 1. Expand devops tooling bigtime. Review recommended lists on youtube.
 1. Add more artist/creative apps. Bug Ardour to clean up their complicated installation nonsense so they can be put on Homebrew.
-1. I already spoke to TildeArrow (Furnace creator) about getting Furnace on Homebrew for them, so I will work on that.  However it seems like I won't be able to use Homebrew casks to also copy over all the stuff they stuff in the package, like manuals and instruments and demo songs and what-have-you, so I may just leave the code as-is.
+1. Add more games? I dunno I'm not really into free games, Minecraft etc.
+1. I already spoke to TildeArrow (Furnace creator) about getting Furnace on Homebrew for them, so I will work on that.  However it seems like I won't be able to use Homebrew casks to also copy over all the other content they stuff in the package, like manuals and instruments and demo songs and what-have-you, so I may just leave the code as-is.
 1. Fine tune what apps I'm installing and plugins/configs I'm adding.  I'm brand new to Neovim and not sure about some of my choices regarding [Mini.nvim](https://github.com/nvim-mini/mini.nvim)
 
 ## License
