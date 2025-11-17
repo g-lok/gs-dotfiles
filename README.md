@@ -19,7 +19,6 @@ It is also designed to provide most of the [Omakub](https://omakub.org/) functio
 1. (MacOS)
     1. Open Terminal. Type "git".
     1. Install the Xcode utilities if Mac just prompted you. If it didn't, you already have it.
-1. Open your terminal
 1. Run the following commands: <br>
 
 ```bash
