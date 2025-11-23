@@ -9,7 +9,7 @@ export USER_ID=$(id -u "$CURRENT_USER")
 # Mice, keyboard, etc                                                         #
 ###############################################################################
 ## Set a blazingly fast keyboard repeat rate
-sudo -A -u "$CURRENT_USER" defaults write NSGlobalDomain KeyRepeat -int 0
+sudo -A -u "$CURRENT_USER" defaults write NSGlobalDomain KeyRepeat -int 1
 
 # disable Natural scrolling
 # sudo -u "$CURRENT_USER" defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
