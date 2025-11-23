@@ -34,18 +34,18 @@ case "$OS" in
   ;;
 "Darwin")
   if [[ "$(uname -m)" == "arm64" ]]; then
-    CHIPSET="ARM64"
+    arch="arm64"
   else
-    CHIPSET="INTEL"
+    arch="intel"
   fi
 
-  if [[ $CHIPSET == "ARM64" ]]; then
-    stow --target="$HOME" --adopt "alacritty-macos-arm"
-    stow --target="$HOME" --restow "alacritty-macos-arm"
-  elif [[ $CHIPSET == "INTEL" ]]; then
-    stow --target="$HOME" --adopt "alacritty-macos-intel"
-    stow --target="$HOME" --restow "alacritty-macos-intel"
-  fi
+  # alacritty configs
+  stow --target="$HOME" --adopt "alacritty-macos-${arch}"
+  stow --target="$HOME" --restow "alacritty-macos-${arch}"
+
+  # ghostty configs
+  stow --target="$HOME" --adopt "ghostty-macos-${arch}"
+  stow --target="$HOME" --restow "ghostty-macos-${arch}"
   ;;
 *)
   return
