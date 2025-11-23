@@ -11,6 +11,7 @@ export DOTFILES_SCRIPT_PATH=$(dirname "$(readlink -f "$0")")
 UNIVERSAL_PACKAGES=(
   "bash"
   "btop"
+  "ghostty"
   "shellrc"
   "VSCode"
   "zellij"

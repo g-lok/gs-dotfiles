@@ -1,0 +1,7 @@
+theme = "TokyoNight" 
+font-family = "JetBrainsMono Nerd Font Mono"
+font-style = "Regular"
+font-size = 15
+shell-integration = zsh
+command = /usr/local/bin/zellij
+macos-titlebar-style = hidden
