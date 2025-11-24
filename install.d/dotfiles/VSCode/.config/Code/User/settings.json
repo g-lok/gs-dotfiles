@@ -21,6 +21,6 @@
   "git.openRepositoryInParentFolders": "always",
   "explorer.confirmDelete": false,
   "extensions.ignoreRecommendations": true,
-  "workbench.colorTheme": "Tokyo Night",
+  "workbench.colorTheme": "Catppuccin Mocha",
   "window.titleBarStyle": "custom"
 }
