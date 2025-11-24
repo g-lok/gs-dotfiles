@@ -13,6 +13,7 @@ UNIVERSAL_PACKAGES=(
   "btop"
   "ghostty"
   "shellrc"
+  "starship"
   "VSCode"
   "zellij"
   "zsh"
