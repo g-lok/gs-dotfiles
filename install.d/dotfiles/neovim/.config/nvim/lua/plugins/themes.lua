@@ -55,5 +55,10 @@ return {
     },
   },
   -- setup must be called before loading
-  vim.cmd.colorscheme("catppuccin"),
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "catppuccin",
+    },
+  },
 }
