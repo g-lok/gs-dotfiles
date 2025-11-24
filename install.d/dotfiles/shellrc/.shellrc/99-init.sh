@@ -9,6 +9,10 @@ elif [ -n "$ZSH_VERSION" ]; then
 fi
 
 # Activate terminal stuff
+if command -v starship &>/dev/null; then
+  eval "$(starship init "$myshell")"
+fi
+
 if command -v mise &>/dev/null; then
   eval "$(mise activate "$myshell")"
 fi
