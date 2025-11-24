@@ -120,5 +120,3 @@ if [ -t 1 ]; then
   fi
 fi
 
-# Created by `pipx` on 2025-10-27 03:52:35
-export PATH="$PATH:/Users/ganderson/.local/bin"

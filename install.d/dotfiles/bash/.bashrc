@@ -6,4 +6,3 @@ if [ -t 1 ]; then
     done
   fi
 fi
-. "$HOME/.cargo/env"
