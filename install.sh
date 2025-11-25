@@ -144,13 +144,24 @@ export APP_CATEGORIES=$(gum choose "${OPTIONAL_APPS[@]}" --no-limit --header "Se
 ## I shouldn't have to do this,
 ## but gum choose up there isn't creating an array,
 ## but a newline delimited string.
-if [ "$APP_CATEGORIES" != "\n" ]; then
+# if [ "$APP_CATEGORIES" != "\n" ]; then
+#   readarray -t HOMEBREW_APP_CHOICES <<<"$APP_CATEGORIES"
+#   export HOMEBREW_APP_CHOICES
+# else
+#   declare -a APP_CATEGORIES
+#   export APP_CATEGORIES
+# fi
+
+case $APP_CATEGORIES in
+*[![:space:]]*)
   readarray -t HOMEBREW_APP_CHOICES <<<"$APP_CATEGORIES"
   export HOMEBREW_APP_CHOICES
-else
+  ;;
+*)
   declare -a APP_CATEGORIES
   export APP_CATEGORIES
-fi
+  ;;
+esac
 
 ## Run installation scripts based on OS
 gum style \
