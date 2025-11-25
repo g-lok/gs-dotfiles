@@ -1,13 +1,14 @@
 ### Brewfile for desktop applications
 
 cask 'adobe-acrobat-reader'
-cask 'alacritty' # My preferred terminal emulator.
+cask 'alacritty' # A terminal emulator.
 cask 'alfred' # A powerful spotlight replacement.
 cask 'brave-browser' # A privacy focused browser. You can use this for Tor btw.
 cask 'discord'
 cask 'element' # Open source, decentralized, E2E encrypted discord alternative.
 cask 'firefox'
 cask 'flameshot' # Nice and simple screenshot software.
+cask 'ghostty'
 cask 'gifox' # Screen record animated gifs.
 cask 'google-chrome'
 cask 'gpg-suite' # PGP encryption tools.
