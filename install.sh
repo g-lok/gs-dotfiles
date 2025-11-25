@@ -165,8 +165,8 @@ case $SCRIPT_OS in
   gum spin --spinner moon --title "Installing HomeBrew Apps..." -- sleep 2
   source "$GS_DOTFILES_PATH/install.d/macos/yos-packages.sh"
   gum spin --spinner moon --title "Installing Oh-My-Zsh..." -- "$GS_DOTFILES_PATH/install.d/zsh.sh"
-  gum spin --spinner moon --title "Installing Oh-My-Zsh..." -- sleep 2
-  source "$GS_DOTFILES_PATH/install.d/zsh.sh" >/dev/null 2>&1
+  # gum spin --spinner moon --title "Installing Oh-My-Zsh..." -- sleep 2
+  # source "$GS_DOTFILES_PATH/install.d/zsh.sh" >/dev/null 2>&1
   gum spin --spinner moon --title "Install Lazyvim" -- "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh"
   # gum spin --spinner moon --title "Installing LazyVim..." -- sleep 2
   # source "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh" >/dev/null 2>&1
@@ -175,7 +175,7 @@ case $SCRIPT_OS in
   # source "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh" >/dev/null 2>&1
   # gum spin --spinner moon --title "Configure Dock Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
   gum spin --spinner moon --title "Configuring MacOS Dock settings..." -- sleep 2
-  # source "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
+  source "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
   gum spin --spinner moon --title "Configure Peripheral Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh"
   # gum spin --spinner moon --title "Configuring peripherals..." -- sleep 2
   # source "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh" >/dev/null 2>&1
