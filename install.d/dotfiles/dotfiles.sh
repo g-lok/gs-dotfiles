@@ -12,6 +12,7 @@ UNIVERSAL_PACKAGES=(
   "bash"
   "btop"
   "ghostty"
+  "neovim"
   "shellrc"
   "starship"
   "VSCode"
