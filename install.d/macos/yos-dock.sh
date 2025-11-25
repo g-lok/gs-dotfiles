@@ -29,7 +29,7 @@ sudo -A -u "$CURRENT_USER" defaults write com.apple.dock showhidden -bool TRUE
 gum style \
   --border double \
   --align center \
-  --width 50 --margin "1 2" --pading "2 4" \
+  --width 50 --margin "1 2" --padding "2 4" \
   --bold "Clear and replace docks items with selected apps?"
 gum confirm && export CLEAR_DOCK=true || export CLEAR_DOCK=false
 
