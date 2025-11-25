@@ -4,7 +4,7 @@
 ## Bail if lazyvim is already installed
 if [ -f ~/.config/nvim/lua/config/lazy.lua ]; then
   return
-  exit 0
+  # exit 0
 fi
 
 ## Backup current neovim configs

@@ -165,9 +165,9 @@ case $SCRIPT_OS in
   gum spin --spinner moon --title "Configure System Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh"
   # gum spin --spinner moon --title "Configuring main MacOS settings..." -- sleep 2
   # source "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh" >/dev/null 2>&1
-  gum spin --spinner moon --title "Configure Dock Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
-  # gum spin --spinner moon --title "Configuring MacOS Dock settings..." -- sleep 2
-  # source "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh" >/dev/null 2>&1
+  # gum spin --spinner moon --title "Configure Dock Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
+  gum spin --spinner moon --title "Configuring MacOS Dock settings..." -- sleep 2
+  source "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh" >/dev/null 2>&1
   gum spin --spinner moon --title "Configure Peripheral Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh"
   # gum spin --spinner moon --title "Configuring peripherals..." -- sleep 2
   # source "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh" >/dev/null 2>&1
