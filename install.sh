@@ -105,24 +105,23 @@ else
 fi
 
 ## Setup gum environment variables
-export FOREGROUND="91"
-export BACKGROUND="18"
-export BORDER_FOREGROUND="212"
+export FOREGROUND="#34f1ff"
+export BACKGROUND="#211ba2"
+export BORDER_FOREGROUND="#cb2ce0"
+export GUM_INPUT_PROMPT_FOREGROUND="$FOREGROUND"
+export GUM_CHOOSE_ITEM_FOREGROUND="$FOREGROUND"
 
 ## Let's get started
 gum style \
   --border double \
   --align center --width 50 --margin "1 2" --padding "2 4" --bold "Gs-Dotfiles" "Let's get started!"
 
-NAME=$(gum input --prompt "Please enter full name: ")
-EMAIL=$(gum input --prompt "Please enter email: ")
-HOMEBREW_PASSWORD=$(gum input --password --prompt "Please enter password: ")
-export NAME
-export EMAIL
-export HOMEBREW_PASSWORD
+export NAME=$(gum input --prompt "Please enter full name: ")
+export EMAIL=$(gum input --prompt "Please enter email: ")
+export HOMEBREW_PASSWORD=$(gum input --password --prompt "Please enter password: ")
 ## STOP ASKING ME FOR SUDO!
 export SUDO_ASKPASS="$GS_DOTFILES_PATH/install.d/returnpass.sh"
-export CI=true
+# export CI=true
 
 ## Create directories under home
 gum spin --spinner moon --title "Creating directories..." -- sleep 2
@@ -134,10 +133,11 @@ source "$GS_DOTFILES_PATH/install.d/directories.sh"
 
 export CLICOLOR_FORCE=1
 export TERM="xterm-256color"
+export COLORTERM="24bit"
 
 ## Get installation choices
-declare -a OPTIONAL_APPS
-declare -a APP_CATEGORIES
+# declare -a OPTIONAL_APPS
+# declare -a APP_CATEGORIES
 OPTIONAL_APPS=("Developer_Tools" "DevOps_Tools" "Artist_Tools")
 export APP_CATEGORIES=$(gum choose "${OPTIONAL_APPS[@]}" --no-limit --header "Select optional application categories to install.")
 
@@ -151,7 +151,7 @@ export HOMEBREW_APP_CHOICES
 gum style \
   --border double \
   --align center --width 50 --margin "1 2" --padding "2 4" --bold "Running Installation and Configuration Scripts"
-
+exit 0
 case $SCRIPT_OS in
 "MacOS")
   gum spin --spinner moon --title "Installing HomeBrew Apps..." -- sleep 2
