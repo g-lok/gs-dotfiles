@@ -144,7 +144,8 @@ export APP_CATEGORIES=$(gum choose "${OPTIONAL_APPS[@]}" --no-limit --header "Se
 ## I shouldn't have to do this,
 ## but gum choose up there isn't creating an array,
 ## but a newline delimited string.
-readarray -t HOMEBREW_APP_CHOICES <<<"$APP_CATEGORIES"
+# readarray -t HOMEBREW_APP_CHOICES <<<"$APP_CATEGORIES"
+readarray -t HOMEBREW_APP_CHOICES < <(printf '%s' "$APP_CATEGORIES")
 export HOMEBREW_APP_CHOICES
 echo "$HOMEBREW_APP_CHOICES" | tr ' \n' '#$'
 
