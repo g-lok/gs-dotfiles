@@ -147,6 +147,9 @@ export APP_CATEGORIES=$(gum choose "${OPTIONAL_APPS[@]}" --no-limit --header "Se
 if [ "$APP_CATEGORIES" != "\n" ]; then
   readarray -t HOMEBREW_APP_CHOICES <<<"$APP_CATEGORIES"
   export HOMEBREW_APP_CHOICES
+else
+  declare -a APP_CATEGORIES
+  export APP_CATEGORIES
 fi
 
 ## Run installation scripts based on OS
