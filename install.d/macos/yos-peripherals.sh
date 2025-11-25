@@ -3,8 +3,8 @@
 ## Ignore if we're not on OSX
 [[ "$OSTYPE" =~ darwin* ]] || exit 0
 
-export CURRENT_USER=$(stat -f %Su /dev/console)
-export USER_ID=$(id -u "$CURRENT_USER")
+CURRENT_USER=$(stat -f %Su /dev/console)
+USER_ID=$(id -u "$CURRENT_USER")
 ###############################################################################
 # Mice, keyboard, etc                                                         #
 ###############################################################################

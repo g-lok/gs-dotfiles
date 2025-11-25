@@ -2,8 +2,9 @@
 # Ignore if we're not on OSX
 [[ "$OSTYPE" =~ darwin* ]] || exit 0
 
-echo "SUDO_ASKPASS=$SUDO_ASKPASS"
-echo "CURRENT_USER=$CURRENT_USER"
+CURRENT_USER=$(stat -f %Su /dev/console)
+USER_ID=$(id -u "$CURRENT_USER")
+
 ## Faster Dock
 sudo -A -u "$CURRENT_USER" defaults write com.apple.Dock autohide-delay -float 0.1
 sudo -A -u "$CURRENT_USER" defaults write com.apple.dock autohide-time-modifier -float 0.5
