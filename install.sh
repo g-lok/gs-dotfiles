@@ -144,13 +144,6 @@ export APP_CATEGORIES=$(gum choose "${OPTIONAL_APPS[@]}" --no-limit --header "Se
 ## I shouldn't have to do this,
 ## but gum choose up there isn't creating an array,
 ## but a newline delimited string.
-# if [ "$APP_CATEGORIES" != "\n" ]; then
-#   readarray -t HOMEBREW_APP_CHOICES <<<"$APP_CATEGORIES"
-#   export HOMEBREW_APP_CHOICES
-# else
-#   declare -a APP_CATEGORIES
-#   export APP_CATEGORIES
-# fi
 
 case $APP_CATEGORIES in
 *[![:space:]]*)
@@ -182,7 +175,7 @@ case $SCRIPT_OS in
   # source "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh" >/dev/null 2>&1
   # gum spin --spinner moon --title "Configure Dock Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
   gum spin --spinner moon --title "Configuring MacOS Dock settings..." -- sleep 2
-  source "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
+  # source "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
   gum spin --spinner moon --title "Configure Peripheral Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh"
   # gum spin --spinner moon --title "Configuring peripherals..." -- sleep 2
   # source "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh" >/dev/null 2>&1
