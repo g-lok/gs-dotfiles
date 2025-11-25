@@ -151,7 +151,6 @@ export HOMEBREW_APP_CHOICES
 gum style \
   --border double \
   --align center --width 50 --margin "1 2" --padding "2 4" --bold "Running Installation and Configuration Scripts"
-echo "script os: $SCRIPT_OS"
 case $SCRIPT_OS in
 "MacOS")
   gum spin --spinner moon --title "Installing HomeBrew Apps..." -- sleep 2
