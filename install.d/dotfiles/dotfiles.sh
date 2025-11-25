@@ -15,7 +15,6 @@ UNIVERSAL_PACKAGES=(
   "shellrc"
   "starship"
   "VSCode"
-  "zellij"
   "zsh"
 )
 
@@ -47,7 +46,12 @@ case "$OS" in
   # ghostty configs
   stow --target="$HOME" --adopt "ghostty-macos-${arch}"
   stow --target="$HOME" --restow "ghostty-macos-${arch}"
+
+  # zellij configs
+  stow --target="$HOME" --adopt "zellij-macos-${arch}"
+  stow --target="$HOME" --restow "zellij-macos-${arch}"
   ;;
+
 *)
   return
   ;;
