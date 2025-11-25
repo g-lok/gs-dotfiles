@@ -156,28 +156,30 @@ case $SCRIPT_OS in
 "MacOS")
   gum spin --spinner moon --title "Installing HomeBrew Apps..." -- sleep 2
   source "$GS_DOTFILES_PATH/install.d/macos/yos-packages.sh"
+  gum spin --spinner moon --title "Installing Oh-My-Zsh..." -- "$GS_DOTFILES_PATH/install.d/zsh.sh"
   gum spin --spinner moon --title "Installing Oh-My-Zsh..." -- sleep 2
   source "$GS_DOTFILES_PATH/install.d/zsh.sh" >/dev/null 2>&1
-  # gum spin --spinner moon --title "Install Lazyvim" -- "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh"
-  gum spin --spinner moon --title "Installing LazyVim..." -- sleep 2
-  source "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh" >/dev/null 2>&1
-  # gum spin --spinner moon --title "Configure System Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh"
-  gum spin --spinner moon --title "Configuring main MacOS settings..." -- sleep 2
-  source "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh" >/dev/null 2>&1
-  # gum spin --spinner moon --title "Configure Dock Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
-  gum spin --spinner moon --title "Configuring MacOS Dock settings..." -- sleep 2
-  source "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh" >/dev/null 2>&1
-  # gum spin --spinner moon --title "Configure Peripheral Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh"
-  gum spin --spinner moon --title "Configuring peripherals..." -- sleep 2
-  source "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh" >/dev/null 2>&1
-  gum spin --spinner moon --title "Configuring screenshots..." -- sleep 2
-  source "$GS_DOTFILES_PATH/install.d/macos/yos-screenshots.sh" >/dev/null 2>&1
-  # gum spin --spinner moon --title "Stow Dotfiles." -- "$GS_DOTFILES_PATH/install.d/dotfiles/dotfiles.sh"
-  gum spin --spinner moon --title "Configuring dotfiles..." -- sleep 2
-  "$GS_DOTFILES_PATH/install.d/dotfiles/dotfiles.sh" >/dev/null 2>&1
-  # gum spin --spinner moon --title "Configure Git." -- "$GS_DOTFILES_PATH/install.d/git.sh"
-  gum spin --spinner moon --title "Configuring git..." -- sleep 2
-  source "$GS_DOTFILES_PATH/install.d/git.sh" >/dev/null 2>&1
+  gum spin --spinner moon --title "Install Lazyvim" -- "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh"
+  # gum spin --spinner moon --title "Installing LazyVim..." -- sleep 2
+  # source "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh" >/dev/null 2>&1
+  gum spin --spinner moon --title "Configure System Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh"
+  # gum spin --spinner moon --title "Configuring main MacOS settings..." -- sleep 2
+  # source "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh" >/dev/null 2>&1
+  gum spin --spinner moon --title "Configure Dock Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
+  # gum spin --spinner moon --title "Configuring MacOS Dock settings..." -- sleep 2
+  # source "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh" >/dev/null 2>&1
+  gum spin --spinner moon --title "Configure Peripheral Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh"
+  # gum spin --spinner moon --title "Configuring peripherals..." -- sleep 2
+  # source "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh" >/dev/null 2>&1
+  gum spin --spinner moon --title "Configuring screenshots..." -- "$GS_DOTFILES_PATH/install.d/macos/yos-screenshots.sh"
+  # gum spin --spinner moon --title "Configuring screenshots..." -- sleep 2
+  # source "$GS_DOTFILES_PATH/install.d/macos/yos-screenshots.sh" >/dev/null 2>&1
+  gum spin --spinner moon --title "Configuring Dotfiles..." -- "$GS_DOTFILES_PATH/install.d/dotfiles/dotfiles.sh"
+  # gum spin --spinner moon --title "Configuring dotfiles..." -- sleep 2
+  # "$GS_DOTFILES_PATH/install.d/dotfiles/dotfiles.sh" >/dev/null 2>&1
+  gum spin --spinner moon --title "Configuring Git..." -- "$GS_DOTFILES_PATH/install.d/git.sh"
+  # gum spin --spinner moon --title "Configuring git..." -- sleep 2
+  # source "$GS_DOTFILES_PATH/install.d/git.sh" >/dev/null 2>&1
   ;;
 *)
   echo "Unrecognized OS. Skipping installation and configuration."
