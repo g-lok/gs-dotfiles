@@ -62,6 +62,7 @@ brew bundle install --file "$SCRIPT_DIR/Brewfile-desktop-apps"
 brew bundle install --file "$SCRIPT_DIR/Brewfile-nerdfonts"
 
 ## Install optional packages
+echo "$HOMEBREW_APP_CHOICES"
 if [[ ${#HOMEBREW_APP_CHOICES[@]} -gt 0 ]]; then
   for optionals in "${HOMEBREW_APP_CHOICES[@]}"; do
     install_optional_tools "$optionals"
