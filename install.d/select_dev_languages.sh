@@ -8,7 +8,7 @@ LANGUAGE_OPTIONS=(
   "Java"
   "Kotlin"
   "Node.js"
-  "PHP"
+  # "PHP" #TODO: broken curl
   "Python"
   "Ruby on Rails"
   "Rust"
