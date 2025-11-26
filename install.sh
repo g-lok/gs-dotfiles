@@ -32,6 +32,7 @@ source "$SCRIPTS_DIR/get_user_input.sh"
 
 ## STOP ASKING ME FOR SUDO!
 export SUDO_ASKPASS="$GS_DOTFILES_PATH/install.d/returnpass.sh"
+# TODO: This messes up my colors and I don't think it's necessary.
 # export CI=true
 
 ## Create directories under home
