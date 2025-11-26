@@ -4,12 +4,25 @@
 if [[ ${#CHOSEN_DEVOPS_TOOLS[@]} -gt 0 ]]; then
   for option in "${CHOSEN_DEVOPS_TOOLS[@]}"; do
     case ${option} in
-    Kubernetes) ;;
-    Google) ;;
-    AWS) ;;
-    Azure) ;;
-    Geekbench) ;;
-    Tailscale) ;;
+    Kubernetes)
+      brew install kubectl
+      brew install minikube
+      ;;
+    Google)
+      brew install --cask google-cloud-sdk
+      ;;
+    AWS)
+      brew install awscli
+      ;;
+    Azure)
+      brew install azure-cli
+      ;;
+    Geekbench)
+      brew install --cask geekbench
+      ;;
+    Tailscale)
+      brew install tailscale
+      ;;
     esac
   done
 fi

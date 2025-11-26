@@ -20,6 +20,7 @@ gum spin --spinner moon --title "Configure Peripheral Settings..." -- "$SCRIPTS_
 gum spin --spinner moon --title "Configuring screenshots..." -- "$SCRIPTS_DIR/macos/yos-screenshots.sh"
 # gum spin --spinner moon --title "Configuring screenshots..." -- sleep 2
 # source "$SCRIPTS_DIR/macos/yos-screenshots.sh" >/dev/null 2>&1
+gum spin --spinner moon --title "Installing theme..." -- "$SCRIPTS_DIR/themes.sh"
 gum spin --spinner moon --title "Configuring Dotfiles..." -- "$SCRIPTS_DIR/dotfiles/dotfiles.sh"
 # gum spin --spinner moon --title "Configuring dotfiles..." -- sleep 2
 # "$SCRIPTS_DIR/dotfiles/dotfiles.sh" >/dev/null 2>&1
