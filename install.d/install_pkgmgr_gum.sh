@@ -22,9 +22,9 @@ else
 fi
 
 ## Setup gum environment variables
-export FOREGROUND="#ea76cb"
+export FOREGROUND="#dfc71d"
 export BACKGROUND="#1e66f5"
-export BORDER_FOREGROUND="#8839ef"
+export BORDER_FOREGROUND="#40a02b"
 export GUM_INPUT_PROMPT_FOREGROUND="$FOREGROUND"
 export GUM_INPUT_CURSOR_FOREGROUND="#df8e1d"
 export GUM_CHOOSE_ITEM_FOREGROUND="$FOREGROUND"
