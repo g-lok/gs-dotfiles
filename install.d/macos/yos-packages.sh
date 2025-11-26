@@ -12,7 +12,7 @@ install_optional_tools() {
     source "$SCRIPTS_DIR/macos/install_dbs.sh"
     ;;
   "Creative_Tools")
-    source "$SCRIPT_DIR/macos/yos-creative-packages.sh"
+    source "$SCRIPTS_DIR/macos/yos-creative-packages.sh"
     ;;
   *)
     echo "$1 is not a valid toolset"
@@ -20,10 +20,10 @@ install_optional_tools() {
   esac
 }
 
-brew bundle install --file "$SCRIPT_DIR/Brewfile-terminal-apps"
-brew bundle install --file "$SCRIPT_DIR/Brewfile-desktop-apps"
+brew bundle install --file "$SCRIPTS_DIR/macos/Brewfile-terminal-apps"
+brew bundle install --file "$SCRIPTS_DIR/macos/Brewfile-desktop-apps"
 source "$SCRIPTS/macos/yos_optional_desktop_apps.sh"
-brew bundle install --file "$SCRIPT_DIR/Brewfile-nerdfonts"
+brew bundle install --file "$SCRIPTS_DIR/macos/Brewfile-nerdfonts"
 
 ## Install optional packages
 if [[ ${#HOMEBREW_APP_CHOICES[@]} -gt 0 ]]; then
