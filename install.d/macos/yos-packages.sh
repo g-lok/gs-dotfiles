@@ -9,7 +9,7 @@ install_optional_tools() {
     brew bundle install --file "$SCRIPTS_DIR/macos/Brewfile-dev"
     source "$SCRIPTS_DIR/install_mise_languages.sh"
     source "$SCRIPTS_DIR/macos/yos-packages-devops.sh"
-    source "$SCRIPTS_DIR/install_dbs.sh"
+    # source "$SCRIPTS_DIR/install_dbs.sh"
     ;;
   "Creative_Tools")
     source "$SCRIPTS_DIR/macos/yos-packages-creative.sh"

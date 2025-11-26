@@ -44,7 +44,7 @@ if [[ ${#HOMEBREW_APP_CHOICES[@]} -gt 0 ]]; then
   for option in "${HOMEBREW_APP_CHOICES[@]}"; do
     case ${option} in
     "Developer_Tools")
-      source "$SCRIPTS_DIR/select-dev-languages.sh"
+      source "$SCRIPTS_DIR/select_dev_languages.sh"
       source "$SCRIPTS_DIR/select_devops.sh"
       source "$SCRIPTS_DIR/select_dbs.sh"
       source "$SCRIPTS_DIR/select_ai.sh"
