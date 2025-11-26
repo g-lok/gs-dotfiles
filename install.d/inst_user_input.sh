@@ -9,6 +9,7 @@ export NAME=$(gum input --prompt "Please enter full name: ")
 
 ## Make sure valid email.
 while :
+do
   EMAIL=$(gum input --prompt "Please enter email: ")
   if [[ "$EMAIL" =~ ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$ ]]; then
     export EMAIL 
@@ -20,6 +21,7 @@ done
 
 ## Make sure you dummies type the correct password.
 while :
+do
   HOMEBREW_PASSWORD=$(gum input --password --prompt "Please enter your user password: ")
   pwd2=$(gum input --password --prompt "Please re-enter your user password: ")
   if [[ "$HOMEBREW_PASSWORD" == "$pwd2" ]]; then
