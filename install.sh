@@ -52,7 +52,8 @@ source "$SCRIPTS_DIR/directories.sh"
 ## Run installation scripts based on OS
 gum style \
   --border double \
-  --align center --width 50 --margin "1 2" --padding "2 4" --bold "Running Installation and Configuration Scripts"
+  --align center --width 70 --margin "1 2" --padding "1, 1" \
+  --bold "Running Installation and Configuration Scripts"
 case $SCRIPT_OS in
 "MacOS")
   source "$SCRIPTS_DIR/macos/launch.sh"
