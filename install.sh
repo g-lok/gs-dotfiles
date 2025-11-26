@@ -2,159 +2,51 @@
 
 # set -e
 
-## Personal set-up scripts for Ubuntu Linux and OSX
-## Heavily inspired (*ahem* copied) by Juxtaposed, Omakub, too many to remember
+## G's set-up scripts for MacOS and Linux
+## Export cwd and generic script directories
+export GS_DOTFILES_PATH=$(dirname "$(readlink -f "$0")")
+export SCRIPTS_DIR="$GS_DOTFILES_PATH/install.d"
 
-## Print Ascii logo with color.
-ascii_art='
-  _______/\        ________          __    _____.__.__
- /  _____)/ ______ \______ \   _____/  |__/ ____\__|  |   ____   ______
-/   \  ___ /  ___/  |    |  \ /  _ \   __\   __\|  |  | _/ __ \ /  ___/
-\    \_\  \\___ \   |    `   (  <_> )  |  |  |  |  |  |_\  ___/ \___ \
- \______  /____  > /_______  /\____/|__|  |__|  |__|____/\___  >____  >
-        \/     \/          \/                                \/     \/
-'
+## Print logo
+source "$SCRIPTS_DIR/ascii.sh"
 
-## Define the color gradient (shades of cyan and blue)
-colors=(
-  '\033[38;5;81m' # Cyan
-  '\033[38;5;75m' # Light Blue
-  '\033[38;5;69m' # Sky Blue
-  '\033[38;5;63m' # Dodger Blue
-  '\033[38;5;57m' # Deep Sky Blue
-  '\033[38;5;51m' # Cornflower Blue
-  '\033[38;5;45m' # Royal Blue
-)
-#
-# ## Split the ASCII art into lines
-IFS=$'\n' read -rd '' -a lines <<<"$ascii_art"
-#
-# ## Print each line with the corresponding color
-for i in "${!lines[@]}"; do
-  color_index=$((i % ${#colors[@]}))
-  echo -e "${colors[color_index]}${lines[i]}"
-done
-
+## Begin
 echo -e "\nBegin installation (or abort with ctrl+c)..."
 
 ## Make sure sudo is already cached before using gum spinner or anything that will interfere with the scripts
 sudo --validate
-
-## Export the current directory as env variable
-export GS_DOTFILES_PATH=$(dirname "$(readlink -f "$0")")
-
-## MacOS or Linux?
-# Get the operating system name
-OS=$(uname -s)
-case "$OS" in
-"Linux")
-  # Add Linux-specific commands here
-  if [ -n "$DISPLAY" ]; then
-    echo "Running on Linux (GUI)"
-    export SCRIPT_OS="linux_gui"
-  else
-    echo "Running on Linux Headless"
-    export SCRIPT_OS="linux_headless"
-  fi
-  ;;
-"Darwin")
-  echo "This script is running on macOS."
-  export SCRIPT_OS="MacOS"
-  ## Add macOS-specific commands here
-  ## Install XCode Tools (required for Homebrew)
-  if pkgutil --pkg-info=com.apple.pkg.CLTools_Executables >/dev/null 2>&1; then
-    echo "Command Line Tools are installed"
-  else
-    echo "Command Line Tools are not installed."
-    echo "You will be prompted to install Xcode command line tools."
-    echo "Please Install Xcode command line tools before resuming."
-    xcode-select --install
-  fi
-  ;;
-*)
-  echo "This script is running on an unknown operating system: $OS"
-  # Add commands for other systems or error handling
-  exit 0
-  ;;
-esac
 
 ## Make all scripts executable
 for file in $GS_DOTFILES_PATH/install.d/*.sh; do
   chmod +x "$file"
 done
 
-## Install Homebrew
-if [[ $(command -v brew) == "" ]]; then
-  echo "Installing Homebrew..."
-  NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" >/dev/null
-else
-  echo "Homebrew is already installed. Updating..."
-  brew update >/dev/null
-  brew upgrade >/dev/null
-fi
+## MacOS or Linux?
+source "$SCRIPTS_DIR/get_os.sh"
 
-## Temporarily load Homebrew's config and PATH and whatnot
-command -v brew >/dev/null || export PATH="/opt/homebrew/bin:/home/linuxbrew/.linuxbrew/bin:/usr/local/bin:$PATH" >/dev/null
-command -v brew >/dev/null && eval "$(brew shellenv)" >/dev/null
+## Install package managers and gum
+source "$SCRIPTS_DIR/install_pkgmgr_gum.sh"
 
-## Install gum
-if [[ $(command -v gum) == "" ]]; then
-  brew install gum >/dev/null
-else
-  echo "Gum already installed"
-fi
+## Get user input
+source "$SCRIPTS_DIR/get_user_input.sh"
 
-## Setup gum environment variables
-export FOREGROUND="#34f1ff"
-export BACKGROUND="#211ba2"
-export BORDER_FOREGROUND="#cb2ce0"
-export GUM_INPUT_PROMPT_FOREGROUND="$FOREGROUND"
-export GUM_CHOOSE_ITEM_FOREGROUND="$FOREGROUND"
-
-## Let's get started
-gum style \
-  --border double \
-  --align center --width 50 --margin "1 2" --padding "2 4" --bold "Gs-Dotfiles" "Let's get started!"
-
-export NAME=$(gum input --prompt "Please enter full name: ")
-export EMAIL=$(gum input --prompt "Please enter email: ")
-export HOMEBREW_PASSWORD=$(gum input --password --prompt "Please enter password: ")
 ## STOP ASKING ME FOR SUDO!
 export SUDO_ASKPASS="$GS_DOTFILES_PATH/install.d/returnpass.sh"
 # export CI=true
 
 ## Create directories under home
 gum spin --spinner moon --title "Creating directories..." -- sleep 2
-source "$GS_DOTFILES_PATH/install.d/directories.sh"
+source "$SCRIPTS_DIR/directories.sh"
 
 ## I lose colors here for some reason,
 ## so I have to set this to force colors.
-## TODO: Colors are back but they're the wrong colors, and nothing I do is changing them.
 
-export CLICOLOR_FORCE=1
-export TERM="xterm-256color"
-export COLORTERM="24bit"
+# export CLICOLOR_FORCE=1
+# export TERM="xterm-256color"
+# export COLORTERM="24bit"
 
 ## Get installation choices
-# declare -a OPTIONAL_APPS
-# declare -a APP_CATEGORIES
-OPTIONAL_APPS=("Developer_Tools" "DevOps_Tools" "Artist_Tools")
-export APP_CATEGORIES=$(gum choose "${OPTIONAL_APPS[@]}" --no-limit --header "Select optional application categories to install.")
-
-## I shouldn't have to do this,
-## but gum choose up there isn't creating an array,
-## but a newline delimited string.
-
-case $APP_CATEGORIES in
-*[![:space:]]*)
-  readarray -t HOMEBREW_APP_CHOICES <<<"$APP_CATEGORIES"
-  export HOMEBREW_APP_CHOICES
-  ;;
-*)
-  declare -a APP_CATEGORIES
-  export APP_CATEGORIES
-  ;;
-esac
+source "$SCRIPTS_DIR/installation_choices.sh"
 
 ## Run installation scripts based on OS
 gum style \
@@ -162,32 +54,7 @@ gum style \
   --align center --width 50 --margin "1 2" --padding "2 4" --bold "Running Installation and Configuration Scripts"
 case $SCRIPT_OS in
 "MacOS")
-  gum spin --spinner moon --title "Installing HomeBrew Apps..." -- sleep 2
-  source "$GS_DOTFILES_PATH/install.d/macos/yos-packages.sh"
-  gum spin --spinner moon --title "Installing Oh-My-Zsh..." -- "$GS_DOTFILES_PATH/install.d/zsh.sh"
-  # gum spin --spinner moon --title "Installing Oh-My-Zsh..." -- sleep 2
-  # source "$GS_DOTFILES_PATH/install.d/zsh.sh" >/dev/null 2>&1
-  gum spin --spinner moon --title "Install Lazyvim" -- "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh"
-  # gum spin --spinner moon --title "Installing LazyVim..." -- sleep 2
-  # source "$GS_DOTFILES_PATH/install.d/install-lazyvim.sh" >/dev/null 2>&1
-  gum spin --spinner moon --title "Configure System Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh"
-  # gum spin --spinner moon --title "Configuring main MacOS settings..." -- sleep 2
-  # source "$GS_DOTFILES_PATH/install.d/macos/yos-main-configs.sh" >/dev/null 2>&1
-  # gum spin --spinner moon --title "Configure Dock Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
-  gum spin --spinner moon --title "Configuring MacOS Dock settings..." -- sleep 2
-  source "$GS_DOTFILES_PATH/install.d/macos/yos-dock.sh"
-  gum spin --spinner moon --title "Configure Peripheral Settings" -- "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh"
-  # gum spin --spinner moon --title "Configuring peripherals..." -- sleep 2
-  # source "$GS_DOTFILES_PATH/install.d/macos/yos-peripherals.sh" >/dev/null 2>&1
-  gum spin --spinner moon --title "Configuring screenshots..." -- "$GS_DOTFILES_PATH/install.d/macos/yos-screenshots.sh"
-  # gum spin --spinner moon --title "Configuring screenshots..." -- sleep 2
-  # source "$GS_DOTFILES_PATH/install.d/macos/yos-screenshots.sh" >/dev/null 2>&1
-  gum spin --spinner moon --title "Configuring Dotfiles..." -- "$GS_DOTFILES_PATH/install.d/dotfiles/dotfiles.sh"
-  # gum spin --spinner moon --title "Configuring dotfiles..." -- sleep 2
-  # "$GS_DOTFILES_PATH/install.d/dotfiles/dotfiles.sh" >/dev/null 2>&1
-  gum spin --spinner moon --title "Configuring Git..." -- "$GS_DOTFILES_PATH/install.d/git.sh"
-  # gum spin --spinner moon --title "Configuring git..." -- sleep 2
-  # source "$GS_DOTFILES_PATH/install.d/git.sh" >/dev/null 2>&1
+  source "$SCRIPTS_DIR/macos/launch.sh"
   ;;
 *)
   echo "Unrecognized OS. Skipping installation and configuration."
