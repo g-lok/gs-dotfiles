@@ -70,6 +70,7 @@ brew 'watch'
 brew 'wdiff'
 brew 'wget'
 brew 'xh'
+brew 'yazi'
 brew 'ykman' # For managing Yubikeys
 brew 'yt-dlp' # Youtube dowloader
 brew 'zip'

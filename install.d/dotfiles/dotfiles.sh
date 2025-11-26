@@ -16,6 +16,7 @@ UNIVERSAL_PACKAGES=(
   "shellrc"
   "starship"
   "VSCode"
+  "yazi"
   "zsh"
 )
 
