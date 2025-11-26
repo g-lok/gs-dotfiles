@@ -22,7 +22,7 @@ install_optional_tools() {
 
 brew bundle install --file "$SCRIPTS_DIR/macos/Brewfile-terminal-apps"
 brew bundle install --file "$SCRIPTS_DIR/macos/Brewfile-desktop-apps"
-source "$SCRIPTS/macos/yos_optional_desktop_apps.sh"
+source "$SCRIPTS_DIR/macos/yos_optional_desktop_apps.sh"
 brew bundle install --file "$SCRIPTS_DIR/macos/Brewfile-nerdfonts"
 
 ## Install optional packages
