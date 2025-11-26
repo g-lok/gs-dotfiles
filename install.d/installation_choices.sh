@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
 ## Get installation choices
-# declare -a OPTIONAL_APPS
-# declare -a APP_CATEGORIES
-OPTIONAL_APPS=("Developer_Tools" "DevOps_Tools" "Artist_Tools")
+OPTIONAL_APPS=("Developer_Tools" "Creative_Tools")
 export APP_CATEGORIES=$(gum choose "${OPTIONAL_APPS[@]}" --no-limit --header "Select optional application categories to install.")
 
 ## I shouldn't have to do this,

@@ -1,6 +1,0 @@
-# Brewfile for creative apps
-
-cask 'audacity' # Audio editor
-cask 'gimp' # Image editor
-cask 'krita' # Painting program
-cask 'blender' # Powerful 3D CG Suite

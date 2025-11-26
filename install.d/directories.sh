@@ -2,13 +2,12 @@
 
 ## Folders to Create in Home
 folders=(
-  Downloads/Torrents/
+  Downloads/Torrents
   Downloads/Chrome
   Downloads/Firefox
   Downloads/Brave
-  Documents/Personal/
+  Documents/Personal
   Documents/Professional
-  Documents/Saved-Websites
   gitclones
   bin
   Pictures/Screenshots

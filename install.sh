@@ -21,14 +21,17 @@ for file in $GS_DOTFILES_PATH/install.d/*.sh; do
   chmod +x "$file"
 done
 
-## MacOS or Linux?
+## Set OS
 source "$SCRIPTS_DIR/get_os.sh"
 
 ## Install package managers and gum
 source "$SCRIPTS_DIR/install_pkgmgr_gum.sh"
 
+## Set gum color scheme
+source "$SCRIPTS_DIR/set_gum_colors.sh"
+
 ## Get user input
-source "$SCRIPTS_DIR/get_user_input.sh"
+source "$SCRIPTS_DIR/inst_user_input.sh"
 
 ## STOP ASKING ME FOR SUDO!
 export SUDO_ASKPASS="$GS_DOTFILES_PATH/install.d/returnpass.sh"
@@ -45,9 +48,6 @@ source "$SCRIPTS_DIR/directories.sh"
 # export CLICOLOR_FORCE=1
 # export TERM="xterm-256color"
 # export COLORTERM="24bit"
-
-## Get installation choices
-source "$SCRIPTS_DIR/installation_choices.sh"
 
 ## Run installation scripts based on OS
 gum style \

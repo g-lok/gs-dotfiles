@@ -2,71 +2,36 @@
 # Ignore if we're not on OSX
 [[ "$OSTYPE" =~ darwin* ]] || exit 0
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE}")" && pwd)"
-
-## Determine if we're on Intel or Arm64
-if [[ "$(uname -m)" == "arm64" ]]; then
-  CHIPSET="ARM64"
-else
-  CHIPSET="INTEL"
-fi
-
-## Function to install Furnace
-install_furnace() {
-  OWNER="tildearrow"
-  REPO="furnace"
-  if [[ $CHIPSET == "ARM64" ]]; then
-    ASSET_NAME="mac-arm64"
-  else
-    ASSET_NAME="mac-Intel"
-  fi
-
-  ## Fetch the latest release and extract the browser_download_url for the macOS asset
-  curl -s "https://api.github.com/repos/$OWNER/$REPO/releases/latest" |
-    jq -r ".assets[] | select(.name | contains(\"$ASSET_NAME\")) | .browser_download_url" |
-    xargs -I {} curl -L -o "$SCRIPT_DIR/furnace_latest_mac_release.dmg" {}
-
-  printf "$HOMEBREW_PASSWORD" | hdiutil attach -stdinpass "$SCRIPT_DIR/furnace_latest_mac_release.dmg"
-  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/Furnace.app" "/Applications/"
-  mkdir -p "$HOME/Documents/Furnace"
-  printf "$HOMEBREW_PASSWORD" | sudo -S cp "/Volumes/Furnace/manual.pdf" "$HOME/Documents/Furnace/"
-  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/demos" "$HOME/Documents/Furnace/"
-  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/instruments" "$HOME/Documents/Furnace/"
-  printf "$HOMEBREW_PASSWORD" | sudo -S cp -R "/Volumes/Furnace/wavetables" "$HOME/Documents/Furnace/"
-  rm "$SCRIPT_DIR/furnace_latest_mac_release.dmg"
-}
-
 ## Function to install optional toolsets
 install_optional_tools() {
-  echo "install_optional_tools: $1"
   case "$1" in
   "Developer_Tools")
-    brew bundle install --file "$SCRIPT_DIR/Brewfile-dev"
-    source "$SCRIPT_DIR/../select-mise-languages.sh"
+    brew bundle install --file "$SCRIPTS_DIR/macos/Brewfile-dev"
+    source "$SCRIPTS_DIR/install_mise_languages.sh"
+    source "$SCRIPTS_DIR/macos/yos-packages-devops.sh"
+    source "$SCRIPTS_DIR/macos/install_dbs.sh"
     ;;
-  "DevOps_Tools")
-    brew bundle install --file "$SCRIPT_DIR/Brewfile-devops"
-    ;;
-  "Artist_Tools")
-    brew bundle install --file "$SCRIPT_DIR/Brewfile-artist-apps"
-    install_furnace
+  "Creative_Tools")
+    source "$SCRIPT_DIR/macos/yos-creative-packages.sh"
     ;;
   *)
-    echo "$optional is not a valid toolset"
+    echo "$1 is not a valid toolset"
     ;;
   esac
 }
 
 brew bundle install --file "$SCRIPT_DIR/Brewfile-terminal-apps"
 brew bundle install --file "$SCRIPT_DIR/Brewfile-desktop-apps"
+source "$SCRIPTS/macos/yos_optional_desktop_apps.sh"
 brew bundle install --file "$SCRIPT_DIR/Brewfile-nerdfonts"
 
 ## Install optional packages
-echo "$HOMEBREW_APP_CHOICES"
 if [[ ${#HOMEBREW_APP_CHOICES[@]} -gt 0 ]]; then
   for optionals in "${HOMEBREW_APP_CHOICES[@]}"; do
     install_optional_tools "$optionals"
   done
 fi
 
+## Brew cleanup
+brew doctor
 brew cleanup

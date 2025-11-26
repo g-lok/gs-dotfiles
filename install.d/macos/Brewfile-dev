@@ -6,7 +6,6 @@ brew 'asciinema' # easily record terminal sessions to animated gifs
 brew 'docker-completion'
 brew 'docker-compose'
 brew 'docker'
-cask 'flutter'
 brew 'gron' # Make JSON greppable
 cask 'insomnia' # API tools
 brew 'jj' # Git-compatible version control system. Better than git
