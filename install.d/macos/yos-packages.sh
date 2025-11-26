@@ -8,11 +8,11 @@ install_optional_tools() {
   "Developer_Tools")
     brew bundle install --file "$SCRIPTS_DIR/macos/Brewfile-dev"
     source "$SCRIPTS_DIR/install_mise_languages.sh"
-    source "$SCRIPTS_DIR/macos/yos-packages-devops.sh"
+    source "$SCRIPTS_DIR/macos/yos_packages_devops.sh"
     # source "$SCRIPTS_DIR/install_dbs.sh"
     ;;
   "Creative_Tools")
-    source "$SCRIPTS_DIR/macos/yos-packages-creative.sh"
+    source "$SCRIPTS_DIR/macos/yos_packages_creative.sh"
     ;;
   *)
     echo "$1 is not a valid toolset"

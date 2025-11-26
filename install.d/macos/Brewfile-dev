@@ -1,22 +1,18 @@
-# Brewfile packages
-
-# Developer apps
+## Developer apps
 
 brew 'asciinema' # easily record terminal sessions to animated gifs
+brew 'colima' # because Docker sucks on MacOS
 brew 'docker-completion'
 brew 'docker-compose'
 brew 'docker'
 brew 'gron' # Make JSON greppable
 cask 'insomnia' # API tools
 brew 'jj' # Git-compatible version control system. Better than git
-brew 'kubernetes-cli'
-brew 'minikube'
-brew 'mise'
+brew 'mise' # Programming language, tooling, and environment manager.
 cask 'postman' # API tools
-brew 'ttyd'
+brew 'ttyd' # Share your terminal over the web.
 cask 'utm' # Run MacOS Virtual machines
 brew 'vhs' # Terminal video recorder
 cask 'virtualbox'
-cask 'visual-studio-code' # VSCode IDE
-cask 'windsurf'
-cask 'zed'
+cask 'visual-studio-code' # visual-studio-code IDE
+cask 'zed' # Another code editor.
