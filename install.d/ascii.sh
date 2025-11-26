@@ -12,13 +12,21 @@ ascii_art='
 
 ## Define the color gradient (shades of cyan and blue)
 colors=(
-  '\033[38;5;81m' # Cyan
-  '\033[38;5;75m' # Light Blue
-  '\033[38;5;69m' # Sky Blue
-  '\033[38;5;63m' # Dodger Blue
-  '\033[38;5;57m' # Deep Sky Blue
-  '\033[38;5;51m' # Cornflower Blue
-  '\033[38;5;45m' # Royal Blue
+  # '\033[38;5;81m' # Cyan
+  # '\033[38;5;75m' # Light Blue
+  # '\033[38;5;69m' # Sky Blue
+  # '\033[38;5;63m' # Dodger Blue
+  # '\033[38;5;57m' # Deep Sky Blue
+  # '\033[38;5;51m' # Cornflower Blue
+  # '\033[38;5;45m' # Royal Blue
+  # Gruvbox
+  "167=f7/30/28" # red     - errors, removals
+  "208=fb/6a/16" # orange  - search match, bright UI
+  "214=f7/b1/25" # yellow  - warnings
+  "142=aa/b0/1e" # green   - additions, success
+  "108=7d/b6/69" # aqua    - type hints, diffs
+  "109=71/95/86" # teal    - status bars, cursor
+  "175=c7/70/89" # purple  - function names, git renamed
 )
 #
 # ## Split the ASCII art into lines
