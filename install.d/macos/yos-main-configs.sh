@@ -40,6 +40,7 @@ sudo -A -u "$CURRENT_USER" defaults write com.apple.assistant.support "Assistant
 
 ## Disable widgets
 sudo -A -u "$CURRENT_USER" defaults write com.apple.WindowManager StandardHideWidgets -bool true
+sudo -A -u "$CURRENT_USER" defaults write com.apple.WindowManager StageManagerHideWidgets -bool true
 # Add VPN icon
 # sudo -A -u "$CURRENT_USER" open "/System/Library/CoreServices/Menu Extras/vpn.menu"
 
