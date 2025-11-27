@@ -28,7 +28,7 @@ source "$SCRIPTS_DIR/get_os.sh"
 source "$SCRIPTS_DIR/install_pkgmgr_gum.sh"
 
 ## Set gum color scheme
-source "$SCRIPTS_DIR/set_gum_colors.sh"
+source "$SCRIPTS_DIR/set_gum_flags.sh"
 
 ## Get user input
 source "$SCRIPTS_DIR/inst_user_input.sh"
