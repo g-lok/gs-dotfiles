@@ -51,8 +51,6 @@ source "$SCRIPTS_DIR/directories.sh"
 
 ## Run installation scripts based on OS
 gum style \
-  --border double \
-  --align center --width 70 --margin "1 2" --padding "1 1" \
   --bold "Running Installation and Configuration Scripts"
 case $SCRIPT_OS in
 "MacOS")
@@ -65,19 +63,11 @@ esac
 
 ## Setup dotfiles
 gum style \
-  --border double \
-  --align center --width 70 --margin "1 2" --padding "1 1" --bold "GNU Stow Adopted existing configs to this repo." "Do you want to use G's Dotfile Configs instead?"
-gum confirm && git restore . || echo "No git actions taken. Using adopted configs."
-
-## Setup Wallpaper
-gum style \
-  --border double \
-  --align center --width 70 --margin "1 2" --padding "1 1" --bold "Set wallpaper to theme?"
+  --bold "Set wallpaper to theme?"
 gum confirm && source "$GS_DOTFILES_PATH/install.d/wallpaper.sh" || echo "Wallpaper unchanged"
 
 gum style \
-  --border double \
-  --align center --width 70 --margin "1 2" --padding "1 1" --bold "Congratulations!" "Installation and Configuration Complete!"
+  --bold "Congratulations!" "Installation and Configuration Complete!"
 
 ## remove env variables
 unset HOMEBREW_PASSWORD
