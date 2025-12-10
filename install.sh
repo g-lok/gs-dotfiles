@@ -63,6 +63,11 @@ esac
 
 ## Setup dotfiles
 gum style \
+  --border double \
+  --align center --width 50 --margin "1 2" --padding "2 4" --bold "GNU Stow Adopted existing configs to this repo." "Do you want to use G's Dotfile Configs instead?"
+gum confirm && git restore . || echo "No git actions taken. Using adopted configs."
+
+gum style \
   --bold "Set wallpaper to theme?"
 gum confirm && source "$GS_DOTFILES_PATH/install.d/wallpaper.sh" || echo "Wallpaper unchanged"
 
