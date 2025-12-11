@@ -36,7 +36,7 @@ cd gs-dotfiles
 
 1. [Brave](https://brave.com/)- the best privacy-oriented browser of late. Also includes Chrome and Firefox.  Yes Brave supports Tor links, which is why I didn't include the Tor browser.
 1. [Libreoffice](https://www.libreoffice.org/)- Free and open source office suite.
-1. [Alacritty](https://alacritty.org/)- A fantastic terminal emulator replacement for whatever came with your OS.<br>
+1. [Ghostty](https://ghostty.org/)- A fantastic terminal emulator replacement for whatever came with your OS.<br>
 [Learn to use the terminal](https://a.co/d/bwIR32o)
 1. [Zellij](https://alacritty.org/)- The session manager inside of Alacritty. Like tmux, but better. Sessions, panes, tabs, etc.
 1. [Lazyvim](https://www.lazyvim.org/)- A curated Neovim with all the best plugins and configurations. A powerful text editor and IDE.<br>
@@ -104,7 +104,6 @@ Gosh, um:
 
 ## TODO
 
-1. Fix the colors.  No joke, I spent at least a week, day and night, trying to make this keep consistent colors that actually match the hex/bash codes I'm feeding it. Help would be appreciated here.
 1. Add Linux. Debian systems first, specifically Kubuntu and Kali (Gnome only), since that's what I'm rocking.
 1. I just found out Homebrew for Linux doesn't support casks (GUI applications) so I'm probably going to use Nix or something with cross-compatibility for that.
 1. Add theme and font selection.
@@ -113,7 +112,6 @@ Gosh, um:
 1. Expand devops tooling bigtime. Review recommended lists on youtube.
 1. Add more artist/creative apps. Bug Ardour to clean up their complicated installation nonsense so they can be put on Homebrew.
 1. Add more games? I dunno I'm not really into free games, Minecraft etc.
-1. I already spoke to TildeArrow (Furnace creator) about getting Furnace on Homebrew for them, so I will work on that.  However it seems like I won't be able to use Homebrew casks to also copy over all the other content they stuff in the package, like manuals and instruments and demo songs and what-have-you, so I may just leave the code as-is.
 1. Fine tune what apps I'm installing and plugins/configs I'm adding.  I'm brand new to Neovim and not sure about some of my choices regarding [Mini.nvim](https://github.com/nvim-mini/mini.nvim)
 
 ## License
