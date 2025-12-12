@@ -35,19 +35,10 @@ source "$SCRIPTS_DIR/inst_user_input.sh"
 
 ## STOP ASKING ME FOR SUDO!
 export SUDO_ASKPASS="$GS_DOTFILES_PATH/install.d/returnpass.sh"
-# TODO: This messes up my colors and I don't think it's necessary.
-# export CI=true
 
 ## Create directories under home
 gum spin --spinner moon --title "Creating directories..." -- sleep 2
 source "$SCRIPTS_DIR/directories.sh"
-
-## I lose colors here for some reason,
-## so I have to set this to force colors.
-
-# export CLICOLOR_FORCE=1
-# export TERM="xterm-256color"
-# export COLORTERM="24bit"
 
 ## Run installation scripts based on OS
 gum style \
@@ -62,6 +53,10 @@ case $SCRIPT_OS in
 esac
 
 ## Setup dotfiles
+gum style \
+  --bold "GNU Stow Adopted existing configs to this repo." "Do you want to use G's Dotfile Configs instead?"
+gum confirm && git restore . || echo "No git actions taken. Using adopted configs."
+
 gum style \
   --bold "Set wallpaper to theme?"
 gum confirm && source "$GS_DOTFILES_PATH/install.d/wallpaper.sh" || echo "Wallpaper unchanged"
