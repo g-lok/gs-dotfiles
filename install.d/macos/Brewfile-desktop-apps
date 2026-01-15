@@ -19,7 +19,7 @@ cask 'keka' # Better archiver than default
 cask 'kekaexternalhelper'
 cask 'libreoffice' # Full office suite.
 cask 'localsend' # Send files to local devices.
-cask 'macfuse'
+cask 'macfuse' # Adds support for FUSE filesystems
 cask 'obsidian' # Absurdly powerful knowledge database. Create and organize notes and information.
 cask 'pinta' # Simpler painting software that Krita.
 cask 'rectangle' # Move and resize windows at ease.

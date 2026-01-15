@@ -44,6 +44,9 @@ if [[ ${#CREATIVE_SELECTIONS[@]} -gt 0 ]]; then
     Furnace)
       install_furnace
       ;;
+    VCV)
+      brew install --cask vcv-rack
+      ;;
     esac
   done
 fi

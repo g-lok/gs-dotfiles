@@ -7,5 +7,6 @@ CREATIVE_OPTIONS=(
   "Krita"
   "Blender"
   "Furnace Tracker"
+  "VCV Rack"
 )
 export CREATIVE_SELECTIONS=$(gum choose "${CREATIVE_OPTIONS[@]}" --no-limit --header "Select optional creativity apps to install.")
