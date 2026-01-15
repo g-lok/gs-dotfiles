@@ -9,6 +9,7 @@ folders=(
   Documents/Personal
   Documents/Professional
   gitclones
+  dotfiles
   bin
   Pictures/Screenshots
   Pictures/Wallpapers
