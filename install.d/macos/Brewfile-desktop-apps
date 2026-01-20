@@ -1,7 +1,9 @@
 ### Brewfile for desktop applications
 
 cask 'adobe-acrobat-reader'
+# TODO Maybe make the terminal alternatives selectable
 cask 'alacritty' # Another terminal emulator.
+# TODO Move this to optional apps
 cask 'alfred' # A powerful spotlight replacement.
 cask 'brave-browser' # A privacy focused browser. You can use this for Tor btw.
 cask 'discord'
@@ -21,12 +23,15 @@ cask 'libreoffice' # Full office suite.
 cask 'localsend' # Send files to local devices.
 cask 'macfuse' # Adds support for FUSE filesystems
 cask 'obsidian' # Absurdly powerful knowledge database. Create and organize notes and information.
+# TODO Move this to creativity apps and fix comment
 cask 'pinta' # Simpler painting software that Krita.
 cask 'rectangle' # Move and resize windows at ease.
+# TODO Create and move this to gaming options
 cask 'retroarch' # A frontend for video game emulators.
 cask 'sdformatter' # Format SD cards properly.
 cask 'signal' # Open source E2E encrypted messenger.
 cask 'slack' # Not everyone uses discord.
+# TODO Move this to gaming options.
 cask 'steam' # What, YOU DON'T GAME?
 cask 'typora' # Configurable document editor that supports Markdown.
 cask 'veracrypt' # File encryption.

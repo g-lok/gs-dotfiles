@@ -40,7 +40,8 @@ if [[ -n "$SELECTED_LANGUAGES" ]]; then
       mise x ruby -- gem install rails --no-document
       ;;
     Rust)
-      bash -c "$(curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs)" -- -y
+      # bash -c "$(curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs)" -- -y
+      mise use --global rust
       ;;
     esac
   done
