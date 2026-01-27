@@ -7,6 +7,7 @@ folders=(
   Downloads/Firefox
   Downloads/Brave
   Documents/Personal
+  Documents/Personal/Obsidian
   Documents/Professional
   gitclones
   dotfiles

@@ -12,5 +12,6 @@ LANGUAGE_OPTIONS=(
   "Python"
   "Ruby on Rails"
   "Rust"
+  "Zig"
 )
 export SELECTED_LANGUAGES=$(gum choose "${LANGUAGE_OPTIONS[@]}" --no-limit --height 10 --header "Select programming SELECTED_LANGUAGES")

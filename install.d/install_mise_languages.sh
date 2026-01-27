@@ -43,6 +43,9 @@ if [[ -n "$SELECTED_LANGUAGES" ]]; then
       # bash -c "$(curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs)" -- -y
       mise use --global rust
       ;;
+    Zig)
+      mise use --global zig@latest
+      ;;
     esac
   done
 fi

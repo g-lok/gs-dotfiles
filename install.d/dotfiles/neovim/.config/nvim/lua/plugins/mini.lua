@@ -6,7 +6,7 @@ return {
 		"nvim-mini/mini.nvim",
 		config = function()
 			require("mini.move").setup()
-			require("mini.animate").setup()
+			-- require("mini.animate").setup()
 			require("mini.diff").setup()
 			require("mini.align").setup()
 			require("mini.operators").setup()
