@@ -1,6 +1,10 @@
 # Brewfile for devops apps
+# Brew taps
+tap 'hashicorp/tap'
 
+# Devops tools
 brew 'kubernetes-cli'
 brew 'minikube'
+brew 'hashicorp/tap/packer'
 brew 'tailscale'
 
