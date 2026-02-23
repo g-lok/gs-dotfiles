@@ -40,7 +40,7 @@ GSDOT_UNIVERSAL=(
 )
 
 gum style \
-  --bold "GNU Stow/Adopt/Copy the following configs to ~/dotfiles.""\
+  --bold "GNU Stow/Adopt/Copy the following configs to ~/dotfiles.\n""\
 If you don't know what this means, just select them all with ctrl+a."
 # export GSDOT_CHOICES=$(gum choose "${GSDOT_UNIVERSAL[@]" --no-limit --header="SSelect configs to copy.")
 GSDOT_CHOICES=$(gum choose "${GSDOT_UNIVERSAL[@]}" --no-limit --height 5 --header "Select optional configs.")
