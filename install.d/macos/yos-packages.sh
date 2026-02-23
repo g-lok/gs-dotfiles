@@ -6,13 +6,13 @@
 install_optional_tools() {
   case "$1" in
   "Developer_Tools")
-    brew bundle install --file "$SCRIPTS_DIR/macos/Brewfile-dev"
-    source "$SCRIPTS_DIR/install_mise_languages.sh"
-    source "$SCRIPTS_DIR/macos/yos_packages-devops.sh"
+    brew bundle install --file "$GSDOT_SCRIPTS/macos/Brewfile-dev"
+    source "$GSDOT_SCRIPTS/install_mise_languages.sh"
+    source "$GSDOT_SCRIPTS/macos/yos_packages-devops.sh"
     # source "$SCRIPTS_DIR/install_dbs.sh"
     ;;
   "Creative_Tools")
-    source "$SCRIPTS_DIR/macos/yos_packages_creative.sh"
+    source "$GSDOT_SCRIPTS/macos/yos_packages_creative.sh"
     ;;
   *)
     echo "$1 is not a valid toolset"
@@ -20,10 +20,10 @@ install_optional_tools() {
   esac
 }
 
-brew bundle install --file "$SCRIPTS_DIR/macos/Brewfile-terminal-apps"
-brew bundle install --file "$SCRIPTS_DIR/macos/Brewfile-desktop-apps"
-source "$SCRIPTS_DIR/macos/yos_optional_desktop_apps.sh"
-brew bundle install --file "$SCRIPTS_DIR/macos/Brewfile-nerdfonts"
+brew bundle install --file "$GSDOT_SCRIPTS/macos/Brewfile-terminal-apps"
+brew bundle install --file "$GSDOT_SCRIPTS/macos/Brewfile-desktop-apps"
+source "$GSDOT_SCRIPTS/macos/yos_optional_desktop_apps.sh"
+brew bundle install --file "$GSDOT_SCRIPTS/macos/Brewfile-nerdfonts"
 
 ## Install optional packages
 if [[ ${#HOMEBREW_APP_CHOICES[@]} -gt 0 ]]; then
