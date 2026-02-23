@@ -51,10 +51,10 @@ case $SCRIPT_OS in
   ;;
 esac
 
-## Setup dotfiles
-gum style \
-  --bold "GNU Stow Adopted existing configs to this repo." "Do you want to use G's Dotfile Configs instead?"
-gum confirm && git restore . || echo "No git actions taken. Using adopted configs."
+# ## Setup dotfiles
+# gum style \
+#   --bold "GNU Stow Adopted existing configs to this repo." "Do you want to use G's Dotfile Configs instead?"
+# gum confirm && git restore . || echo "No git actions taken. Using adopted configs."
 
 gum style \
   --bold "Set wallpaper to theme?"
