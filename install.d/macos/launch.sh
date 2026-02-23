@@ -2,12 +2,12 @@
 
 gum spin --spinner moon --title "Installing HomeBrew Apps..." -- sleep 2
 source "$GSDOT_SCRIPTS/macos/yos-packages.sh"
-gum spin --spinner moon --title "Installing Oh-My-Zsh..." -- "$GSDOT_SCRIPTS/zsh.sh"
+# gum spin --spinner moon --title "Installing Oh-My-Zsh..." -- "$GSDOT_SCRIPTS/zsh.sh"
 # gum spin --spinner moon --title "Installing Oh-My-Zsh..." -- sleep 2
-# source "$SCRIPTS_DIR/zsh.sh" >/dev/null 2>&1
-gum spin --spinner moon --title "Install Lazyvim..." -- "$GSDOT_SCRIPTS/install-lazyvim.sh"
+source "$SCRIPTS_DIR/zsh.sh" >/dev/null 2>&1
+# gum spin --spinner moon --title "Install Lazyvim..." -- "$GSDOT_SCRIPTS/install-lazyvim.sh"
 # gum spin --spinner moon --title "Installing Lazyvimim..." -- sleep 2
-# source "$SCRIPTS_DIR/install-lazyvim.sh" >/dev/null 2>&1
+source "$SCRIPTS_DIR/install-lazyvim.sh" >/dev/null 2>&1
 gum spin --spinner moon --title "Configuring System Settings..." -- "$GSDOT_SCRIPTS/macos/yos-main-configs.sh"
 # gum spin --spinner moon --title "Configuring main MacOS settings..." -- sleep 2
 # source "$SCRIPTS_DIR/macos/yos-main-configs.sh" >/dev/null 2>&1
