@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+export GSDOT_PATH="$HOME/.local/share/gsdotfiles"
+export GSDOT_SCRIPTS="$GSDOT_PATH/install.d"
+export GSDOT_DOTFILES="$GSDOT_PATH/install.d/dotfiles"
+
 ## Print logo
 case $BASH_VERSION in
 4.* | 5.* | 6.*)

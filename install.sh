@@ -5,14 +5,8 @@
 ## G's set-up scripts for MacOS and Linux
 ## Export cwd and generic script directories
 # export GS_DOTFILES_PATH=$(dirname "$(readlink -f "$0")")
-export GSDOT_PATH="$HOME/.local/share/gsdotfiles"
-export GSDOT_SCRIPTS="$GSDOT_PATH/install.d"
-export GSDOT_DOTFILES="$GSDOT_PATH/install.d/dotfiles"
 
-## Begin
-echo -e "\nBegin installation (or abort with ctrl+c)..."
-
-## Make sure sudo is already cached before using gum spinner or anything that will interfere with the scripts
+## Make sure sudo is already cached
 sudo --validate
 
 ## Make all scripts executable
@@ -40,6 +34,7 @@ gum spin --spinner moon --title "Creating directories..." -- sleep 2
 source "$GSDOT_SCRIPTS/directories.sh"
 
 ## Run installation scripts based on OS
+
 gum style \
   --bold "Running Installation and Configuration Scripts"
 case $SCRIPT_OS in
