@@ -10,12 +10,12 @@ done <<<"$APP_CATEGORIES_SELECT"
 
 for app_cat in "${GSDOT_APP_CATEGORIES[@]}"; do
   case $app_cat in
-  Developer)
+  Developer_Tools)
     source "$GSDOT_SCRIPTS/select_dev_languages.sh"
     source "$GSDOT_SCRIPTS/select_devops.sh"
     source "$GSDOT_SCRIPTS/select_ai.sh"
     ;;
-  Creative)
+  Creative_Tools)
     source "$GSDOT_SCRIPTS/select_creative.sh"
     ;;
   esac

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cp "$GS_DOTFILES_PATH/themes/victorian-wallpaper.jpg" ~/Pictures/Wallpapers/
+cp "$GSDOT_PATH/themes/victorian-wallpaper.jpg" ~/Pictures/Wallpapers/
 
 case "$SCRIPT_OS" in
 "MacOS")
