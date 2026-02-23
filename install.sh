@@ -5,6 +5,7 @@
 ## G's set-up scripts for MacOS and Linux
 ## Export cwd and generic script directories
 export GS_DOTFILES_PATH=$(dirname "$(readlink -f "$0")")
+# export GS_DOTFILES_PATH="$HOME/.local/share/gsdotfiles"
 export SCRIPTS_DIR="$GS_DOTFILES_PATH/install.d"
 
 ## Print logo
