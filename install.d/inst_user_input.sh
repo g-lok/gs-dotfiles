@@ -36,21 +36,21 @@ while :; do
 done
 
 ## Get installation choices
-source "$SCRIPTS_DIR/installation_choices.sh"
-source "$SCRIPTS_DIR/select_desktop_optionals.sh"
+source "$GSDOT_SCRIPTS/installation_choices.sh"
+source "$GSDOT_SCRIPTS/select_desktop_optionals.sh"
 
 ## Install optional packages
 if [[ ${#HOMEBREW_APP_CHOICES[@]} -gt 0 ]]; then
   for option in "${HOMEBREW_APP_CHOICES[@]}"; do
     case ${option} in
     "Developer_Tools")
-      source "$SCRIPTS_DIR/select_dev_languages.sh"
-      source "$SCRIPTS_DIR/select_devops.sh"
-      source "$SCRIPTS_DIR/select_dbs.sh"
-      source "$SCRIPTS_DIR/select_ai.sh"
+      source "$GSDOT_SCRIPTS/select_dev_languages.sh"
+      source "$GSDOT_SCRIPTS/select_devops.sh"
+      source "$GSDOT_SCRIPTS/select_dbs.sh"
+      source "$GSDOT_SCRIPTS/select_ai.sh"
       ;;
     "Creative_Tools")
-      source "$SCRIPTS_DIR/select_creative.sh"
+      source "$GSDOT_SCRIPTS/select_creative.sh"
       ;;
     esac
   done
