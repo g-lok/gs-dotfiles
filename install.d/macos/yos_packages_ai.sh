@@ -17,6 +17,9 @@ if [[ ${#GSDOT_AI_SELECT[@]} -gt 0 ]]; then
     OpenAI)
       brew install anomalyco/tap/opencode
       ;;
+    OpenCode)
+      brew install anomalyco/tap/opencode
+      ;;
     Windsurf)
       brew install --cask windsurf
       ;;
