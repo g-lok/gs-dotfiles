@@ -19,7 +19,7 @@ stow_and_copy() {
   echo "config in stow_and_copy $config"
   ## GNU Stow to set up non-OS specific configs
   ## stow adopt it first before anything to keep the user's existing configs safe
-  stow --target="$HOME" --adopt "${config}" --override=*
+  stow --target="$HOME" --adopt "${config}" --override=""
   ## stow restow to make it clean
   stow --target="$HOME" --restow "${config}"
   cp -rf "$GSDOT_DOTFILES_PATH/$config" "$HOME/dotfiles/"
