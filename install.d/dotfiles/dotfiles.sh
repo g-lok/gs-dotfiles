@@ -49,6 +49,7 @@ export GSDOT_CHOICES=$(gum choose "${GSDOT_UNIVERSAL[@]}" --no-limit --height 5 
 #   stow --target="$HOME" --restow "$config"
 # done
 for choice in "${GSDOT_CHOICES[@]}"; do
+  echo "$choice"
   case $choice in
   # alacritty)
   #   case $OS in
