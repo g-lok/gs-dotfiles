@@ -33,6 +33,7 @@ if [[ -n "$GSDOT_SELECTED_LANGUAGES" ]]; then
       ;;
     Python)
       mise use --global python@latest
+      mise plugin add poetry
       ;;
     Ruby)
       mise use --global ruby@latest
