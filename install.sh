@@ -4,14 +4,15 @@
 
 ## G's set-up scripts for MacOS and Linux
 ## Export cwd and generic script directories
-export GS_DOTFILES_PATH=$(dirname "$(readlink -f "$0")")
-# export GS_DOTFILES_PATH="$HOME/.local/share/gsdotfiles"
-export SCRIPTS_DIR="$GS_DOTFILES_PATH/install.d"
+# export GS_DOTFILES_PATH=$(dirname "$(readlink -f "$0")")
+export GSDOT_PATH="$HOME/.local/share/gsdotfiles"
+export GSDOT_SCRIPTS="$GSDOT_PATH/install.d"
+export GSDOT_DOTFILES="$GSDOT_PATH/install.d/dotfiles"
 
 ## Print logo
 case $BASH_VERSION in
-4.*)
-  source "$SCRIPTS_DIR/ascii.sh"
+4.* | 5.*)
+  source "$GSDOT_SCRIPTS/ascii.sh"
   ;;
 *)
   cat <<'EOF'
@@ -32,35 +33,35 @@ echo -e "\nBegin installation (or abort with ctrl+c)..."
 sudo --validate
 
 ## Make all scripts executable
-for file in $GS_DOTFILES_PATH/install.d/*.sh; do
+for file in $GSDOT_PATH/install.d/*.sh; do
   chmod +x "$file"
 done
 
 ## Set OS
-source "$SCRIPTS_DIR/get_os.sh"
+source "$GSDOT_SCRIPTS/get_os.sh"
 
 ## Install package managers and gum
-source "$SCRIPTS_DIR/install_pkgmgr_gum.sh"
+source "$GSDOT_SCRIPTS/install_pkgmgr_gum.sh"
 
 ## Set gum color scheme
-source "$SCRIPTS_DIR/set_gum_flags.sh"
+source "$GSDOT_SCRIPTS/set_gum_flags.sh"
 
 ## Get user input
-source "$SCRIPTS_DIR/inst_user_input.sh"
+source "$GSDOT_SCRIPTS/inst_user_input.sh"
 
 ## STOP ASKING ME FOR SUDO!
-export SUDO_ASKPASS="$GS_DOTFILES_PATH/install.d/returnpass.sh"
+export SUDO_ASKPASS="$GSDOT_PATH/install.d/returnpass.sh"
 
 ## Create directories under home
 gum spin --spinner moon --title "Creating directories..." -- sleep 2
-source "$SCRIPTS_DIR/directories.sh"
+source "$GSDOT_SCRIPTS/directories.sh"
 
 ## Run installation scripts based on OS
 gum style \
   --bold "Running Installation and Configuration Scripts"
 case $SCRIPT_OS in
 "MacOS")
-  source "$SCRIPTS_DIR/macos/launch.sh"
+  source "$GSDOT_SCRIPTS/macos/launch.sh"
   ;;
 *)
   echo "Unrecognized OS. Skipping installation and configuration."
@@ -74,7 +75,7 @@ gum confirm && git restore . || echo "No git actions taken. Using adopted config
 
 gum style \
   --bold "Set wallpaper to theme?"
-gum confirm && source "$GS_DOTFILES_PATH/install.d/wallpaper.sh" || echo "Wallpaper unchanged"
+gum confirm && source "$GSDOT_PATH/install.d/wallpaper.sh" || echo "Wallpaper unchanged"
 
 gum style \
   --bold "Congratulations!" "Installation and Configuration Complete!"
@@ -84,7 +85,7 @@ unset HOMEBREW_PASSWORD
 unset APP_CATEGORIES
 unset EMAIL
 unset NAME
-unset GS_DOTFILES_PATH
+unset GSDOT_PATH
 unset DOTFILES_SCRIPT_PATH
 unset STOW_CONFIGS
 unset SCRIPT_OS
