@@ -9,4 +9,4 @@ CREATIVE_OPTIONS=(
   "Furnace Tracker"
   "VCV Rack"
 )
-export CREATIVE_SELECTIONS=$(gum choose "${CREATIVE_OPTIONS[@]}" --no-limit --header "Select optional creativity apps to install.")
+export GSDOT_CREATIVE_SELECT=$(gum choose "${CREATIVE_OPTIONS[@]}" --no-limit --header "Select optional creativity apps to install.")

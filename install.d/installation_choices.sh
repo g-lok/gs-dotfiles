@@ -2,18 +2,21 @@
 
 ## Get installation choices
 OPTIONAL_APPS=("Developer_Tools" "Creative_Tools")
-export APP_CATEGORIES=$(gum choose "${OPTIONAL_APPS[@]}" --no-limit --header "Select optional application categories to install.")
+APP_CATEGORIES_SELECT=$(gum choose "${OPTIONAL_APPS[@]}" --no-limit --header "Select optional application categories to install.")
+export GSDOT_APP_CATEGRIES=()
+while IFS= read -r line; do
+  GSDOT_APP_CATEGORIES+=("$line")
+done <<<"$APP_CATEGORIES_SELECT"
 
-## I shouldn't have to do this,
-## but gum choose up there isn't creating an array,
-## but a newline delimited string.
-case $APP_CATEGORIES in
-*[![:space:]]*)
-  readarray -t HOMEBREW_APP_CHOICES <<<"$APP_CATEGORIES"
-  export HOMEBREW_APP_CHOICES
-  ;;
-*)
-  declare -a APP_CATEGORIES
-  export APP_CATEGORIES
-  ;;
-esac
+for app_cat in "${GSDOT_APP_CATEGORIES[@]}"; do
+  case $app_cat in
+  Developer)
+    source "$GSDOT_SCRIPTS/select_dev_languages.sh"
+    source "$GSDOT_SCRIPTS/select_devops.sh"
+    source "$GSDOT_SCRIPTS/select_ai.sh"
+    ;;
+  Creative)
+    source "$GSDOT_SCRIPTS/select_creative.sh"
+    ;;
+  esac
+done
