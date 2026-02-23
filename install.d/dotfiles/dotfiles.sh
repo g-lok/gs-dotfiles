@@ -45,7 +45,11 @@ If you don't know what this means, just select them all with ctrl+a."
 # export GSDOT_CHOICES=$(gum choose "${GSDOT_UNIVERSAL[@]" --no-limit --header="SSelect configs to copy.")
 GSDOT_CHOICES=$(gum choose "${GSDOT_UNIVERSAL[@]}" --no-limit --height 5 --header "Select optional configs.")
 ## I Shouldnt have to do this, but I cant get gum choose to return a usable array
-mapfile -t GSDOT_CONF_CHOICES_MAP <<<"$GSDOT_CHOICES"
+# mapfile -t GSDOT_CONF_CHOICES_MAP <<<"$GSDOT_CHOICES"
+GSDOT_CONF_CHOICES_MAP=()
+while IFS= read -r line; do
+   GSDOT_CONF_CHOICES_MAP +=("$line")
+done <<< "$GSDOT_CHOICES"
 ## GNU Stow to set up non-OS specific configs
 # for config in "${GSDOT_UNIVERSAL[@]}"; do
 #   ## stow adopt it first before anything to keep the user's existing configs safe
