@@ -39,7 +39,7 @@ GSDOT_UNIVERSAL=(
 gum style \
   --bold "GNU Stow/Adopt/Copy the following configs to ~/dotfiles."\
 "If you don't know what this means, just select them all with ctrl+a."
-GSDOT_CHOICES=$(gum choose --no-limit "${GSDOT_UNIVERSAL[@]")
+GSDOT_CHOICES=$(gum choose --no-limit ${GSDOT_UNIVERSAL[@])
 ## GNU Stow to set up non-OS specific configs
 # for config in "${GSDOT_UNIVERSAL[@]}"; do
 #   ## stow adopt it first before anything to keep the user's existing configs safe
