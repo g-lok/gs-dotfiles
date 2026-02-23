@@ -2,8 +2,8 @@
 
 ## Select and install mise programming languages
 
-if [[ -n "$SELECTED_LANGUAGES" ]]; then
-  for language in $SELECTED_LANGUAGES; do
+if [[ -n "$GSDOT_SELECTED_LANGUAGES" ]]; then
+  for language in $GSDOT_SELECTED_LANGUAGES; do
     case $language in
     Elixir)
       mise use --global erlang@latest

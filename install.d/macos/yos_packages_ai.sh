@@ -2,8 +2,8 @@
 
 ## Install Selected AI Tools
 
-if [[ ${#CHOSEN_AI_TOOLS[@]} -gt 0 ]]; then
-  for option in "${CHOSEN_AI_TOOLS[@]}"; do
+if [[ ${#GSDOT_AI_SELECT[@]} -gt 0 ]]; then
+  for option in "${GSDOT_AI_SELECT[@]}"; do
     case ${option} in
     Claude)
       brew install --cask claude-code

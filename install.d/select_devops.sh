@@ -9,4 +9,4 @@ DEVOPS_OPTIONS=(
   "Geekbench"
   "Tailscale"
 )
-export CHOSEN_DEVOPS_OPTIONS=$(gum choose "${DEVOPS_OPTIONS[@]}" --no-limit --header "Select optional DevOps tools to install.")
+export GSDOT_DEVOPS_OPTIONS=$(gum choose "${DEVOPS_OPTIONS[@]}" --no-limit --header "Select optional DevOps tools to install.")

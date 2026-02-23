@@ -6,6 +6,7 @@ AI_OPTS=(
   "Claude Code"
   "Ollama"
   "OpenAI"
+  "OpenCode"
   "Windsurf"
 )
-export CHOSEN_AI_TOOLS=$(gum choose "${AI_OPTS[@]}" --no-limit --header "Select optional AI tools to install.")
+export GSDOT_AI_SELECT=$(gum choose "${AI_OPTS[@]}" --no-limit --header "Select optional AI tools to install.")

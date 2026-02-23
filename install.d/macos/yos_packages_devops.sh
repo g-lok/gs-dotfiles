@@ -4,8 +4,8 @@
 mise use -global terraform@latest
 
 ## TODO: Figure out the mise for all of these.
-if [[ ${#CHOSEN_DEVOPS_TOOLS[@]} -gt 0 ]]; then
-  for option in "${CHOSEN_DEVOPS_TOOLS[@]}"; do
+if [[ ${#GSDOT_DEVOPS_OPTIONS[@]} -gt 0 ]]; then
+  for option in "${GSDOT_DEVOPS_OPTIONS[@]}"; do
     case ${option} in
     Kubernetes)
       brew install kubectl

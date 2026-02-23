@@ -14,4 +14,4 @@ LANGUAGE_OPTIONS=(
   "Rust"
   "Zig"
 )
-export SELECTED_LANGUAGES=$(gum choose "${LANGUAGE_OPTIONS[@]}" --no-limit --height 10 --header "Select programming SELECTED_LANGUAGES")
+export GSDOT_SELECTED_LANGUAGES=$(gum choose "${LANGUAGE_OPTIONS[@]}" --no-limit --height 10 --header "Select programming SELECTED_LANGUAGES")
