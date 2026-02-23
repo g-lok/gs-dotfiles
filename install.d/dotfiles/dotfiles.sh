@@ -14,6 +14,7 @@ fi
 export GSDOT_SCRIPT_PATH=$(dirname "$(readlink -f "$0")")
 stow_and_copy() {
   config=$1
+  echo $config
   ## GNU Stow to set up non-OS specific configs
   ## stow adopt it first before anything to keep the user's existing configs safe
   stow --target="$HOME" --adopt "${config}"
