@@ -16,7 +16,7 @@ cp -rf "$GSDOT_DOTFILES_PATH"/* "$HOME/dotfiles/"
 cd "$HOME/dotfiles/"
 stow_and_copy() {
   config=$1
-  echo "config in stow_and_copy $config"
+  echo "GNU Stow Adopt/import dotfiles: $config"
   ## GNU Stow to set up non-OS specific configs
   ## stow adopt it first before anything to keep the user's existing configs safe
   stow --target="$HOME" --adopt "${config}" --override='.*'
@@ -58,18 +58,17 @@ done <<<"$GSDOT_CHOICES"
 #   stow --target="$HOME" --restow "$config"
 # done
 for choice in "${GSDOT_CONF_CHOICES_MAP[@]}"; do
-  echo "choice in for loop: $choice"
   case $choice in
-  # alacritty)
-  #   case $OS in
-  #     Linux)
-  #       stow_and_copy("alacritty-linux")
-  #     ;;
-  #     Darwin)
-  #       stow_and_copy("alacritty-macos-${arch}")
-  #     ;;
-  #   esac
-  #   ;;
+  alacritty)
+    case $OS in
+    Linux)
+      stow_and_copy "alacritty-linux"
+      ;;
+    Darwin)
+      stow_and_copy "alacritty-macos-${arch}"
+      ;;
+    esac
+    ;;
   "ghostty")
     stow_and_copy "ghostty-macos-${arch}"
     ;;
