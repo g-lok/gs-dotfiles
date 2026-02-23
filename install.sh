@@ -85,6 +85,6 @@ unset HOMEBREW_PASSWORD
 unset APP_CATEGORIES
 unset EMAIL
 unset NAME
-unset GSDOT_*
+unset GSDOT*
 unset STOW_CONFIGS
 unset SCRIPT_OS
