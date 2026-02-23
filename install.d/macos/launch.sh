@@ -21,9 +21,9 @@ gum spin --spinner moon --title "Configuring screenshots..." -- "$GSDOT_SCRIPTS/
 # gum spin --spinner moon --title "Configuring screenshots..." -- sleep 2
 # source "$SCRIPTS_DIR/macos/yos-screenshots.sh" >/dev/null 2>&1
 gum spin --spinner moon --title "Installing theme..." -- "$GSDOT_SCRIPTS/themes.sh"
-gum spin --spinner moon --title "Configuring Dotfiles..." -- "$GSDOT_SCRIPTS/dotfiles/dotfiles.sh"
+# gum spin --spinner moon --title "Configuring Dotfiles..." -- "$GSDOT_SCRIPTS/dotfiles/dotfiles.sh"
 # gum spin --spinner moon --title "Configuring dotfiles..." -- sleep 2
-# "$SCRIPTS_DIR/dotfiles/dotfiles.sh" >/dev/null 2>&1
+"$SCRIPTS_DIR/dotfiles/dotfiles.sh" >/dev/null 2>&1
 gum spin --spinner moon --title "Configuring Git..." -- "$GSDOT_SCRIPTS/git.sh"
 # gum spin --spinner moon --title "Configuring git..." -- sleep 2
 # source "$SCRIPTS_DIR/git.sh" >/dev/null 2>&1
