@@ -48,8 +48,8 @@ GSDOT_CHOICES=$(gum choose "${GSDOT_UNIVERSAL[@]}" --no-limit --height 5 --heade
 # mapfile -t GSDOT_CONF_CHOICES_MAP <<<"$GSDOT_CHOICES"
 GSDOT_CONF_CHOICES_MAP=()
 while IFS= read -r line; do
-   GSDOT_CONF_CHOICES_MAP +=("$line")
-done <<< "$GSDOT_CHOICES"
+  GSDOT_CONF_CHOICES_MAP+=("$line")
+done <<<"$GSDOT_CHOICES"
 ## GNU Stow to set up non-OS specific configs
 # for config in "${GSDOT_UNIVERSAL[@]}"; do
 #   ## stow adopt it first before anything to keep the user's existing configs safe
