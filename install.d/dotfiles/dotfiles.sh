@@ -90,8 +90,5 @@ for choice in "${GSDOT_CHOICES[@]}"; do
   "zsh")
     stow_and_copy "zsh"
     ;;
-  *)
-    return
-    ;;
   esac
 done
