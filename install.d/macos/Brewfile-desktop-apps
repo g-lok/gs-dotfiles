@@ -6,6 +6,7 @@ cask 'alacritty' # Another terminal emulator.
 # TODO Move this to optional apps
 cask 'alfred' # A powerful spotlight replacement.
 cask 'brave-browser' # A privacy focused browser. You can use this for Tor btw.
+cask 'calibre' # Manage EBooks
 cask 'discord'
 cask 'element' # Open source, decentralized, E2E encrypted discord alternative.
 cask 'firefox'
