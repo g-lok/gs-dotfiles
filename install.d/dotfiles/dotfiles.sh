@@ -37,7 +37,8 @@ GSDOT_UNIVERSAL=(
 )
 
 gum style \
-  --bold "GNU Stow/Adopt/Copy the following configs to ~/dotfiles." "If you don't know what this means, just select them all with ctrl+a."
+  --bold "GNU Stow/Adopt/Copy the following configs to ~/dotfiles."\
+"If you don't know what this means, just select them all with ctrl+a."
 GSDOT_CHOICES=$(gum choose --no-limit "${GSDOT_UNIVERSAL[@]")
 ## GNU Stow to set up non-OS specific configs
 # for config in "${GSDOT_UNIVERSAL[@]}"; do
@@ -46,47 +47,51 @@ GSDOT_CHOICES=$(gum choose --no-limit "${GSDOT_UNIVERSAL[@]")
 #   ## stow restow to make it clean
 #   stow --target="$HOME" --restow "$config"
 # done
-for choice in "${GSDOT_CHOICES[@]"; do
-  case $value in
-    alacritty)
-      case "$OS" in
-        Linux)
-          stow_and_copy("alacritty-linux")
-        ;;
-        Darwin)
-          stow_and_copy("alacritty-macos-${arch}")
-        ;;
-      esac
-    ghostty)
-      stow_and_copy("ghostty-macos-${arch}")
-      ;;
-    zellij)
-      stow_and_copy("zellij-macos-${arch}")
-      ;;
-    bash)
-      stow_and_copy("bash")
-      ;;
-    btop)
-      stow_and_copy("btop")
-      ;;
-    neovim)
-      stow_and_copy("neovim")
-      ;;
-    shellrc)
-      stow_and_copy("shellrc")
-      ;;
-    starship)
-      stow_and_copy("starship")
-      ;;
-    VSCode)
-      stow_and_copy("VSCode")
-      ;;
-    yazi)
-      stow_and_copy("yazi")
-      ;;
-    zsh)
-      stow_and_copy("zsh")
-      ;;
+for choice in "${GSDOT_CHOICES[@]}"; do
+  case $choice in
+  # alacritty)
+  #   case $OS in
+  #     Linux)
+  #       stow_and_copy("alacritty-linux")
+  #     ;;
+  #     Darwin)
+  #       stow_and_copy("alacritty-macos-${arch}")
+  #     ;;
+  #   esac
+  #   ;;
+    "ghostty")
+    stow_and_copy("ghostty-macos-${arch}")
+    ;;
+   "zellij")
+    stow_and_copy("zellij-macos-${arch}")
+    ;;
+    "bash")
+    stow_and_copy("bash")
+    ;;
+    "btop")
+    stow_and_copy("btop")
+    ;;
+    "neovim")
+    stow_and_copy("neovim")
+    ;;
+    "shellrc")
+    stow_and_copy("shellrc")
+    ;;
+    "starship")
+    stow_and_copy("starship")
+    ;;
+    "VSCode")
+    stow_and_copy("VSCode")
+    ;;
+    "yazi")
+    stow_and_copy("yazi")
+    ;;
+    "zsh")
+    stow_and_copy("zsh")
+    ;;
+    *)
+    return
+    ;;
   esac
 done
 
