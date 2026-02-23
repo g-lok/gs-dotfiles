@@ -12,9 +12,9 @@ else
 fi
 ## Get the script path while we're at it
 export GSDOT_SCRIPT_PATH=$(dirname "$(readlink -f "$0")")
-stow_and_copy () {
+stow_and_copy() {
   config=$1
-## GNU Stow to set up non-OS specific configs
+  ## GNU Stow to set up non-OS specific configs
   ## stow adopt it first before anything to keep the user's existing configs safe
   stow --target="$HOME" --adopt "$config"
   ## stow restow to make it clean
@@ -37,9 +37,10 @@ GSDOT_UNIVERSAL=(
 )
 
 gum style \
-  --bold "GNU Stow/Adopt/Copy the following configs to ~/dotfiles."\
-"If you don't know what this means, just select them all with ctrl+a."
-export GSDOT_CHOICES=$(gum choose "${GSDOT_UNIVERSAL[@]" --no-limit --header="SSelect configs to copy.")
+  --bold "GNU Stow/Adopt/Copy the following configs to ~/dotfiles.""\
+If you don't know what this means, just select them all with ctrl+a."
+# export GSDOT_CHOICES=$(gum choose "${GSDOT_UNIVERSAL[@]" --no-limit --header="SSelect configs to copy.")
+export GSDOT_CHOICES=$(gum choose "${GSDOT_UNIVERSAL[@]}" --no-limit --height 5 --header "Select optional configs.")
 ## GNU Stow to set up non-OS specific configs
 # for config in "${GSDOT_UNIVERSAL[@]}"; do
 #   ## stow adopt it first before anything to keep the user's existing configs safe
@@ -59,39 +60,38 @@ for choice in "${GSDOT_CHOICES[@]}"; do
   #     ;;
   #   esac
   #   ;;
-    "ghostty")
+  "ghostty")
     stow_and_copy "ghostty-macos-${arch}"
     ;;
-   "zellij")
+  "zellij")
     stow_and_copy "zellij-macos-${arch}"
     ;;
-    "bash")
+  "bash")
     stow_and_copy "bash"
     ;;
-    "btop")
+  "btop")
     stow_and_copy "btop"
     ;;
-    "neovim")
+  "neovim")
     stow_and_copy "neovim"
     ;;
-    "shellrc")
+  "shellrc")
     stow_and_copy "shellrc"
     ;;
-    "starship")
+  "starship")
     stow_and_copy "starship"
     ;;
-    "VSCode")
+  "VSCode")
     stow_and_copy "VSCode"
     ;;
-    "yazi")
+  "yazi")
     stow_and_copy "yazi"
     ;;
-    "zsh")
+  "zsh")
     stow_and_copy "zsh"
     ;;
-    *)
+  *)
     return
     ;;
   esac
 done
-
