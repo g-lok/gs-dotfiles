@@ -11,7 +11,7 @@ export GSDOT_DOTFILES="$GSDOT_PATH/install.d/dotfiles"
 
 ## Print logo
 case $BASH_VERSION in
-4.* | 5.*)
+4.* | 5.* | 6.*)
   source "$GSDOT_SCRIPTS/ascii.sh"
   ;;
 *)
