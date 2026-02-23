@@ -11,9 +11,9 @@ source "$SCRIPTS_DIR/install-lazyvim.sh" >/dev/null 2>&1
 gum spin --spinner moon --title "Configuring System Settings..." -- "$GSDOT_SCRIPTS/macos/yos-main-configs.sh"
 # gum spin --spinner moon --title "Configuring main MacOS settings..." -- sleep 2
 # source "$SCRIPTS_DIR/macos/yos-main-configs.sh" >/dev/null 2>&1
-# gum spin --spinner moon --title "Configure Dock Settings" -- "$SCRIPTS_DIR/macos/yos-dock.sh"
-gum spin --spinner moon --title "Configuring Dock settings..." -- sleep 2
-source "$GSDOT_SCRIPTS/macos/yos-dock.sh"
+gum spin --spinner moon --title "Configure Dock Settings" -- "$SCRIPTS_DIR/macos/yos-dock.sh"
+# gum spin --spinner moon --title "Configuring Dock settings..." -- sleep 2
+# source "$GSDOT_SCRIPTS/macos/yos-dock.sh"
 gum spin --spinner moon --title "Configure Peripheral Settings..." -- "$GSDOT_SCRIPTS/macos/yos-peripherals.sh"
 # gum spin --spinner moon --title "Configuring peripherals..." -- sleep 2
 # source "$SCRIPTS_DIR/macos/yos-peripherals.sh" >/dev/null 2>&1
