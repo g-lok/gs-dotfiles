@@ -27,7 +27,7 @@ brew bundle install --file "$GSDOT_SCRIPTS/macos/Brewfile-nerdfonts"
 
 ## Install optional packages
 if [[ ${#GSDOT_APP_CATEGORIES[@]} -gt 0 ]]; then
-  for optionals in "${HOMEBREW_APP_CHOICES[@]}"; do
+  for optionals in "${GSDOT_APP_CATEGORIES[@]}"; do
     install_optional_tools "$optionals"
   done
 fi
