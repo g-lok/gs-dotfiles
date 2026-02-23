@@ -11,16 +11,18 @@ else
   arch="intel"
 fi
 ## Get the script path while we're at it
-export GSDOT_SCRIPT_PATH=$(dirname "$(readlink -f "$0")")
+export GSDOT_DOTFILES_PATH=$(dirname "$(readlink -f "$0")")
+cp -rf "$GSDOT_DOTFILES_PATH"/* "$HOME/dotfiles/"
+cd "$HOME/dotfiles/"
 stow_and_copy() {
   config=$1
   echo $config
   ## GNU Stow to set up non-OS specific configs
   ## stow adopt it first before anything to keep the user's existing configs safe
-  stow --target="$HOME" --adopt "${config}"
+  stow --target="$HOME" --adopt "${config}" --override=*
   ## stow restow to make it clean
   stow --target="$HOME" --restow "${config}"
-  cp -rf "$GSDOT_SCRIPT_PATH/$config" "$HOME/dotfiles/"
+  cp -rf "$GSDOT_DOTFILES_PATH/$config" "$HOME/dotfiles/"
 }
 ## We doing this precise and intentional baby
 GSDOT_UNIVERSAL=(
