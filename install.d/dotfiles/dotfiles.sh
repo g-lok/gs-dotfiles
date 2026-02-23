@@ -20,7 +20,7 @@ stow_and_copy() {
   stow --target="$HOME" --adopt "${config}"
   ## stow restow to make it clean
   stow --target="$HOME" --restow "${config}"
-  cp -r "$GSDOT_SCRIPT_PATH/$config" "$HOME/dotfiles/"
+  cp -rf "$GSDOT_SCRIPT_PATH/$config" "$HOME/dotfiles/"
 }
 ## We doing this precise and intentional baby
 GSDOT_UNIVERSAL=(
