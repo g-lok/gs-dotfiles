@@ -3,7 +3,7 @@
 
 ## Set current working directory to dotfiles folder
 cd "$(dirname "$0")" || exit 0
-
+pwd
 OS=$(uname -s)
 if [[ "$(uname -m)" == "arm64" ]]; then
   arch="arm64"
