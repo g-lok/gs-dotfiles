@@ -50,7 +50,7 @@ source "$GSDOT_SCRIPTS/set_gum_flags.sh"
 source "$GSDOT_SCRIPTS/inst_user_input.sh"
 
 ## STOP ASKING ME FOR SUDO!
-export SUDO_ASKPASS="$GSDOT_PATH/install.d/returnpass.sh"
+export SUDO_ASKPASS="$GSDOT_SCRIPTS/returnpass.sh"
 
 ## Create directories under home
 gum spin --spinner moon --title "Creating directories..." -- sleep 2
@@ -85,7 +85,6 @@ unset HOMEBREW_PASSWORD
 unset APP_CATEGORIES
 unset EMAIL
 unset NAME
-unset GSDOT_PATH
-unset DOTFILES_SCRIPT_PATH
+unset GSDOT_*
 unset STOW_CONFIGS
 unset SCRIPT_OS
