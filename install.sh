@@ -9,7 +9,21 @@ export GS_DOTFILES_PATH=$(dirname "$(readlink -f "$0")")
 export SCRIPTS_DIR="$GS_DOTFILES_PATH/install.d"
 
 ## Print logo
-source "$SCRIPTS_DIR/ascii.sh"
+case $BASH_VERSION in
+4.*)
+  source "$SCRIPTS_DIR/ascii.sh"
+  ;;
+*)
+  cat <<'EOF'
+  ________                 ________          __    _____.__.__                 
+ /  _____/  ______         \______ \   _____/  |__/ ____\__|  |   ____   ______
+/   \  ___ /  ___/  ______  |    |  \ /  _ \   __\   __\|  |  | _/ __ \ /  ___/
+\    \_\  \\___ \  /_____/  |    `   (  <_> )  |  |  |  |  |  |_\  ___/ \___ \ 
+ \______  /____  >         /_______  /\____/|__|  |__|  |__|____/\___  >____  >
+        \/     \/                  \/                                \/     \/
+EOF
+  ;;
+esac
 
 ## Begin
 echo -e "\nBegin installation (or abort with ctrl+c)..."
