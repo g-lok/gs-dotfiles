@@ -16,9 +16,9 @@ stow_and_copy() {
   config=$1
   ## GNU Stow to set up non-OS specific configs
   ## stow adopt it first before anything to keep the user's existing configs safe
-  stow --target="$HOME" --adopt "$config"
+  stow --target="$HOME" --adopt "${config}"
   ## stow restow to make it clean
-  stow --target="$HOME" --restow "$config"
+  stow --target="$HOME" --restow "${config}"
   cp -r "$GSDOT_SCRIPT_PATH/$config" "$HOME/dotfiles/"
 }
 ## We doing this precise and intentional baby
