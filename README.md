@@ -24,7 +24,7 @@ It is also designed to provide most of the [Omakub](https://omakub.org/) functio
 ````bash
 eval "$(wget -qO- https://raw.githubusercontent.com/g-lok/gs-dotfiles/refs/heads/master/boot.sh)"```
 
-1. Follow the prompts.
+1. Follow the prompts. Do what I say.
 1. You're done!
 1. Restart your machine.
 
