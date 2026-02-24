@@ -85,8 +85,8 @@ Gosh, um:
 1. Changes your desktop wallpaper (optional) - I'm sure you like yours, but I think mine is better.
 1. Installs Oh-My-Zsh with plugins to make your shell experience real nice.
 1. Uses [Starship](https://starship.rs/) to manage your command prompt. Don't like my over the top, ostentatious CLI? Pick another one, or make your own, it's not hard.
-1. Uses `mise` to install and manage programming languages, tooling, packages, build systems, etc.
-1. Includes AI tools like Opencode and Windsurf. I don't feed the clankers though, and I judge humanity for falling for this obvious trap.
+1. Uses `mise` to install and manage programming languages, tooling, packages, environments, projects, build systems, etc.
+1. Includes AI tools like Opencode and Windsurf. I don't feed the clankers though, and I judge humanity harshly for falling for this obvious trap.
 1. Gives me a lot of agitation to maintain. I HATE complicated Bash scripting, it is seriously heartburn inducing. I did this all for you, so you can thank me later with beer and Prilosec.
 
 ## TODO
