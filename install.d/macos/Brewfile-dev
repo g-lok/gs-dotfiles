@@ -7,10 +7,8 @@ brew 'docker-compose'
 brew 'docker'
 brew 'gron' # Make JSON greppable
 cask 'insomnia' # API tools
-brew 'jj' # Git-compatible version control system. Supports "stacked" workflows 
 brew 'lazydocker'
 brew 'lazygit'
-brew 'mise' # Language, tooling, and environment manager.
 cask 'postman' 
 brew 'ttyd' # Share your terminal over the web.
 cask 'utm' # Run MacOS Virtual machines
