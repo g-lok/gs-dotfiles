@@ -12,21 +12,17 @@ This is a curated collection of app installation and configuration scripts for M
 
 It is designed to provide a simple and aesthetic experience for users of all kinds, and to provide the best (opinionated) choices for any environment.
 
-It is also designed to provide most of the [Omakub](https://omakub.org/) functionality, without the restrictions of requiring Ubuntu Gnome.  It also  contains many of my own personal touches, from App choices, to MacOS configurations, and more.
+It is also designed to provide most of the [Omakub](https://omakub.org/) functionality, without the restrictions of requiring Ubuntu Gnome. It contains many of my own personal touches, from App choices, to MacOS configurations, and more.
 
 ## How it do
 
 1. (MacOS)
-    1. Open Terminal. Type "git".
-    1. Install the Xcode utilities if Mac just prompted you. If it didn't, you already have it.
-1. Run the following commands: <br>
+   1. Open Terminal. Type "git".
+   1. Install the Xcode utilities Mac just prompted you. If it didn't, you already have it.
+1. Run the following command: <br>
 
-```bash
-mkdir $HOME/gitclones && cd $HOME/gitclones
-git clone https://github.com/g-lok/gs-dotfiles.git
-cd gs-dotfiles
-./install.sh
-```
+````bash
+eval "$(wget -qO- https://raw.githubusercontent.com/g-lok/gs-dotfiles/refs/heads/master/boot.sh)"```
 
 1. Follow the prompts.
 1. You're done!
@@ -34,85 +30,76 @@ cd gs-dotfiles
 
 ## Application highlights
 
-1. [Brave](https://brave.com/)- the best privacy-oriented browser of late. Also includes Chrome and Firefox.  Yes Brave supports Tor links, which is why I didn't include the Tor browser.
+1. [Brave](https://brave.com/)- A privacy-oriented web browser. Also includes Chrome and Firefox.
 1. [Libreoffice](https://www.libreoffice.org/)- Free and open source office suite.
-1. [Ghostty](https://ghostty.org/)- A fantastic terminal emulator replacement for whatever came with your OS.<br>
-[Learn to use the terminal](https://a.co/d/bwIR32o)
-1. [Zellij](https://alacritty.org/)- The session manager inside of Alacritty. Like tmux, but better. Sessions, panes, tabs, etc.
-1. [Lazyvim](https://www.lazyvim.org/)- A curated Neovim with all the best plugins and configurations. A powerful text editor and IDE.<br>
-  **Learn Lazyvim** with [this fantastic book](https://lazyvim-ambitious-devs.phillips.codes/).
-1. [Visual Studio Code](https://code.visualstudio.com/)- the other most popular IDE out there. For us filthy casuals who haven't learned Neovim yet. The main reasons to use this other than the plugins and language servers and built in terminal are the MULTIPLE CURSORS.
-1. [Obsidian](https://obsidian.md/) - An incredibly powerful knowledge database. Organize information, take notes, manage projects, etc.  You can do A LOT with this, this is a very deep rabbit hole.
+1. [Ghostty](https://ghostty.org/)- A fantastic terminal emulator replacement for whatever hot garbage came with your OS.<br>
+[Learn to use the terminal](https://linuxcommand.org/tlcl.php). If you aren't already, start learning, it will dramatically improve your life.
+1. [Zellij](https://zellij.dev/)- The session manager inside of Ghostty. Like tmux. Sessions, panes, tabs, etc. Check the hotkeys I set up.
+1. [Lazyvim](https://www.lazyvim.org/)- A curated Neovim with all the nice plugins and configurations. A powerful text editor and IDE.<br>
+  **Learn Lazyvim** with [this fantastic book.](https://lazyvim-ambitious-devs.phillips.codes/).I held out for a long time, but once I made the switch, I can never go back. Neovim really DOES live up to the hype.
+1. [Visual Studio Code](https://code.visualstudio.com/)- For all you filthy casuals.  I still use this for multi cursors while I clumsily try to learn neovim.
+1. [Obsidian](https://obsidian.md/) - An incredibly powerful knowledge database. Organize information, take notes, manage projects, etc. [Learn how to use it right from the CEO](https://stephango.com/vault).
 1. [Signal](https://signal.org/) - the best messenger ever. Open source and end-to-end encrypted.
 1. [Discord](https://discord.com/) - You know what this is.
-1. [Element](https://element.io/en/app) - an open source, privacy focused Discord alternative. E2E encrypted and runs on the distrubted Matrix network.  Comes pre-baked with better E2E encryption than even Signal.
-1. [Alfred](https://www.alfredapp.com/) - A spotlight replacement that is easily the most powerful launcher out there.  I recommend paying for a full PowerPack license to unlock the amazing tools and automation this thing has.<br>
-In particular, I cannot imagine life without its clipboard history manager.
-1. [Rectangle](https://rectangleapp.com/) - The best MacOS window manager. Comes with great default keymaps and a wide assortment of window tiling options.
+1. [Element](https://element.io/en/app) - an open source, privacy focused Discord alternative. E2E encrypted and runs on the distributed Matrix network.
+1. [Alfred](https://www.alfredapp.com/) - A spotlight replacement launcher.  I recommend paying for a full PowerPack license to unlock the amazing tools and automation this thing is capable of.
+1. [Rectangle](https://rectangleapp.com/) - My favorite window manager. Comes with great default keymaps and a wide assortment of window tiling options.
 1. [Spotify](https://open.spotify.com/) - you know what this is too.
-1. Many of the hot new terminal apps. btop, zoxide, lazygit, lazydocker, etc.
-1. [Steam](https://store.steampowered.com/) - it's for games.
+1. Many of the hot new terminal apps. btop, zoxide, lazygit, lazydocker, etc. Look at the list and learn some.
+1. hledger/ledger - FOSS CLI plaintext accounting tools. Unlock the power.
+1. [Steam](https://store.steampowered.com/) - You probably didn't know this, but it's for games.
 1. [Furnace](https://tildearrow.org/furnace/) - a free and open source chiptune music tracker. Supports nearly every game system and chipset out there.
-1. [Nerd fonts](https://www.nerdfonts.com/) - Some of my favorites are included. These are for your terminal, IDE, and system fonts.  I configured everything to use `JetBrainsMono Nerd Font Mono` by default. Because it's the best one.
+1. [Nerd fonts](https://www.nerdfonts.com/) - Some of my favorites are included. These are for your terminal, IDE, and system fonts.  I configured everything to use `JetBrainsMono Nerd Font Mono` by default.
 
-And much, much more! To see everything this is installing, open the various `Brewfile-*` files under the `install.d/[your os]` folder.
-
-### MacOS: Use Alfred instead of spotlight and pay for the PowerPack
-
-Clear your Spotlight keyboard shortcut, and set the Alfred keyboard shortcut to `Command+Space`.
-
-Buy the PowerPack. It is a very powerful launcher that goes far beyond launching apps and doing basic searches.  It has powerful automation and custom tooling and workflows for power users.
-
-It also has a clipboard history manager, which is a major life improvement if you've never used one before. If you have the Powerpack, go to Settings -> Features -> Clipboard History, set a good keyboard shortcut, and give it a spin.
+And much, much more! To see everything this is installing, open the various `Brewfile-*` files under the `install.d/macos` folder.
 
 #### Homebrew (MacOS)
 
-This is using [Homebrew](https://brew.sh/) to install all of these apps. You're using Homebrew for installing and updating apps now, so learn to use it. You do this in the terminal. See below.
+This is using [Homebrew](https://brew.sh/) to install all of these apps. You're using Homebrew for installing and updating apps now. You do this in the terminal. See below.
 
 ```bash
 brew update
 brew upgrade
-```
+````
 
-Figure out how to install your favorite apps by Google-ing "homebrew myapp".
+Figure out how to install your favorite apps by Google-ing "homebrew [whatever app]", or using `brew search [blah]`.
 
 ## What is this configuring?
 
-Great question, I love your diligence and enthusiasm. The configuration scripts are any file with an `.sh` extension under the `install.d/` folder, and `install.d/[your os]`. Everything in the script will be commented to tell you what it is doing. Review these files before running the `install.sh` script.
-
-If you see something you don't want, DON'T DELETE IT! Insert a `#` in front of the line(s) you don't want to be run, and it will disable them. This allows you to control what the script is doing, but also keep the lines there just in case you change your mind later.
+Apps and system configs that MacOS hides from you, mostly.
 
 #### GNU Stow
 
-This is using GNU Stow to create sylinks to config dotfiles here in the repository.  However you probably already have a few of these on your system.
+This is using GNU Stow to manage the various config files by symlinking them into `~/dotfiles`. If you don't know what any of that means, don't worry about it, just hit `ctrl+a` when I tell you to and know I've got you covered.
 
-That is why `stow` is `adopt`-ing any of these files you have first. Look it up.  Then it will `stow restow` to cleanly install the dotfiles.
+If you are managing your own dotfiles, I haven't figured out a graceful way to force this to work on anything already symlinked somewhere else. I ended up backing everything up and nuking every symlinked config I could find and brute forcing everything. I'll think of a better way to do this using a real scripting language later, but this should work for now.
 
-Anyway your config files are in this repo now, now the question is, which of these do you want to keep? Because if you want MY configs, you need to blow these out by `git rebasing`. The script will prompt you when it's time to do this. If you don't have your own dotfiles or know what a dotfile is, just choose `yes` when it asks you.
-
-This is creating symbolic links from the system locations to this repository, so make sure you cloned it somewhere you won't lose it.
+Oh you should probably create a private github repo to manage your own dotfiles in that directory. If you don't know git, learn it. [The Primagen's git course on boot.dev](https://youtu.be/rH3zE7VlIMs?si=PtIbL-UPwx6qvv4t)
 
 ## What else is this doing?
 
 Gosh, um:
 
 1. Creating a list of handy folders under you `$HOME` directory. The list is found in the `install.d/directories.sh` script.
-1. Changes your desktop wallpaper (optional) - I'm sure you like yours, but I think mine is better. In the future I'm going to include different wallpapers for different theme choices, but that is not ready yet. Right now you get my wallpaper and `Tokyo Night`, and you're going to LIKE IT.
+1. Changes your desktop wallpaper (optional) - I'm sure you like yours, but I think mine is better.
 1. Installs Oh-My-Zsh with plugins to make your shell experience real nice.
-1. Uses `mise` to install and manage programming languages.
-1. Gives me a lot of agitation to maintain. I hate complicated Bash scripting, it is seriously heartburn inducing. I did this all for you, so you can thank me with beer and Prilosec.
+1. Uses `mise` to install and manage programming languages, tooling, packages, build systems, etc.
+1. Includes AI tools like Opencode and Windsurf. I don't feed the clankers though, and I judge humanity for falling for this obvious trap.
+1. Gives me a lot of agitation to maintain. I HATE complicated Bash scripting, it is seriously heartburn inducing. I did this all for you, so you can thank me later with beer and Prilosec.
 
 ## TODO
 
+1. Re-write this ENTIRE thing in Python and Textual or some nifty TUI library. Seriously, Bash scripting is THE WORST, ESPECIALLY on jank ass MacOS. EVERYTHING ELSE on this list becomes SO MUCH EASIER in a real programming language.
+1. Fix the GNU Stow/dotfile issues with some fancy python and templating.
 1. Add Linux. Debian systems first, specifically Kubuntu and Kali (Gnome only), since that's what I'm rocking.
-1. I just found out Homebrew for Linux doesn't support casks (GUI applications) so I'm probably going to use Nix or something with cross-compatibility for that.
+1. I just found out Homebrew for Linux doesn't support casks (GUI applications) so I'm probably going to use Nix or something with cross-compatibility for linux GUI apps.
 1. Add theme and font selection.
-1. Add a nice after-first-run script for making changes without all the first run nonsense.
+1. Add a nice after-first-run app for making changes without all the first run nonsense.
 1. Add support for selecting and installing databases via docker.
 1. Expand devops tooling bigtime. Review recommended lists on youtube.
 1. Add more artist/creative apps. Bug Ardour to clean up their complicated installation nonsense so they can be put on Homebrew.
 1. Add more games? I dunno I'm not really into free games, Minecraft etc.
-1. Fine tune what apps I'm installing and plugins/configs I'm adding.  I'm brand new to Neovim and not sure about some of my choices regarding [Mini.nvim](https://github.com/nvim-mini/mini.nvim)
+1. Fine tune what apps I'm installing and plugins/configs I'm adding.
 
 ## License
 
@@ -120,4 +107,10 @@ G's Dotfiles is released under the [Apache 2.0](https://www.apache.org/licenses/
 
 ## Contributing
 
-I would much prefer if this were a community effort to figure out what YOU want on your systems, and I could really use you `bash` wizards out there to help maintain this, because this was NOT fun to write (Bash is trash for scripting and you all know it). You know the drill: file an issue for bugs or Feature Requests if there isn't already one there, be respectful, and fork it/open a PR if you have something to fix or add.  Just know that I have a lot on my plate and I don't have a lot of time to keep my eye on this, but I'll do my best. Thank you.
+I would much prefer if this were a community effort to figure out what YOU want on your systems, and I could really use you `bash` wizards out there to help fix it up while I plan out the refactor, because this was NOT fun to write (Bash is trash for scripting and you all fucking know it). You know the drill: file an issue for bugs or Feature Requests if there isn't already one there, be respectful, and fork it/open a PR if you have something to fix or add.
+
+Just know that I have a lot on my plate and I don't have a lot of time to keep my eye on this, but I'll do my best.
+
+Also, it pains me that I have have to say this, but NO AI SLOP PLEASE. This is a no-clanker, artisinal, hand crafted coding zone here.
+
+Thank you.

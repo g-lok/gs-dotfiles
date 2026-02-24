@@ -15,10 +15,12 @@ if [[ ${#GSDOT_AI_SELECT[@]} -gt 0 ]]; then
       brew install ollama
       ;;
     OpenAI)
-      brew install anomalyco/tap/opencode
+      brew install --cask codex
+      brew install openai-whisper
+      brew install --cask chatgpt-atlas
       ;;
     OpenCode)
-      brew install anomalyco/tap/opencode
+      mise use -g github:anomalyco/opencode
       ;;
     Windsurf)
       brew install --cask windsurf
