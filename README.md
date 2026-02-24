@@ -21,8 +21,9 @@ It is also designed to provide most of the [Omakub](https://omakub.org/) functio
    1. Install the Xcode utilities Mac just prompted you. If it didn't, you already have it.
 1. Run the following command: <br>
 
-````bash
-eval "$(wget -qO- https://raw.githubusercontent.com/g-lok/gs-dotfiles/refs/heads/master/boot.sh)"```
+```bash
+eval "$(wget -qO- https://raw.githubusercontent.com/g-lok/gs-dotfiles/refs/heads/master/boot.sh)"
+```
 
 1. Follow the prompts. Do what I say.
 1. You're done!
@@ -33,23 +34,23 @@ eval "$(wget -qO- https://raw.githubusercontent.com/g-lok/gs-dotfiles/refs/heads
 1. [Brave](https://brave.com/)- A privacy-oriented web browser. Also includes Chrome and Firefox.
 1. [Libreoffice](https://www.libreoffice.org/)- Free and open source office suite.
 1. [Ghostty](https://ghostty.org/)- A fantastic terminal emulator replacement for whatever hot garbage came with your OS.<br>
-[Learn to use the terminal](https://linuxcommand.org/tlcl.php). If you aren't already, start learning, it will dramatically improve your life.
+   [Learn to use the terminal](https://linuxcommand.org/tlcl.php). If you aren't already, start learning, it will dramatically improve your life.
 1. [Zellij](https://zellij.dev/)- The session manager inside of Ghostty. Like tmux. Sessions, panes, tabs, etc. Check the hotkeys I set up.
 1. [Lazyvim](https://www.lazyvim.org/)- A curated Neovim with all the nice plugins and configurations. A powerful text editor and IDE.<br>
-  **Learn Lazyvim** with [this fantastic book.](https://lazyvim-ambitious-devs.phillips.codes/).I held out for a long time, but once I made the switch, I can never go back. Neovim really DOES live up to the hype.
-1. [Visual Studio Code](https://code.visualstudio.com/)- For all you filthy casuals.  I still use this for multi cursors while I clumsily try to learn neovim.
+   **Learn Lazyvim** with [this fantastic book.](https://lazyvim-ambitious-devs.phillips.codes/).I held out for a long time, but once I made the switch, I can never go back. Neovim really DOES live up to the hype.
+1. [Visual Studio Code](https://code.visualstudio.com/)- For all you filthy casuals. I still use this for multi cursors while I clumsily try to learn neovim.
 1. [Obsidian](https://obsidian.md/) - An incredibly powerful knowledge database. Organize information, take notes, manage projects, etc. [Learn how to use it right from the CEO](https://stephango.com/vault).
 1. [Signal](https://signal.org/) - the best messenger ever. Open source and end-to-end encrypted.
 1. [Discord](https://discord.com/) - You know what this is.
 1. [Element](https://element.io/en/app) - an open source, privacy focused Discord alternative. E2E encrypted and runs on the distributed Matrix network.
-1. [Alfred](https://www.alfredapp.com/) - A spotlight replacement launcher.  I recommend paying for a full PowerPack license to unlock the amazing tools and automation this thing is capable of.
+1. [Alfred](https://www.alfredapp.com/) - A spotlight replacement launcher. I recommend paying for a full PowerPack license to unlock the amazing tools and automation this thing is capable of.
 1. [Rectangle](https://rectangleapp.com/) - My favorite window manager. Comes with great default keymaps and a wide assortment of window tiling options.
 1. [Spotify](https://open.spotify.com/) - you know what this is too.
 1. Many of the hot new terminal apps. btop, zoxide, lazygit, lazydocker, etc. Look at the list and learn some.
 1. hledger/ledger - FOSS CLI plaintext accounting tools. Unlock the power.
 1. [Steam](https://store.steampowered.com/) - You probably didn't know this, but it's for games.
 1. [Furnace](https://tildearrow.org/furnace/) - a free and open source chiptune music tracker. Supports nearly every game system and chipset out there.
-1. [Nerd fonts](https://www.nerdfonts.com/) - Some of my favorites are included. These are for your terminal, IDE, and system fonts.  I configured everything to use `JetBrainsMono Nerd Font Mono` by default.
+1. [Nerd fonts](https://www.nerdfonts.com/) - Some of my favorites are included. These are for your terminal, IDE, and system fonts. I configured everything to use `JetBrainsMono Nerd Font Mono` by default.
 
 And much, much more! To see everything this is installing, open the various `Brewfile-*` files under the `install.d/macos` folder.
 
@@ -60,7 +61,7 @@ This is using [Homebrew](https://brew.sh/) to install all of these apps. You're 
 ```bash
 brew update
 brew upgrade
-````
+```
 
 Figure out how to install your favorite apps by Google-ing "homebrew [whatever app]", or using `brew search [blah]`.
 
