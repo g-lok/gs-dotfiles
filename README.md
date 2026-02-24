@@ -47,7 +47,7 @@ eval "$(wget -qO- https://raw.githubusercontent.com/g-lok/gs-dotfiles/refs/heads
 1. [Rectangle](https://rectangleapp.com/) - My favorite window manager. Comes with great default keymaps and a wide assortment of window tiling options.
 1. [Spotify](https://open.spotify.com/) - you know what this is too.
 1. Many of the hot new terminal apps. btop, zoxide, lazygit, lazydocker, etc. Look at the list and learn some.
-1. hledger/ledger - FOSS CLI plaintext accounting tools. Unlock the power.
+1. [hledger](https://hledger.org/)/ledger - FOSS CLI plaintext accounting tools. Unlock the power.
 1. [Steam](https://store.steampowered.com/) - You probably didn't know this, but it's for games.
 1. [Furnace](https://tildearrow.org/furnace/) - a free and open source chiptune music tracker. Supports nearly every game system and chipset out there.
 1. [Nerd fonts](https://www.nerdfonts.com/) - Some of my favorites are included. These are for your terminal, IDE, and system fonts. I configured everything to use `JetBrainsMono Nerd Font Mono` by default.
