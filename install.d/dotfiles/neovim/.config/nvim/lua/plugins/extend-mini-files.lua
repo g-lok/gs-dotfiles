@@ -23,4 +23,9 @@ return {
 			desc = "Open mini.files (root)",
 		},
 	},
+	opts = {
+		options = {
+			use_as_default_explorer = true,
+		},
+	},
 }
