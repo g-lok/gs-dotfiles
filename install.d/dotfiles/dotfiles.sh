@@ -30,6 +30,7 @@ GSDOT_UNIVERSAL=(
   "bash"
   "btop"
   "ghostty"
+  "golangci"
   "neovim"
   "shellrc"
   "starship"
