@@ -5,7 +5,7 @@ description = ""
 authors = [{ name = "Garrett Anderson", email = "g@devnull.rip" }]
 readme = "README.md"
 requires-python = ">=3.14,<4.0"
-dependencies = ["textual (>=8.0.0,<9.0.0)"]
+dependencies = ["textual (>=8.0.0,<9.0.0)", "textual-dev (>=1.8.0,<2.0.0)"]
 
 [tool.poetry]
 packages = [{ include = "gs_dotfiles", from = "src" }]

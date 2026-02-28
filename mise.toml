@@ -9,3 +9,7 @@ run = "poetry run python src/gs_dotfiles/__main__.py"
 [tasks.test]
 description = "run pytests"
 run = "poetry run pytest"
+
+[tasks.textual]
+description = "Runs app with textual dev tools."
+run = "poetry run textual src/gs_dotfiles/__main__.py"
