@@ -1,0 +1,11 @@
+[tools]
+poetry = { version = "latest", pyproject = "{{ config_root }}/pyproject.toml" }
+python = "3.14.3"
+
+[tasks.run]
+description = "run the project"
+run = "poetry run python src/gs_dotfiles/__main__.py"
+
+[tasks.test]
+description = "run pytests"
+run = "poetry run pytest"
