@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+
+# set -e
+
+## G's set-up scripts for MacOS and Linux
+## Export cwd and generic script directories
+# export GS_DOTFILES_PATH=$(dirname "$(readlink -f "$0")")
+
+## Make sure sudo is already cached
+sudo --validate
+
+## Make all scripts executable
+for file in $GSDOT_PATH/install.d/*.sh; do
+  chmod +x "$file"
+done
+
+## Set OS
+source "$GSDOT_SCRIPTS/get_os.sh"
+
+## Install package managers and gum
+source "$GSDOT_SCRIPTS/install_pkgmgr_gum.sh"
+
+## Set gum color scheme
+source "$GSDOT_SCRIPTS/set_gum_flags.sh"
+
+## Get user input
+source "$GSDOT_SCRIPTS/inst_user_input.sh"
+
+## STOP ASKING ME FOR SUDO!
+export SUDO_ASKPASS="$GSDOT_SCRIPTS/returnpass.sh"
+
+## Create directories under home
+gum spin --spinner moon --title "Creating directories..." -- sleep 2
+source "$GSDOT_SCRIPTS/directories.sh"
+
+## Run installation scripts based on OS
+
+gum style \
+  --bold "Running Installation and Configuration Scripts"
+case $SCRIPT_OS in
+"MacOS")
+  source "$GSDOT_SCRIPTS/macos/launch.sh"
+  ;;
+*)
+  echo "Unrecognized OS. Skipping installation and configuration."
+  ;;
+esac
+
+# ## Setup dotfiles
+# gum style \
+#   --bold "GNU Stow Adopted existing configs to this repo." "Do you want to use G's Dotfile Configs instead?"
+# gum confirm && git restore . || echo "No git actions taken. Using adopted configs."
+
+gum style \
+  --bold "Set wallpaper to theme?"
+gum confirm && source "$GSDOT_PATH/install.d/wallpaper.sh" || echo "Wallpaper unchanged"
+
+gum style \
+  --bold "Congratulations!" "Installation and Configuration Complete!"
+
+## remove env variables
+unset HOMEBREW_PASSWORD
+unset APP_CATEGORIES
+unset EMAIL
+unset NAME
+# unset GSDOT*
+unset STOW_CONFIGS
+unset SCRIPT_OS

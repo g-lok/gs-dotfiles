@@ -1,0 +1,41 @@
+### Brewfile for desktop applications
+
+cask 'adobe-acrobat-reader'
+# TODO Maybe make the terminal alternatives selectable
+cask 'alacritty' # Another terminal emulator.
+# TODO Move this to optional apps
+cask 'alfred' # A powerful spotlight replacement.
+cask 'brave-browser' # A privacy focused browser. You can use this for Tor btw.
+cask 'calibre' # Manage EBooks
+cask 'discord'
+cask 'element' # Open source, decentralized, E2E encrypted discord alternative.
+cask 'firefox'
+cask 'flameshot' # Nice and simple screenshot software.
+cask 'ghostty' # The default terminal used by gs-dotfiles.
+cask 'gifox' # Screen record animated gifs.
+cask 'google-chrome'
+cask 'gpg-suite' # PGP encryption tools.
+cask 'hammerspoon' # Powerful tool to modfiy MacOS using Lua scripts.
+cask 'karabiner-elements' # I use this to disable the keyboard when I have an usb one plugged in.
+cask 'keepassxc' # Free and open source Password manager.
+cask 'keka' # Better archiver than default
+cask 'kekaexternalhelper'
+cask 'libreoffice' # Full office suite.
+cask 'localsend' # Send files to local devices.
+cask 'macfuse' # Adds support for FUSE filesystems
+cask 'obsidian' # Absurdly powerful knowledge database. Create and organize notes and information.
+# TODO Move this to creativity apps and fix comment
+cask 'pinta' # Simpler painting software that Krita.
+cask 'rectangle' # Move and resize windows at ease.
+# TODO Create and move this to gaming options
+cask 'retroarch' # A frontend for video game emulators.
+cask 'sdformatter' # Format SD cards properly.
+cask 'signal' # Open source E2E encrypted messenger.
+cask 'slack' # Not everyone uses discord.
+# TODO Move this to gaming options.
+cask 'steam' # What, YOU DON'T GAME?
+cask 'typora' # Configurable document editor that supports Markdown.
+cask 'veracrypt' # File encryption.
+cask 'vlc' # Media player. Supports everything.
+cask 'yubico-authenticator' # For managing Yubikeys.
+brew 'zellij' # Modern Tmux style multiplexer for terminal.
