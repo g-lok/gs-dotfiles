@@ -73,6 +73,9 @@ for choice in "${GSDOT_CONF_CHOICES_MAP[@]}"; do
   "ghostty")
     stow_and_copy "ghostty-macos-${arch}"
     ;;
+  "golangci")
+    stow_and_copy "golangci"
+    ;;
   "zellij")
     stow_and_copy "zellij-macos-${arch}"
     ;;
