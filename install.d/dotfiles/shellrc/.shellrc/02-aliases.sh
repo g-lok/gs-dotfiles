@@ -41,3 +41,34 @@ alias lzd='lazydocker'
 alias gcm='git commit -m'
 alias gcam='git commit -a -m'
 alias gcad='git commit -a --amend'
+
+## Unalias oh-my-zsh git aliases that conflic with gnu cli tools
+unalias gcp
+alias gitcp='git cherry-pick'
+unalias gpr
+alias gitpr='git pull --rebase'
+unalias grm
+alias gitrm='git rm'
+
+# Jujutsu aliases
+alias jjc="jj commit"
+alias jjn="jj new"
+alias jje="jj edit"
+alias jjd="jj describe -m"
+alias jjdi="jj diff"
+alias jjid="jj interdiff"
+alias jjgi="jj git init"
+alias jjgf="jj git fetch"
+alias jjbc="jj bookmark create"
+alias jjgpb="jj git push --bookmark"
+alias jjgpt="jj git push --tracked"
+alias jjgp="jj git push --change @"
+alias jjbt="jj bookmark track"
+alias jja="jj abandon"
+alias jjopl="jj operations log"
+alias jjevl="jj evolog"
+alias jjs="jj squash"
+alias jjr="jj rebase"
+alias jjp="jj parallelize"
+alias jjsp="jj split"
+alias jjres="jj resolve"
