@@ -6,6 +6,7 @@ AI_OPTS=(
   "Claude Code"
   "Ollama"
   "OpenAI"
+  "OpenClawd"
   "OpenCode"
   "Windsurf"
 )
