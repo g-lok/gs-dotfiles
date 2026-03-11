@@ -35,6 +35,7 @@ GSDOT_UNIVERSAL=(
   "shellrc"
   "starship"
   "VSCode"
+  "wezterm"
   "yazi"
   "zellij"
   "zsh"
@@ -96,6 +97,9 @@ for choice in "${GSDOT_CONF_CHOICES_MAP[@]}"; do
     ;;
   "VSCode")
     stow_and_copy "VSCode"
+    ;;
+  "wezterm")
+    stow_and_copy "wezterm"
     ;;
   "yazi")
     stow_and_copy "yazi"
