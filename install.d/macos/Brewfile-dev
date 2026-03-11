@@ -15,4 +15,5 @@ cask 'utm' # Run MacOS Virtual machines
 brew 'vhs' # Terminal video recorder
 cask 'virtualbox'
 cask 'visual-studio-code' 
+cask 'wezterm' 
 cask 'zed' 

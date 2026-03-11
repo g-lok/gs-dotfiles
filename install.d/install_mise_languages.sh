@@ -35,6 +35,7 @@ if [[ -n "$GSDOT_SELECTED_LANGUAGES" ]]; then
       mise use --global python@latest
       mise plugins install poetry https://github.com/mise-plugins/mise-poetry.git
       mise use --global poetry@latest
+      mise use --global uv@latest
       ;;
     Ruby)
       mise use --global ruby@latest

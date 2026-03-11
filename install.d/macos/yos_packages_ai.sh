@@ -19,6 +19,9 @@ if [[ ${#GSDOT_AI_SELECT[@]} -gt 0 ]]; then
       brew install openai-whisper
       brew install --cask chatgpt-atlas
       ;;
+    OpenClawd)
+      brew install openclawd
+      ;;
     OpenCode)
       mise use -g github:anomalyco/opencode
       ;;
