@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 # G's BASH aliases
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-alias pcregrep='pcregrep --color=auto'
+alias bpp="bat -pp"
 
 # Misc environment variables
 export EDITOR=nvim
@@ -59,6 +56,8 @@ alias jjdi="jj diff"
 alias jjid="jj interdiff"
 alias jjgi="jj git init"
 alias jjgf="jj git fetch"
+alias jjb="jj bookmark"
+alias jjba="jj bookmark advance"
 alias jjbc="jj bookmark create"
 alias jjgpb="jj git push --bookmark"
 alias jjgpt="jj git push --tracked"
