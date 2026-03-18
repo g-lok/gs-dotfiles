@@ -1,4 +1,12 @@
 
+# For Zsh
+if [[ -n $GHOSTTY_RESOURCES_DIR ]]; then
+  source "$GHOSTTY_RESOURCES_DIR/shell-integration/zsh/ghostty-integration"
+fi   
+
+# if type brew &>/dev/null; then
+#   fpath=( "$(brew --prefix)/share/zsh/site-functions" $fpath )
+# fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
@@ -109,7 +117,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-
 ## Load shell scripts
 if [ -t 1 ]; then
   if [ -d $HOME/.shellrc/ ]; then
@@ -119,4 +126,5 @@ if [ -t 1 ]; then
     done
   fi
 fi
+
 
