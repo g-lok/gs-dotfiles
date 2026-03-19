@@ -11,6 +11,8 @@ return {
 				{ "E", false },
 				{ "fe", false },
 				{ "fE", false },
+				{ "<leader>e", false },
+				{ "<leader>E", false },
 			},
 		},
 	},
