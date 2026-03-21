@@ -84,7 +84,7 @@ ZSH_THEME="gnzh"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-plugins=(git fzf-tab zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting)
+plugins=(dotenv git fzf-tab zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -126,5 +126,4 @@ if [ -t 1 ]; then
     done
   fi
 fi
-
 
