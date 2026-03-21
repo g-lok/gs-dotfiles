@@ -5,6 +5,7 @@ return {
 			opts = {
 				scroll = { enabled = false },
 				explorer = { enabled = false },
+				image = { enabled = false },
 			},
 			keys = {
 				{ "e", false },

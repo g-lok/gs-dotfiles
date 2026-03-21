@@ -15,6 +15,7 @@ if command -v mise &>/dev/null; then
   eval "$(mise activate "$myshell")"
   export MISE_POETRY_AUTO_INSTALL=1
   export MISE_POETRY_VENV_AUTO=1
+  # export MISE_CARGO_BINSTALL=true
 fi
 
 if command -v fzf &>/dev/null; then
