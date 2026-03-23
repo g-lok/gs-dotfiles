@@ -1,3 +1,11 @@
+local function safe_ask(prompt, opts)
+	if not vim.fn.executable("opencode") then
+		vim.notify("opencode: binary not installed. See opencode.ai", vim.log.levels.ERROR)
+		return
+	end
+	require("opencode").ask(prompt, opts)
+end
+
 local function focus_opencode()
 	vim.schedule(function()
 		for _, win in ipairs(vim.api.nvim_list_wins()) do
@@ -15,98 +23,10 @@ return {
 	{
 		"Nickvandyke/opencode.nvim",
 		version = "*",
-		dependencies = {
-		{
-			"folke/snacks.nvim",
-			optional = true,
-			opts = function(_, opts)
-			end,
-		},
-			{
-				"folke/which-key.nvim",
-				opts = {
-					spec = {
-						{ "<leader>a", mode = { "n", "x" }, group = "OpenCode" },
-						{ "<leader>ap", mode = { "n", "x" }, group = "Prompt" },
-					},
-				},
-			},
-		},
-		config = function()
-			---@type opencode.Opts
-			vim.g.opencode_opts = {}
-			vim.o.autoread = true
-
-			-- On window focus
-			vim.api.nvim_create_autocmd({ "BufEnter" }, {
-				pattern = "*:opencode --port*",
-				callback = function()
-					vim.cmd("startinsert")
-				end,
-			})
-
-			-- On first open
-			vim.api.nvim_create_autocmd({ "TermOpen" }, {
-				group = vim.api.nvim_create_augroup("opencode_integrated", { clear = true }),
-				pattern = "*:opencode --port*",
-				callback = function(event)
-					-- Hide from bufferline/tabs
-					vim.bo[event.buf].buflisted = false
-
-					-- LOCAL BINDS: Only active within the OpenCode buffer
-					require("which-key").add({
-						buffer = event.buf,
-						mode = { "t", "n" },
-						-- Navigation (Local to this terminal only)
-						{ "<C-h>", [[<C-\><C-n><C-w>h]], desc = "Go to Left Window" },
-						{ "<C-j>", [[<C-\><C-n><C-w>j]], desc = "Go to Lower Window" },
-						{ "<C-k>", [[<C-\><C-n><C-w>k]], desc = "Go to Upper Window" },
-						{ "<C-l>", [[<C-\><C-n><C-w>l]], desc = "Go to Right Window" },
-						-- Scrolling
-						{
-							"<C-U>",
-							function()
-								require("opencode").command("session.half.page.up")
-							end,
-							desc = "Half scroll back",
-						},
-						{
-							"<C-D>",
-							function()
-								require("opencode").command("session.half.page.down")
-							end,
-							desc = "Half scroll forward",
-						},
-						{
-							"<C-B>",
-							function()
-								require("opencode").command("session.page.up")
-							end,
-							desc = "Scroll backward",
-						},
-						{
-							"<C-F>",
-							function()
-								require("opencode").command("session.page.down")
-							end,
-							desc = "Scroll forward",
-						},
-					})
-				end,
-			})
-
-			-- Opencode always stop on quit
-			vim.api.nvim_create_autocmd("VimLeavePre", {
-				callback = function()
-					-- Force kill child processes (Linux/Unix)
-					if vim.fn.has("unix") == 1 then
-						local pid = vim.fn.getpid()
-						vim.fn.system({ "pkill", "-P", tostring(pid), "-f", "opencode" })
-					end
-				end,
-			})
-		end,
+		cmd = "OpenCode",
 		keys = {
+			{ "gO", false },
+
 			{
 				"<leader>aa",
 				function()
@@ -114,16 +34,18 @@ return {
 					focus_opencode()
 				end,
 				mode = { "n", "t" },
-				desc = "Toggle",
+				desc = "Toggle OpenCode",
 			},
+
 			{
 				"<leader>aq",
 				function()
 					require("opencode").stop()
 				end,
 				mode = { "n", "t" },
-				desc = "Stop/Close",
+				desc = "Stop/Close OpenCode",
 			},
+
 			{
 				"<leader>as",
 				function()
@@ -132,30 +54,52 @@ return {
 				mode = { "n", "x" },
 				desc = "Select action",
 			},
+
 			{
 				"<leader>ai",
 				function()
-					require("opencode").ask("", { submit = true, focus = false })
+					safe_ask("", { submit = true, focus = false })
 				end,
 				mode = { "n", "x" },
-				desc = "Ask",
+				desc = "Ask (empty)",
 			},
+
 			{
 				"<leader>aI",
 				function()
-					require("opencode").ask("@this: ", { submit = true, focus = false })
+					safe_ask("@this: ", { submit = true, focus = false })
 				end,
 				mode = { "n", "x" },
 				desc = "Ask with context",
 			},
+
 			{
 				"<leader>ab",
 				function()
-					require("opencode").ask("@file: ", { submit = true, focus = false })
+					safe_ask("@buffer ", { submit = true, focus = false })
 				end,
 				mode = { "n", "x" },
 				desc = "Ask about buffer",
 			},
+
+			{
+				"<leader>aY",
+				function()
+					safe_ask("@clipboard ", { submit = true, focus = false })
+				end,
+				mode = { "n", "x" },
+				desc = "Ask with clipboard",
+			},
+
+			{
+				"<leader>aP",
+				function()
+					safe_ask("@diff ", { submit = true, focus = false })
+				end,
+				mode = { "n", "x" },
+				desc = "Ask with diff",
+			},
+
 			{
 				"<leader>ape",
 				function()
@@ -164,6 +108,7 @@ return {
 				mode = { "n", "x" },
 				desc = "Explain",
 			},
+
 			{
 				"<leader>apf",
 				function()
@@ -172,6 +117,7 @@ return {
 				mode = { "n", "x" },
 				desc = "Fix",
 			},
+
 			{
 				"<leader>apd",
 				function()
@@ -180,6 +126,7 @@ return {
 				mode = { "n", "x" },
 				desc = "Diagnose",
 			},
+
 			{
 				"<leader>apr",
 				function()
@@ -188,6 +135,7 @@ return {
 				mode = { "n", "x" },
 				desc = "Review",
 			},
+
 			{
 				"<leader>apt",
 				function()
@@ -196,6 +144,7 @@ return {
 				mode = { "n", "x" },
 				desc = "Test",
 			},
+
 			{
 				"<leader>apo",
 				function()
@@ -204,6 +153,25 @@ return {
 				mode = { "n", "x" },
 				desc = "Optimize",
 			},
+
+			{
+				"<leader>an",
+				function()
+					require("opencode").command("session.new")
+				end,
+				mode = { "n" },
+				desc = "New session",
+			},
+
+			{
+				"<leader>ax",
+				function()
+					require("opencode").command("session.close")
+				end,
+				mode = { "n" },
+				desc = "Close session",
+			},
+
 			{
 				"go",
 				function()
@@ -213,6 +181,7 @@ return {
 				mode = { "n", "x" },
 				desc = "Add range to OpenCode",
 			},
+
 			{
 				"goo",
 				function()
@@ -223,5 +192,69 @@ return {
 				desc = "Add line to OpenCode",
 			},
 		},
+		config = function()
+			vim.g.opencode_opts = {}
+
+			vim.api.nvim_create_autocmd({ "BufEnter" }, {
+				pattern = "*:opencode --port*",
+				callback = function()
+					vim.cmd("startinsert")
+				end,
+			})
+
+			vim.api.nvim_create_autocmd({ "TermOpen" }, {
+				group = vim.api.nvim_create_augroup("opencode_integrated", { clear = true }),
+				pattern = "*:opencode --port*",
+				callback = function(event)
+					vim.bo[event.buf].buflisted = false
+
+					vim.keymap.set(
+						{ "t", "n" },
+						"<C-h>",
+						"<C-\\><C-n><C-w>h",
+						{ buffer = event.buf, desc = "Go to Left Window" }
+					)
+					vim.keymap.set(
+						{ "t", "n" },
+						"<C-j>",
+						"<C-\\><C-n><C-w>j",
+						{ buffer = event.buf, desc = "Go to Lower Window" }
+					)
+					vim.keymap.set(
+						{ "t", "n" },
+						"<C-k>",
+						"<C-\\><C-n><C-w>k",
+						{ buffer = event.buf, desc = "Go to Upper Window" }
+					)
+					vim.keymap.set(
+						{ "t", "n" },
+						"<C-l>",
+						"<C-\\><C-n><C-w>l",
+						{ buffer = event.buf, desc = "Go to Right Window" }
+					)
+					vim.keymap.set("t", "<C-U>", function()
+						require("opencode").command("session.half.page.up")
+					end, { buffer = event.buf, desc = "Half scroll back" })
+					vim.keymap.set("t", "<C-D>", function()
+						require("opencode").command("session.half.page.down")
+					end, { buffer = event.buf, desc = "Half scroll forward" })
+					vim.keymap.set("t", "<C-B>", function()
+						require("opencode").command("session.page.up")
+					end, { buffer = event.buf, desc = "Scroll backward" })
+					vim.keymap.set("t", "<C-F>", function()
+						require("opencode").command("session.page.down")
+					end, { buffer = event.buf, desc = "Scroll forward" })
+				end,
+			})
+
+			vim.api.nvim_create_autocmd("VimLeavePre", {
+				callback = function()
+					if vim.fn.has("unix") == 1 then
+						local pid = vim.fn.getpid()
+						vim.fn.system({ "pkill", "-P", tostring(pid), "-f", "opencode" })
+					end
+				end,
+			})
+		end,
 	},
 }
