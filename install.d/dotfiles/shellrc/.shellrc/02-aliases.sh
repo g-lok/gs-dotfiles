@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# G's BASH aliases
+# G's aliases
 alias bpp="bat -pp"
+alias nv="nvim"
 
 # Misc environment variables
 export EDITOR=nvim
@@ -39,7 +40,7 @@ alias gcm='git commit -m'
 alias gcam='git commit -a -m'
 alias gcad='git commit -a --amend'
 
-## Unalias oh-my-zsh git aliases that conflic with gnu cli tools
+## Unalias oh-my-zsh git aliases that conflict with gnu cli tools
 unalias gcp
 alias gitcp='git cherry-pick'
 unalias gpr
