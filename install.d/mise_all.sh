@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 ## Select and install mise programming languages
 mise use --global erlang@latest
 mise use --global elixir@latest
@@ -10,7 +10,7 @@ mise use --global java@latest
 mise plugin install kotlin https://github.com/mise-plugins/mise-kotlin.git
 mise use --global kotlin@latest
 mise use --global node@lts
-mise use --global "php@$latest_php"
+# mise use --global "php@$latest_php"
 mise use --global python@latest
 mise plugins install poetry https://github.com/mise-plugins/mise-poetry.git
 mise use --global poetry@latest

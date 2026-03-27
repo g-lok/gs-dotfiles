@@ -1,4 +1,0 @@
-Name     Version   Rev    Tracking       Publisher     Notes
-core24   20260211  1499   latest/stable  canonical**   base
-ghostty  v1.3.1    718    latest/stable  ken-vandine*  classic
-snapd    2.74.1    26382  latest/stable  canonical**   snapd
