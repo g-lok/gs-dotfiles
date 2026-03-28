@@ -1,5 +1,5 @@
 [org/gnome/control-center]
-last-panel='keyboard'
+last-panel='universal-access'
 window-state=(1136, 607, false)
 
 [org/gnome/desktop/app-folders]
@@ -210,6 +210,10 @@ application-id='org.gnome.Software.desktop'
 
 [org/gnome/desktop/notifications/application/signal-desktop]
 application-id='signal-desktop.desktop'
+
+[org/gnome/desktop/peripherals/keyboard]
+delay=uint32 362
+repeat-interval=uint32 19
 
 [org/gnome/desktop/peripherals/touchpad]
 two-finger-scrolling-enabled=true
