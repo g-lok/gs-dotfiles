@@ -80,22 +80,66 @@ if ! command -v kitty &>/dev/null; then
 fi
 
 ## ==========================================
-## Phase 3: Dotfiles
+## Phase 3: Oh My Zsh (must be before dotfiles)
 ## ==========================================
 
 echo ""
-echo "=== Phase 3: Dotfiles ==="
+echo "=== Phase 3: Oh My Zsh ==="
+
+# Install Oh My Zsh if not present
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+	echo "Installing Oh My Zsh..."
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -- --unattended || true
+fi
+
+# Restore Oh My Zsh config
+if [ -f "$KALI_DIR/ohmyzsh.tar.gz" ]; then
+	echo "Restoring Oh My Zsh..."
+	tar -xzf "$KALI_DIR/ohmyzsh.tar.gz" -C "$HOME/" 2>/dev/null || true
+fi
+
+## ==========================================
+## Phase 4: Dotfiles
+## ==========================================
+
+echo ""
+echo "=== Phase 4: Dotfiles ==="
 
 # Run dotfiles stow (fresh mode - use pre-configured versions)
 cd "$KALI_DIR/dotfiles"
 ./dotfiles.sh --mode=fresh
 
 ## ==========================================
-## Phase 4: GNOME Extensions
+## Phase 5: Oh My Zsh plugins
 ## ==========================================
 
 echo ""
-echo "=== Phase 4: GNOME Extensions ==="
+echo "=== Phase 5: Oh My Zsh Plugins ==="
+
+# Install zsh-autosuggestions
+if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then
+	echo "Installing zsh-autosuggestions..."
+	git clone https://github.com/zsh-users/zsh-autosuggestions "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+fi
+
+# Install zsh-syntax-highlighting
+if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then
+	echo "Installing zsh-syntax-highlighting..."
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+fi
+
+# Install zsh-completions
+if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-completions" ]; then
+	echo "Installing zsh-completions..."
+	git clone https://github.com/zsh-users/zsh-completions "$HOME/.oh-my-zsh/custom/plugins/zsh-completions"
+fi
+
+## ==========================================
+## Phase 6: GNOME Extensions
+## ==========================================
+
+echo ""
+echo "=== Phase 6: GNOME Extensions ==="
 
 # Install GNOME extensions from list
 ENABLED_EXTENSIONS=(
@@ -117,7 +161,7 @@ ENABLED_EXTENSIONS=(
 )
 
 for ext in "${ENABLED_EXTENSIONS[@]}"; do
-	if ! gnome-extensions list --enabled | grep -q "^$ext$"; then
+	if ! gnome-extensions list --enabled | grep -q "^ext$"; then
 		echo "Installing GNOME extension: $ext"
 		gnome-extensions install "$ext" 2>/dev/null || true
 		gnome-extensions enable "$ext" 2>/dev/null || true
@@ -132,11 +176,11 @@ if [ -f "$KALI_DIR/gnome-extensions-backup.tar.gz" ]; then
 fi
 
 ## ==========================================
-## Phase 5: GNOME Settings (LAST)
+## Phase 7: GNOME Settings (LAST)
 ## ==========================================
 
 echo ""
-echo "=== Phase 5: GNOME Settings ==="
+echo "=== Phase 7: GNOME Settings ==="
 
 # Load dconf settings (must be LAST - after extensions installed)
 if [ -f "$KALI_DIR/settings.dconf" ]; then
@@ -145,22 +189,17 @@ if [ -f "$KALI_DIR/settings.dconf" ]; then
 fi
 
 ## ==========================================
-## Phase 6: Oh My Zsh
+## Phase 8: mise global tools
 ## ==========================================
 
 echo ""
-echo "=== Phase 6: Oh My Zsh ==="
+echo "=== Phase 8: mise Global Tools ==="
 
-# Install Oh My Zsh if not present
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
-	echo "Installing Oh My Zsh..."
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-fi
-
-# Restore Oh My Zsh config
-if [ -f "$KALI_DIR/ohmyzsh.tar.gz" ]; then
-	echo "Restoring Oh My Zsh..."
-	tar -xzf "$KALI_DIR/ohmyzsh.tar.gz" -C "$HOME/" 2>/dev/null || true
+if command -v mise &>/dev/null; then
+	echo "Installing mise global tools..."
+	mise install
+	mise trust --yes
+	mise upgrade --all
 fi
 
 ## ==========================================

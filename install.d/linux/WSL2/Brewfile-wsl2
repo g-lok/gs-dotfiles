@@ -1,0 +1,67 @@
+tap "hashicorp/tap"
+tap "wezterm/wezterm-linuxbrew"
+
+# mDNS/Avahi for network discovery
+brew "avahi"
+
+# Web server / Reverse proxy
+brew "caddy"
+
+# Docker (Linuxbrew version - runs in WSL2)
+brew "docker"
+brew "docker-compose"
+brew "docker-completion"
+
+# Core utils
+brew "bash"
+brew "bash-completion@2"
+brew "bat"
+brew "coreutils"
+brew "curl"
+brew "eza"
+brew "fastfetch"
+brew "fd"
+brew "ffmpeg"
+brew "fish"
+brew "fzf"
+brew "git"
+brew "glow"
+brew "gnupg"
+brew "htop"
+brew "jq"
+brew "lazygit"
+brew "less"
+brew "lsd"
+brew "make"
+brew "mise"
+brew "neovim"
+brew "openssh"
+brew "ripgrep"
+brew "rsync"
+brew "starship"
+brew "stow"
+brew "tailscale"
+brew "tree"
+brew "vim"
+brew "wget"
+brew "xh"
+brew "yazi"
+brew "zellij"
+brew "zoxide"
+brew "zsh"
+
+# Development tools
+brew "go"
+brew "jj"
+brew "kubernetes-cli"
+brew "lua"
+brew "luarocks"
+
+# HashiCorp
+brew "hashicorp/tap/packer"
+
+# Terminal emulators
+# NOTE: For Kitty, use official binary installer instead of homebrew for latest version:
+#   curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+# brew "kitty"  # Not recommended - use official binary installer instead
+brew "wezterm/wezterm-linuxbrew/wezterm"

@@ -1,0 +1,51 @@
+# GPi5 - Headless Raspberry Pi Server
+# Primary package manager is apt; homebrew for extra tools
+
+tap "hashicorp/tap"
+
+# mDNS/Avahi for network discovery
+brew "avahi"
+
+# Core CLI tools (via homebrew for newer versions)
+brew "bash"
+brew "bash-completion@2"
+brew "bat"
+brew "coreutils"
+brew "curl"
+brew "eza"
+brew "fastfetch"
+brew "fd"
+brew "fish"
+brew "fzf"
+brew "git"
+brew "glow"
+brew "gnupg"
+brew "htop"
+brew "jq"
+brew "lazygit"
+brew "less"
+brew "lsd"
+brew "make"
+brew "mise"
+brew "neovim"
+brew "openssh"
+brew "ripgrep"
+brew "rsync"
+brew "starship"
+brew "stow"
+brew "tailscale"
+brew "tree"
+brew "vim"
+brew "wget"
+brew "xh"
+brew "yazi"
+brew "zellij"
+brew "zoxide"
+brew "zsh"
+
+# Development tools
+brew "go"
+brew "jj"
+
+# HashiCorp
+brew "hashicorp/tap/packer"

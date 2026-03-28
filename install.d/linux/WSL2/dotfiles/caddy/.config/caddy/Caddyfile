@@ -1,0 +1,27 @@
+# Caddyfile for WSL2
+# 
+# Best practice location: ~/.config/caddy/Caddyfile
+# 
+# TODO: Replace with your actual Caddyfile from Windows
+# Windows locations to check: C:\Caddy, C:\Tools\Caddy, %ProgramData%\caddy
+#
+# Example config for Jellyfin reverse proxy to Windows:
+
+# jellyfin.yourdomain.local {
+#     reverse_proxy 192.168.1.57:8096
+#     tls internal
+# }
+
+# For local-only access (no HTTPS):
+# jellyfin.local {
+#     reverse_proxy 192.168.1.57:8096
+# }
+
+# Default: reverse proxy to Windows host (adjust IP as needed)
+:80 {
+    reverse_proxy 192.168.1.57:8096
+}
+
+:443 {
+    reverse_proxy 192.168.1.57:8096
+}

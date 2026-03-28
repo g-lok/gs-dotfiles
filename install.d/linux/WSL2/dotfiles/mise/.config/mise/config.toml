@@ -1,0 +1,47 @@
+[settings]
+# Enable idiomatic version files for tools that support them
+idiomatic_version_file_enable_tools = ["ruby", "python"]
+
+# Python + uv integration
+# Use uv to create virtual environments automatically
+python.uv_venv_auto = "create|source"
+
+# Poetry integration - auto-install poetry projects
+# This tells mise to install poetry when running poetry install
+poetry.auto_install = true
+
+[tools]
+# Python (required for uv, poetry projects)
+python = "latest"
+
+# UV - fast Python package manager (replaces pip)
+uv = "latest"
+
+# Poetry - Python dependency management
+poetry = "latest"
+
+# Node.js
+node = "lts"
+
+# Go
+go = "latest"
+
+# Rust
+rust = "latest"
+
+# Ruby
+ruby = "latest"
+
+# Elixir/Erlang
+elixir = "latest"
+erlang = "latest"
+
+# Flutter
+flutter = "latest"
+
+# Java/Kotlin
+java = "latest"
+kotlin = "latest"
+
+# Zig
+zig = "latest"

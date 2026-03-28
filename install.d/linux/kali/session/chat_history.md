@@ -88,6 +88,23 @@
    - `dotfiles/kitty-linux/.local/share/applications/kitty.desktop`
    - `session/` (AI session context)
 
+### Session: WSL2 + GPi Project Setup
+- Created ~/Projects/GPi/ project workspace
+- Network setup planning (mDNS, router config)
+- Created linux/WSL2 and linux/GPi5 directories
+- Created Brewfiles, install.sh, backup.sh, sync.sh for each platform
+- Added caddy, docker, avahi to WSL2 Brewfile
+- Created Caddy config template
+- Created network setup script (mirrored networking + firewall)
+- Created auto-start services (commented)
+- **Kitty on WSL2**: Changed from Windows to WSL2 native
+  - Uses official binary installer
+  - Created setup-kitty-wsl2.sh
+  - Created Windows Start Menu shortcut script
+- Updated Kali apt-packages.list to include kitty
+- Updated all install scripts with mise use -g, kitty setup
+- **Router**: User reconfigured to 192.168.x.x/255.255.0.0
+
 ---
 
 *Add new sessions here with date and topics*
