@@ -1,0 +1,18 @@
+## Developer apps
+
+brew 'asciinema' # easily record terminal sessions to animated gifs
+brew 'colima' # because Docker sucks on MacOS
+brew 'docker-completion'
+brew 'docker-compose'
+brew 'docker'
+brew 'gron' # Make JSON greppable
+brew 'lazydocker'
+brew 'lazygit'
+brew 'ttyd' # Share your terminal over the web.
+brew 'vhs' # Terminal video recorder
+brew 'kubernetes-cli'
+brew 'minikube'
+brew 'hashicorp/tap/packer'
+brew 'tailscale'
+brew 'opencode'
+brew 'openclaw'
