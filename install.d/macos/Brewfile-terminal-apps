@@ -84,3 +84,8 @@ brew 'yt-dlp' # Youtube dowloader
 brew 'zip'
 brew 'zoxide'
 brew 'zsh'
+brew "bind"
+brew "inetutils"
+brew "mtr"
+brew "coreutils"
+brew "gnu-sed"
