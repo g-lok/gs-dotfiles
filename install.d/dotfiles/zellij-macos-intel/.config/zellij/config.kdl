@@ -291,7 +291,7 @@ default_layout "gs-splitpanes"
 // The folder in which Zellij will look for layouts
 // (Requires restart)
 // 
-layout_dir "./layouts/"
+// layout_dir "./layouts/"
  
 // The folder in which Zellij will look for themes
 // (Requires restart)
