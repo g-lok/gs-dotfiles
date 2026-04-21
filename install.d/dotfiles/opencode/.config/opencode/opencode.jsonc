@@ -1,0 +1,48 @@
+{
+  "$schema": "https://opencode.ai",
+  "model": "opencode/gemini-3-flash",
+  "plugin": [
+    "opencode-agent-skills"
+  ],
+  "agent": {
+    "default": {
+      "require_all_skills": true,
+      "skills": [
+        "caveman",
+        "caveman-think",
+        "skill-vetter",
+        "caveman-commit",
+        "caveman-review",
+        "find-skills",
+        "self-improving-agent"
+      ]
+    },
+    "build": {
+      "skills": [
+        "caveman",
+        "caveman-think",
+        "skill-vetter",
+        "caveman-commit",
+        "caveman-review",
+        "find-skills",
+        "self-improving-agent"
+      ]
+    },
+    "plan": {
+      "skills": [
+        "caveman",
+        "caveman-think",
+        "skill-vetter",
+        "caveman-commit",
+        "caveman-review",
+        "find-skills",
+        "self-improving-agent"
+      ]
+    }
+  },
+  "permission": {
+    "skill": {
+      "*": "allow"
+    }
+  }
+}

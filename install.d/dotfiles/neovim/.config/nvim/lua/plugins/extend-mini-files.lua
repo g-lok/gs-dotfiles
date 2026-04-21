@@ -18,7 +18,8 @@ return {
 		{
 			"<leader>fm",
 			function()
-				require("mini.files").open(LazyVim.root(), true)
+				local root = require("lazyvim.util").root()
+				require("mini.files").open(root, true)
 			end,
 			desc = "Open mini.files (root)",
 		},

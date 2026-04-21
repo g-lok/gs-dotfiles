@@ -14,6 +14,7 @@ mise use --global node@lts
 mise use --global python@latest
 mise plugins install poetry https://github.com/mise-plugins/mise-poetry.git
 mise use --global poetry@latest
+poetry config virtualenvs.in-project true
 mise use --global uv@latest
 mise use --global ruby@latest
 mise settings add idiomatic_version_file_enable_tools ruby
