@@ -1,0 +1,19 @@
+[tools]
+elixir = "latest"
+erlang = "latest"
+flutter = "latest"
+"github:anomalyco/opencode" = "latest"
+go = "1.26.0"
+java = "latest"
+kotlin = "latest"
+node = "lts"
+odin = { version = "latest", exe = "odin" }
+poetry = "latest"
+python = "latest"
+ruby = "latest"
+rust = "latest"
+terraform = "latest"
+zig = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = ["ruby"]
