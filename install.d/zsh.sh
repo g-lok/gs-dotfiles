@@ -16,4 +16,4 @@ git -C "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" pull || git clone https://g
 # git -C "$ZSH_CUSTOM/plugins/fast-syntax-highlighting" pull || git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git "$ZSH_CUSTOM/plugins/fast-syntax-highlighting"
 git -C "$ZSH_CUSTOM/plugins/zsh-autocomplete" pull || git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git "$ZSH_CUSTOM/plugins/zsh-autocomplete"
 git -C "$ZSH_CUSTOM/plugins/fzf-tab" pull || git clone https://github.com/Aloxaf/fzf-tab "$ZSH_CUSTOM/plugins/fzf-tab"
-git clone https://github.com/jeffreytse/zsh-vi-mode $ZSH_CUSTOM/plugins/zsh-vi-mode
+git -C "$ZSH_CUSTOM/plugins/zsh-vi-mode" pull || git clone https://github.com/jeffreytse/zsh-vi-mode "$ZSH_CUSTOM/plugins/zsh-vi-mode"
