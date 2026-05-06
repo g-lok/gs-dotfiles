@@ -11,8 +11,8 @@ if [ -f "/opt/homebrew/bin/brew" ]; then
   BREW_BIN="/opt/homebrew/bin/brew"
 elif [ -f "/usr/local/bin/brew" ]; then
   BREW_BIN="/usr/local/bin/brew"
-elif [ -f "$HOME/linuxbrew/.linuxbrew/bin/brew" ]; then
-  BREW_BIN="$HOME/linuxbrew/.linuxbrew/bin/brew"
+elif [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
+  BREW_BIN="/home/linuxbrew/.linuxbrew/bin/brew"
 else
   echo "brew binary not found."
 fi
