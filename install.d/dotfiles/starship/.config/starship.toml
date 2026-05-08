@@ -11,8 +11,7 @@ $hostname\
 [](bg:color_yellow fg:color_orange)\
 $directory\
 [](fg:color_yellow bg:color_aqua)\
-$git_branch\
-$git_status\
+${custom.jj}\
 [](fg:color_aqua bg:color_blue)\
 $c\
 $cpp\
@@ -115,14 +114,65 @@ truncation_symbol = "…/"
 "Pictures" = " "
 "Developer" = "󰲋 "
 
+# Disable built-in Git modules when in a JJ repo
 [git_branch]
-symbol = ""
-style = "bg:color_aqua"
-format = '[[ $symbol $branch ](fg:color_fg0 bg:color_aqua)]($style)'
+disabled = true
 
 [git_status]
+disabled = true
+
+# Use jj-starship for the main JJ prompt (branch, ahead/behind)
+[custom.jj]
+symbol = "🥋"
+format = '[[ $symbol $output ](fg:color_fg0 bg:color_aqua)]($style)'
+when = "jj-starship detect"
+shell = [
+    "jj-starship",
+    "--no-color",
+    # "--no-symbol",
+    "--no-jj-prefix",
+    "--no-git-prefix",
+    "--no-jj-status"
+]
+
+# Custom file status symbols
+[custom.jj_status]
+description = "Custom JJ file status"
+command = "~/bin/jj-prompt.sh"
+when = "jj-starship detect"
+format = '[[ $output ](fg:color_fg0 bg:color_aqua)]($style)'
+
+[custom.git_branch]
+when = "!(jj --ignore-working-copy root &> /dev/null)"
+command = "starship module git_branch"
+format = '[[ $symbol $branch ](fg:color_fg0 bg:color_aqua)]($style)'
+symbol = ""
 style = "bg:color_aqua"
+
+# Custom git_status module with your style, only shown outside jj repos
+[custom.git_status]
+when = "!(jj --ignore-working-copy root &> /dev/null)"
+command = "starship module git_status"
 format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)'
+style = "bg:color_aqua"
+
+# Your custom Git module styling (applies when not in a JJ repo)
+# [git_branch]
+# symbol = ""
+# style = "bg:color_aqua"
+# format = '[[ $symbol $branch ](fg:color_fg0 bg:color_aqua)]($style)'
+#
+# [git_status]
+# style = "bg:color_aqua"
+# format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)'   
+# [git_branch]
+# symbol = ""
+# style = "bg:color_aqua"
+# format = '[[ $symbol $branch ](fg:color_fg0 bg:color_aqua)]($style)'
+#
+# [git_status]
+# style = "bg:color_aqua"
+# format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)'
 
 [nodejs]
 symbol = ""
