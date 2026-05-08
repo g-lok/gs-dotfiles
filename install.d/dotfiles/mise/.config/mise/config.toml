@@ -1,12 +1,15 @@
 [tools]
+"cargo:jj-starship" = "latest"
 elixir = "latest"
 erlang = "latest"
 flutter = "latest"
 "github:anomalyco/opencode" = "latest"
-go = "1.26.0"
+"github:odin-lang/Odin" = "latest"
+go = "latest"
 java = "latest"
 kotlin = "latest"
 node = "lts"
+"npm:@earendil-works/pi-coding-agent" = "latest"
 odin = { version = "latest", exe = "odin" }
 poetry = "latest"
 python = "latest"
@@ -17,3 +20,4 @@ zig = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["ruby"]
+zig.use_community_mirrors = true

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export CGO_ENABLED=1
+
 if [ -n "$BASH_VERSION" ]; then
   myshell="bash"
 elif [ -n "$ZSH_VERSION" ]; then
